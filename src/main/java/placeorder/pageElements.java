@@ -189,7 +189,25 @@ public class pageElements {
 	
 	@FindBy(xpath="//button[@id='buttonSelectAddressUser']")
 	WebElement userAddress;
-		
+	
+	@FindBy(xpath="//*[@class='product-name']")
+	WebElement productTitle;
+	
+	@FindBy(xpath="//*[@title='Select Format: MP3']")
+	WebElement Mp3;
+	
+	@FindBy(xpath="//*[@title='Select Format: FLAC']")
+	WebElement Flac;
+	
+	@FindBy(xpath="//*[@title='Select Format: ALAC']")
+	WebElement Alac;
+	
+	@FindBy(xpath="//*[@title='Select Format: FLAC-HD']")
+	WebElement Flac_HD;
+	
+	@FindBy(xpath="//*[@title='Select Format: ALAC-HD']")
+	WebElement Alac_HD;
+	
 	String Address1;
 	
 	String City;
@@ -205,5 +223,7 @@ public class pageElements {
 	String[] itemlist;
 	
 	String[] qty;
+	
+	String[] variant;
 
 }
