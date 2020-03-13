@@ -31,117 +31,38 @@ public class pageElements {
 	}
 
 
-	@FindBy(xpath="//a[@title='Met Store']")
+	@FindBy(xpath="//*[@title='Met Store']")
 	WebElement store;
 
 	@FindBy(xpath="//input[@name='Quantity']")
 	WebElement quantity;
 
-	@FindBy(xpath="//a[@title='Go to Category: Clearance']")
+	@FindBy(xpath="//*[@title='Go to Category: Clearance']")
 	WebElement clearance;
 
 	@FindBy(xpath="//span[text()='No']")
 	WebElement no;
 
-	@FindBy(xpath="(//span[text()='Close'])[14]")
+	@FindBy(xpath="(//a[@class='mini-cart-close'])[1]")
 	WebElement close;
 
 	@FindBy(xpath="//input[contains(@id,'useAsBillingAddress')]")
 	WebElement useAsBillingAddress;
 
-	//	@FindBy(xpath="//span[text()='Close']")
-	//	WebElement close2;
-	//	
-	@FindBy(xpath="(//a[@title='Go to page number: 2'])[1]")
-	WebElement page2;
-
-	@FindBy(xpath="//div[@data-itemname='S&M² Polo']")
-	WebElement tee;
-
-	@FindBy(xpath="//a[@title='Glitch Logo Thermal']")
-	WebElement item1;
-
-	//	@FindBy(xpath="//a[@title='Scary Guy And Skelly Toddler / Youth T-Shirt']")
-	//	WebElement item3;
-
-	@FindBy(xpath="//a[@title='Tangled Web Woven Patch']")
-	WebElement item2;
-
-	//	@FindBy(xpath="//a[@title='Battle Vest Toddler T-Shirt']")
-	//	WebElement item5;
-
-	@FindBy(xpath="//a[@title='Hardwired Pint Glass Set']")
-	WebElement item3;
-
-	@FindBy(xpath="(//a[contains(@title,'Garage Days Album Cover Men')])[1]")
-	WebElement item4;
-
-	//	@FindBy(xpath="(//a[contains(@title,'Blackened Whiskey Women')])[1]")
-	//	WebElement item8;
-
-	@FindBy(xpath="//a[@title='James Hetfield Live Trucker Hat']")
-	WebElement item5;
-
-	@FindBy(xpath="(//a[contains(@title,'Kill ')])[1]")
-	WebElement item6;
-
-	@FindBy(xpath="//a[@title='Ride The Lightning Hat']")
-	WebElement item7;
-
-	@FindBy(xpath="//a[@title='Master Of Puppets Hat']")
-	WebElement item8;
-
-	@FindBy(xpath="//a[@title='...And Justice For All Hat']")
-	WebElement item9;
-
-	@FindBy(xpath="//a[@title='ManUNkind T-Shirt']")
-	WebElement item10;
-
-	@FindBy(xpath="//a[@title='Guitar String Keychain']")
-	WebElement item11;
-
-	@FindBy(xpath="//a[@title='Ride The Lightning Hat']")
-	WebElement p2item1;
-
-	@FindBy(xpath="//a[@title='Guitar String Keychain']")
-	WebElement p2item2;
-
-	@FindBy(xpath="//a[@title='Master Of Puppets Hat']")
-	WebElement p2item3;
-
-	@FindBy(xpath="//a[@title='Skulls Wrapping Paper']")
-	WebElement p2item4;
-
-	@FindBy(xpath="//a[@title='...And Justice For All Hat']")
-	WebElement p2item5;
-
-	@FindBy(xpath="//a[@title='Beach Ball (48-Inch)']")
-	WebElement p2item6;
-
-	@FindBy(xpath="//a[@title='Scary Guy Stencil']")
-	WebElement p2item7;
-
-	@FindBy(xpath="(//a[contains(@title,'Kill ')])[1]")
-	WebElement p2item8;
-
-	@FindBy(xpath="//button[@id='add-to-cart']")
+	@FindBy(xpath="//*[@id='add-to-cart']")
 	WebElement addcart;
 
-	@FindBy(xpath="(//button[@value='dwfrm_cart_updateCart'])[2]")
+	@FindBy(xpath="//*[@id='update-cart']")
 	WebElement updatecart;
 
-	@FindBy(xpath="//button[@class='add-to-cart button button--cta checkout login']")
-	WebElement checkout;
-
-
-	@FindBy(xpath="(//a[@title='Go to Cart'])[1]")
+	@FindBy(xpath="(//*[@title='Go to Cart'])[1]")
 	WebElement miniviewcart;
 
-	@FindBy(xpath="//a[@title='View Cart']")
+	@FindBy(xpath="//*[@title='View Cart']")
 	WebElement minicart;
 
 	@FindBy(xpath="//span[text()='Checkout as Guest']") 
-	WebElement checkoutG;
+	WebElement checkout;
 
 	@FindBy(xpath="//button[@value='Place Order']")
 	WebElement placeorder;
