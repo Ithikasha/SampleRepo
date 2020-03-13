@@ -82,20 +82,22 @@ public class Functions {
 			element_obj.itemlist = formatter.formatCellValue(row.getCell(1)).split(",");
 
 			element_obj.qty = formatter.formatCellValue(row.getCell(2)).split(",");
+			
+			element_obj.variant = formatter.formatCellValue(row.getCell(3)).split(",");
 
 			selectItems() ;
 
-			element_obj.Address1 = formatter.formatCellValue(row.getCell(3)) ;
+			element_obj.Address1 = formatter.formatCellValue(row.getCell(4)) ;
 
-			element_obj.City = formatter.formatCellValue(row.getCell(4)) ;
+			element_obj.City = formatter.formatCellValue(row.getCell(5)) ;
 
-			element_obj.Zip_Code = formatter.formatCellValue(row.getCell(5)) ; 
+			element_obj.Zip_Code = formatter.formatCellValue(row.getCell(6)) ; 
 			
-			element_obj.State = formatter.formatCellValue(row.getCell(6)) ; 
+			element_obj.State = formatter.formatCellValue(row.getCell(7)) ; 
 
-			element_obj.Shipping_Method = formatter.formatCellValue(row.getCell(7)) ;
+			element_obj.Shipping_Method = formatter.formatCellValue(row.getCell(8)) ;
 
-			element_obj.Payment_Method = formatter.formatCellValue(row.getCell(8)) ;
+			element_obj.Payment_Method = formatter.formatCellValue(row.getCell(9)) ;
 
 			System.out.println("Variable data_obj are Collected");
 
@@ -133,10 +135,7 @@ public class Functions {
 
 				element_obj.srchTxt.submit();
 			
-				if(element_obj.sizeM.isEnabled())
-				{
-					element_obj.sizeM.click();
-				}
+				size(element_obj.variant[j]);
 			
 			
 				if(util.Isdisplayed(element_obj.quantity)) 
@@ -192,7 +191,10 @@ public class Functions {
 	
 	
 	
-	private void guestCheckout() {
+	private void guestCheckout() throws InterruptedException {
+		
+		util.Sendkeys(element_obj.email, data_obj.username);
+		util.Click(element_obj.checkout);
 		
 	}
 
@@ -204,6 +206,7 @@ public class Functions {
 		util.Sendkeys(element_obj.password, data_obj.password);
 		
 		util.Click(element_obj.checkout);
+		
 		
 	}
 	
@@ -355,19 +358,59 @@ public class Functions {
 
 	}
 
-	public void size() throws InterruptedException
+	public void size(String variant) throws InterruptedException
 	{
-		if(element_obj.sizeM.isDisplayed())
+		
+		
+		switch(variant)
 		{
-			element_obj.sizeM.click();
+			
+			case "mp3":
+				
+				util.Click(element_obj.Mp3);
+				break;
+				
+			case "flac":
+				
+				util.Click(element_obj.Flac);
+				break;
+					
+			case "flac-hd":
+				
+				util.Click(element_obj.Flac_HD);
+				break;
+				
+			case "alac":
+				
+				util.Click(element_obj.Alac);
+				break;
+				
+			case "alac-hd":
+				
+				util.Click(element_obj.Alac_HD);
+				break;
+				
+			case "small":
+				
+				util.Click(element_obj.sizeS);
+				break;
+				
+			case "medium":
+				
+				util.Click(element_obj.sizeM);
+				break;
+				
+			case "large":
+				
+				util.Click(element_obj.sizeS);
+				break;
+				
+			default:
+				
+				System.out.println("Invalid format");
+				break;
+			
 		}
-		else
-		{
-			System.out.println("No Size");
-		}
+				
 	}
-
-
-
-
 }
