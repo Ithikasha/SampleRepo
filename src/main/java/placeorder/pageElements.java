@@ -30,209 +30,207 @@ public class pageElements {
 		PageFactory.initElements(driver, this);
 	}
 
-
+	
+	//Homepage
 	@FindBy(xpath="(//a[@title='Metallica Home'])[1]")
-	WebElement Metallica;
+	public WebElement Metallica;
 	
 	@FindBy(xpath="//a[@class='user-account not-logged-in']")
-	WebElement login;
-	
-	@FindBy(xpath="//button[@value='Login']")
-	WebElement login_button;
+	public WebElement login;
 	
 	@FindBy(xpath="//*[@title='Met Store']")
-	WebElement store;
-
-	@FindBy(xpath="//input[@name='Quantity']")
-	WebElement quantity;
-
-	@FindBy(xpath="//*[@title='Go to Category: Clearance']")
-	WebElement clearance;
-
-	@FindBy(xpath="//span[text()='No']")
-	WebElement no;
-
-	@FindBy(xpath="(//a[@class='mini-cart-close'])[1]")
-	WebElement close;
-
-	@FindBy(xpath="//input[contains(@id,'useAsBillingAddress')]")
-	WebElement useAsBillingAddress;
-
-	@FindBy(xpath="//*[@id='add-to-cart']")
-	WebElement addcart;
-
-	@FindBy(xpath="//*[@id='update-cart']")
-	WebElement updatecart;
-
-	@FindBy(xpath="(//*[@title='Go to Cart'])[1]")
-	WebElement miniviewcart;
-
-	@FindBy(xpath="//*[@title='View Cart']")
-	WebElement minicart;
-
-	@FindBy(xpath="(//button[@value='Checkout'])[1]") 
-	WebElement checkout;
-
-	@FindBy(xpath="//button[@value='Place Order']")
-	WebElement placeorder;
-
-	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_firstName']")
-	WebElement firstname;
-
-	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_lastName']")
-	WebElement lastname;
-
-	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_address1']")
-	WebElement address1;
-
-	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_address2']")
-	WebElement address2;
-
-	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_city']")
-	WebElement city;
-
-	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_postal']")
-	WebElement zipcode;
-
-	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_phone']")
-	WebElement phone;
-
-	@FindBy(xpath="//select[@name='dwfrm_singleshipping_shippingAddress_addressFields_country']")
-	WebElement country;
-
-	@FindBy(xpath="//select[@name='dwfrm_singleshipping_shippingAddress_addressFields_states_state']")
-	WebElement stateField;
-
-	@FindBy(xpath="//input[@id='dwfrm_singleshipping_shippingAddress_isGift']")
-	WebElement gift;
-
-	@FindBy(xpath="//textarea[@id='dwfrm_singleshipping_shippingAddress_giftMessage']")
-	WebElement giftMsg;
-
-	@FindBy(xpath="//input[@id='shipping-method-shqups-GND']")
-	WebElement ground;
-
-	@FindBy(xpath="//input[@id='shipping-method-shqusps-Priority Mail']")
-	WebElement priorityMail;
-
-	@FindBy(xpath="//input[@id='shipping-method-shqups-2DA']")
-	WebElement twodayAir;
-
-	@FindBy(xpath="//input[@id='shipping-method-shqcustom-ups_mail_innovations']")
-	WebElement mailInnovation;
-
-	@FindBy(xpath="//button[@id='shipping-continue']")
-	WebElement continuebill;
-
-	@FindBy(xpath="(//input[contains(@id,'dwfrm_login_username')])[1]")
-	WebElement email;
+	public WebElement store;
 	
-	@FindBy (xpath="//input[contains(@id,'dwfrm_login_password')]")
-	WebElement password;
-
-	@FindBy(xpath="//input[contains(@name,'dwfrm_billing_shipInt')]")
-	WebElement policyCheck;
-
-	@FindBy(xpath="//input[@id='dwfrm_billing_paymentMethods_creditCard_owner']")
-	WebElement cardname;
-
-	@FindBy(xpath="//*[@id='dwfrm_billing_paymentMethods_creditCard_type']")
-	WebElement cardtype;
-
-	@FindBy(xpath="//*[@id='dwfrm_billing_paymentMethods_creditCard_number']")
-	WebElement cardnumber;
-
-	@FindBy(xpath="//*[@id='dwfrm_billing_paymentMethods_creditCard_cvn']")
-	WebElement cardcvn;
-
-	@FindBy(xpath="//*[@id='dwfrm_billing_paymentMethods_creditCard_expiration_month']")
-	WebElement cardmonth;
-
-	@FindBy(xpath="//*[@id='dwfrm_billing_paymentMethods_creditCard_expiration_year']")
-	WebElement cardyear;
-
-	@FindBy(xpath="//*[@id='billingSubmitButton']")
-	WebElement continueShipping;
-
-	@FindBy(xpath="(//a[@title='Go to Cart'])[1]")
-	WebElement viewcart;
-
-	@FindBy(xpath="//a[@title='Go to Clearance']")
-	WebElement clearance1;
-
-	@FindBy(xpath="//i[@class='search-white-icon']")
-	WebElement srchW;
-
-	@FindBy(xpath="//i[@class='search-icon']")
-	WebElement srchB;
+	@FindBy(xpath="//span[text()='No']")
+	public WebElement no;
 	
 	@FindBy(xpath="(//i[contains(@class,'search')])[1]")
-	WebElement srch;
+	public WebElement srch;
 
 	@FindBy(xpath="//input[@id='q'][1]")
-	WebElement srchIP;
+	public WebElement srchIP;
+	
+	@FindBy(xpath="//*[@title='View Cart']")
+	public WebElement minicart;
+	
+	//Loginpage
+	@FindBy(xpath="//button[@value='Login']")
+	public WebElement login_button;
+	
+	@FindBy(xpath="(//input[contains(@id,'dwfrm_login_username')])[1]")
+	public WebElement email;
+	
+	@FindBy (xpath="//input[contains(@id,'dwfrm_login_password')]")
+	public WebElement password;
+	
+	//Cart page
+	
+	@FindBy(xpath="(//*[@title='Go to Cart'])[1]")
+	public WebElement miniviewcart;
 
-	@FindBy(xpath="//input[@placeholder='Search Metallica.com']")
-	WebElement srchTxt;
+	@FindBy(xpath="(//a[@class='mini-cart-close'])[1]")
+	public WebElement close;
 
-	@FindBy(xpath="//a[@title='Select Size: Small']")
-	WebElement sizeS;
+	@FindBy(xpath="//*[@id='update-cart']")
+	public WebElement updatecart;
+	
+	@FindBy(xpath="(//button[@value='Checkout'])[1]") 
+	public WebElement checkout;
 
-	@FindBy(xpath="//a[@title='Select Size: Medium']")//input[@name='Quantity']
-	WebElement sizeM;
+	@FindBy(xpath="//button[@value='Place Order']")
+	public WebElement placeorder;
+	
+	//Shipping page
+	
+	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_firstName']")
+	public WebElement firstname;
 
-	@FindBy(xpath="//a[@title='Select Size: Large']")
-	WebElement sizeL;
+	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_lastName']")
+	public WebElement lastname;
 
-	@FindBy(xpath="//img[@src='https://development.rockdevelop.com/dw/image/v2/BCPJ_DEV/on/demandware.static/Sites-Metallica-Site/-/default/dw5e3da51a/images/noimagelarge.png?sw=350&sh=350&sm=cut'][1]")
-	WebElement vinyl;
+	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_address1']")
+	public WebElement address1;
 
-	@FindBy(xpath="//input[@id='guest-checkout']")
-	WebElement guestCheckout;
+	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_address2']")
+	public WebElement address2;
+
+	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_city']")
+	public WebElement city;
+
+	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_postal']")
+	public WebElement zipcode;
+
+	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_phone']")
+	public WebElement phone;
+
+	@FindBy(xpath="//select[@name='dwfrm_singleshipping_shippingAddress_addressFields_country']")
+	public WebElement country;
+
+	@FindBy(xpath="//select[@name='dwfrm_singleshipping_shippingAddress_addressFields_states_state']")
+	public WebElement stateField;
+
+	@FindBy(xpath="//input[@id='dwfrm_singleshipping_shippingAddress_isGift']")
+	public WebElement gift;
+
+	@FindBy(xpath="//textarea[@id='dwfrm_singleshipping_shippingAddress_giftMessage']")
+	public WebElement giftMsg;
+	
+	@FindBy(xpath="//input[contains(@id,'useAsBillingAddress')]")
+	public WebElement useAsBillingAddress;
+
+	@FindBy(xpath="//input[@id='shipping-method-shqups-GND']")
+	public WebElement ground;
+
+	@FindBy(xpath="//input[@id='shipping-method-shqusps-Priority Mail']")
+	public WebElement priorityMail;
+
+	@FindBy(xpath="//input[@id='shipping-method-shqups-2DA']")
+	public WebElement twodayAir;
+
+	@FindBy(xpath="//input[@id='shipping-method-shqcustom-ups_mail_innovations']")
+	public WebElement mailInnovation;
+
+	@FindBy(xpath="//button[@id='shipping-continue']")
+	public WebElement continuebill;
 	
 	@FindBy(xpath="//button[@id='buttonSelectAddressUser']")
-	WebElement userAddress;
+	public WebElement userAddress;
 	
-	@FindBy(xpath="//*[@class='product-name']")
-	WebElement productTitle;
+	//Billingpage
+
+	@FindBy(xpath="//input[contains(@name,'dwfrm_billing_shipInt')]")
+	public WebElement policyCheck;
+
+	@FindBy(xpath="//input[@id='dwfrm_billing_paymentMethods_creditCard_owner']")
+	public WebElement cardname;
+
+	@FindBy(xpath="//*[@id='dwfrm_billing_paymentMethods_creditCard_type']")
+	public WebElement cardtype;
+
+	@FindBy(xpath="//*[@id='dwfrm_billing_paymentMethods_creditCard_number']")
+	public WebElement cardnumber;
+
+	@FindBy(xpath="//*[@id='dwfrm_billing_paymentMethods_creditCard_cvn']")
+	public WebElement cardcvn;
+
+	@FindBy(xpath="//*[@id='dwfrm_billing_paymentMethods_creditCard_expiration_month']")
+	public WebElement cardmonth;
+
+	@FindBy(xpath="//*[@id='dwfrm_billing_paymentMethods_creditCard_expiration_year']")
+	public WebElement cardyear;
+
+	@FindBy(xpath="//*[@id='billingSubmitButton']")
+	public WebElement continuePlaceorder;
+
+	@FindBy(xpath="(//a[@title='Go to Cart'])[1]")
+	public WebElement viewcart;
 	
+	@FindBy(xpath="//input[@placeholder='Search Metallica.com']")
+	public WebElement srchTxt;
+	
+	//PDP
+	
+	@FindBy(xpath="(//*[@class='product-name'])[1]")
+	public WebElement productTitle;
+	
+	@FindBy(xpath="(//span[@class='price-sales'])[1]")
+	public WebElement productPrice;
+
+	@FindBy(xpath="//a[@title='Select Size: Small']")
+	public WebElement sizeS;
+
+	@FindBy(xpath="//a[@title='Select Size: Medium']")//input[@name='Quantity']
+	public WebElement sizeM;
+
+	@FindBy(xpath="//a[@title='Select Size: Large']")
+	public WebElement sizeL;
+
 	@FindBy(xpath="//*[@title='Select Format: MP3']")
-	WebElement Mp3;
+	public WebElement Mp3;
 	
 	@FindBy(xpath="//*[@title='Select Format: FLAC']")
-	WebElement Flac;
+	public WebElement Flac;
 	
 	@FindBy(xpath="//*[@title='Select Format: ALAC']")
-	WebElement Alac;
+	public WebElement Alac;
 	
 	@FindBy(xpath="//*[@title='Select Format: FLAC-HD']")
-	WebElement Flac_HD;
+	public WebElement Flac_HD;
 	
 	@FindBy(xpath="//*[@title='Select Format: ALAC-HD']")
-	WebElement Alac_HD;
+	public WebElement Alac_HD;
+	
+	@FindBy(xpath="//input[@name='Quantity']")
+	public WebElement quantity;
+	
+	@FindBy(xpath="//*[@id='add-to-cart']")
+	public WebElement addcart;
 	
 	//Order Confirmation page
 	
 	@FindBy(xpath="//div[@class='order-information']//following::h3")
-	WebElement orderNumber;
+	public WebElement orderNumber;
 	
 	@FindBy(xpath="(//tr[@class='order-subtotal']//following::td)[2]")
-	WebElement Subtotal;
+	public WebElement Subtotal;
 	
 	@FindBy(xpath="(//tr[@class='order-shipping']//following::td)[2]")
-	WebElement Shipping_cost;
+	public WebElement Shipping_cost;
 	
-	@FindBy(xpath="")
-	WebElement Shipping_cost2;
+	@FindBy(xpath="(//tr[@class='order-shipping  first ']//following::td)[2]")
+	public WebElement Shipping_cost1;
+	
+	@FindBy(xpath="(//tr[@class='order-shipping  last']//following::td)[2]")
+	public WebElement Shipping_cost2;
 	
 	@FindBy(xpath="(//tr[@class='order-handling']//following::td)[2]")
-	WebElement Handling_cost;
+	public WebElement Handling_cost;
 	
 	@FindBy(xpath="(//tr[@class='order-sales-tax']//following::td)[2]")
-	WebElement salesTax;
+	public WebElement salesTax;
 	
 	@FindBy(xpath="//td[@class='order-value']")
-	WebElement orderTotal;
+	public WebElement orderTotal;
 	
 	String Address1;
 	
