@@ -24,6 +24,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
@@ -94,7 +95,7 @@ public class driverUtil {
 	
 	public WebDriver chrome()
 	{
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\UNITS\\Downloads\\chromedriver_win32\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\UNITS\\Downloads\\chromedriver\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
@@ -133,6 +134,7 @@ public class driverUtil {
 				}
 			
 			}
+			
 		}
 	}
 		
@@ -156,6 +158,10 @@ public class driverUtil {
 						Thread.sleep(1000);
 						return Isdisplayed(element);
 					}				
+				}
+				catch(NoSuchElementException ex)
+				{
+					return false;
 				}
 			}
 			return true;

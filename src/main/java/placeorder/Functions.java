@@ -2,11 +2,13 @@ package placeorder;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 import java.util.function.Function;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -59,7 +61,7 @@ public class Functions {
 		}
 		return book;
 	}
-
+	
 	public void bulkOrder_testing() throws Exception  
 	{
 
@@ -73,7 +75,9 @@ public class Functions {
 
 		Sheet sheet = book.getSheet(data_obj.sheetName);
 
-		int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum() ;
+		int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
+		
+		login();
 
 		for (int i = 1; i < rowCount; i++) {
 
@@ -101,23 +105,42 @@ public class Functions {
 
 			System.out.println("Variable data_obj are Collected");
 
-			checkout() ;
+			util.Click(element_obj.checkout);
 
 			shipping() ;
 
 			payment() ;
 
-			//element_obj.placeorder.click();
+			element_obj.placeorder.click();
 
-			Date date = new Date();
-
-			util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders");
-
+			
 			System.out.println("Order"+(i));
 
 			element_obj.itemlist = null;
 
 			element_obj.qty = null;
+			
+			data_obj.orderNumber = element_obj.orderNumber.getText();
+			
+			data_obj.orderNumber.substring(15);
+			
+			System.out.println(data_obj.orderNumber.substring(15));
+			
+			Cell cell = row.createCell(10);
+		    
+			cell.setCellType(cell.CELL_TYPE_STRING);
+			
+		    cell.setCellValue(data_obj.orderNumber.substring(15));
+			
+			istream.close();
+			
+			FileOutputStream outputstream = new FileOutputStream(data_obj.filePath+"\\"+data_obj.fileName);
+				
+			book.write(outputstream);
+			    
+			outputstream.close();
+			
+			util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+i+".png");
 		}
 	}
 
@@ -135,7 +158,10 @@ public class Functions {
 
 				element_obj.srchTxt.submit();
 			
-				size(element_obj.variant[j]);
+				if(element_obj.variant[j]!="0") {
+					
+					size(element_obj.variant[j]);
+				}
 			
 			
 				if(util.Isdisplayed(element_obj.quantity)) 
@@ -157,6 +183,7 @@ public class Functions {
 				else {
 
 					System.out.println("Quantity is not displayed");
+					util.Click(element_obj.addcart);
 				}
 
 			
@@ -169,7 +196,6 @@ public class Functions {
 				{
 					util.Click(element_obj.miniviewcart);
 				}
-
 
 				System.out.println("Product "+(j+1)+" is added");
 			}
@@ -215,13 +241,17 @@ public class Functions {
 		
 	}
 
-	public void checkout() throws InterruptedException {
+	public void login() throws InterruptedException {
+		
+		util.Click(element_obj.login);
 
 		util.Sendkeys(element_obj.email, data_obj.username);
-
+	
 		util.Sendkeys(element_obj.password, data_obj.password);
+	
+		util.Click(element_obj.login_button);
 		
-		util.Click(element_obj.checkout);
+		System.out.println("User is Logged in");
 
 	}
 
@@ -262,7 +292,10 @@ public class Functions {
 
 		util.WaitAndClick(element_obj.continuebill);
 		
-		util.Click(element_obj.userAddress);
+		if(util.Isdisplayed(element_obj.userAddress)) {
+			
+			util.Click(element_obj.userAddress);
+		}
 
 	}
 
@@ -309,9 +342,9 @@ public class Functions {
 
 		case "Visa":
 
-			util.Sendkeys(element_obj.cardname,data_obj.firstname);
+			element_obj.cardname.sendKeys(data_obj.firstname);
 
-			util.Sendkeys(element_obj.cardnumber,data_obj.Visa_number);
+			element_obj.cardnumber.sendKeys(data_obj.Visa_number);
 
 			Select card_month = new Select(element_obj.cardmonth);
 			card_month.selectByValue(data_obj.Visa_month);
@@ -319,6 +352,11 @@ public class Functions {
 			element_obj.cardyear.sendKeys(data_obj.Visa_year);
 
 			element_obj.cardcvn.sendKeys(data_obj.Visa_cvv);
+			
+			if(data_obj.Visa_number.isEmpty()) {
+				
+				util.Sendkeys(element_obj.cardnumber,data_obj.Visa_number);
+			}
 
 			//			continueorder.click();
 
@@ -330,7 +368,8 @@ public class Functions {
 
 			element_obj.cardnumber.sendKeys(data_obj.Amex_number);
 
-			element_obj.cardmonth.sendKeys(data_obj.Amex_month);
+			Select AmexCard_month = new Select(element_obj.cardmonth);
+			AmexCard_month.selectByValue(data_obj.Amex_month);
 
 			element_obj.cardyear.sendKeys(data_obj.Amex_year);
 
@@ -412,5 +451,30 @@ public class Functions {
 			
 		}
 				
+	}
+	
+	public void writeExcel() throws IOException
+	{
+		DataFormatter formatter = new DataFormatter();
+
+		File file = new File(data_obj.filePath+"\\"+data_obj.fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,data_obj.fileName);
+
+		Sheet sheet = book.getSheet(data_obj.sheetName);
+
+		int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum() ;
+		
+		Row row = sheet.getRow(0);
+		
+		Row newRow = sheet.createRow(rowCount+1);
+		
+		Cell cell = newRow.createCell(1);
+
+	    cell.setCellValue("Order number");
+		
+
 	}
 }
