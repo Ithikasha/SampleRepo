@@ -26,7 +26,7 @@ public class placeOrder {
 			
 			data.driver.get(data.DEV_url);
 			
-			elements.no.click();
+			util.Click(elements.no);
 			
 			functions.bulkOrder_testing();
 			

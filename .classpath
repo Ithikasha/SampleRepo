@@ -29,5 +29,6 @@
 	<classpathentry kind="lib" path="C:/Users/UNITS/jar files/itextpdf-5.4.0.jar/itextpdf-5.4.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/UNITS/jar files/javax.activation-1.1.0.v201105071233.jar/javax.activation-1.1.0.v201105071233.jar"/>
 	<classpathentry kind="lib" path="C:/Users/UNITS/jar files/javax.mail-api-1.4.6.jar/javax.mail-api-1.4.6.jar"/>
+	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

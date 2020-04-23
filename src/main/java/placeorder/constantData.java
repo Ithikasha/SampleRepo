@@ -10,51 +10,53 @@ public class constantData {
 	
 	public WebDriver driver ;
 	
-	String DEV_url = "https://development.rockdevelop.com/" ;
+	public String DEV_url = "https://development.rockdevelop.com/" ;
 	
-	String STG_url = "https://staging.rockdevelop.com/" ;
+	public String STG_url = "https://staging.rockdevelop.com/" ;
 	
-	String filePath = "C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets";
+	public String filePath = "C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets";
 	
-	String username = "ithikasha@unitedtechno.com" ;
+	public String username = "ithikasha@unitedtechno.com" ;
 	
-	String password = "Ithi@utis07" ;
+	public String password = "Ithi@utis07" ;
 	
-	String fileName = "Metallica.xlsx";
+	public String fileName = "Metallica.xlsx";
 
-	String sheetName = "bulk_orders";
+	public String sheetName = "bulk_orders";
 	
-	String firstname = "Tester" ;
+	public String orderDetailsSheet = "Order_result";
 	
-	String lastname = "Test" ;
+	public String firstname = "Tester" ;
 	
-	String country = "United States" ;
+	public String lastname = "Test" ;
 	
-	String Phone = "9854562145" ;
+	public String country = "United States" ;
 	
-	String email = "ithikasha@unitedtechno.com" ;
+	public String Phone = "9854562145" ;
 	
-	String Visa_number ="4111111111111111";
+	public String email = "ithikasha@unitedtechno.com" ;
 	
-	String Visa_date = "08";
+	public String Visa_number ="4111111111111111";
 	
-	String Visa_month = "12";
+	public String Visa_date = "08";
 	
-	String Visa_year = "2022";
+	public String Visa_month = "12";
 	
-	String Visa_cvv = "737";
+	public String Visa_year = "2022";
 	
-	String Amex_number ="378282246310005";
+	public String Visa_cvv = "737";
 	
-	String Amex_date = "10";
+	public String Amex_number ="378282246310005";
 	
-	String Amex_month = "12";
+	public String Amex_date = "10";
 	
-	String Amex_year = "2023";
+	public String Amex_month = "12";
 	
-	String Amex_cvv = "7373";
+	public String Amex_year = "2023";
 	
+	public String Amex_cvv = "7373";
 	
+	public String orderNumber;
 	
 }
 

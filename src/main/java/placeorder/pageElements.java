@@ -31,6 +31,12 @@ public class pageElements {
 	}
 
 
+	@FindBy(xpath="//a[@class='user-account not-logged-in']")
+	WebElement login;
+	
+	@FindBy(xpath="//button[@value='Login']")
+	WebElement login_button;
+	
 	@FindBy(xpath="//*[@title='Met Store']")
 	WebElement store;
 
@@ -61,7 +67,7 @@ public class pageElements {
 	@FindBy(xpath="//*[@title='View Cart']")
 	WebElement minicart;
 
-	@FindBy(xpath="//span[text()='Checkout as Guest']") 
+	@FindBy(xpath="(//button[@value='Checkout'])[1]") 
 	WebElement checkout;
 
 	@FindBy(xpath="//button[@value='Place Order']")
@@ -207,6 +213,29 @@ public class pageElements {
 	
 	@FindBy(xpath="//*[@title='Select Format: ALAC-HD']")
 	WebElement Alac_HD;
+	
+	//Order Confirmation page
+	
+	@FindBy(xpath="//div[@class='order-information']//following::h3")
+	WebElement orderNumber;
+	
+	@FindBy(xpath="(//tr[@class='order-subtotal']//following::td)[2]")
+	WebElement Subtotal;
+	
+	@FindBy(xpath="(//tr[@class='order-shipping']//following::td)[2]")
+	WebElement Shipping_cost;
+	
+	@FindBy(xpath="")
+	WebElement Shipping_cost2;
+	
+	@FindBy(xpath="(//tr[@class='order-handling']//following::td)[2]")
+	WebElement Handling_cost;
+	
+	@FindBy(xpath="(//tr[@class='order-sales-tax']//following::td)[2]")
+	WebElement salesTax;
+	
+	@FindBy(xpath="//td[@class='order-value']")
+	WebElement orderTotal;
 	
 	String Address1;
 	
