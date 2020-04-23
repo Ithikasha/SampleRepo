@@ -79,7 +79,7 @@ public class Functions {
 		
 		login();
 
-		for (int i = 1; i < 5; i++) {
+		for (int i = 3; i < 4; i++) {
 
 			Row row = sheet.getRow(i);
 
@@ -121,9 +121,35 @@ public class Functions {
 			
 			System.out.println(data_obj.orderNumber.substring(15));
 			
-			writeExcel(i, data_obj.orderNumber);
+			if(util.Isdisplayed(element_obj.Shipping_cost)) {
+				
+				data_obj.shippinging_cost = element_obj.Shipping_cost.getText().toString();
+			}
 			
-			util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders"+i+".png");
+			else{
+				
+				data_obj.shippinging_cost1 = element_obj.Shipping_cost1.getText().toString();
+				
+				data_obj.shippinging_cost2 = element_obj.Shipping_cost2.getText().toString();
+				
+				data_obj.shippinging_cost = data_obj.shippinging_cost1.concat("+"+data_obj.shippinging_cost2);
+			}
+			
+			data_obj.handling_cost = element_obj.Handling_cost.getText().toString();
+			
+			System.out.println(data_obj.handling_cost);
+			
+			data_obj.salesTax = element_obj.salesTax.getText().toString();
+			
+			System.out.println(data_obj.salesTax);
+			
+			data_obj.orderTotal = element_obj.orderTotal.getText().toString();
+			
+			System.out.println(data_obj.orderTotal);
+			
+			writeExcel(i, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost);
+			
+			util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Orders"+i+".png");
 		}
 		
 	}
@@ -377,7 +403,7 @@ public class Functions {
 			System.out.println("Give a Valid Payment Method");
 		}
 
-		element_obj.continueShipping.click();
+		element_obj.continuePlaceorder.click();
 	}
 
 	public static void paypal() {
@@ -428,7 +454,7 @@ public class Functions {
 				
 			case "large":
 				
-				util.Click(element_obj.sizeS);
+				util.Click(element_obj.sizeL);
 				break;
 				
 			default:
@@ -440,7 +466,7 @@ public class Functions {
 				
 	}
 	
-	public void writeExcel(int rowNumber, String orderNumber) throws IOException
+	public void writeExcel(int rowNumber, String orderNumber, String handling_cost, String salesTax, String orderTotal, String shippinging_cost) throws IOException
 	{
 		DataFormatter formatter = new DataFormatter();
 
@@ -454,11 +480,36 @@ public class Functions {
 
 		Row row = sheet.getRow(rowNumber);
 		
-		Cell cell = row.createCell(10);
+		Cell orderNumber_cell = row.createCell(10);
 		
-		cell.setCellType(cell.CELL_TYPE_STRING);
+		orderNumber_cell.setCellType(orderNumber_cell.CELL_TYPE_STRING);
 
-	    cell.setCellValue(orderNumber.substring(15));
+		orderNumber_cell.setCellValue(orderNumber.substring(15));
+	    
+	    Cell shippingCost_cell = row.createCell(11);
+		
+	    shippingCost_cell.setCellType(shippingCost_cell.CELL_TYPE_STRING);
+
+	    shippingCost_cell.setCellValue(shippinging_cost);
+	    
+	    Cell handlingCost_cell = row.createCell(12);
+		
+	    handlingCost_cell.setCellType(handlingCost_cell.CELL_TYPE_STRING);
+
+	    handlingCost_cell.setCellValue(handling_cost);
+	    
+	    Cell salesTax_cell = row.createCell(13);
+		
+	    salesTax_cell.setCellType(shippingCost_cell.CELL_TYPE_STRING);
+
+	    salesTax_cell.setCellValue(salesTax);
+	    
+	    Cell orderTotal_cell = row.createCell(14);
+		
+	    orderTotal_cell.setCellType(orderTotal_cell.CELL_TYPE_STRING);
+
+	    orderTotal_cell.setCellValue(orderTotal);
+	    
 	    
 	    istream.close(); 
 	    	    
