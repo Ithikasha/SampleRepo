@@ -58,6 +58,7 @@ public class constantData {
 	
 	public String orderNumber;
 	
+	public String[] orderList;
 }
 
 

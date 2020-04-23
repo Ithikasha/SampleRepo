@@ -79,7 +79,7 @@ public class Functions {
 		
 		login();
 
-		for (int i = 1; i < rowCount; i++) {
+		for (int i = 1; i < 5; i++) {
 
 			Row row = sheet.getRow(i);
 
@@ -88,8 +88,6 @@ public class Functions {
 			element_obj.qty = formatter.formatCellValue(row.getCell(2)).split(",");
 			
 			element_obj.variant = formatter.formatCellValue(row.getCell(3)).split(",");
-
-			selectItems() ;
 
 			element_obj.Address1 = formatter.formatCellValue(row.getCell(4)) ;
 
@@ -105,7 +103,7 @@ public class Functions {
 
 			System.out.println("Variable data_obj are Collected");
 
-			util.Click(element_obj.checkout);
+			selectItems() ;
 
 			shipping() ;
 
@@ -113,35 +111,21 @@ public class Functions {
 
 			element_obj.placeorder.click();
 
-			
 			System.out.println("Order"+(i));
 
 			element_obj.itemlist = null;
 
 			element_obj.qty = null;
 			
-			data_obj.orderNumber = element_obj.orderNumber.getText();
-			
-			data_obj.orderNumber.substring(15);
+			data_obj.orderNumber = element_obj.orderNumber.getText().toString();
 			
 			System.out.println(data_obj.orderNumber.substring(15));
 			
-			Cell cell = row.createCell(10);
-		    
-			cell.setCellType(cell.CELL_TYPE_STRING);
+			writeExcel(i, data_obj.orderNumber);
 			
-		    cell.setCellValue(data_obj.orderNumber.substring(15));
-			
-			istream.close();
-			
-			FileOutputStream outputstream = new FileOutputStream(data_obj.filePath+"\\"+data_obj.fileName);
-				
-			book.write(outputstream);
-			    
-			outputstream.close();
-			
-			util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+i+".png");
+			util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders"+i+".png");
 		}
+		
 	}
 
 	
@@ -201,7 +185,8 @@ public class Functions {
 			}
 
 			System.out.println("Cart is ready");
-		
+			
+			util.Click(element_obj.checkout);
 
 	}
 	
@@ -252,6 +237,8 @@ public class Functions {
 		util.Click(element_obj.login_button);
 		
 		System.out.println("User is Logged in");
+		
+		util.Click(element_obj.Metallica);
 
 	}
 
@@ -304,25 +291,25 @@ public class Functions {
 
 		switch(shipping)
 		{
-		case "1" :
+		case "Ground" :
 
 			util.Click(element_obj.ground);
 			break ;
 
-		case "2":
+		case "Priority":
 
 			util.Click(element_obj.priorityMail);
 			break ;
 
-		case "3" :
+		case "Twoday" :
 
 			util.Click(element_obj.twodayAir);
 			break ;
 
-		case "4" :
+		case "Mail" :
 
 			Thread.sleep(3000);
-			util.Click(element_obj.nxtdayAir);
+			util.Click(element_obj.mailInnovation);
 			break;
 
 		default :
@@ -364,7 +351,7 @@ public class Functions {
 
 		case "Amex":
 
-			element_obj.cardname.sendKeys(data_obj.firstname);
+			util.Sendkeys(element_obj.cardname, data_obj.firstname);
 
 			element_obj.cardnumber.sendKeys(data_obj.Amex_number);
 
@@ -453,7 +440,7 @@ public class Functions {
 				
 	}
 	
-	public void writeExcel() throws IOException
+	public void writeExcel(int rowNumber, String orderNumber) throws IOException
 	{
 		DataFormatter formatter = new DataFormatter();
 
@@ -465,15 +452,23 @@ public class Functions {
 
 		Sheet sheet = book.getSheet(data_obj.sheetName);
 
-		int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum() ;
+		Row row = sheet.getRow(rowNumber);
 		
-		Row row = sheet.getRow(0);
+		Cell cell = row.createCell(10);
 		
-		Row newRow = sheet.createRow(rowCount+1);
-		
-		Cell cell = newRow.createCell(1);
+		cell.setCellType(cell.CELL_TYPE_STRING);
 
-	    cell.setCellValue("Order number");
+	    cell.setCellValue(orderNumber.substring(15));
+	    
+	    istream.close(); 
+	    	    
+	    FileOutputStream outputstream = new FileOutputStream(data_obj.filePath+"\\"+data_obj.fileName);
+		
+	    book.write(outputstream);
+	    
+	    outputstream.close();
+	    
+	    System.out.println(row.getCell(10));
 		
 
 	}
