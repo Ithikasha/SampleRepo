@@ -31,6 +31,9 @@ public class pageElements {
 	}
 
 
+	@FindBy(xpath="(//a[@title='Metallica Home'])[1]")
+	WebElement Metallica;
+	
 	@FindBy(xpath="//a[@class='user-account not-logged-in']")
 	WebElement login;
 	
@@ -100,29 +103,23 @@ public class pageElements {
 	@FindBy(xpath="//select[@name='dwfrm_singleshipping_shippingAddress_addressFields_states_state']")
 	WebElement stateField;
 
-	@FindBy(xpath="(//input[@type='checkbox'])[2]")
-	WebElement check2;
-
-	@FindBy(xpath="(//input[@type='checkbox'])[3]")
-	WebElement check3;
-
 	@FindBy(xpath="//input[@id='dwfrm_singleshipping_shippingAddress_isGift']")
 	WebElement gift;
 
 	@FindBy(xpath="//textarea[@id='dwfrm_singleshipping_shippingAddress_giftMessage']")
 	WebElement giftMsg;
 
-	@FindBy(xpath="(//input[@type='radio'])[1]")
+	@FindBy(xpath="//input[@id='shipping-method-shqups-GND']")
 	WebElement ground;
 
-	@FindBy(xpath="(//input[@type='radio'])[2]")
+	@FindBy(xpath="//input[@id='shipping-method-shqusps-Priority Mail']")
 	WebElement priorityMail;
 
-	@FindBy(xpath="(//input[@type='radio'])[3]")
+	@FindBy(xpath="//input[@id='shipping-method-shqups-2DA']")
 	WebElement twodayAir;
 
-	@FindBy(xpath="(//input[@type='radio'])[4]")
-	WebElement nxtdayAir;
+	@FindBy(xpath="//input[@id='shipping-method-shqcustom-ups_mail_innovations']")
+	WebElement mailInnovation;
 
 	@FindBy(xpath="//button[@id='shipping-continue']")
 	WebElement continuebill;

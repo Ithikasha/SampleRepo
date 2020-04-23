@@ -30,12 +30,7 @@ public class placeOrder {
 			
 			functions.bulkOrder_testing();
 			
-			/* Method of Shipping is given in Number form as follows
-			 * 1-UPS Ground
-			 * 2-USPS Priority Mail
-			 * 3-UPS 2-Day Air
-			 * 4-UPS Next Day Air
-			 */		 			
+			data.driver.close();	
 			
 	}
 
