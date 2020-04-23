@@ -59,6 +59,20 @@ public class constantData {
 	public String orderNumber;
 	
 	public String[] orderList;
+
+	public String handling_cost;
+
+	public String salesTax;
+
+	public String orderTotal;
+
+	public String shippinging_cost;
+
+	public String shippinging_cost1;
+
+	public String shippinging_cost2;
+
+	
 }
 
 
