@@ -1,11 +1,6 @@
-package placeorder;
+package Load_Testing;
 
-import java.io.IOException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.sikuli.script.FindFailed;
-import placeorder.pageElements;
-import placeorder.driverUtil;
+import Data_Functions.*;
 
 public class placeOrder {
 	

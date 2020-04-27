@@ -1,4 +1,4 @@
-package placeorder;
+package Data_Functions;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,7 +28,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -36,7 +35,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.sikuli.script.FindFailed;
 
 
 public class driverUtil {
@@ -354,54 +352,8 @@ public class driverUtil {
 
 		}
 
-		}
-	
-	public void devLogin(WebDriver driver) throws FindFailed {
-		
-		/*
-		 * This Works with Firefox but not in chrome.
-		 * Anyway this cannot be supported in remote systems and long runs.
-		 * Screen s = new Screen().getPrimaryScreen();
-		 * 
-		 * Pattern name = new
-		 * Pattern("C:\\Users\\UTIS CPU 31\\Downloads\\metallica\\devname.PNG");
-		 * 
-		 * Pattern password = new
-		 * Pattern("C:\\Users\\UTIS CPU 31\\Downloads\\metallica\\devpassword.PNG");
-		 * 
-		 * Pattern signin = new
-		 * Pattern("C:\\Users\\UTIS CPU 31\\Downloads\\metallica\\signin.PNG");
-		 * 
-		 * s.type(name,"storefront");
-		 * 
-		 * s.type(password,"Blu3Ac0rn$");
-		 * 
-		 * s.click(signin);
-		 */
-		
-		
-		
 	}
 	
-	public void metlogin(WebDriver driver) {
-		// TODO Auto-generated method stub
-		WebElement lsign = driver.findElement(By.xpath("//span[text()='Login']"));
-		
-		lsign.click();
-		
-		WebElement email = driver.findElement(By.xpath("//input[contains(@id,'dwfrm_login_username_')]"));
-		
-		email.sendKeys("ithikasha@unitedtechno.com");
-		
-		WebElement pwd = driver.findElement(By.xpath("//input[contains(@id,'dwfrm_login_password_')]"));
-		
-		pwd.sendKeys("Ithi@utis07");
-		
-		WebElement login = driver.findElement(By.xpath("//button[contains(@name,'dwfrm_login_login')]"));
-		
-		login.click();
-		
-	}
 	
 	public boolean waitForElementToLoad(WebElement element) throws InterruptedException
     {
@@ -440,7 +392,7 @@ public class driverUtil {
 	{
 		int count=0;
 	
-		while(!element.isEnabled())
+		while(!element.isEnabled() && count < 60)
 		{
 			System.out.println("Waiting for element- "+(++count)+"secs");
 			Thread.sleep(1000);

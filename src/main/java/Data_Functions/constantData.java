@@ -1,7 +1,6 @@
-package placeorder;
+package Data_Functions;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 
 
@@ -22,9 +21,9 @@ public class constantData {
 	
 	public String fileName = "Metallica.xlsx";
 
-	public String sheetName = "bulk_orders";
+	public String sheetName = "Metallica_LoadTest";
 	
-	public String orderDetailsSheet = "Order_result";
+	public int totalOrder = 10;
 	
 	public String firstname = "Tester" ;
 	

@@ -1,12 +1,9 @@
-package placeorder;
+package Data_Functions;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Date;
-import java.util.function.Function;
-
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -14,17 +11,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.UnhandledAlertException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
-
-import com.itextpdf.text.log.SysoLogger;
 
 public class Functions {
 	
@@ -40,9 +27,8 @@ public class Functions {
    }
 	
 	
-	
-	public Workbook fileSetup(FileInputStream istream, String fileName) throws IOException
-	{
+   public Workbook fileSetup(FileInputStream istream, String fileName) throws IOException
+   {
 		Workbook book = null;
 
 		String extension = fileName.substring(fileName.indexOf("."));
@@ -60,10 +46,11 @@ public class Functions {
 
 		}
 		return book;
-	}
+   }
 	
-	public void bulkOrder_testing() throws Exception  
-	{
+	
+   public void bulkOrder_testing() throws Exception  
+   {
 
 		DataFormatter formatter = new DataFormatter();
 
@@ -75,11 +62,9 @@ public class Functions {
 
 		Sheet sheet = book.getSheet(data_obj.sheetName);
 
-		int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
-		
 		login();
 
-		for (int i = 3; i < 4; i++) {
+		for (int i = 1; i < data_obj.totalOrder; i++) {
 
 			Row row = sheet.getRow(i);
 
@@ -149,14 +134,15 @@ public class Functions {
 			
 			writeExcel(i, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost);
 			
-			util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Orders"+i+".png");
+			util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+i+".png");
 		}
 		
-	}
+   }
 
 	
 
-	public void selectItems() throws InterruptedException, Exception {
+   public void selectItems() throws InterruptedException, Exception 
+   {
 
 					
 			for(int j = 0; j < element_obj.itemlist.length; j++)
@@ -174,18 +160,18 @@ public class Functions {
 				}
 			
 			
-				if(util.Isdisplayed(element_obj.quantity)) 
+				if(util.Isdisplayed(element_obj.PDP_quantity)) 
 				{
 					
-					util.Clear(element_obj.quantity);
+					util.Clear(element_obj.PDP_quantity);
 					
 					util.AcceptAlertifPresent(data_obj.driver);
 					
-					util.Clear(element_obj.quantity);
+					util.Clear(element_obj.PDP_quantity);
 					
 					util.AcceptAlertifPresent(data_obj.driver);
 					
-					util.Sendkeys(element_obj.quantity,element_obj.qty[j]);	
+					util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
 					
 					util.Click(element_obj.addcart);
 				}
@@ -193,6 +179,7 @@ public class Functions {
 				else {
 
 					System.out.println("Quantity is not displayed");
+					
 					util.Click(element_obj.addcart);
 				}
 
@@ -216,11 +203,12 @@ public class Functions {
 
 	}
 	
-	public void cartCheckout() throws InterruptedException {
+	public void cartCheckout() throws InterruptedException 
+	{
 		
 		registeredUserCheckout();
 		
-		signupCheckout();
+		//signupCheckout();
 		
 		guestCheckout();
 		
@@ -228,7 +216,8 @@ public class Functions {
 	
 	
 	
-	private void guestCheckout() throws InterruptedException {
+	public void guestCheckout() throws InterruptedException 
+	{
 		
 		util.Sendkeys(element_obj.email, data_obj.username);
 		util.Click(element_obj.checkout);
@@ -236,7 +225,8 @@ public class Functions {
 	}
 
 
-	public void registeredUserCheckout() throws InterruptedException {
+	public void registeredUserCheckout() throws InterruptedException 
+	{
 		
 		util.Sendkeys(element_obj.email, data_obj.username);
 
@@ -248,10 +238,6 @@ public class Functions {
 	}
 	
 	
-	public void signupCheckout() {
-		
-	}
-
 	public void login() throws InterruptedException {
 		
 		util.Click(element_obj.login);
@@ -466,10 +452,9 @@ public class Functions {
 				
 	}
 	
+	@SuppressWarnings("static-access")
 	public void writeExcel(int rowNumber, String orderNumber, String handling_cost, String salesTax, String orderTotal, String shippinging_cost) throws IOException
 	{
-		DataFormatter formatter = new DataFormatter();
-
 		File file = new File(data_obj.filePath+"\\"+data_obj.fileName);
 
 		FileInputStream istream = new FileInputStream(file);
@@ -519,7 +504,7 @@ public class Functions {
 	    
 	    outputstream.close();
 	    
-	    System.out.println(row.getCell(10));
+//	    System.out.println(row.getCell(10));
 		
 
 	}
