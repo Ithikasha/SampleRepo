@@ -34,7 +34,7 @@ public class pageElements {
 	@FindBy(xpath="//span[text()='No']")
 	public WebElement no;
 	
-	@FindBy(xpath="(//i[contains(@class,'search')])[1]")
+	@FindBy(xpath="//button[@class='search-toggle']")
 	public WebElement srch;
 
 	@FindBy(xpath="//input[@id='q'][1]")
@@ -84,6 +84,18 @@ public class pageElements {
 		
 	@FindBy(xpath="//*[@title='Select Format: ALAC-HD']")
 	public WebElement Alac_HD;
+	
+	@FindBy(xpath="//*[@title='Select Size: 18-24 Mo.']")
+	public WebElement Two_year;
+	
+	@FindBy(xpath="//*[@title='Select Size: 12-18 Mo.']")
+	public WebElement Onehalf_year;
+	
+	@FindBy(xpath="//*[@title='Select Size: 6-12 Mo.']")
+	public WebElement One_year;
+	
+	@FindBy(xpath="//*[@title='Select Size: 3-6 Mo.']")
+	public WebElement Half_year;
 		
 	@FindBy(xpath="//input[@name='Quantity']")
 	public WebElement PDP_quantity;
@@ -102,8 +114,14 @@ public class pageElements {
 	@FindBy(xpath="//*[@id='update-cart']")
 	public WebElement updatecart;
 	
-	@FindBy(xpath="(//button[@value='Checkout'])[1]") 
+	@FindBy(xpath="//span[text()='Checkout']") 
 	public WebElement checkout;
+	
+	@FindBy(xpath="//div[@class='error-form ']")
+	public WebElement CP_errorMessage;
+	
+	@FindBy(xpath="//input[@id='guest-checkout']")
+	public WebElement Guest_CO;
 	
 	@FindBy(xpath="")
 	public WebElement CP_quantity;
@@ -156,16 +174,16 @@ public class pageElements {
 	@FindBy(xpath="//input[contains(@id,'useAsBillingAddress')]")
 	public WebElement useAsBillingAddress;
 
-	@FindBy(xpath="//input[@id='shipping-method-shqups-GND']")
+	@FindBy(xpath="//label[@for='shipping-method-shqups-GND']")
 	public WebElement ground;
 
-	@FindBy(xpath="//input[@id='shipping-method-shqusps-Priority Mail']")
+	@FindBy(xpath="//label[@for='shipping-method-shqusps-Priority Mail']")
 	public WebElement priorityMail;
 
-	@FindBy(xpath="//input[@id='shipping-method-shqups-2DA']")
+	@FindBy(xpath="//label[@for='shipping-method-shqups-2DA']")
 	public WebElement twodayAir;
 
-	@FindBy(xpath="//input[@id='shipping-method-shqcustom-ups_mail_innovations']")
+	@FindBy(xpath="//label[@for='shipping-method-shqcustom-ups_mail_innovations']")
 	public WebElement mailInnovation;
 
 	@FindBy(xpath="//button[@id='shipping-continue']")
