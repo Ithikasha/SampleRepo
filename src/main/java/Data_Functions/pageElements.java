@@ -1,15 +1,5 @@
-package placeorder;
+package Data_Functions;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Date;
-
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -44,7 +34,7 @@ public class pageElements {
 	@FindBy(xpath="//span[text()='No']")
 	public WebElement no;
 	
-	@FindBy(xpath="(//i[contains(@class,'search')])[1]")
+	@FindBy(xpath="//button[@class='search-toggle']")
 	public WebElement srch;
 
 	@FindBy(xpath="//input[@id='q'][1]")
@@ -63,6 +53,56 @@ public class pageElements {
 	@FindBy (xpath="//input[contains(@id,'dwfrm_login_password')]")
 	public WebElement password;
 	
+	//PDP
+	
+	@FindBy(xpath="(//*[@class='product-name'])[1]")
+	public WebElement productTitle;
+		
+	@FindBy(xpath="(//span[@class='price-sales'])[1]")
+	public WebElement productPrice;
+
+	@FindBy(xpath="//a[@title='Select Size: Small']")
+	public WebElement sizeS;
+
+	@FindBy(xpath="//a[@title='Select Size: Medium']")//input[@name='Quantity']
+	public WebElement sizeM;
+
+	@FindBy(xpath="//a[@title='Select Size: Large']")
+	public WebElement sizeL;
+
+	@FindBy(xpath="//*[@title='Select Format: MP3']")
+	public WebElement Mp3;
+		
+	@FindBy(xpath="//*[@title='Select Format: FLAC']")
+	public WebElement Flac;
+		
+	@FindBy(xpath="//*[@title='Select Format: ALAC']")
+	public WebElement Alac;
+		
+	@FindBy(xpath="//*[@title='Select Format: FLAC-HD']")
+	public WebElement Flac_HD;
+		
+	@FindBy(xpath="//*[@title='Select Format: ALAC-HD']")
+	public WebElement Alac_HD;
+	
+	@FindBy(xpath="//*[@title='Select Size: 18-24 Mo.']")
+	public WebElement Two_year;
+	
+	@FindBy(xpath="//*[@title='Select Size: 12-18 Mo.']")
+	public WebElement Onehalf_year;
+	
+	@FindBy(xpath="//*[@title='Select Size: 6-12 Mo.']")
+	public WebElement One_year;
+	
+	@FindBy(xpath="//*[@title='Select Size: 3-6 Mo.']")
+	public WebElement Half_year;
+		
+	@FindBy(xpath="//input[@name='Quantity']")
+	public WebElement PDP_quantity;
+		
+	@FindBy(xpath="//*[@id='add-to-cart']")
+	public WebElement addcart;
+	
 	//Cart page
 	
 	@FindBy(xpath="(//*[@title='Go to Cart'])[1]")
@@ -74,11 +114,27 @@ public class pageElements {
 	@FindBy(xpath="//*[@id='update-cart']")
 	public WebElement updatecart;
 	
-	@FindBy(xpath="(//button[@value='Checkout'])[1]") 
+	@FindBy(xpath="//span[text()='Checkout']") 
 	public WebElement checkout;
-
-	@FindBy(xpath="//button[@value='Place Order']")
-	public WebElement placeorder;
+	
+	@FindBy(xpath="//div[@class='error-form ']")
+	public WebElement CP_errorMessage;
+	
+	@FindBy(xpath="//input[@id='guest-checkout']")
+	public WebElement Guest_CO;
+	
+	@FindBy(xpath="")
+	public WebElement CP_quantity;
+	
+	@FindBy(xpath="")
+	public WebElement CP_price;
+	
+	@FindBy(xpath="")
+	public WebElement CP_priceTotal;
+	
+	@FindBy(xpath="")
+	public WebElement CP_subTotal;
+	
 	
 	//Shipping page
 	
@@ -118,16 +174,16 @@ public class pageElements {
 	@FindBy(xpath="//input[contains(@id,'useAsBillingAddress')]")
 	public WebElement useAsBillingAddress;
 
-	@FindBy(xpath="//input[@id='shipping-method-shqups-GND']")
+	@FindBy(xpath="//label[@for='shipping-method-shqups-GND']")
 	public WebElement ground;
 
-	@FindBy(xpath="//input[@id='shipping-method-shqusps-Priority Mail']")
+	@FindBy(xpath="//label[@for='shipping-method-shqusps-Priority Mail']")
 	public WebElement priorityMail;
 
-	@FindBy(xpath="//input[@id='shipping-method-shqups-2DA']")
+	@FindBy(xpath="//label[@for='shipping-method-shqups-2DA']")
 	public WebElement twodayAir;
 
-	@FindBy(xpath="//input[@id='shipping-method-shqcustom-ups_mail_innovations']")
+	@FindBy(xpath="//label[@for='shipping-method-shqcustom-ups_mail_innovations']")
 	public WebElement mailInnovation;
 
 	@FindBy(xpath="//button[@id='shipping-continue']")
@@ -168,43 +224,10 @@ public class pageElements {
 	@FindBy(xpath="//input[@placeholder='Search Metallica.com']")
 	public WebElement srchTxt;
 	
-	//PDP
+	//Place order page
 	
-	@FindBy(xpath="(//*[@class='product-name'])[1]")
-	public WebElement productTitle;
-	
-	@FindBy(xpath="(//span[@class='price-sales'])[1]")
-	public WebElement productPrice;
-
-	@FindBy(xpath="//a[@title='Select Size: Small']")
-	public WebElement sizeS;
-
-	@FindBy(xpath="//a[@title='Select Size: Medium']")//input[@name='Quantity']
-	public WebElement sizeM;
-
-	@FindBy(xpath="//a[@title='Select Size: Large']")
-	public WebElement sizeL;
-
-	@FindBy(xpath="//*[@title='Select Format: MP3']")
-	public WebElement Mp3;
-	
-	@FindBy(xpath="//*[@title='Select Format: FLAC']")
-	public WebElement Flac;
-	
-	@FindBy(xpath="//*[@title='Select Format: ALAC']")
-	public WebElement Alac;
-	
-	@FindBy(xpath="//*[@title='Select Format: FLAC-HD']")
-	public WebElement Flac_HD;
-	
-	@FindBy(xpath="//*[@title='Select Format: ALAC-HD']")
-	public WebElement Alac_HD;
-	
-	@FindBy(xpath="//input[@name='Quantity']")
-	public WebElement quantity;
-	
-	@FindBy(xpath="//*[@id='add-to-cart']")
-	public WebElement addcart;
+	@FindBy(xpath="//button[@value='Place Order']")
+	public WebElement placeorder;
 	
 	//Order Confirmation page
 	

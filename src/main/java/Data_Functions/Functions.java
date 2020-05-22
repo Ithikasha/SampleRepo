@@ -1,12 +1,10 @@
-package placeorder;
+package Data_Functions;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Date;
-import java.util.function.Function;
-
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -14,17 +12,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.UnhandledAlertException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
-
-import com.itextpdf.text.log.SysoLogger;
 
 public class Functions {
 	
@@ -40,9 +30,8 @@ public class Functions {
    }
 	
 	
-	
-	public Workbook fileSetup(FileInputStream istream, String fileName) throws IOException
-	{
+   public Workbook fileSetup(FileInputStream istream, String fileName) throws IOException
+   {
 		Workbook book = null;
 
 		String extension = fileName.substring(fileName.indexOf("."));
@@ -60,10 +49,11 @@ public class Functions {
 
 		}
 		return book;
-	}
+   }
 	
-	public void bulkOrder_testing() throws Exception  
-	{
+	
+   public void bulkOrder_testing() throws Exception  
+   {
 
 		DataFormatter formatter = new DataFormatter();
 
@@ -75,13 +65,11 @@ public class Functions {
 
 		Sheet sheet = book.getSheet(data_obj.sheetName);
 
-		int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
-		
-		login();
+		//login();
 
-		for (int i = 3; i < 4; i++) {
+		for (data_obj.orderCount = 1; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
 
-			Row row = sheet.getRow(i);
+			Row row = sheet.getRow(data_obj.orderCount);
 
 			element_obj.itemlist = formatter.formatCellValue(row.getCell(1)).split(",");
 
@@ -89,29 +77,29 @@ public class Functions {
 			
 			element_obj.variant = formatter.formatCellValue(row.getCell(3)).split(",");
 
-			element_obj.Address1 = formatter.formatCellValue(row.getCell(4)) ;
+			element_obj.Address1 = formatter.formatCellValue(row.getCell(4));
 
-			element_obj.City = formatter.formatCellValue(row.getCell(5)) ;
+			element_obj.City = formatter.formatCellValue(row.getCell(5));
 
-			element_obj.Zip_Code = formatter.formatCellValue(row.getCell(6)) ; 
+			element_obj.Zip_Code = formatter.formatCellValue(row.getCell(6)); 
 			
-			element_obj.State = formatter.formatCellValue(row.getCell(7)) ; 
+			element_obj.State = formatter.formatCellValue(row.getCell(7)); 
 
-			element_obj.Shipping_Method = formatter.formatCellValue(row.getCell(8)) ;
+			element_obj.Shipping_Method = formatter.formatCellValue(row.getCell(8));
 
-			element_obj.Payment_Method = formatter.formatCellValue(row.getCell(9)) ;
+			element_obj.Payment_Method = formatter.formatCellValue(row.getCell(9));
 
 			System.out.println("Variable data_obj are Collected");
 
-			selectItems() ;
+			selectItems();
 
 			shipping() ;
 
 			payment() ;
-
+			
 			element_obj.placeorder.click();
 
-			System.out.println("Order"+(i));
+			System.out.println("Order"+(data_obj.orderCount++));
 
 			element_obj.itemlist = null;
 
@@ -147,21 +135,24 @@ public class Functions {
 			
 			System.out.println(data_obj.orderTotal);
 			
-			writeExcel(i, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost);
+			writeExcel(data_obj.orderCount, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost);
 			
-			util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Orders"+i+".png");
+			util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
 		}
 		
-	}
+   }
 
 	
 
-	public void selectItems() throws InterruptedException, Exception {
+   public void selectItems() throws InterruptedException, Exception 
+   {
 
 					
 			for(int j = 0; j < element_obj.itemlist.length; j++)
 		
 			{
+				Thread.sleep(2000);
+				
 				util.Click(element_obj.srch);
 			
 				util.Sendkeys(element_obj.srchIP,element_obj.itemlist[j]);
@@ -174,18 +165,18 @@ public class Functions {
 				}
 			
 			
-				if(util.Isdisplayed(element_obj.quantity)) 
+				if(util.Isdisplayed(element_obj.PDP_quantity)) 
 				{
 					
-					util.Clear(element_obj.quantity);
+					util.Clear(element_obj.PDP_quantity);
 					
 					util.AcceptAlertifPresent(data_obj.driver);
 					
-					util.Clear(element_obj.quantity);
+					util.Clear(element_obj.PDP_quantity);
 					
 					util.AcceptAlertifPresent(data_obj.driver);
 					
-					util.Sendkeys(element_obj.quantity,element_obj.qty[j]);	
+					util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
 					
 					util.Click(element_obj.addcart);
 				}
@@ -193,34 +184,51 @@ public class Functions {
 				else {
 
 					System.out.println("Quantity is not displayed");
+					
 					util.Click(element_obj.addcart);
 				}
 
-			
-				if(j != (element_obj.itemlist.length-1)) 
-				{
-					util.Click(element_obj.close);
-				}
-			
-				else if(j == (element_obj.itemlist.length-1))
-				{
-					util.Click(element_obj.miniviewcart);
-				}
+				
+				util.Click(element_obj.miniviewcart);
+				
 
 				System.out.println("Product "+(j+1)+" is added");
+				
+				try
+				{
+					if(element_obj.CP_errorMessage.isDisplayed())
+					{
+						System.out.println("The Required Quantity of product ID"+element_obj.itemlist[j]+" is not available");
+						writeExcelComment("excessQuantity");
+						System.exit(1);
+						data_obj.driver.close();
+					}
+				}
+				catch(NoSuchElementException ex)
+				{
+					
+				}
 			}
-
-			System.out.println("Cart is ready");
+			
+			if(element_obj.Guest_CO.isDisplayed())
+			{
+				element_obj.email.sendKeys(data_obj.email);
+				util.Click(element_obj.Guest_CO);
+			}
 			
 			util.Click(element_obj.checkout);
+			
+			System.out.println("Cart is ready");
 
 	}
+   
 	
-	public void cartCheckout() throws InterruptedException {
+	public void cartCheckout() throws InterruptedException 
+	{
 		
 		registeredUserCheckout();
 		
-		signupCheckout();
+		//signupCheckout();
 		
 		guestCheckout();
 		
@@ -228,7 +236,8 @@ public class Functions {
 	
 	
 	
-	private void guestCheckout() throws InterruptedException {
+	public void guestCheckout() throws InterruptedException 
+	{
 		
 		util.Sendkeys(element_obj.email, data_obj.username);
 		util.Click(element_obj.checkout);
@@ -236,11 +245,12 @@ public class Functions {
 	}
 
 
-	public void registeredUserCheckout() throws InterruptedException {
+	public void registeredUserCheckout() throws InterruptedException 
+	{
 		
 		util.Sendkeys(element_obj.email, data_obj.username);
 
-		util.Sendkeys(element_obj.password, data_obj.password);
+		util.Sendkeys(element_obj.password, data_obj.DEV_password);
 		
 		util.Click(element_obj.checkout);
 		
@@ -248,17 +258,13 @@ public class Functions {
 	}
 	
 	
-	public void signupCheckout() {
-		
-	}
-
 	public void login() throws InterruptedException {
 		
 		util.Click(element_obj.login);
 
 		util.Sendkeys(element_obj.email, data_obj.username);
 	
-		util.Sendkeys(element_obj.password, data_obj.password);
+		util.Sendkeys(element_obj.password, data_obj.DEV_password);
 	
 		util.Click(element_obj.login_button);
 		
@@ -268,7 +274,7 @@ public class Functions {
 
 	}
 
-	public void shipping() throws InterruptedException
+	public void shipping() throws Exception
 	{
 		//no.click()
 		
@@ -301,7 +307,7 @@ public class Functions {
 
 //		util.Click(element_obj.useAsBillingAddress); //check-box to keep shipping address as billing address
 //
-//		shipMethod(element_obj.Shipping_Method);
+		shipMethod(element_obj.Shipping_Method);
 
 		util.WaitAndClick(element_obj.continuebill);
 		
@@ -312,39 +318,46 @@ public class Functions {
 
 	}
 
-	public void shipMethod(String shipping) throws InterruptedException
+	public void shipMethod(String shipping) throws Exception
 	{
+		
+		Thread.sleep(2000);
 
-		switch(shipping)
+		try
 		{
-		case "Ground" :
+			switch(shipping)
+			{
+			case "Ground" :
 
-			util.Click(element_obj.ground);
-			break ;
+				util.WaitAndClick(element_obj.ground);
+				break ;
 
-		case "Priority":
+			case "Priority":
 
-			util.Click(element_obj.priorityMail);
-			break ;
+				util.WaitAndClick(element_obj.priorityMail);
+				break ;
 
-		case "Twoday" :
+			case "Twoday" :
 
-			util.Click(element_obj.twodayAir);
-			break ;
+				util.WaitAndClick(element_obj.twodayAir);
+				break ;
 
-		case "Mail" :
+			case "Mail" :
 
-			Thread.sleep(3000);
-			util.Click(element_obj.mailInnovation);
-			break;
+				util.WaitAndClick(element_obj.mailInnovation);
+				break;
 
-		default :
+			default :
 
-			util.Click(element_obj.ground);
-			break;
+				util.Click(element_obj.ground);
+				break;
+			}
 
 		}
-
+		catch(NoSuchElementException ex)
+		{
+			writeExcelComment("noShippingMethod");
+		}
 
 	}
 
@@ -355,10 +368,9 @@ public class Functions {
 
 		case "Visa":
 
-			element_obj.cardname.sendKeys(data_obj.firstname);
-
-			element_obj.cardnumber.sendKeys(data_obj.Visa_number);
-
+			
+			util.Sendkeys(element_obj.cardnumber, data_obj.Visa_number);
+			
 			Select card_month = new Select(element_obj.cardmonth);
 			card_month.selectByValue(data_obj.Visa_month);
 
@@ -366,29 +378,23 @@ public class Functions {
 
 			element_obj.cardcvn.sendKeys(data_obj.Visa_cvv);
 			
-			if(data_obj.Visa_number.isEmpty()) {
-				
-				util.Sendkeys(element_obj.cardnumber,data_obj.Visa_number);
-			}
-
-			//			continueorder.click();
-
+			element_obj.cardname.sendKeys(data_obj.firstname);
+			
 			break;
 
 		case "Amex":
 
-			util.Sendkeys(element_obj.cardname, data_obj.firstname);
-
+						
+			element_obj.cardname.sendKeys(data_obj.firstname);
+			
 			element_obj.cardnumber.sendKeys(data_obj.Amex_number);
 
 			Select AmexCard_month = new Select(element_obj.cardmonth);
 			AmexCard_month.selectByValue(data_obj.Amex_month);
 
 			element_obj.cardyear.sendKeys(data_obj.Amex_year);
-
+			
 			element_obj.cardcvn.sendKeys(data_obj.Amex_cvv);
-
-			//			continueorder.click();
 
 			break;
 
@@ -401,60 +407,67 @@ public class Functions {
 		default:
 
 			System.out.println("Give a Valid Payment Method");
+			break;
 		}
+		
+	
+		element_obj.continuePlaceorder.click();		
+		
 
-		element_obj.continuePlaceorder.click();
 	}
+	
 
 	public static void paypal() {
 
 	}
 
-	public void size(String variant) throws InterruptedException
+	public void size(String variant) throws Exception
 	{
 		
 		
-		switch(variant)
+		try
 		{
+			switch(variant)
+			{
 			
 			case "mp3":
 				
-				util.Click(element_obj.Mp3);
+				element_obj.Mp3.click();
 				break;
 				
 			case "flac":
 				
-				util.Click(element_obj.Flac);
+				element_obj.Flac.click();;
 				break;
 					
 			case "flac-hd":
 				
-				util.Click(element_obj.Flac_HD);
+				element_obj.Flac_HD.click();
 				break;
 				
 			case "alac":
 				
-				util.Click(element_obj.Alac);
+				element_obj.Alac.click();;
 				break;
 				
 			case "alac-hd":
 				
-				util.Click(element_obj.Alac_HD);
+				element_obj.Alac_HD.click();
 				break;
 				
 			case "small":
 				
-				util.Click(element_obj.sizeS);
+				element_obj.sizeS.click();
 				break;
 				
 			case "medium":
 				
-				util.Click(element_obj.sizeM);
+				element_obj.sizeM.click();
 				break;
 				
 			case "large":
 				
-				util.Click(element_obj.sizeL);
+				element_obj.sizeL.click();
 				break;
 				
 			default:
@@ -462,14 +475,23 @@ public class Functions {
 				System.out.println("Invalid format");
 				break;
 			
+			}
 		}
-				
+		
+		catch(NoSuchElementException ex)
+		{
+			System.out.println("The Product is not available in "+variant+" size");
+			data_obj.errorType = "sizeVariant";
+			writeExcelComment(data_obj.errorType);
+			System.exit(1);
+		}
+		
+			
 	}
 	
+	@SuppressWarnings("static-access")
 	public void writeExcel(int rowNumber, String orderNumber, String handling_cost, String salesTax, String orderTotal, String shippinging_cost) throws IOException
 	{
-		DataFormatter formatter = new DataFormatter();
-
 		File file = new File(data_obj.filePath+"\\"+data_obj.fileName);
 
 		FileInputStream istream = new FileInputStream(file);
@@ -484,7 +506,7 @@ public class Functions {
 		
 		orderNumber_cell.setCellType(orderNumber_cell.CELL_TYPE_STRING);
 
-		orderNumber_cell.setCellValue(orderNumber.substring(15));
+		orderNumber_cell.setCellValue(orderNumber.substring(14));
 	    
 	    Cell shippingCost_cell = row.createCell(11);
 		
@@ -519,8 +541,60 @@ public class Functions {
 	    
 	    outputstream.close();
 	    
-	    System.out.println(row.getCell(10));
+//	    System.out.println(row.getCell(10));
 		
 
+	}
+	
+	public void writeExcelComment(String error) throws IOException
+	{
+		File file = new File(data_obj.filePath+"\\"+data_obj.fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,data_obj.fileName);
+
+		Sheet sheet = book.getSheet(data_obj.sheetName);
+ 
+		Row row = sheet.getRow(data_obj.orderCount);
+		
+		data_obj.errorType = error;
+		
+		switch(data_obj.errorType)
+		{
+				
+		case "sizeVariant":
+			
+			data_obj.errorMessage = "The Product required is not available in required size";
+			break;
+			
+		case "excessQuantity":
+			
+			data_obj.errorMessage = "The Product required is not available in the required quantity";
+			break;
+			
+		case "noShippingMethod":
+			
+			data_obj.errorMessage = "The Given Shipping method was not displayed";
+			break;
+			
+		default:
+			
+		}	
+		
+		Cell orderNumber_cell = row.createCell(15);
+		
+		orderNumber_cell.setCellType(orderNumber_cell.CELL_TYPE_STRING);
+
+		orderNumber_cell.setCellValue(data_obj.errorMessage);
+		
+		istream.close(); 
+ 	    
+		FileOutputStream outputstream = new FileOutputStream(data_obj.filePath+"\\"+data_obj.fileName);
+			
+		book.write(outputstream);
+		    
+		outputstream.close();
+		
 	}
 }

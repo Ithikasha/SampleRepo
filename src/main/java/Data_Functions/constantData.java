@@ -1,7 +1,8 @@
-package placeorder;
+package Data_Functions;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 
 
@@ -9,6 +10,10 @@ public class constantData {
 	
 	
 	public WebDriver driver ;
+	
+	public String URL ;
+	
+	public int orderCount ;
 	
 	public String DEV_url = "https://development.rockdevelop.com/" ;
 	
@@ -18,13 +23,15 @@ public class constantData {
 	
 	public String username = "ithikasha@unitedtechno.com" ;
 	
-	public String password = "Ithi@utis07" ;
+	public String DEV_password = "Ithi@met07" ;
+	
+	public String STG_password = "Ithi@utis08" ;
 	
 	public String fileName = "Metallica.xlsx";
 
-	public String sheetName = "bulk_orders";
+	public String sheetName = "Testing";
 	
-	public String orderDetailsSheet = "Order_result";
+	public int totalOrder = 36;
 	
 	public String firstname = "Tester" ;
 	
@@ -71,8 +78,19 @@ public class constantData {
 	public String shippinging_cost1;
 
 	public String shippinging_cost2;
+	
+	//error writing
+	
+	public String errorMessage;
+	
+	public String errorType;
 
 	
+	@FindBy(xpath="//div[@class='nav-wrapper']//button)[3]") //(//div[@class='nav-wrapper']//button)[3]
+	public WebElement STG_advanced;
+	
+	@FindBy(xpath="//a[@id='proceed-link']")
+	public WebElement STG_proceed;
 }
 
 
