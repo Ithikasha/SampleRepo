@@ -191,6 +191,15 @@ public class driverUtil {
 		
 	}
 	
+	public void actionSendKeys(WebDriver driver)
+	{
+		Actions action =new Actions(driver);
+		driver.findElement(By.xpath("")).sendKeys("textvalue");
+		action.sendKeys("Keys.TAB");
+		
+		
+	}
+	
 	public void Sendkeys(WebElement element, String keys) throws InterruptedException
 	{
 		
@@ -253,6 +262,13 @@ public class driverUtil {
 		js = (JavascriptExecutor)driver;
 		
 		js.executeScript("arguments[0].clear();", element);
+	}
+	
+	public void jSendKeys(WebDriver driver, WebElement element, String number)
+	{
+		js = (JavascriptExecutor)driver;
+		
+		js.executeScript("arguments[0].value='4111111111111111';", element);
 	}
 	
 
