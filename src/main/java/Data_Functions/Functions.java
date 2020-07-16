@@ -5,6 +5,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -12,9 +16,17 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
+
+import com.itextpdf.text.log.SysoLogger;
+
+import org.openqa.selenium.WebElement;
 
 public class Functions {
 	
@@ -22,6 +34,7 @@ public class Functions {
 	public driverUtil util = new driverUtil();
 	constantData data_obj ;
 	pageElements element_obj;
+	private String WebElement;
 
    public Functions(constantData data,pageElements elem)
    {
@@ -65,8 +78,8 @@ public class Functions {
 
 		Sheet sheet = book.getSheet(data_obj.sheetName);
 
-		//login();
-
+		login();
+ 
 		for (data_obj.orderCount = 1; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
 
 			Row row = sheet.getRow(data_obj.orderCount);
@@ -91,15 +104,21 @@ public class Functions {
 
 			System.out.println("Variable data_obj are Collected");
 
-			selectItems();
+			data_obj.flag = selectItems();
+			
+			if(!data_obj.flag)
+			{
+				element_obj.remove.click();
+				continue;
+			}
 
-			shipping() ;
+			shipping("Domestic") ;
 
-			payment() ;
+			payment("Domestic") ;
 			
 			element_obj.placeorder.click();
 
-			System.out.println("Order"+(data_obj.orderCount++));
+			System.out.println("Order"+(data_obj.orderCount));
 
 			element_obj.itemlist = null;
 
@@ -141,19 +160,115 @@ public class Functions {
 		}
 		
    }
+   
+   public void bulkOrder_International() throws Exception
+   {
+	   DataFormatter formatter = new DataFormatter();
+
+		File file = new File(data_obj.filePath+"\\"+data_obj.fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,data_obj.fileName);
+
+		Sheet sheet = book.getSheet(data_obj.sheetName);
+
+		login();
+
+		for (data_obj.orderCount = 1; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
+
+			Row row = sheet.getRow(data_obj.orderCount);
+
+			element_obj.itemlist = formatter.formatCellValue(row.getCell(1)).split(",");
+
+			element_obj.qty = formatter.formatCellValue(row.getCell(2)).split(",");
+		
+			element_obj.variant = formatter.formatCellValue(row.getCell(3)).split(",");
+
+			element_obj.Address1 = formatter.formatCellValue(row.getCell(4));
+
+			element_obj.City = formatter.formatCellValue(row.getCell(5));
+
+			element_obj.Zip_Code = formatter.formatCellValue(row.getCell(6)); 
+		
+			element_obj.Country = formatter.formatCellValue(row.getCell(7)); 
+			
+			element_obj.Shipping_Method = formatter.formatCellValue(row.getCell(8));
+
+			element_obj.Payment_Method = formatter.formatCellValue(row.getCell(9));
+			
+			
+
+			System.out.println("Variable data_obj are Collected");
+
+			data_obj.flag = selectItems();
+		
+			if(!data_obj.flag)
+			{
+				element_obj.remove.click();
+				continue;
+			}
+
+			shipping("International") ;
+
+			payment("International") ;
+		
+			element_obj.placeorder.click();
+
+			System.out.println("Order"+(data_obj.orderCount));
+
+			element_obj.itemlist = null;
+
+			element_obj.qty = null;
+		
+			data_obj.orderNumber = element_obj.orderNumber.getText().toString();
+		
+			System.out.println(data_obj.orderNumber.substring(15));
+			
+			if(util.Isdisplayed(element_obj.Shipping_cost)) {
+			
+				data_obj.shippinging_cost = element_obj.Shipping_cost.getText().toString();
+			}
+		
+			else{
+			
+				data_obj.shippinging_cost1 = element_obj.Shipping_cost1.getText().toString();
+			
+				data_obj.shippinging_cost2 = element_obj.Shipping_cost2.getText().toString();
+			
+				data_obj.shippinging_cost = data_obj.shippinging_cost1.concat("+"+data_obj.shippinging_cost2);
+			}
+		
+			data_obj.handling_cost = element_obj.Handling_cost.getText().toString();
+		
+			System.out.println(data_obj.handling_cost);
+		
+			data_obj.salesTax = element_obj.salesTax.getText().toString();
+		
+			System.out.println(data_obj.salesTax);
+		
+			data_obj.orderTotal = element_obj.orderTotal.getText().toString();
+		
+			System.out.println(data_obj.orderTotal);
+		
+			writeExcel(data_obj.orderCount, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost);
+		
+			util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
+		}
+   }
 
 	
 
-   public void selectItems() throws InterruptedException, Exception 
+   public boolean selectItems() throws InterruptedException, Exception 
    {
 
-					
+			
 			for(int j = 0; j < element_obj.itemlist.length; j++)
 		
 			{
 				Thread.sleep(2000);
 				
-				util.Click(element_obj.srch);
+				util.WaitAndClick(element_obj.srch);
 			
 				util.Sendkeys(element_obj.srchIP,element_obj.itemlist[j]);
 
@@ -164,29 +279,30 @@ public class Functions {
 					size(element_obj.variant[j]);
 				}
 			
-			
-				if(util.Isdisplayed(element_obj.PDP_quantity)) 
-				{
-					
-					util.Clear(element_obj.PDP_quantity);
-					
-					util.AcceptAlertifPresent(data_obj.driver);
-					
-					util.Clear(element_obj.PDP_quantity);
-					
-					util.AcceptAlertifPresent(data_obj.driver);
-					
-					util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
-					
-					util.Click(element_obj.addcart);
-				}
-
-				else {
-
-					System.out.println("Quantity is not displayed");
-					
-					util.Click(element_obj.addcart);
-				}
+				util.WaitAndClick(element_obj.addcart);
+				
+//				if(util.Isdisplayed(element_obj.PDP_quantity)) 
+//				{
+//					
+//					util.Clear(element_obj.PDP_quantity);
+//					
+//					util.AcceptAlertifPresent(data_obj.driver);
+//					
+//					util.Clear(element_obj.PDP_quantity);
+//					
+//					util.AcceptAlertifPresent(data_obj.driver);
+//					
+//					util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
+//					
+//					util.Click(element_obj.addcart);
+//				}
+//
+//				else {
+//
+//					System.out.println("Quantity is not displayed");
+//					
+//					util.Click(element_obj.addcart);
+//				}
 
 				
 				util.Click(element_obj.miniviewcart);
@@ -194,31 +310,41 @@ public class Functions {
 
 				System.out.println("Product "+(j+1)+" is added");
 				
-				try
-				{
-					if(element_obj.CP_errorMessage.isDisplayed())
-					{
-						System.out.println("The Required Quantity of product ID"+element_obj.itemlist[j]+" is not available");
-						writeExcelComment("excessQuantity");
-						System.exit(1);
-						data_obj.driver.close();
-					}
-				}
-				catch(NoSuchElementException ex)
-				{
-					
-				}
 			}
+				
+//				try
+//				{
+//					if(element_obj.CP_errorMessage.isDisplayed())
+//					{
+//						System.out.println("The Required Quantity of product ID"+element_obj.itemlist[j]+" is not available");
+//						writeExcelComment("excessQuantity");
+//						return false;
+//					}
+//				}
+//				catch(NoSuchElementException ex)
+//				{
+//					
+//				}
+//			}
 			
-			if(element_obj.Guest_CO.isDisplayed())
-			{
-				element_obj.email.sendKeys(data_obj.email);
-				util.Click(element_obj.Guest_CO);
-			}
-			
-			util.Click(element_obj.checkout);
+//			try
+//			{
+//				if(element_obj.Guest_CO.isDisplayed())
+//				{
+//					element_obj.email.clear();
+//					element_obj.email.sendKeys(data_obj.email);
+//					util.WaitAndClick(element_obj.Guest_CO);
+//				}
+//			}
+//			catch(NoSuchElementException ex)
+//			{
+//				
+//			}
+			util.WaitAndClick(element_obj.checkout);
 			
 			System.out.println("Cart is ready");
+			
+			return true;
 
 	}
    
@@ -261,7 +387,7 @@ public class Functions {
 	public void login() throws InterruptedException {
 		
 		util.Click(element_obj.login);
-
+		
 		util.Sendkeys(element_obj.email, data_obj.username);
 	
 		util.Sendkeys(element_obj.password, data_obj.DEV_password);
@@ -270,11 +396,11 @@ public class Functions {
 		
 		System.out.println("User is Logged in");
 		
-		util.Click(element_obj.Metallica);
+//		util.Click(element_obj.Metallica);
 
 	}
 
-	public void shipping() throws Exception
+	public void shipping(String orderType) throws Exception
 	{
 		//no.click()
 		
@@ -298,16 +424,61 @@ public class Functions {
 		
 		util.Sendkeys(element_obj.zipcode,element_obj.Zip_Code);
 
-		Select state = new Select(element_obj.stateField);
-		state.selectByVisibleText(element_obj.State);
+		if(orderType.equalsIgnoreCase("Domestic"))
+		{
+			Select state = new Select(element_obj.stateField);
+			state.selectByVisibleText(element_obj.State);
+			
+			util.Clear(element_obj.phone);
+			
+			util.Sendkeys(element_obj.phone,data_obj.Phone);
+		}
+				
+		if(orderType.equalsIgnoreCase("International"))
+		{
+			Select country = new Select(element_obj.countryField);
+			country.selectByVisibleText(element_obj.Country);
+			
+			
+			switch(element_obj.Country)
+			{
+			case "United Kingdom":
+				
+				util.Clear(element_obj.phone);
+				
+				util.Sendkeys(element_obj.phone,"985647852452");
+				
+				break;
+				
+			case "Canada":
+				
+				Thread.sleep(2000);
+				
+				Select state = new Select(element_obj.CAstateField);
+				state.selectByVisibleText("Ontario");
+				
+				break;
+				
+			default:
+				
+				util.Clear(element_obj.phone);
+				
+				util.Sendkeys(element_obj.phone,data_obj.Phone);
+				
+				break;
+			}		
+			
+		}
 
-		util.Clear(element_obj.phone);
 		
-		util.Sendkeys(element_obj.phone,data_obj.Phone);
 
 //		util.Click(element_obj.useAsBillingAddress); //check-box to keep shipping address as billing address
 //
-		shipMethod(element_obj.Shipping_Method);
+//		shipMethod(element_obj.Shipping_Method);
+		
+		Thread.sleep(5000);
+		
+		captureShippingMethod();
 
 		util.WaitAndClick(element_obj.continuebill);
 		
@@ -317,6 +488,46 @@ public class Functions {
 		}
 
 	}
+
+	public void captureShippingMethod() throws Exception {
+		
+		
+		while(!element_obj.continuebill.isEnabled())
+		{
+			//System.out.println("Waiting for Shipping method");
+		}
+		
+		
+		List<WebElement>  ShippingMethod = data_obj.driver.findElements(By.xpath("//div[@class='form-row form-indent label-inline shipping-method']/label"));
+		
+		int SMcount = ShippingMethod.size();
+			
+	
+//		int SMcount = data_obj.driver.findElements(By.xpath("//div[@class='form-row form-indent label-inline shipping-method']/label")).size() ;
+		
+		for(int i=0; i < SMcount; i++)
+		{	
+			
+			element_obj.SMlabel.add(ShippingMethod.get(i).getText());
+			
+			System.out.println(element_obj.SMlabel.get(i).toString());
+			
+//			WebElement SmethodLabel = data_obj.driver.findElement(By.xpath("(//div[@class='form-row form-indent label-inline shipping-method'])["+i+"]//label"));
+//			
+//			System.out.println(SmethodLabel.getText());	
+//			
+//			WebElement SmethodPrice = data_obj.driver.findElement(By.xpath("(//div[@class='form-row form-indent label-inline shipping-method'])["+i+"]//span"));
+//			
+//			System.out.println(SmethodPrice.getText());
+			
+		}
+		
+		writeSMlabel();
+		
+		element_obj.SMlabel.clear();
+			
+	}
+
 
 	public void shipMethod(String shipping) throws Exception
 	{
@@ -361,7 +572,7 @@ public class Functions {
 
 	}
 
-	public void payment() throws InterruptedException
+	public void payment(String orderType) throws InterruptedException
 	{
 		switch(element_obj.Payment_Method) 
 		{
@@ -410,8 +621,23 @@ public class Functions {
 			break;
 		}
 		
-	
-		element_obj.continuePlaceorder.click();		
+		if(orderType.equalsIgnoreCase("Domestic"))
+		{
+			element_obj.continuePlaceorder.click();
+		}
+		
+		if(orderType.equalsIgnoreCase("International"))
+		{
+			
+			Thread.sleep(5000);
+			
+//			util.jClick(element_obj.shpInt);
+			
+			
+//			element_obj.shpInt.click();
+			
+			element_obj.continuePlaceorder.click();	
+		}
 		
 
 	}
@@ -425,8 +651,8 @@ public class Functions {
 	{
 		
 		
-		try
-		{
+//		try
+//		{
 			switch(variant)
 			{
 			
@@ -470,21 +696,37 @@ public class Functions {
 				element_obj.sizeL.click();
 				break;
 				
+			case "S":
+				
+				element_obj.S.click();
+				break;
+				
+			case "M":
+				
+				element_obj.M.click();
+				break;
+				
+			case "L":
+				
+				element_obj.L.click();
+				break;
+			
+				
 			default:
 				
 				System.out.println("Invalid format");
 				break;
 			
 			}
-		}
+//		}
 		
-		catch(NoSuchElementException ex)
-		{
-			System.out.println("The Product is not available in "+variant+" size");
-			data_obj.errorType = "sizeVariant";
-			writeExcelComment(data_obj.errorType);
-			System.exit(1);
-		}
+//		catch(NoSuchElementException ex)
+//		{
+//			System.out.println("The Product is not available in "+variant+" size");
+//			data_obj.errorType = "sizeVariant";
+//			writeExcelComment(data_obj.errorType);
+//			System.exit(1);
+//		}
 		
 			
 	}
@@ -596,5 +838,56 @@ public class Functions {
 		    
 		outputstream.close();
 		
+	}
+	
+	public void writeSMlabel() throws Exception {
+		
+		File file = new File(data_obj.filePath+"\\"+data_obj.fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,data_obj.fileName);
+
+		Sheet sheet = book.getSheet(data_obj.sheetName);
+ 
+		Row row = sheet.getRow(data_obj.orderCount);
+		
+	
+		for(int i = 0; i < element_obj.SMlabel.size(); i++)
+		{
+			Cell orderNumber_cell = row.createCell(16+i);
+			
+			orderNumber_cell.setCellType(orderNumber_cell.CELL_TYPE_STRING);
+			orderNumber_cell.setCellValue(element_obj.SMlabel.get(i).toString()+"\n");
+		}
+		
+		istream.close(); 
+ 	    
+		FileOutputStream outputstream = new FileOutputStream(data_obj.filePath+"\\"+data_obj.fileName);
+			
+		book.write(outputstream);
+		    
+		outputstream.close();
+	}
+	
+	public void Date_Time() {
+		
+		data_obj.driver.switchTo().frame("DW-SFToolkit");
+		
+		element_obj.sitePreview.click();
+		
+		element_obj.SP_link.click();
+		
+		data_obj.driver.switchTo().frame("dwControlPanel");
+		
+		element_obj.SP_date.clear();
+		
+		element_obj.SP_date.sendKeys("17/07/2020");
+		
+		element_obj.SP_time.clear();
+		
+		element_obj.SP_time.sendKeys("10:00 am");
+		
+		element_obj.SP_ok.click();
 	}
 }

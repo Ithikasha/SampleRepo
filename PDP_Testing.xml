@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="PDP_Testing">
+  <test thread-count="5" name="Test">
+  	<parameter name="book" value="LYRICBOOK3RD" />
+  	<parameter name="T-shirt" value="T556" />
+  	<parameter name="Shirt" value="5460" />
+     <classes>
+      <class name="Testcases.PDP_Testing"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- PDP_Testing -->
