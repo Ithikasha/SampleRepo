@@ -23,11 +23,11 @@ public class placeOrder {
 			
 			Functions functions = new Functions(data,elements);
 			
-			data.driver.get(data.STG_url);
+			data.driver.get(data.DEV_url);
 			
-			data.driver.findElement(By.xpath("//button[@id='details-button']")).click();
-			
-			data.driver.findElement(By.xpath("//a[@id='proceed-link']")).click();
+//			data.driver.findElement(By.xpath("//button[@id='details-button']")).click();
+//			
+//			data.driver.findElement(By.xpath("//a[@id='proceed-link']")).click();
 			
 			
 //			if(data.URL == data.STG_url)
