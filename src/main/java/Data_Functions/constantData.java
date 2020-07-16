@@ -15,9 +15,9 @@ public class constantData {
 	
 	public int orderCount ;
 	
-	public String DEV_url = "https://development.rockdevelop.com/" ;
+	public String DEV_url = "https://storefront:Frantic98@development.rockdevelop.com/" ;
 	
-	public String STG_url = "https://staging.rockdevelop.com/" ;
+	public String STG_url = "https://storefront:Frantic98@staging.rockdevelop.com/" ;
 	
 	public String filePath = "C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets";
 	
@@ -29,9 +29,9 @@ public class constantData {
 	
 	public String fileName = "Metallica.xlsx";
 
-	public String sheetName = "Testing";
+	public String sheetName = "1507_D";
 	
-	public int totalOrder = 36;
+	public int totalOrder = 47;
 	
 	public String firstname = "Tester" ;
 	
@@ -85,12 +85,14 @@ public class constantData {
 	
 	public String errorType;
 
+	public boolean flag; 
 	
-	@FindBy(xpath="//div[@class='nav-wrapper']//button)[3]") //(//div[@class='nav-wrapper']//button)[3]
+	@FindBy(xpath="//button[@class='secondary-button small-link']") //(//div[@class='nav-wrapper']//button)[3]
 	public WebElement STG_advanced;
 	
 	@FindBy(xpath="//a[@id='proceed-link']")
 	public WebElement STG_proceed;
+
 }
 
 
