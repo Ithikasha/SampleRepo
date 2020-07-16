@@ -1,5 +1,8 @@
 package Data_Functions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,6 +46,22 @@ public class pageElements {
 	@FindBy(xpath="//*[@title='View Cart']")
 	public WebElement minicart;
 	
+	@FindBy(xpath="//div[@id='ext-gen17']")
+	public WebElement sitePreview;
+	
+	@FindBy(xpath="//a[@id='ext-gen43']")
+	public WebElement SP_link;
+	
+	@FindBy(xpath="//input[@id='controlsTime']")
+	public WebElement SP_time;
+	
+	@FindBy(xpath="//input[@id='controlsDate']")
+	public WebElement SP_date;
+	
+	@FindBy(xpath="//input[@id='controlsOk']")
+	public WebElement SP_ok;
+	
+	
 	//Loginpage
 	@FindBy(xpath="//button[@value='Login']")
 	public WebElement login_button;
@@ -66,6 +85,15 @@ public class pageElements {
 
 	@FindBy(xpath="//a[@title='Select Size: Medium']")//input[@name='Quantity']
 	public WebElement sizeM;
+	
+	@FindBy(xpath="//a[@title='Select Size: S']")
+	public WebElement S;
+	
+	@FindBy(xpath="//a[@title='Select Size: M']")
+	public WebElement M;
+	
+	@FindBy(xpath="//a[@title='Select Size: L']")
+	public WebElement L;
 
 	@FindBy(xpath="//a[@title='Select Size: Large']")
 	public WebElement sizeL;
@@ -114,7 +142,7 @@ public class pageElements {
 	@FindBy(xpath="//*[@id='update-cart']")
 	public WebElement updatecart;
 	
-	@FindBy(xpath="//span[text()='Checkout']") 
+	@FindBy(xpath="//button[@value='Checkout']") //note
 	public WebElement checkout;
 	
 	@FindBy(xpath="//div[@class='error-form ']")
@@ -123,6 +151,9 @@ public class pageElements {
 	@FindBy(xpath="//input[@id='guest-checkout']")
 	public WebElement Guest_CO;
 	
+	@FindBy(xpath="//span[text()='Remove']")
+	public WebElement remove;
+
 	@FindBy(xpath="")
 	public WebElement CP_quantity;
 	
@@ -159,11 +190,17 @@ public class pageElements {
 	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_phone']")
 	public WebElement phone;
 
-	@FindBy(xpath="//select[@name='dwfrm_singleshipping_shippingAddress_addressFields_country']")
-	public WebElement country;
-
 	@FindBy(xpath="//select[@name='dwfrm_singleshipping_shippingAddress_addressFields_states_state']")
 	public WebElement stateField;
+	
+	@FindBy(xpath="//select[@name='dwfrm_singleshipping_shippingAddress_addressFields_castates_castate']")
+	public WebElement CAstateField;
+	
+	@FindBy(xpath="//input[@id='dwfrm_singleshipping_shippingAddress_addressFields_otherstates']")
+	public WebElement IstateField;
+	
+	@FindBy(xpath="//select[@id='dwfrm_singleshipping_shippingAddress_addressFields_country']")
+	public WebElement countryField;
 
 	@FindBy(xpath="//input[@id='dwfrm_singleshipping_shippingAddress_isGift']")
 	public WebElement gift;
@@ -191,6 +228,7 @@ public class pageElements {
 	
 	@FindBy(xpath="//button[@id='buttonSelectAddressUser']")
 	public WebElement userAddress;
+	
 	
 	//Billingpage
 
@@ -224,6 +262,9 @@ public class pageElements {
 	@FindBy(xpath="//input[@placeholder='Search Metallica.com']")
 	public WebElement srchTxt;
 	
+	@FindBy(xpath="//input[@id='dwfrm_billing_shipInt']")
+	public WebElement shpInt;
+	
 	//Place order page
 	
 	@FindBy(xpath="//button[@value='Place Order']")
@@ -255,11 +296,14 @@ public class pageElements {
 	@FindBy(xpath="//td[@class='order-value']")
 	public WebElement orderTotal;
 	
+	
 	String Address1;
 	
 	String City;
 	
 	String State; 
+	
+	String Country; 
 	
 	String Zip_Code; 
 	
@@ -272,5 +316,8 @@ public class pageElements {
 	String[] qty;
 	
 	String[] variant;
+	
+	List<String> SMlabel = new ArrayList<>();;
+	
 
 }

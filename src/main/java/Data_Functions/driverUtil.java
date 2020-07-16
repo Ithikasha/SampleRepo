@@ -93,7 +93,7 @@ public class driverUtil {
 	
 	public WebDriver chrome()
 	{
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\UNITS\\Downloads\\chromedriver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\UNITS\\Documents\\BitBucket\\chromedriver\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
@@ -413,7 +413,7 @@ public class driverUtil {
 			System.out.println("Waiting for element- "+(++count)+"secs");
 			Thread.sleep(1000);
 		}
-	
+		
 		element.click();
 	}
 }
