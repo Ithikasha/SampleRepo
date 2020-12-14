@@ -190,6 +190,8 @@ public class Functions {
 			element_obj.City = formatter.formatCellValue(row.getCell(5));
 
 			element_obj.Zip_Code = formatter.formatCellValue(row.getCell(6)); 
+			
+			element_obj.State = formatter.formatCellValue(row.getCell(16));
 		
 			element_obj.Country = formatter.formatCellValue(row.getCell(7)); 
 			
@@ -268,7 +270,7 @@ public class Functions {
 			{
 				Thread.sleep(2000);
 				
-				util.WaitAndClick(element_obj.srch);
+				util.Click(element_obj.srch);
 			
 				util.Sendkeys(element_obj.srchIP,element_obj.itemlist[j]);
 
@@ -279,30 +281,30 @@ public class Functions {
 					size(element_obj.variant[j]);
 				}
 			
-				util.WaitAndClick(element_obj.addcart);
+//				util.WaitAndClick(element_obj.addcart);
 				
-//				if(util.Isdisplayed(element_obj.PDP_quantity)) 
-//				{
-//					
-//					util.Clear(element_obj.PDP_quantity);
-//					
-//					util.AcceptAlertifPresent(data_obj.driver);
-//					
-//					util.Clear(element_obj.PDP_quantity);
-//					
-//					util.AcceptAlertifPresent(data_obj.driver);
-//					
-//					util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
-//					
-//					util.Click(element_obj.addcart);
-//				}
-//
-//				else {
-//
-//					System.out.println("Quantity is not displayed");
-//					
-//					util.Click(element_obj.addcart);
-//				}
+				if(util.Isdisplayed(element_obj.PDP_quantity)) 
+				{
+					
+					util.Clear(element_obj.PDP_quantity);
+					
+					util.AcceptAlertifPresent(data_obj.driver);
+					
+					util.Clear(element_obj.PDP_quantity);
+					
+					util.AcceptAlertifPresent(data_obj.driver);
+					
+					util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
+					
+					util.Click(element_obj.addcart);
+				}
+
+				else {
+
+					System.out.println("Quantity is not displayed");
+					
+					util.Click(element_obj.addcart);
+				}
 
 				
 				util.Click(element_obj.miniviewcart);
@@ -312,19 +314,18 @@ public class Functions {
 				
 			}
 				
-//				try
+//			try
+//			{
+//				if(element_obj.CP_errorMessage.isDisplayed())
 //				{
-//					if(element_obj.CP_errorMessage.isDisplayed())
-//					{
-//						System.out.println("The Required Quantity of product ID"+element_obj.itemlist[j]+" is not available");
-//						writeExcelComment("excessQuantity");
-//						return false;
-//					}
+//					System.out.println("The Required Quantity of product ID"+element_obj.itemlist[j]+" is not available");
+//					writeExcelComment("excessQuantity");
+//					return false;
 //				}
-//				catch(NoSuchElementException ex)
-//				{
-//					
-//				}
+//			}
+//			catch(NoSuchElementException ex)
+//			{
+//							
 //			}
 			
 //			try
@@ -455,7 +456,7 @@ public class Functions {
 				Thread.sleep(2000);
 				
 				Select state = new Select(element_obj.CAstateField);
-				state.selectByVisibleText("Ontario");
+				state.selectByVisibleText(element_obj.State);
 				
 				break;
 				
@@ -478,7 +479,7 @@ public class Functions {
 		
 		Thread.sleep(5000);
 		
-		captureShippingMethod();
+//		captureShippingMethod();
 
 		util.WaitAndClick(element_obj.continuebill);
 		
@@ -629,12 +630,12 @@ public class Functions {
 		if(orderType.equalsIgnoreCase("International"))
 		{
 			
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 			
 //			util.jClick(element_obj.shpInt);
 			
 			
-//			element_obj.shpInt.click();
+			element_obj.shpInt.click();
 			
 			element_obj.continuePlaceorder.click();	
 		}
@@ -889,5 +890,95 @@ public class Functions {
 		element_obj.SP_time.sendKeys("10:00 am");
 		
 		element_obj.SP_ok.click();
+	}
+	
+	public void createAccount() throws Exception {
+		
+		util.Click(element_obj.login);
+		
+		util.Click(element_obj.CreateAccount);
+		
+		String fileName = "Create_Account.xlsx";
+		
+		String sheetName = "25082020";
+		
+		DataFormatter formatter = new DataFormatter();
+
+		File file = new File(data_obj.filePath+"\\"+fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,fileName);
+
+		Sheet sheet = book.getSheet(sheetName);
+		
+		for(int i = 8; i < 13; i++) {
+			
+			Row row = sheet.getRow(i);
+			
+			String FName = formatter.formatCellValue(row.getCell(1));
+			
+			String Email = formatter.formatCellValue(row.getCell(2));
+			
+			String pwd = formatter.formatCellValue(row.getCell(3));
+			
+			String DOB = formatter.formatCellValue(row.getCell(4));
+			
+			String Gender = formatter.formatCellValue(row.getCell(5));
+			
+			String Country = formatter.formatCellValue(row.getCell(6));
+			
+			String Zipcode = formatter.formatCellValue(row.getCell(7));
+			
+			util.Clear(element_obj.Reg_FName);
+			util.Sendkeys(element_obj.Reg_FName, FName);
+			
+			util.Clear(element_obj.Reg_LName);
+			util.Sendkeys(element_obj.Reg_LName, "QA");
+			
+			util.Clear(element_obj.Reg_UName);
+			util.Sendkeys(element_obj.Reg_UName, Email);
+			
+			util.Clear(element_obj.Reg_Email);
+			util.Sendkeys(element_obj.Reg_Email, Email);
+			
+			util.Clear(element_obj.Reg_CnfEmail);
+			util.Sendkeys(element_obj.Reg_CnfEmail, Email);
+			
+			util.Clear(element_obj.Reg_Pwd);
+			util.Sendkeys(element_obj.Reg_Pwd, pwd);
+			
+			util.Clear(element_obj.Reg_CnfPwd);
+			util.Sendkeys(element_obj.Reg_CnfPwd, pwd);
+			
+//			util.Clear(element_obj.Reg_DOB);
+			util.Sendkeys(element_obj.Reg_DOB, DOB);
+			
+			Select gender = new Select(element_obj.Reg_Gender);
+			gender.selectByVisibleText(Gender);
+			
+			Select country = new Select(element_obj.Reg_Country);
+			country.selectByVisibleText(Country);
+			
+			util.Clear(element_obj.Reg_zipcode);
+			util.Sendkeys(element_obj.Reg_zipcode, Zipcode);
+			
+			Thread.sleep(3000);
+			
+			util.Click(element_obj.Reg_NewsTeller);
+			
+			util.Click(element_obj.Reg_recaptcha);
+			
+			util.Click(element_obj.Reg_Apply);
+			
+			util.Click(element_obj.MyAccount);
+			
+			util.Click(element_obj.Logout);
+			
+			System.out.println("Account for "+Email+" is Created");
+			
+		}
+
+		
 	}
 }
