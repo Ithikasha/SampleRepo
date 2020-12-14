@@ -31,6 +31,12 @@ public class pageElements {
 	@FindBy(xpath="//a[@class='user-account not-logged-in']")
 	public WebElement login;
 	
+	@FindBy(xpath="//span[text()='Account']")
+	public WebElement MyAccount;
+	
+	@FindBy(xpath="(//a[@title='Go to: Logout'])[2]")
+	public WebElement Logout;
+	
 	@FindBy(xpath="//*[@title='Met Store']")
 	public WebElement store;
 	
@@ -80,22 +86,22 @@ public class pageElements {
 	@FindBy(xpath="(//span[@class='price-sales'])[1]")
 	public WebElement productPrice;
 
-	@FindBy(xpath="//a[@title='Select Size: Small']")
+	@FindBy(xpath="//a[contains(@title,'Small')]")
 	public WebElement sizeS;
 
-	@FindBy(xpath="//a[@title='Select Size: Medium']")//input[@name='Quantity']
+	@FindBy(xpath="//a[contains(@title,'Medium')]")//input[@name='Quantity']
 	public WebElement sizeM;
 	
-	@FindBy(xpath="//a[@title='Select Size: S']")
+	@FindBy(xpath="//a[contains(@title,'Small')]")
 	public WebElement S;
 	
 	@FindBy(xpath="//a[@title='Select Size: M']")
 	public WebElement M;
 	
-	@FindBy(xpath="//a[@title='Select Size: L']")
+	@FindBy(xpath="//a[contains(@title,'Large')]")
 	public WebElement L;
 
-	@FindBy(xpath="//a[@title='Select Size: Large']")
+	@FindBy(xpath="//a[contains(@title,'Large')]")
 	public WebElement sizeL;
 
 	@FindBy(xpath="//*[@title='Select Format: MP3']")
@@ -262,7 +268,7 @@ public class pageElements {
 	@FindBy(xpath="//input[@placeholder='Search Metallica.com']")
 	public WebElement srchTxt;
 	
-	@FindBy(xpath="//input[@id='dwfrm_billing_shipInt']")
+	@FindBy(xpath="//label[@for='dwfrm_billing_shipInt']")
 	public WebElement shpInt;
 	
 	//Place order page
@@ -295,6 +301,55 @@ public class pageElements {
 	
 	@FindBy(xpath="//td[@class='order-value']")
 	public WebElement orderTotal;
+	
+	
+// Registration page
+	
+	@FindBy(xpath="//button[@value='Create Account']")
+	public WebElement CreateAccount;
+	
+	@FindBy(xpath="//input[@id='dwfrm_profile_customer_firstname']")
+	public WebElement Reg_FName;
+	
+	@FindBy(xpath="//input[@id='dwfrm_profile_customer_lastname']")
+	public WebElement Reg_LName;
+	
+	@FindBy(xpath="//input[@id='dwfrm_profile_customer_username']")
+	public WebElement Reg_UName;
+	
+	@FindBy(xpath="//input[@id='dwfrm_profile_customer_email']")
+	public WebElement Reg_Email;
+	
+	@FindBy(xpath="//input[@id='dwfrm_profile_customer_emailconfirm']")
+	public WebElement Reg_CnfEmail;
+	
+	@FindBy(xpath="//input[contains(@id,'dwfrm_profile_login_password_')]")
+	public WebElement Reg_Pwd;
+	
+	@FindBy(xpath="//input[contains(@id,'dwfrm_profile_login_passwordconfirm')]")
+	public WebElement Reg_CnfPwd;
+	
+	@FindBy(xpath="//input[@id='dwfrm_profile_customer_birthday']")
+	public WebElement Reg_DOB;
+	
+	@FindBy(xpath="//select[@id='dwfrm_profile_customer_gender']")
+	public WebElement Reg_Gender;
+	
+	@FindBy(xpath="//select[@id='dwfrm_profile_customer_country']")
+	public WebElement Reg_Country;
+	
+	@FindBy(xpath="//input[@id='dwfrm_profile_customer_postal']")
+	public WebElement Reg_zipcode;
+	
+	@FindBy(xpath="//label[@for='dwfrm_profile_customer_addtoemaillist']")
+	public WebElement Reg_NewsTeller;
+	
+	@FindBy(xpath="//div[@class='recaptcha-checkbox-border']")
+	public WebElement Reg_recaptcha;
+	
+	@FindBy(xpath="//button[@value='Apply']")
+	public WebElement Reg_Apply;
+	
 	
 	
 	String Address1;

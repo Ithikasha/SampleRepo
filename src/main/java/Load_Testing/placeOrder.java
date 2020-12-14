@@ -2,7 +2,13 @@ package Load_Testing;
 
 import org.openqa.selenium.By;
 
-import Data_Functions.*;
+import Data_Functions.Functions;
+import Data_Functions.constantData;
+import Data_Functions.driverUtil;
+import Data_Functions.pageElements;
+
+
+
 
 public class placeOrder {
 	
@@ -39,11 +45,11 @@ public class placeOrder {
 			
 			util.Click(elements.no);
 			
-			functions.Date_Time();
+//			functions.Date_Time();
 			
-			functions.bulkOrder_testing();
+//			functions.bulkOrder_testing();
 			
-//			functions.bulkOrder_International();
+			functions.bulkOrder_International();
 			
 			data.driver.close();	
 			
