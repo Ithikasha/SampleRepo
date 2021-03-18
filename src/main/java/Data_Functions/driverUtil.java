@@ -121,7 +121,7 @@ public class driverUtil {
 			
 			{
 				element.click();
-				break ;
+				break;
 			}
 			catch(StaleElementReferenceException ex)
 			{
