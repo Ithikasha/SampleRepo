@@ -19,6 +19,8 @@ public class constantData {
 	
 	public String STG_url = "https://storefront:Frantic98@staging.rockdevelop.com/" ;
 	
+	public String DEV03_url = "https://dev03-na01-metallica.demandware.net/s/Metallica/home/" ;
+	
 	public String filePath = "C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets";
 	
 	public String username = "ithikasha@unitedtechno.com" ;
@@ -29,9 +31,9 @@ public class constantData {
 	
 	public String fileName = "Metallica.xlsx";
 
-	public String sheetName = "14102020I";
+	public String sheetName = "18032021";
 	
-	public int totalOrder = 31;
+	public int totalOrder = 30;
 	
 	public String firstname = "Tester" ;
 	

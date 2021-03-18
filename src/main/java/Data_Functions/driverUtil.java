@@ -407,13 +407,27 @@ public class driverUtil {
 	public void WaitAndClick(WebElement element) throws InterruptedException 
 	{
 		int count=0;
-	
-		while(!element.isEnabled() && count < 60)
+		
+		while(count < 60)
 		{
-			System.out.println("Waiting for element- "+(++count)+"secs");
-			Thread.sleep(1000);
+	
+			if(!element.isEnabled() && count < 60)
+			{
+				System.out.println("Waiting for element- "+(++count)+"secs");
+				Thread.sleep(1000);
+			}
+			
+			else if(element.isEnabled() && count < 60)
+			{
+				element.click();
+				count = 60;
+			}
+			
+			else
+			{
+				
+			}
 		}
 		
-		element.click();
 	}
 }
