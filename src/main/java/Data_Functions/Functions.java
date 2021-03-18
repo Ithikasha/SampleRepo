@@ -1,5 +1,8 @@
 package Data_Functions;
 
+import static org.testng.Assert.assertThrows;
+import static org.testng.Assert.fail;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -23,6 +26,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.itextpdf.text.log.SysoLogger;
 
@@ -32,7 +36,7 @@ public class Functions {
 	
 
 	public driverUtil util = new driverUtil();
-	constantData data_obj ;
+	constantData data_obj;
 	pageElements element_obj;
 	private String WebElement;
 
@@ -82,6 +86,8 @@ public class Functions {
  
 		for (data_obj.orderCount = 1; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
 
+			data_obj.flag = true;
+			
 			Row row = sheet.getRow(data_obj.orderCount);
 
 			element_obj.itemlist = formatter.formatCellValue(row.getCell(1)).split(",");
@@ -106,59 +112,47 @@ public class Functions {
 
 			data_obj.flag = selectItems();
 			
-			if(!data_obj.flag)
+			if(data_obj.flag==false)
 			{
-				element_obj.remove.click();
 				continue;
 			}
 
-			shipping("Domestic") ;
-
-			payment("Domestic") ;
+			data_obj.flag = shipping("Domestic") ;
 			
-			element_obj.placeorder.click();
+			if(data_obj.flag==false)
+			{
+				continue;
+			}
 
-			System.out.println("Order"+(data_obj.orderCount));
-
-			element_obj.itemlist = null;
-
-			element_obj.qty = null;
+			data_obj.flag = payment("Domestic") ;
 			
-			data_obj.orderNumber = element_obj.orderNumber.getText().toString();
-			
-			System.out.println(data_obj.orderNumber.substring(15));
-			
-			if(util.Isdisplayed(element_obj.Shipping_cost)) {
-				
-				data_obj.shippinging_cost = element_obj.Shipping_cost.getText().toString();
+			if(data_obj.flag==false)
+			{
+				continue;
 			}
 			
-			else{
-				
-				data_obj.shippinging_cost1 = element_obj.Shipping_cost1.getText().toString();
-				
-				data_obj.shippinging_cost2 = element_obj.Shipping_cost2.getText().toString();
-				
-				data_obj.shippinging_cost = data_obj.shippinging_cost1.concat("+"+data_obj.shippinging_cost2);
+			data_obj.flag = placeOrder() ;
+			
+			if(data_obj.flag==false)
+			{
+				continue;
 			}
-			
-			data_obj.handling_cost = element_obj.Handling_cost.getText().toString();
-			
-			System.out.println(data_obj.handling_cost);
-			
-			data_obj.salesTax = element_obj.salesTax.getText().toString();
-			
-			System.out.println(data_obj.salesTax);
-			
-			data_obj.orderTotal = element_obj.orderTotal.getText().toString();
-			
-			System.out.println(data_obj.orderTotal);
-			
-			writeExcel(data_obj.orderCount, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost);
-			
-			util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
+
+			orderConfirmation();
 		}
 		
+   }
+   
+   public boolean placeOrder()
+   {
+//	   if(element_obj.Error_form.isDisplayed())
+//			
+//		{
+//			System.out.println(element_obj.Error_form.getText());
+//			return false;
+//		}
+		element_obj.placeorder.click();
+		return true;
    }
    
    public void bulkOrder_International() throws Exception
@@ -216,103 +210,120 @@ public class Functions {
 			payment("International") ;
 		
 			element_obj.placeorder.click();
+			
+			orderConfirmation();
 
-			System.out.println("Order"+(data_obj.orderCount));
-
-			element_obj.itemlist = null;
-
-			element_obj.qty = null;
-		
-			data_obj.orderNumber = element_obj.orderNumber.getText().toString();
-		
-			System.out.println(data_obj.orderNumber.substring(15));
-			
-			if(util.Isdisplayed(element_obj.Shipping_cost)) {
-			
-				data_obj.shippinging_cost = element_obj.Shipping_cost.getText().toString();
-			}
-		
-			else{
-			
-				data_obj.shippinging_cost1 = element_obj.Shipping_cost1.getText().toString();
-			
-				data_obj.shippinging_cost2 = element_obj.Shipping_cost2.getText().toString();
-			
-				data_obj.shippinging_cost = data_obj.shippinging_cost1.concat("+"+data_obj.shippinging_cost2);
-			}
-		
-			data_obj.handling_cost = element_obj.Handling_cost.getText().toString();
-		
-			System.out.println(data_obj.handling_cost);
-		
-			data_obj.salesTax = element_obj.salesTax.getText().toString();
-		
-			System.out.println(data_obj.salesTax);
-		
-			data_obj.orderTotal = element_obj.orderTotal.getText().toString();
-		
-			System.out.println(data_obj.orderTotal);
-		
-			writeExcel(data_obj.orderCount, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost);
-		
-			util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
 		}
    }
 
 	
 
-   public boolean selectItems() throws InterruptedException, Exception 
-   {
+public void orderConfirmation() throws Exception {
+	
+	System.out.println("Order"+(data_obj.orderCount));
 
+	element_obj.itemlist = null;
+
+	element_obj.qty = null;
+
+	data_obj.orderNumber = element_obj.orderNumber.getText().toString();
+
+	System.out.println(data_obj.orderNumber.substring(15));
+	
+	if(util.Isdisplayed(element_obj.Shipping_cost)) {
+	
+		data_obj.shippinging_cost = element_obj.Shipping_cost.getText().toString();
+	}
+
+	else{
+	
+		data_obj.shippinging_cost1 = element_obj.Shipping_cost1.getText().toString();
+	
+		data_obj.shippinging_cost2 = element_obj.Shipping_cost2.getText().toString();
+	
+		data_obj.shippinging_cost = data_obj.shippinging_cost1.concat("+"+data_obj.shippinging_cost2);
+	}
+
+	data_obj.handling_cost = element_obj.Handling_cost.getText().toString();
+
+	System.out.println(data_obj.handling_cost);
+
+	data_obj.salesTax = element_obj.salesTax.getText().toString();
+
+	System.out.println(data_obj.salesTax);
+
+	data_obj.orderTotal = element_obj.orderTotal.getText().toString();
+
+	System.out.println(data_obj.orderTotal);
+
+	writeOrderDetail(data_obj.orderCount, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost);
+
+	util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
+}
+
+
+public boolean selectItems() throws InterruptedException, Exception 
+{
+
+	for(int j = 0; j < element_obj.itemlist.length; j++)
+	{
 			
-			for(int j = 0; j < element_obj.itemlist.length; j++)
+		Thread.sleep(2000);
+				
+		util.Click(element_obj.srch);
+			
+		util.Sendkeys(element_obj.srchIP,element_obj.itemlist[j]);
+
+		element_obj.srchTxt.submit();
 		
-			{
-				Thread.sleep(2000);
-				
-				util.Click(element_obj.srch);
+//		No such product
+//		Out of stock
 			
-				util.Sendkeys(element_obj.srchIP,element_obj.itemlist[j]);
-
-				element_obj.srchTxt.submit();
-			
-				if(element_obj.variant[j]!="0") {
-					
-					size(element_obj.variant[j]);
-				}
-			
-//				util.WaitAndClick(element_obj.addcart);
+//		if(element_obj.variant[j]!="0") 
+//		{
+//			
+//			size(element_obj.variant[j]);
+////			No available variant
+//		}
 				
-				if(util.Isdisplayed(element_obj.PDP_quantity)) 
-				{
+		if(util.Isdisplayed(element_obj.PDP_quantity)) 
+		{
 					
-					util.Clear(element_obj.PDP_quantity);
+			util.Clear(element_obj.PDP_quantity);
 					
-					util.AcceptAlertifPresent(data_obj.driver);
+			util.AcceptAlertifPresent(data_obj.driver);
 					
-					util.Clear(element_obj.PDP_quantity);
+			util.Clear(element_obj.PDP_quantity);
 					
-					util.AcceptAlertifPresent(data_obj.driver);
+			util.AcceptAlertifPresent(data_obj.driver);
 					
-					util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
+			util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
 					
-					util.Click(element_obj.addcart);
-				}
+			util.Click(element_obj.addcart);
+		}
 
-				else {
+		else 
+		{
 
-					System.out.println("Quantity is not displayed");
+			System.out.println("Quantity is not displayed");
 					
-					util.Click(element_obj.addcart);
-				}
+			util.Click(element_obj.addcart);
+		}
 
 				
-				util.Click(element_obj.miniviewcart);
+			util.Click(element_obj.miniviewcart);
 				
 
-				System.out.println("Product "+(j+1)+" is added");
+			System.out.println("Product "+(j+1)+" is added");
 				
-			}
+	}
+	
+//	if(element_obj.Error_form.isDisplayed())
+//		
+//	{
+//		System.out.println(element_obj.Error_form.getText());
+//		return false;
+//	}
 				
 //			try
 //			{
@@ -341,13 +352,15 @@ public class Functions {
 //			{
 //				
 //			}
-			util.WaitAndClick(element_obj.checkout);
+	
+//	Quantity, Non-combinable, 
+	util.WaitAndClick(element_obj.checkout);
+	
+	System.out.println("Cart is ready");
 			
-			System.out.println("Cart is ready");
-			
-			return true;
+	return true;
 
-	}
+}
    
 	
 	public void cartCheckout() throws InterruptedException 
@@ -401,7 +414,7 @@ public class Functions {
 
 	}
 
-	public void shipping(String orderType) throws Exception
+	public boolean shipping(String orderType) throws Exception
 	{
 		//no.click()
 		
@@ -447,7 +460,7 @@ public class Functions {
 				
 				util.Clear(element_obj.phone);
 				
-				util.Sendkeys(element_obj.phone,"985647852452");
+				util.Sendkeys(element_obj.phone,"9856475245255");
 				
 				break;
 				
@@ -476,17 +489,29 @@ public class Functions {
 //		util.Click(element_obj.useAsBillingAddress); //check-box to keep shipping address as billing address
 //
 //		shipMethod(element_obj.Shipping_Method);
-		
-		Thread.sleep(5000);
+//		
+//		if(data_obj.flag == false)
+//		{
+//			return false;
+//		}
+//		Thread.sleep(5000);
 		
 //		captureShippingMethod();
+//		
+//		if(!element_obj.shipping_Container.isDisplayed())
+//		{
+//			System.out.println("Shipping method table missing");
+//			System.exit(0);
+//		}
 
 		util.WaitAndClick(element_obj.continuebill);
 		
-		if(util.Isdisplayed(element_obj.userAddress)) {
-			
-			util.Click(element_obj.userAddress);
+		if(util.Isdisplayed(element_obj.userAddress)) 
+		{
+			util.WaitAndClick(element_obj.userAddress);
 		}
+		
+		return true;
 
 	}
 
@@ -535,8 +560,6 @@ public class Functions {
 		
 		Thread.sleep(2000);
 
-		try
-		{
 			switch(shipping)
 			{
 			case "Ground" :
@@ -560,20 +583,15 @@ public class Functions {
 				break;
 
 			default :
-
-				util.Click(element_obj.ground);
+				
+				data_obj.flag = false;
 				break;
 			}
-
-		}
-		catch(NoSuchElementException ex)
-		{
-			writeExcelComment("noShippingMethod");
-		}
+		
 
 	}
 
-	public void payment(String orderType) throws InterruptedException
+	public boolean payment(String orderType) throws InterruptedException
 	{
 		switch(element_obj.Payment_Method) 
 		{
@@ -591,6 +609,18 @@ public class Functions {
 			element_obj.cardcvn.sendKeys(data_obj.Visa_cvv);
 			
 			element_obj.cardname.sendKeys(data_obj.firstname);
+//			
+//			if(element_obj.Error_message.isDisplayed())
+//			{
+//				System.out.println(element_obj.Error_message.toString());
+//				return false;
+//			}
+//			
+//			else if(element_obj.Error_span.isDisplayed())
+//			{
+//				System.out.println(element_obj.Error_span.toString());
+//				return false;
+//			}
 			
 			break;
 
@@ -608,6 +638,18 @@ public class Functions {
 			
 			element_obj.cardcvn.sendKeys(data_obj.Amex_cvv);
 
+//			if(element_obj.Error_message.isDisplayed())
+//			{
+//				System.out.println(element_obj.Error_message.toString());
+//				return false;
+//			}
+//			
+//			else if(element_obj.Error_span.isDisplayed())
+//			{
+//				System.out.println(element_obj.Error_span.toString());
+//				return false;
+//			}
+			
 			break;
 
 		case "Paypal":
@@ -625,9 +667,10 @@ public class Functions {
 		if(orderType.equalsIgnoreCase("Domestic"))
 		{
 			element_obj.continuePlaceorder.click();
+			return true;
 		}
 		
-		if(orderType.equalsIgnoreCase("International"))
+		else if(orderType.equalsIgnoreCase("International"))
 		{
 			
 			Thread.sleep(3000);
@@ -637,9 +680,11 @@ public class Functions {
 			
 			element_obj.shpInt.click();
 			
-			element_obj.continuePlaceorder.click();	
+			element_obj.continuePlaceorder.click();
+			return true;
 		}
 		
+		return true;
 
 	}
 	
@@ -651,20 +696,35 @@ public class Functions {
 	public void size(String variant) throws Exception
 	{
 		
+		WebDriverWait wait = new WebDriverWait(data_obj.driver,6);
 		
-//		try
-//		{
+		try
+		{
 			switch(variant)
 			{
 			
 			case "mp3":
 				
-				element_obj.Mp3.click();
+				if(element_obj.Mp3.isEnabled())
+				{
+					element_obj.Mp3.click();
+				}
+				else
+				{
+					data_obj.flag = false;
+				}
 				break;
 				
 			case "flac":
-				
-				element_obj.Flac.click();;
+				if(element_obj.Flac.isEnabled())
+				{
+					element_obj.Flac.click();;
+				}
+				else
+				{
+					
+					data_obj.flag = false;
+				}
 				break;
 					
 			case "flac-hd":
@@ -694,7 +754,16 @@ public class Functions {
 				
 			case "large":
 				
-				element_obj.sizeL.click();
+//				if(wait.until(ExpectedConditions.elementToBeClickable(element_obj.sizeL)) == null)
+				if(!element_obj.sizeL.isEnabled())
+				{
+					
+					element_obj.sizeL.click();
+				}
+				else
+				{
+					data_obj.flag = false;
+				}
 				break;
 				
 			case "S":
@@ -715,25 +784,25 @@ public class Functions {
 				
 			default:
 				
+				element_obj.L.click();
 				System.out.println("Invalid format");
 				break;
 			
 			}
-//		}
+		}
 		
-//		catch(NoSuchElementException ex)
-//		{
-//			System.out.println("The Product is not available in "+variant+" size");
-//			data_obj.errorType = "sizeVariant";
-//			writeExcelComment(data_obj.errorType);
-//			System.exit(1);
-//		}
-		
+		catch(NoSuchElementException ex)
+		{
+			System.out.println("The Product is not available in "+variant+" size");
+			data_obj.errorType = "sizeVariant";
+			data_obj.flag = false;
+			writeExcelComment(data_obj.errorType);
+		}	
 			
 	}
 	
 	@SuppressWarnings("static-access")
-	public void writeExcel(int rowNumber, String orderNumber, String handling_cost, String salesTax, String orderTotal, String shippinging_cost) throws IOException
+	public void writeOrderDetail(int rowNumber, String orderNumber, String handling_cost, String salesTax, String orderTotal, String shippinging_cost) throws IOException
 	{
 		File file = new File(data_obj.filePath+"\\"+data_obj.fileName);
 

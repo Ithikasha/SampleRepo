@@ -268,7 +268,7 @@ public class pageElements {
 	@FindBy(xpath="//input[@placeholder='Search Metallica.com']")
 	public WebElement srchTxt;
 	
-	@FindBy(xpath="//label[@for='dwfrm_billing_shipInt']")
+	@FindBy(xpath="//label[contains(@for,'dwfrm_billing_shipInt')]")
 	public WebElement shpInt;
 	
 	//Place order page
@@ -349,6 +349,18 @@ public class pageElements {
 	
 	@FindBy(xpath="//button[@value='Apply']")
 	public WebElement Reg_Apply;
+	
+	@FindBy(xpath="//div[contains(@class,'error-form')]")
+	public WebElement Error_form;
+	
+	@FindBy(xpath="//div[contains(@class,'shipping-method-container')]")
+	public WebElement shipping_Container;
+	
+	@FindBy(xpath="//div[contains(@class,'error-message')]")
+	public WebElement Error_message;
+	
+	@FindBy(xpath="//span[contains(@class,'error')]")
+	public WebElement Error_span;
 	
 	
 	
