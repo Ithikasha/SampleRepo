@@ -27,26 +27,29 @@ public class placeOrder {
 			
 			Functions functions = new Functions(data,elements);
 			
-			data.driver.get(data.DEV_url);
+			data.driver.get(data.Prod_url);
+			
 			
 //			data.driver.findElement(By.xpath("//button[@id='details-button']")).click();
 //			
 //			data.driver.findElement(By.xpath("//a[@id='proceed-link']")).click();
-			
-			
+//			
+//			
 //			if(data.URL == data.STG_url)
 //			{
-////				util.Click(data.STG_advanced);
-////				
-////				util.Click(data.STG_proceed);
+//				util.Click(data.STG_advanced);
+//				
+//				util.Click(data.STG_proceed);
 //				}
-			
+//			
 			util.Click(elements.no);
 			
+			functions.PDPTesting(data.Prod_url);;
+//			
 //			functions.Date_Time();
-			
-			functions.bulkOrder_testing();
-			
+//			
+//			functions.bulkOrder_testing();
+//			
 //			functions.bulkOrder_International();
 			
 			data.driver.close();	

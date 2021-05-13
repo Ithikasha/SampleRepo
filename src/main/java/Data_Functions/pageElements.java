@@ -67,6 +67,12 @@ public class pageElements {
 	@FindBy(xpath="//input[@id='controlsOk']")
 	public WebElement SP_ok;
 	
+	@FindBy(xpath="//button[@class='menu-toggle']")
+	public WebElement menu;
+	
+	@FindBy(xpath="//a[@href='https://development.rockdevelop.com/tour/past/']")
+	public WebElement pastShow;
+	
 	
 	//Loginpage
 	@FindBy(xpath="//button[@value='Login']")
@@ -148,8 +154,11 @@ public class pageElements {
 	@FindBy(xpath="//*[@id='update-cart']")
 	public WebElement updatecart;
 	
-	@FindBy(xpath="//button[@value='Checkout']") //note
+	@FindBy(xpath="//button[@value='Checkout']") //note 
 	public WebElement checkout;
+	
+	@FindBy(xpath="//button[@value='Login']")
+	public WebElement CP_Login;
 	
 	@FindBy(xpath="//div[@class='error-form ']")
 	public WebElement CP_errorMessage;
@@ -162,6 +171,11 @@ public class pageElements {
 
 	@FindBy(xpath="")
 	public WebElement CP_quantity;
+	
+	
+	
+	@FindBy(xpath="//div[@class='name']//child::a")
+	public WebElement CP_prdName;
 	
 	@FindBy(xpath="")
 	public WebElement CP_price;
@@ -276,6 +290,9 @@ public class pageElements {
 	@FindBy(xpath="//button[@value='Place Order']")
 	public WebElement placeorder;
 	
+	@FindBy(xpath="(//span[@class='label'])[1]")
+	public WebElement POviewcart;
+	
 	//Order Confirmation page
 	
 	@FindBy(xpath="//div[@class='order-information']//following::h3")
@@ -344,7 +361,7 @@ public class pageElements {
 	@FindBy(xpath="//label[@for='dwfrm_profile_customer_addtoemaillist']")
 	public WebElement Reg_NewsTeller;
 	
-	@FindBy(xpath="//div[@class='recaptcha-checkbox-border']")
+	@FindBy(xpath="//span[@id='recaptcha-anchor']")
 	public WebElement Reg_recaptcha;
 	
 	@FindBy(xpath="//button[@value='Apply']")
@@ -384,7 +401,7 @@ public class pageElements {
 	
 	String[] variant;
 	
-	List<String> SMlabel = new ArrayList<>();;
+	List<String> SMlabel = new ArrayList<>();
 	
 
 }

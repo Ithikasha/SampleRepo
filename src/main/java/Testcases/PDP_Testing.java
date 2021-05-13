@@ -29,7 +29,7 @@ public class PDP_Testing {
 	
 	public void beforeTesting() throws InterruptedException {
 		
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\UNITS\\Downloads\\chromedriver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\UNITS\\Documents\\BitBucket\\chromedriver.exe");
 		
 		WebDriver driver = new ChromeDriver();
 		

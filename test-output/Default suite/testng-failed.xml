@@ -3,13 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Testcases.UiTest">
+      <class name="Testcases.PDP_Testing">
         <methods>
-          <include name="tearDown"/>
-          <include name="testUi"/>
-          <include name="setUp"/>
+          <include name="testcase2"/>
+          <include name="testcase1"/>
+          <include name="testcase3"/>
+          <include name="afterTesting"/>
+          <include name="beforeTesting"/>
         </methods>
-      </class> <!-- Testcases.UiTest -->
+      </class> <!-- Testcases.PDP_Testing -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

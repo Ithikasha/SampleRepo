@@ -1,5 +1,8 @@
 package Data_Functions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,9 +18,11 @@ public class constantData {
 	
 	public int orderCount ;
 	
+	public String Prod_url = "https://www.metallica.com/";
+	
 	public String DEV_url = "https://storefront:Frantic98@development.rockdevelop.com/" ;
 	
-	public String STG_url = "https://storefront:Frantic98@staging.rockdevelop.com/" ;
+	public String STG_url = "https://storefront:Frantic81@staging.rockdevelop.com/" ;
 	
 	public String DEV03_url = "https://dev03-na01-metallica.demandware.net/s/Metallica/home/" ;
 	
@@ -29,11 +34,11 @@ public class constantData {
 	
 	public String STG_password = "Ithi@utis08" ;
 	
-	public String fileName = "Metallica.xlsx";
+	public String fileName = "Checkout_Billing.xlsx";
 
-	public String sheetName = "18032021";
+	public String sheetName = "12052021";
 	
-	public int totalOrder = 30;
+	public int totalOrder = 4;
 	
 	public String firstname = "Tester" ;
 	
@@ -65,6 +70,16 @@ public class constantData {
 	
 	public String Amex_cvv = "7373";
 	
+	public String Dis_number ="6011111111111117";
+	
+	public String Dis_date = "10";
+	
+	public String Dis_month = "12";
+	
+	public String Dis_year = "2025";
+	
+	public String Dis_cvv = "123";
+	
 	public String orderNumber;
 	
 	public String[] orderList;
@@ -94,7 +109,14 @@ public class constantData {
 	
 	@FindBy(xpath="//a[@id='proceed-link']")
 	public WebElement STG_proceed;
+	
+	public List<String> PDP_price = new ArrayList<>();
 
+	public List<String> PDP_prdName = new ArrayList<>() ;
+	
+	public List<String> CP_price = new ArrayList<>();
+
+	public List<String> CP_prdName = new ArrayList<>() ;
 }
 
 

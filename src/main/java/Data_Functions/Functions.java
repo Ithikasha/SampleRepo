@@ -1,17 +1,20 @@
 package Data_Functions;
 
-import static org.testng.Assert.assertThrows;
-import static org.testng.Assert.fail;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
-
+import java.util.ListIterator;
+import java.util.Collections;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -38,7 +41,7 @@ public class Functions {
 	public driverUtil util = new driverUtil();
 	constantData data_obj;
 	pageElements element_obj;
-	private String WebElement;
+	
 
    public Functions(constantData data,pageElements elem)
    {
@@ -84,7 +87,7 @@ public class Functions {
 
 		login();
  
-		for (data_obj.orderCount = 1; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
+		for (data_obj.orderCount = 19; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
 
 			data_obj.flag = true;
 			
@@ -264,6 +267,7 @@ public void orderConfirmation() throws Exception {
 
 public boolean selectItems() throws InterruptedException, Exception 
 {
+	int c = 0;
 
 	for(int j = 0; j < element_obj.itemlist.length; j++)
 	{
@@ -298,7 +302,17 @@ public boolean selectItems() throws InterruptedException, Exception
 			util.AcceptAlertifPresent(data_obj.driver);
 					
 			util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
-					
+			
+			//Capturing Product price
+			
+			String prc = element_obj.driver.findElement(By.xpath("//div[@class='product-price']//child::span[@class='price-sales']")).getText();
+			
+			data_obj.PDP_price.add(j, prc);
+			
+			String nme = element_obj.driver.findElement(By.xpath("//h1[@class='product-name']")).getText();
+			
+			data_obj.PDP_prdName.add(j, nme);
+			
 			util.Click(element_obj.addcart);
 		}
 
@@ -311,50 +325,65 @@ public boolean selectItems() throws InterruptedException, Exception
 		}
 
 				
-			util.Click(element_obj.miniviewcart);
-				
-
-			System.out.println("Product "+(j+1)+" is added");
+		util.Click(element_obj.miniviewcart);
+			
+//		System.out.println("Product "+(j+1)+" is added");
 				
 	}
 	
-//	if(element_obj.Error_form.isDisplayed())
-//		
+//	if(element_obj.Guest_CO.isDisplayed())
 //	{
-//		System.out.println(element_obj.Error_form.getText());
-//		return false;
+//		element_obj.email.clear();
+//		element_obj.email.sendKeys(data_obj.email);
+//		element_obj.password.clear();
+//		element_obj.password.sendKeys(data_obj.DEV_password);
+//		util.WaitAndClick(element_obj.Guest_CO);
 //	}
-				
-//			try
-//			{
-//				if(element_obj.CP_errorMessage.isDisplayed())
-//				{
-//					System.out.println("The Required Quantity of product ID"+element_obj.itemlist[j]+" is not available");
-//					writeExcelComment("excessQuantity");
-//					return false;
-//				}
-//			}
-//			catch(NoSuchElementException ex)
-//			{
-//							
-//			}
-			
-//			try
-//			{
-//				if(element_obj.Guest_CO.isDisplayed())
-//				{
-//					element_obj.email.clear();
-//					element_obj.email.sendKeys(data_obj.email);
-//					util.WaitAndClick(element_obj.Guest_CO);
-//				}
-//			}
-//			catch(NoSuchElementException ex)
-//			{
-//				
-//			}
+	
+	//Check Price
+	for(int j=0; j < element_obj.itemlist.length; j++)
+	{
+		
+	}
 	
 //	Quantity, Non-combinable, 
+	
+	for(int i = 1; i <= element_obj.itemlist.length; i++)
+	{
+		data_obj.CP_prdName.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='name']//child::a)["+i+"]")).getText());
+		
+		data_obj.CP_price.add(i-1, element_obj.driver.findElement(By.xpath("(//td[@class='item-price']//child::span)["+1+"]")).getText());
+		
+	}
+	
+	Collections.sort(data_obj.CP_prdName);
+	
+	Collections.sort(data_obj.CP_price);
+	
+	for(int i = 0; i < element_obj.itemlist.length; i++)
+	{
+		if(data_obj.PDP_prdName.get(i).equalsIgnoreCase(data_obj.CP_prdName.get(i)))
+		{
+			System.out.println("Product: "+data_obj.PDP_prdName.get(i)+" Product name Validation Successfully");
+		}
+		else
+		{
+			System.out.println("Product: "+data_obj.PDP_prdName.get(i)+" Product name Validation Unsuccessfully");
+		}
+		
+//		if(data_obj.PDP_price[i].equalsIgnoreCase(data_obj.CP_price[i]))
+//		{
+//			System.out.println("Product: "+data_obj.PDP_price[i]+" Price Validation Successfully");
+//		}
+//		else
+//		{
+//			System.out.println("Product: "+data_obj.PDP_price[i]+" Price Validation Unsuccessfully");
+//		}
+	}
+	
 	util.WaitAndClick(element_obj.checkout);
+	
+	
 	
 	System.out.println("Cart is ready");
 			
@@ -411,6 +440,57 @@ public boolean selectItems() throws InterruptedException, Exception
 		System.out.println("User is Logged in");
 		
 //		util.Click(element_obj.Metallica);
+
+	}
+	
+	public void Validate_Login() throws InterruptedException, IOException {
+		
+		DataFormatter formatter = new DataFormatter();
+
+		File file = new File(data_obj.filePath+"\\"+data_obj.fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,data_obj.fileName);
+
+		Sheet sheet = book.getSheet(data_obj.sheetName);
+ 
+		for (data_obj.orderCount = 1; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) 
+		{
+			
+			Row row = sheet.getRow(data_obj.orderCount);
+			
+			String id = formatter.formatCellValue(row.getCell(1));
+					
+			String pwd = formatter.formatCellValue(row.getCell(2));
+			
+			String eUsername = formatter.formatCellValue(row.getCell(3));
+		
+			util.Click(element_obj.login);
+		
+			util.Sendkeys(element_obj.email, id);
+	
+			util.Sendkeys(element_obj.password, pwd);
+	
+			util.Click(element_obj.login_button);
+
+			util.WaitAndClick(element_obj.MyAccount);
+		
+			System.out.println("Login Successful for "+eUsername);
+							
+			util.WaitAndClick(element_obj.Logout);
+		
+//			String aUsername = data_obj.driver.findElement(By.xpath("//h1[@class='overview-header']")).getText();
+//		
+//			if(aUsername.contains(eUsername))
+//			{
+//				
+//				
+//			}
+		}
+		
+		
+		
 
 	}
 
@@ -649,6 +729,21 @@ public boolean selectItems() throws InterruptedException, Exception
 //				System.out.println(element_obj.Error_span.toString());
 //				return false;
 //			}
+			
+			break;
+			
+		case "Dis":
+			
+			element_obj.cardname.sendKeys(data_obj.firstname);
+			
+			element_obj.cardnumber.sendKeys(data_obj.Dis_number);
+
+			Select Dis_month = new Select(element_obj.cardmonth);
+			Dis_month.selectByValue(data_obj.Dis_month);
+
+			element_obj.cardyear.sendKeys(data_obj.Dis_year);
+			
+			element_obj.cardcvn.sendKeys(data_obj.Dis_cvv);
 			
 			break;
 
@@ -981,7 +1076,7 @@ public boolean selectItems() throws InterruptedException, Exception
 
 		Sheet sheet = book.getSheet(sheetName);
 		
-		for(int i = 8; i < 13; i++) {
+		for(int i = 1; i < 13; i++) {
 			
 			Row row = sheet.getRow(i);
 			
@@ -1036,9 +1131,11 @@ public boolean selectItems() throws InterruptedException, Exception
 			
 			util.Click(element_obj.Reg_NewsTeller);
 			
-			util.Click(element_obj.Reg_recaptcha);
+			Thread.sleep(5000);
 			
-			util.Click(element_obj.Reg_Apply);
+			util.WaitAndClick(element_obj.Reg_recaptcha);
+			
+//			util.Click(element_obj.Reg_Apply);
 			
 			util.Click(element_obj.MyAccount);
 			
@@ -1048,6 +1145,341 @@ public boolean selectItems() throws InterruptedException, Exception
 			
 		}
 
+		
+	}
+	
+	public boolean HTTPResponse(String url) throws Exception
+	{
+		HttpURLConnection huc = null;
+		
+		int respCode = 200;
+		
+        huc = (HttpURLConnection)(new URL(url).openConnection());
+        
+        huc.setRequestMethod("HEAD");
+    
+        huc.connect();
+    
+        respCode = huc.getResponseCode();
+    
+        if(respCode <= 400)
+    	{
+        	return true;
+    	}
+        else
+    	{
+        	return false;
+    	}
+	}
+	
+	public void ImageTest(String page) throws Exception
+	{
+		
+		String domain = "https://www.metallica.com";
+		
+		boolean flag;
+				
+		element_obj.driver.get(page);
+		
+		List<WebElement> image = element_obj.driver.findElements(By.xpath("//img[@src]"));
+		
+		System.out.println(image.size());// check count
+		
+		String url = "";
+		
+		Iterator<WebElement> it = image.iterator();
+        
+        while(it.hasNext())
+        {
+            
+            url = it.next().getAttribute("src");
+            
+            if(!url.startsWith(domain))
+            {
+                
+                System.out.println("Invalid - "+url);
+                continue;
+            }
+		
+            flag = HTTPResponse(url);
+            
+            if(flag)
+            {
+            	System.out.println(url+" is Valid");
+            }
+            else
+            {
+            	System.out.println("Breaking "+url);
+            }
+       }
+        
+	}
+	
+	public void LinkTest(String page) throws Exception
+	{
+		
+		boolean flag;
+		
+		element_obj.driver.get(page);
+		
+		List<WebElement> link = element_obj.driver.findElements(By.xpath("//a[@href]"));
+		
+//		for(int i = 0; i < link.size(); i++)
+//		{
+//			System.out.println(link.get(i).getAttribute("href"));
+//		}
+		
+		System.out.println(link.size());
+		
+		String url = "";
+		
+		Iterator<WebElement> it = link.iterator();
+        
+        while(it.hasNext())
+        {
+            
+            url = it.next().getAttribute("href");
+           
+            if(url == null || url.isEmpty())
+            {
+            	System.out.println(it.next().getText().toString());
+            	
+            	System.out.println("Either not configured for anchor tag or it is empty"+url);
+                continue;
+            }
+            
+            flag = HTTPResponse(url);
+            
+            if(flag)
+            {
+            	System.out.println(url+" is Valid");
+            }
+            else
+            {
+            	System.out.println("Invalid "+url);
+            }
+		
+       }
+        
+	}
+	
+	public void ButtonTest(String page)
+	{
+		List<WebElement> button = element_obj.driver.findElements(By.xpath("//button"));
+		
+		 for(int i = 0; i < button.size(); i++)
+		 {
+			 if(button.get(i).isDisplayed())
+			 {
+				 System.out.println(button.get(i).getAttribute("title")+" is Displayed");
+				 
+				 if(button.get(i).isEnabled())
+				 {
+					 System.out.println(button.get(i).getAttribute("title")+" is Enabled");
+				 }
+			 }
+		 }
+		
+	}
+	
+	public void PDPTesting(String site) throws Exception
+	{
+		String ProductLinks = "//div[@class='product-image']//child::a";
+		
+		element_obj.driver.get(site+"store/?viewAll=true");
+		
+		List<WebElement> product = element_obj.driver.findElements(By.xpath(ProductLinks));
+		
+		System.out.println(product.size());// check count
+		
+		String url = "";
+		
+		Iterator<WebElement> it = product.iterator();
+        
+        for(int i = 0; i < product.size(); i++)
+        {
+        		
+        	url = product.get(i).getAttribute("href");
+          
+        	ImageTest(url); 
+          
+        	System.out.println("Validated Images in PDP of -"+url);
+        	
+        	LinkTest(url);
+            
+        	System.out.println("Validated Links in PDP of -"+url);
+        	
+        	element_obj.driver.get(product.get(i+1).getAttribute("href"));
+          
+        }
+        
+        
+		
+//		String Image_path = "//div[@class='product-image main-image' or @class='product-thumbnails ' or @class='product-image recommendation_image']//child::img";
+	}
+	
+	public void HomepageTesting(String site) throws Exception
+	{
+		LinkTest(site);
+		
+		System.out.println("Validated Links in HomePage of -"+site);
+		
+		ImageTest(site);
+		
+		System.out.println("Validated Images in HomePage of -"+site);
+		
+	}
+	
+	public void CartpageTesting() throws Exception
+	{
+		if(element_obj.Error_form.isDisplayed())
+		{
+			System.out.println(element_obj.Error_form.getText());
+			
+			writeExcelComment(element_obj.Error_form.getText());
+		}
+		
+	}
+	
+	public void CHKT_Billing() throws InterruptedException, Exception
+	{
+		DataFormatter formatter = new DataFormatter();
+
+		File file = new File(data_obj.filePath+"\\"+data_obj.fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,data_obj.fileName);
+
+		Sheet sheet = book.getSheet(data_obj.sheetName);
+
+		login();
+ 
+		for (data_obj.orderCount = 1; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
+
+			Row row = sheet.getRow(data_obj.orderCount);
+
+			element_obj.itemlist = formatter.formatCellValue(row.getCell(1)).split(",");
+
+			element_obj.qty = formatter.formatCellValue(row.getCell(2)).split(",");
+			
+			element_obj.variant = formatter.formatCellValue(row.getCell(3)).split(",");
+
+			element_obj.Address1 = formatter.formatCellValue(row.getCell(4));
+
+			element_obj.City = formatter.formatCellValue(row.getCell(5));
+
+			element_obj.Zip_Code = formatter.formatCellValue(row.getCell(6)); 
+			
+			element_obj.State = formatter.formatCellValue(row.getCell(7)); 
+
+			element_obj.Shipping_Method = formatter.formatCellValue(row.getCell(8));
+
+			element_obj.Payment_Method = formatter.formatCellValue(row.getCell(9));
+
+			System.out.println("Variable data_obj are Collected");
+
+			data_obj.flag = selectItems();
+			
+			if(data_obj.flag==false)
+			{
+				continue;
+			}
+
+			data_obj.flag = shipping("Domestic") ;
+			
+			if(data_obj.flag==false)
+			{
+				continue;
+			}
+
+			data_obj.flag = payment("Domestic") ;
+			
+			
+			element_obj.POviewcart.click();
+			
+			for(int c = 1; c <= element_obj.itemlist.length; c++)
+			{
+				
+				data_obj.driver.findElement(By.xpath("(//tr[@class='cart-row']//following-sibling::button[@value='Remove'])[2]")).click();
+			}
+			
+			
+//			
+//			List<WebElement> remove = data_obj.driver.findElements(By.xpath("//tr[@class='cart-row']//following-sibling::button[@value='Remove']"));
+//			
+//			for(int c = 0; c < remove.size(); c++)
+//			{
+//				if(c%2==0)
+//				{
+//					remove.get(c).click();
+//				}
+//			}
+		}
+			
+	}
+	
+	public void Validate_Store() throws InterruptedException
+	{
+		String ProductLinks = "//div[@class='product-image']//child::a";
+		
+		List<WebElement> product = element_obj.driver.findElements(By.xpath(ProductLinks));
+		
+		System.out.println(product.size());// check count
+		
+		String url;
+		
+		String Ename;
+		
+		String Aname;
+		
+		for(int i = 1; i <= product.size(); i++)
+		{
+			url = element_obj.driver.findElement(By.xpath("(//a[@class='name-link'])["+i+"]")).getAttribute("href");
+			
+			Ename = element_obj.driver.findElement(By.xpath("(//a[@class='name-link'])["+i+"]")).getText();
+			
+			System.out.println(Ename);
+			
+			element_obj.driver.get(url);
+			 	
+        	Aname = element_obj.driver.findElement(By.xpath("//h1[@class='product-name']")).getText();
+        	        	
+        	if(Ename.contains(Aname))
+        	{
+        		System.out.println(Ename+" PDP reached successfully");
+        	}
+        	else
+        	{
+        		System.out.println(Ename+" PDP not reached successfully");
+        		continue;
+        	}
+        	
+        	util.Click(element_obj.store);
+        	
+		}
+        
+	}
+	
+	public void Validate_Cartpage()
+	{
+		
+		
+	}
+	
+	public void ShippingpageTesting()
+	{
+		
+	}
+	
+	
+	public void BillingpageTesting()
+	{
+		
+	}
+	
+	public void PlaceorderpageTesting()
+	{
 		
 	}
 }
