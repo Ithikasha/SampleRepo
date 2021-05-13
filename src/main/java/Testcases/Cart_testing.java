@@ -54,9 +54,5 @@ public class Cart_testing {
 		
 	}
 	
-	@Test
-	public void testcase6() {
-		
-	}
 	
 }
