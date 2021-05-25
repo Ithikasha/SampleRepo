@@ -28,9 +28,9 @@ public class constantData {
 	
 	public String filePath = "C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets";
 	
-	public String username = "ithikasha@unitedtechno.com" ;
+	public String username = "ithikasha@unitedtechno.com" ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
-	public String DEV_password = "Ithi@met07" ;
+	public String DEV_password = "Ithi@met07" ;  //Ithi@met07 , Qatest@met07
 	
 	public String STG_password = "Ithi@utis08" ;
 	
@@ -102,7 +102,7 @@ public class constantData {
 	
 	public String errorType;
 
-	public boolean flag; 
+	public boolean flag;
 	
 	@FindBy(xpath="//button[@class='secondary-button small-link']") //(//div[@class='nav-wrapper']//button)[3]
 	public WebElement STG_advanced;
@@ -110,13 +110,6 @@ public class constantData {
 	@FindBy(xpath="//a[@id='proceed-link']")
 	public WebElement STG_proceed;
 	
-	public List<String> PDP_price = new ArrayList<>();
-
-	public List<String> PDP_prdName = new ArrayList<>() ;
-	
-	public List<String> CP_price = new ArrayList<>();
-
-	public List<String> CP_prdName = new ArrayList<>() ;
 }
 
 

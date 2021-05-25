@@ -163,7 +163,10 @@ public class pageElements {
 	@FindBy(xpath="//div[@class='error-form ']")
 	public WebElement CP_errorMessage;
 	
-	@FindBy(xpath="//input[@id='guest-checkout']")
+	@FindBy(xpath="//button[@class='add-to-cart button button--cta checkout login']")
+	public WebElement Cart_CO;
+	
+	@FindBy(xpath="//button[@class='add-to-cart button button--cta checkout guest-checkout']")
 	public WebElement Guest_CO;
 	
 	@FindBy(xpath="//span[text()='Remove']")
@@ -171,7 +174,6 @@ public class pageElements {
 
 	@FindBy(xpath="")
 	public WebElement CP_quantity;
-	
 	
 	
 	@FindBy(xpath="//div[@class='name']//child::a")
@@ -186,40 +188,44 @@ public class pageElements {
 	@FindBy(xpath="")
 	public WebElement CP_subTotal;
 	
+	@FindBy(xpath="//label[@for='guest-checkout']")
+	public WebElement Guest_chkBox;
+	
 	
 	//Shipping page
 	
-	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_firstName']")
+	@FindBy(xpath="//input[contains(@id,'firstName')]")
 	public WebElement firstname;
 
-	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_lastName']")
+	@FindBy(xpath="//input[contains(@id,'lastName')]")
 	public WebElement lastname;
 
-	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_address1']")
+	@FindBy(xpath="//input[contains(@id,'address1')]")
 	public WebElement address1;
 
-	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_address2']")
+	@FindBy(xpath="//input[contains(@id,'address2')]")
 	public WebElement address2;
 
-	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_city']")
+	@FindBy(xpath="//input[contains(@id,'city')]")
 	public WebElement city;
 
-	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_postal']")
+	@FindBy(xpath="//input[contains(@id,'postal')]")
 	public WebElement zipcode;
 
-	@FindBy(xpath="//input[@name='dwfrm_singleshipping_shippingAddress_addressFields_phone']")
+	@FindBy(xpath="//input[contains(@id,'phone')]")
 	public WebElement phone;
+	
 
 	@FindBy(xpath="//select[@name='dwfrm_singleshipping_shippingAddress_addressFields_states_state']")
 	public WebElement stateField;
 	
-	@FindBy(xpath="//select[@name='dwfrm_singleshipping_shippingAddress_addressFields_castates_castate']")
+	@FindBy(xpath="//select[contains(@id,'castates')]")
 	public WebElement CAstateField;
 	
-	@FindBy(xpath="//input[@id='dwfrm_singleshipping_shippingAddress_addressFields_otherstates']")
+	@FindBy(xpath="//input[contains(@id,'otherstates')]")
 	public WebElement IstateField;
 	
-	@FindBy(xpath="//select[@id='dwfrm_singleshipping_shippingAddress_addressFields_country']")
+	@FindBy(xpath="//select[contains(@id,'country')]")
 	public WebElement countryField;
 
 	@FindBy(xpath="//input[@id='dwfrm_singleshipping_shippingAddress_isGift']")
@@ -228,7 +234,7 @@ public class pageElements {
 	@FindBy(xpath="//textarea[@id='dwfrm_singleshipping_shippingAddress_giftMessage']")
 	public WebElement giftMsg;
 	
-	@FindBy(xpath="//input[contains(@id,'useAsBillingAddress')]")
+	@FindBy(xpath="//label[contains(@for,'useAsBillingAddress')]") ////input[contains(@id,'useAsBillingAddress')]
 	public WebElement useAsBillingAddress;
 
 	@FindBy(xpath="//label[@for='shipping-method-shqups-GND']")
@@ -243,11 +249,29 @@ public class pageElements {
 	@FindBy(xpath="//label[@for='shipping-method-shqcustom-ups_mail_innovations']")
 	public WebElement mailInnovation;
 
-	@FindBy(xpath="//button[@id='shipping-continue']")
+	@FindBy(xpath="//button[@class='add-to-cart button button--cta']")
 	public WebElement continuebill;
 	
 	@FindBy(xpath="//button[@id='buttonSelectAddressUser']")
 	public WebElement userAddress;
+	
+	@FindBy(xpath="//input[contains(@id,'addToAddressBook')]")
+	public WebElement saveAddress;
+	
+	@FindBy(xpath="//div[contains(@class,'shipping-method-container')]")
+	public WebElement shippingtable;
+	
+	@FindBy(xpath="//div[@class='shipping-method-products']//child::span")
+	public WebElement shippingtable_products;
+	
+	@FindBy(xpath="//div[contains(text(),'Ship Later')]")
+	public WebElement shiplater_title;
+	
+	@FindBy(xpath="//div[contains(text(),'Ship Later')]//following::label[contains(@for,'shipping-method')]")
+	public WebElement shippingmethods_shiplater;
+	
+	@FindBy(xpath="")
+	public WebElement shippingmethods_shipnow;
 	
 	
 	//Billingpage
@@ -285,6 +309,91 @@ public class pageElements {
 	@FindBy(xpath="//label[contains(@for,'dwfrm_billing_shipInt')]")
 	public WebElement shpInt;
 	
+	@FindBy(xpath="//div[@class='billing-coupon-giftcard-toggle']")
+	public WebElement giftcard_coupon_toggle;
+	
+	@FindBy(xpath="//input[@name='dwfrm_billing_giftCertCode']")
+	public WebElement giftcard;
+	
+	@FindBy(xpath="//button[@id='check-giftcert']")
+	public WebElement GC_checkbalance;
+	
+	@FindBy(xpath="//button[@id='add-giftcert']")
+	public WebElement GC_apply;
+	
+	@FindBy(xpath="//div[@class='success giftcert-pi']")
+	public WebElement GC_successmsg;
+	
+	@FindBy(xpath="//input[@name='dwfrm_billing_couponCode']")
+	public WebElement coupon;
+	
+	@FindBy(xpath="//button[@id='add-coupon']")
+	public WebElement Coupon_apply;
+	
+	@FindBy(xpath="//select[@name='dwfrm_billing_billingAddress_addressFields_states_state']")
+	public WebElement Bill_stateField;
+	
+	@FindBy(xpath="//label[contains(@for,'saveCard')]") 
+	public WebElement savecard;
+	
+	@FindBy(xpath="(//tr[@class='order-subtotal']//child::td)[2]") 
+	public WebElement BP_subtotal;
+	
+	@FindBy(xpath="(//tr[@class='order-total']//child::td)[2]") 
+	public WebElement BP_total;
+	
+	@FindBy(xpath="(//tr[@class='order-sales-tax']//child::td)[2]") 
+	public WebElement BP_tax;
+	
+	@FindBy(xpath="//img[@class='paypal-logo']") 
+	public WebElement Paypal_chkbx;
+	
+	@FindBy(xpath="//div[@class='paypal-button-label-container']") 
+	public WebElement Paypal_btn;
+	
+	@FindBy(xpath="//button[@id='createAccount']") 
+	public WebElement Paypal_guestpay;
+	
+	@FindBy(xpath="//input[@id='cardNumber']") 
+	public WebElement Paypal_CC_number;
+	
+	@FindBy(xpath="//input[@id='cardExpiry']") 
+	public WebElement Paypal_CC_date;
+	
+	@FindBy(xpath="//input[@id='cardCvv']") 
+	public WebElement Paypal_CC_CVV;
+	
+	@FindBy(xpath="//input[@id='email']") 
+	public WebElement Paypal_email;
+	
+	@FindBy(xpath="//input[@id='telephone']") 
+	public WebElement Paypal_phone;
+	
+	@FindBy(xpath="//button[text()='Continue']']") 
+	public WebElement Paypal_confirm;
+	
+	@FindBy(xpath="//button[@track-input='Pay_Now']") 
+	public WebElement Paypal_pay;
+	
+	@FindBy(xpath="//input[@id='firstName']") 
+	public WebElement Paypal_firstName;
+	
+	@FindBy(xpath="//input[@id='lastName']") 
+	public WebElement Paypal_lastName;
+	
+	@FindBy(xpath="//input[@id='billingLine1']") 
+	public WebElement Paypal_address;
+	
+	@FindBy(xpath="//input[@id='billingCity']") 
+	public WebElement Paypal_city;
+	
+	@FindBy(xpath="//select[@id='billingState']") 
+	public WebElement Paypal_state;
+	
+	@FindBy(xpath="//input[@id='billingPostalCode']") 
+	public WebElement Paypal_zipcode;
+	
+	
 	//Place order page
 	
 	@FindBy(xpath="//button[@value='Place Order']")
@@ -293,9 +402,18 @@ public class pageElements {
 	@FindBy(xpath="(//span[@class='label'])[1]")
 	public WebElement POviewcart;
 	
+	@FindBy(xpath="(//tr[@class='order-subtotal']//child::td)[4]") 
+	public WebElement POP_subtotal;
+	
+	@FindBy(xpath="(//tr[@class='order-total']//child::td)[4]") 
+	public WebElement POP_total;
+	
+	@FindBy(xpath="(//tr[@class='order-sales-tax']//child::td)[4]") 
+	public WebElement POP_tax;
+	
 	//Order Confirmation page
 	
-	@FindBy(xpath="//div[@class='order-information']//following::h3")
+	@FindBy(xpath="//div[@class='orderdetails']//following::h3") ////div[@class='order-information']//following::h3
 	public WebElement orderNumber;
 	
 	@FindBy(xpath="(//tr[@class='order-subtotal']//following::td)[2]")
@@ -395,9 +513,9 @@ public class pageElements {
 	
 	String Payment_Method;
 	
-	String[] itemlist;
+	public String[] itemlist;
 	
-	String[] qty;
+	public String[] qty;
 	
 	String[] variant;
 	

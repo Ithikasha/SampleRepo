@@ -33,6 +33,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.itextpdf.text.log.SysoLogger;
 
+import Smoke_test.Data_smoke;
+
 import org.openqa.selenium.WebElement;
 
 public class Functions {
@@ -41,6 +43,7 @@ public class Functions {
 	public driverUtil util = new driverUtil();
 	constantData data_obj;
 	pageElements element_obj;
+	Data_smoke smoke_data; 
 	
 
    public Functions(constantData data,pageElements elem)
@@ -87,7 +90,7 @@ public class Functions {
 
 		login();
  
-		for (data_obj.orderCount = 19; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
+		for (data_obj.orderCount = 1; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
 
 			data_obj.flag = true;
 			
@@ -267,8 +270,7 @@ public void orderConfirmation() throws Exception {
 
 public boolean selectItems() throws InterruptedException, Exception 
 {
-	int c = 0;
-
+	
 	for(int j = 0; j < element_obj.itemlist.length; j++)
 	{
 			
@@ -304,16 +306,7 @@ public boolean selectItems() throws InterruptedException, Exception
 			util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
 			
 			//Capturing Product price
-			
-			String prc = element_obj.driver.findElement(By.xpath("//div[@class='product-price']//child::span[@class='price-sales']")).getText();
-			
-			data_obj.PDP_price.add(j, prc);
-			
-			String nme = element_obj.driver.findElement(By.xpath("//h1[@class='product-name']")).getText();
-			
-			data_obj.PDP_prdName.add(j, nme);
-			
-			util.Click(element_obj.addcart);
+
 		}
 
 		else 
@@ -327,63 +320,11 @@ public boolean selectItems() throws InterruptedException, Exception
 				
 		util.Click(element_obj.miniviewcart);
 			
-//		System.out.println("Product "+(j+1)+" is added");
+		System.out.println("Product "+(j+1)+" is added");
 				
 	}
 	
-//	if(element_obj.Guest_CO.isDisplayed())
-//	{
-//		element_obj.email.clear();
-//		element_obj.email.sendKeys(data_obj.email);
-//		element_obj.password.clear();
-//		element_obj.password.sendKeys(data_obj.DEV_password);
-//		util.WaitAndClick(element_obj.Guest_CO);
-//	}
-	
-	//Check Price
-	for(int j=0; j < element_obj.itemlist.length; j++)
-	{
-		
-	}
-	
-//	Quantity, Non-combinable, 
-	
-	for(int i = 1; i <= element_obj.itemlist.length; i++)
-	{
-		data_obj.CP_prdName.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='name']//child::a)["+i+"]")).getText());
-		
-		data_obj.CP_price.add(i-1, element_obj.driver.findElement(By.xpath("(//td[@class='item-price']//child::span)["+1+"]")).getText());
-		
-	}
-	
-	Collections.sort(data_obj.CP_prdName);
-	
-	Collections.sort(data_obj.CP_price);
-	
-	for(int i = 0; i < element_obj.itemlist.length; i++)
-	{
-		if(data_obj.PDP_prdName.get(i).equalsIgnoreCase(data_obj.CP_prdName.get(i)))
-		{
-			System.out.println("Product: "+data_obj.PDP_prdName.get(i)+" Product name Validation Successfully");
-		}
-		else
-		{
-			System.out.println("Product: "+data_obj.PDP_prdName.get(i)+" Product name Validation Unsuccessfully");
-		}
-		
-//		if(data_obj.PDP_price[i].equalsIgnoreCase(data_obj.CP_price[i]))
-//		{
-//			System.out.println("Product: "+data_obj.PDP_price[i]+" Price Validation Successfully");
-//		}
-//		else
-//		{
-//			System.out.println("Product: "+data_obj.PDP_price[i]+" Price Validation Unsuccessfully");
-//		}
-	}
-	
 	util.WaitAndClick(element_obj.checkout);
-	
-	
 	
 	System.out.println("Cart is ready");
 			
@@ -399,20 +340,20 @@ public boolean selectItems() throws InterruptedException, Exception
 		
 		//signupCheckout();
 		
-		guestCheckout();
+		guestCheckout("");
 		
 	}
 	
-	
-	
-	public void guestCheckout() throws InterruptedException 
+	public void guestCheckout(String email) throws InterruptedException 
 	{
 		
-		util.Sendkeys(element_obj.email, data_obj.username);
-		util.Click(element_obj.checkout);
+		util.Sendkeys(element_obj.email, email);
+		
+		util.Click(element_obj.Guest_chkBox);
+		
+		util.WaitAndClick(element_obj.Guest_CO);
 		
 	}
-
 
 	public void registeredUserCheckout() throws InterruptedException 
 	{
@@ -422,7 +363,6 @@ public boolean selectItems() throws InterruptedException, Exception
 		util.Sendkeys(element_obj.password, data_obj.DEV_password);
 		
 		util.Click(element_obj.checkout);
-		
 		
 	}
 	
@@ -438,6 +378,22 @@ public boolean selectItems() throws InterruptedException, Exception
 		util.Click(element_obj.login_button);
 		
 		System.out.println("User is Logged in");
+		
+//		util.Click(element_obj.Metallica);
+
+	}
+	
+public void smoke_login(String email, String password) throws InterruptedException {
+		
+		util.Click(element_obj.login);
+		
+		util.Sendkeys(element_obj.email, email);
+	
+		util.Sendkeys(element_obj.password, password);
+	
+		util.Click(element_obj.login_button);
+		
+//		System.out.println("User is Logged in");
 		
 //		util.Click(element_obj.Metallica);
 
@@ -671,7 +627,7 @@ public boolean selectItems() throws InterruptedException, Exception
 
 	}
 
-	public boolean payment(String orderType) throws InterruptedException
+	public boolean payment(String orderType) throws Exception
 	{
 		switch(element_obj.Payment_Method) 
 		{
@@ -783,8 +739,151 @@ public boolean selectItems() throws InterruptedException, Exception
 
 	}
 	
+	public void smoke_payment() throws Exception
+	{
+		switch(smoke_data.paymentMethod) 
+		{
 
-	public static void paypal() {
+		case "Visa":
+
+			
+			util.Sendkeys(element_obj.cardnumber, data_obj.Visa_number);
+			
+			Select card_month = new Select(element_obj.cardmonth);
+			card_month.selectByValue(data_obj.Visa_month);
+
+			element_obj.cardyear.sendKeys(data_obj.Visa_year);
+
+			element_obj.cardcvn.sendKeys(data_obj.Visa_cvv);
+			
+			element_obj.cardname.sendKeys(data_obj.firstname);
+//			
+//			if(element_obj.Error_message.isDisplayed())
+//			{
+//				System.out.println(element_obj.Error_message.toString());
+//				return false;
+//			}
+//			
+//			else if(element_obj.Error_span.isDisplayed())
+//			{
+//				System.out.println(element_obj.Error_span.toString());
+//				return false;
+//			}
+			
+			break;
+
+		case "Amex":
+
+						
+			element_obj.cardname.sendKeys(data_obj.firstname);
+			
+			element_obj.cardnumber.sendKeys(data_obj.Amex_number);
+
+			Select AmexCard_month = new Select(element_obj.cardmonth);
+			AmexCard_month.selectByValue(data_obj.Amex_month);
+
+			element_obj.cardyear.sendKeys(data_obj.Amex_year);
+			
+			element_obj.cardcvn.sendKeys(data_obj.Amex_cvv);
+
+//			if(element_obj.Error_message.isDisplayed())
+//			{
+//				System.out.println(element_obj.Error_message.toString());
+//				return false;
+//			}
+//			
+//			else if(element_obj.Error_span.isDisplayed())
+//			{
+//				System.out.println(element_obj.Error_span.toString());
+//				return false;
+//			}
+			
+			break;
+			
+		case "Dis":
+			
+			element_obj.cardname.sendKeys(data_obj.firstname);
+			
+			element_obj.cardnumber.sendKeys(data_obj.Dis_number);
+
+			Select Dis_month = new Select(element_obj.cardmonth);
+			Dis_month.selectByValue(data_obj.Dis_month);
+
+			element_obj.cardyear.sendKeys(data_obj.Dis_year);
+			
+			element_obj.cardcvn.sendKeys(data_obj.Dis_cvv);
+			
+			break;
+
+		case "Paypal":
+
+			paypal();
+
+			break;
+
+		default:
+
+			System.out.println("Give a Valid Payment Method");
+			break;
+		}
+	}
+	
+		
+	public void paypal() throws Exception {
+		
+		util.Click(element_obj.Paypal_chkbx);
+		
+		util.Click(element_obj.useAsBillingAddress);
+		
+		WebElement iframe = new WebDriverWait(element_obj.driver,15).until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//iframe[@class='zoid-component-frame zoid-visible'])[1]")));
+		
+		element_obj.driver.switchTo().frame(iframe);
+		
+		util.WaitAndClick(element_obj.Paypal_btn);
+		
+		util.SwitchtoLatestWindow(element_obj.driver);
+		
+//		util.Sendkeys(element_obj.driver.findElement(By.xpath("//input[@id='email']")), smoke_data.email);
+		
+		util.WaitAndClick(element_obj.driver.findElement(By.xpath("//button[@id='acceptAllButton']")));
+		
+		util.Click(element_obj.Paypal_guestpay);
+		
+		util.Sendkeys(element_obj.Paypal_CC_number, data_obj.Visa_number);
+		
+		util.Sendkeys(element_obj.Paypal_CC_date, data_obj.Visa_month+data_obj.Visa_year.substring(2));
+		
+		util.Sendkeys(element_obj.Paypal_CC_CVV, data_obj.Visa_cvv);
+		
+		util.Sendkeys(element_obj.Paypal_email, smoke_data.email);
+		
+		util.Click(element_obj.Paypal_confirm);
+		
+		data_obj.driver.wait(5000);
+		
+		util.Sendkeys(element_obj.Paypal_CC_number, data_obj.Visa_number);
+		
+		util.Sendkeys(element_obj.Paypal_CC_date, data_obj.Visa_month+data_obj.Visa_year.substring(2));
+		
+		util.Sendkeys(element_obj.Paypal_CC_CVV, data_obj.Visa_cvv);
+		
+//		util.Sendkeys(element_obj.Paypal_firstName, smoke_data.firstname);
+//		
+//		util.Sendkeys(element_obj.Paypal_lastName, smoke_data.lastname);
+//		
+//		util.Sendkeys(element_obj.Paypal_address, smoke_data.Address1);
+//		
+//		util.Sendkeys(element_obj.Paypal_city, smoke_data.City);
+//		
+//		util.Sendkeys(element_obj.Paypal_zipcode, smoke_data.Zip_Code);
+//		
+//		util.Sendkeys(element_obj.Paypal_phone, smoke_data.phone);
+		
+		util.Sendkeys(element_obj.Paypal_email, smoke_data.email);
+		
+		util.Click(element_obj.Paypal_pay);	
+		
+		util.SwitchtoWindowByTitle(element_obj.driver, " Checkout - Order Review | 103.1.9 - controllers");
 
 	}
 
@@ -1461,9 +1560,33 @@ public boolean selectItems() throws InterruptedException, Exception
         
 	}
 	
-	public void Validate_Cartpage()
+	public void Add_product(String[] prod, String[] qty) throws InterruptedException
 	{
-		
+		for(int i = 0; i < prod.length; i++)
+		{
+			util.Click(element_obj.srch);
+			
+			util.Sendkeys(element_obj.srchIP,prod[i]);
+
+			element_obj.srchTxt.submit();
+			
+			util.Clear(element_obj.PDP_quantity);
+			
+			util.AcceptAlertifPresent(data_obj.driver);
+					
+			util.Clear(element_obj.PDP_quantity);
+					
+			util.AcceptAlertifPresent(data_obj.driver);
+					
+			util.Sendkeys(element_obj.PDP_quantity,qty[i]);
+			
+			util.Click(element_obj.addcart);
+			
+			util.Click(element_obj.miniviewcart);
+			
+		}
+
+		//		util.WaitAndClick(element_obj.checkout);
 		
 	}
 	

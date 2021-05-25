@@ -45,7 +45,7 @@ public class driverUtil {
 	
 	constantData data_obj ;
 
-	public static void SwitchtoLatestWindow(WebDriver driver)//switching to the latest window
+	public void SwitchtoLatestWindow(WebDriver driver)//switching to the latest window
 	{
 		Set<String> handles = driver.getWindowHandles();
 		
@@ -56,7 +56,7 @@ public class driverUtil {
 	}
 	
 	
-	public static void SwitchtoWindowByTitle(WebDriver driver, String title)//switching to the window using title
+	public void SwitchtoWindowByTitle(WebDriver driver, String title)//switching to the window using title
 	{
 		Set<String> handles = driver.getWindowHandles();
 		
@@ -127,7 +127,7 @@ public class driverUtil {
 			{
 				if(count++<10)
 				{
-					System.out.println("Retrying Click Method"+count);
+//					System.out.println("Retrying Click Method"+count);
 					Thread.sleep(1000);
 				}
 			
@@ -228,7 +228,7 @@ public class driverUtil {
         
 		int count = 0;
 		
-		while(count<5)
+		while(count<10)
 		{
 			try
 			{
@@ -239,7 +239,7 @@ public class driverUtil {
 			catch(NoAlertPresentException ex)
 			{
 				count++;
-				System.out.println("Retrying Alert accept"+count);
+//				System.out.println("Retrying Alert accept"+count);
 				Thread.sleep(1000);
 			}
 		}
@@ -413,7 +413,7 @@ public class driverUtil {
 	
 			if(!element.isEnabled() && count < 60)
 			{
-				System.out.println("Waiting for element- "+(++count)+"secs");
+//				System.out.println("Waiting for element- "+(++count)+"secs");
 				Thread.sleep(1000);
 			}
 			
