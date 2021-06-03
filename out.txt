@@ -1,0 +1,14 @@
+Retrying Alert accept1
+Retrying Alert accept1
+Retrying Alert accept2
+Retrying Alert accept3
+Retrying Alert accept4
+Retrying Alert accept5
+Product: KILL 'EM ALL T-SHIRT Product name Validation Successfully
+Product: $29.99 Price Validation Successfully
+Update Quantity Test
+Total products: 1
+Product 1 updated successfully
+Remove Products Test
+Total products: 1
+Product 1 removed successfully

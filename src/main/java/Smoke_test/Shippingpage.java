@@ -43,6 +43,8 @@ public class Shippingpage {
 		
 		System.out.println("\t\tTestcase - 8");
 		
+		int fail = 0;
+		
 		func.Add_product(smoke_data.itemlist, smoke_data.qty);
 			
 		util.Click(element_obj.checkout);
@@ -54,6 +56,7 @@ public class Shippingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Firstname verify Unsuccessfully");
+			fail++;
 		}
 
 		
@@ -64,6 +67,7 @@ public class Shippingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Lastname verify Unsuccessfully");
+			fail++;
 		}
 
 		
@@ -74,6 +78,7 @@ public class Shippingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Address Line1 verify Unsuccessfully");
+			fail++;
 		}
 		
 		if(util.Isdisplayed(element_obj.address2))
@@ -83,6 +88,7 @@ public class Shippingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Address Line2 verify Unsuccessfully");
+			fail++;
 		}
 
 		if(util.Isdisplayed(element_obj.city))
@@ -92,6 +98,7 @@ public class Shippingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"City verify Unsuccessfully");
+			fail++;
 		}
 		
 		if(util.Isdisplayed(element_obj.stateField))
@@ -101,6 +108,7 @@ public class Shippingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"State verify Unsuccessfully");
+			fail++;
 		}
 		
 		if(util.Isdisplayed(element_obj.countryField))
@@ -110,6 +118,7 @@ public class Shippingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Country verify Unsuccessfully");
+			fail++;
 		}
 		
 		if(util.Isdisplayed(element_obj.zipcode))
@@ -119,6 +128,7 @@ public class Shippingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Zipcode verify Unsuccessfully");
+			fail++;
 		}
 		
 		if(util.Isdisplayed(element_obj.phone))
@@ -128,6 +138,7 @@ public class Shippingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Phone verify Unsuccessfully");
+			fail++;
 		}
 		
 		if(util.Isdisplayed(element_obj.saveAddress))
@@ -137,6 +148,7 @@ public class Shippingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Add to Address Book checkbox verify Unsuccessfully");
+			fail++;
 		}
 		
 		if(util.Isdisplayed(element_obj.useAsBillingAddress))
@@ -148,6 +160,7 @@ public class Shippingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Use as Billing address checkbox verify Unsuccessfully");
+			fail++;
 		}
 
 		if(util.Isdisplayed(element_obj.gift))
@@ -157,6 +170,7 @@ public class Shippingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Gift checkbox verify Unsuccessfully");
+			fail++;
 		}
 
 		if(util.Isdisplayed(element_obj.continuebill))
@@ -166,8 +180,17 @@ public class Shippingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Continue to Billing CTA verify Unsuccessfully");
+			fail++;
 		}
 		
+		if(fail>0)
+		{
+			func.write_Smoketest(false, 8);
+		}
+		else
+		{
+			func.write_Smoketest(true, 8);
+		}
 		
 	}
 	
@@ -176,6 +199,8 @@ public class Shippingpage {
 		System.out.println("\tSmoke Testing: Validate the Mandatory fields");
 		
 		System.out.println("\t\tTestcase - 12");
+		
+		int fail = 0;
 		
 		switch(1)
 		{
@@ -192,6 +217,9 @@ public class Shippingpage {
 				util.Clear(element_obj.address1);
 				
 				util.Sendkeys(element_obj.address1,smoke_data.Address1);
+				
+				Select Country1 = new Select(element_obj.countryField);
+				Country1.selectByVisibleText(smoke_data.Country);
 
 				util.Clear(element_obj.city);
 				
@@ -199,10 +227,25 @@ public class Shippingpage {
 
 				util.Clear(element_obj.zipcode);
 				
-				util.Sendkeys(element_obj.zipcode,smoke_data.Zip_Code);
+				util.Sendkeys(element_obj.zipcode,smoke_data.Zip_Code); 
 				
-				Select C1_state = new Select(element_obj.stateField);
-				C1_state.selectByVisibleText(smoke_data.State);
+				switch(smoke_data.Country)
+				{
+					case "United States":
+						Select US_state = new Select(element_obj.stateField);
+						US_state.selectByVisibleText(smoke_data.State);
+						break;
+					
+					case "Canada":
+						Select CA_state = new Select(element_obj.CAstateField);
+						CA_state.selectByVisibleText(smoke_data.State);
+						break;
+					
+					default:
+						util.Clear(element_obj.IstateField);
+						util.Sendkeys(element_obj.IstateField, smoke_data.State);
+						break;
+				}
 				
 				util.Clear(element_obj.phone);
 				
@@ -217,6 +260,7 @@ public class Shippingpage {
 				else
 				{
 					System.out.println("\t\t\t"+"Mandatory field: First Name verify Unsucessful");
+					fail++;
 				}
 				
 			case 2:
@@ -232,6 +276,9 @@ public class Shippingpage {
 				util.Clear(element_obj.address1);
 				
 				util.Sendkeys(element_obj.address1,smoke_data.Address1);
+				
+				Select Country2 = new Select(element_obj.countryField);
+				Country2.selectByVisibleText(smoke_data.Country);
 
 				util.Clear(element_obj.city);
 				
@@ -241,8 +288,23 @@ public class Shippingpage {
 				
 				util.Sendkeys(element_obj.zipcode,smoke_data.Zip_Code);
 				
-				Select C2_state = new Select(element_obj.stateField);
-				C2_state.selectByVisibleText(smoke_data.State);
+				switch(smoke_data.Country)
+				{
+					case "United States":
+						Select US_state = new Select(element_obj.stateField);
+						US_state.selectByVisibleText(smoke_data.State);
+						break;
+					
+					case "Canada":
+						Select CA_state = new Select(element_obj.CAstateField);
+						CA_state.selectByVisibleText(smoke_data.State);
+						break;
+					
+					default:
+						util.Clear(element_obj.IstateField);
+						util.Sendkeys(element_obj.IstateField, smoke_data.State);
+						break;
+				}
 				
 				util.Clear(element_obj.phone);
 				
@@ -257,6 +319,7 @@ public class Shippingpage {
 				else
 				{
 					System.out.println("\t\t\t"+"Mandatory field: Last Name verify Unsucessful");
+					fail++;
 				}
 				
 			case 3:
@@ -272,6 +335,9 @@ public class Shippingpage {
 				util.Clear(element_obj.address1);
 				
 //				util.Sendkeys(element_obj.address1,smoke_data.Address1);
+				
+				Select Country3 = new Select(element_obj.countryField);
+				Country3.selectByVisibleText(smoke_data.Country);
 
 				util.Clear(element_obj.city);
 				
@@ -281,8 +347,23 @@ public class Shippingpage {
 				
 				util.Sendkeys(element_obj.zipcode,smoke_data.Zip_Code);
 				
-				Select C3_state = new Select(element_obj.stateField);
-				C3_state.selectByVisibleText(smoke_data.State);
+				switch(smoke_data.Country)
+				{
+					case "United States":
+						Select US_state = new Select(element_obj.stateField);
+						US_state.selectByVisibleText(smoke_data.State);
+						break;
+					
+					case "Canada":
+						Select CA_state = new Select(element_obj.CAstateField);
+						CA_state.selectByVisibleText(smoke_data.State);
+						break;
+					
+					default:
+						util.Clear(element_obj.IstateField);
+						util.Sendkeys(element_obj.IstateField, smoke_data.State);
+						break;
+				}
 				
 				util.Clear(element_obj.phone);
 				
@@ -297,6 +378,7 @@ public class Shippingpage {
 				else
 				{
 					System.out.println("\t\t\t"+"Mandatory field: Address1 verify Unsucessful");
+					fail++;
 				}
 				
 			case 4:
@@ -312,6 +394,9 @@ public class Shippingpage {
 //				util.Clear(element_obj.address1);
 				
 				util.Sendkeys(element_obj.address1,smoke_data.Address1);
+				
+				Select Country4 = new Select(element_obj.countryField);
+				Country4.selectByVisibleText(smoke_data.Country);
 
 				util.Clear(element_obj.city);
 				
@@ -321,8 +406,23 @@ public class Shippingpage {
 				
 				util.Sendkeys(element_obj.zipcode,smoke_data.Zip_Code);
 				
-				Select C4_state = new Select(element_obj.stateField);
-				C4_state.selectByVisibleText(smoke_data.State);
+				switch(smoke_data.Country)
+				{
+					case "United States":
+						Select US_state = new Select(element_obj.stateField);
+						US_state.selectByVisibleText(smoke_data.State);
+						break;
+					
+					case "Canada":
+						Select CA_state = new Select(element_obj.CAstateField);
+						CA_state.selectByVisibleText(smoke_data.State);
+						break;
+					
+					default:
+						util.Clear(element_obj.IstateField);
+						util.Sendkeys(element_obj.IstateField, smoke_data.State);
+						break;
+				}
 				
 				util.Clear(element_obj.phone);
 				
@@ -337,6 +437,7 @@ public class Shippingpage {
 				else
 				{
 					System.out.println("\t\t\t"+"Mandatory field: City verify Unsucessful");
+					fail++;
 				}
 				
 			case 5:
@@ -352,6 +453,9 @@ public class Shippingpage {
 				util.Clear(element_obj.address1);
 				
 				util.Sendkeys(element_obj.address1,smoke_data.Address1);
+				
+				Select Country5 = new Select(element_obj.countryField);
+				Country5.selectByVisibleText(smoke_data.Country);
 
 //				util.Clear(element_obj.city);
 				
@@ -361,8 +465,23 @@ public class Shippingpage {
 				
 				util.Sendkeys(element_obj.zipcode,""); //smoke_data.Zip_Code
 				
-				Select C5_state = new Select(element_obj.stateField);
-				C5_state.selectByVisibleText(smoke_data.State);
+				switch(smoke_data.Country)
+				{
+					case "United States":
+						Select US_state = new Select(element_obj.stateField);
+						US_state.selectByVisibleText(smoke_data.State);
+						break;
+					
+					case "Canada":
+						Select CA_state = new Select(element_obj.CAstateField);
+						CA_state.selectByVisibleText(smoke_data.State);
+						break;
+					
+					default:
+						util.Clear(element_obj.IstateField);
+						util.Sendkeys(element_obj.IstateField, smoke_data.State);
+						break;
+				}
 				
 				util.Clear(element_obj.phone);
 				
@@ -389,6 +508,7 @@ public class Shippingpage {
 					else
 					{
 						System.out.println("\t\t\t"+"Mandatory field: Zipcode verify Unsucessful");
+						fail++;
 					}
 				}
 				
@@ -396,6 +516,9 @@ public class Shippingpage {
 				
 			case 6:
 				
+				if(smoke_data.Country == "United States" || smoke_data.Country == "Canada")
+				{
+
 				util.Clear(element_obj.firstname);
 
 				util.Sendkeys(element_obj.firstname,smoke_data.firstname);
@@ -407,6 +530,9 @@ public class Shippingpage {
 				util.Clear(element_obj.address1);
 				
 				util.Sendkeys(element_obj.address1,smoke_data.Address1);
+				
+				Select Country6 = new Select(element_obj.countryField);
+				Country6.selectByVisibleText(smoke_data.Country);
 
 				util.Clear(element_obj.city);
 				
@@ -416,8 +542,23 @@ public class Shippingpage {
 				
 				util.Sendkeys(element_obj.zipcode,smoke_data.Zip_Code);
 				
-				Select C6_state = new Select(element_obj.stateField);
-				C6_state.selectByVisibleText("Select...");
+				switch(smoke_data.Country)
+				{
+					case "United States":
+						Select US_state = new Select(element_obj.stateField);
+						US_state.selectByVisibleText("Select...");
+						break;
+					
+					case "Canada":
+						Select CA_state = new Select(element_obj.CAstateField);
+						CA_state.selectByVisibleText("Select...");
+						break;
+					
+					default:
+						util.Clear(element_obj.IstateField);
+						util.Sendkeys(element_obj.IstateField, smoke_data.State);
+						break;
+				}
 				
 				util.Clear(element_obj.phone);
 				
@@ -444,8 +585,14 @@ public class Shippingpage {
 					else
 					{
 						System.out.println("\t\t\t"+"Mandatory field: State verify Unsucessful");
+						fail++;
 					}
 				
+				}
+				}
+				else
+				{
+					System.out.println("\t\t\t"+"State is not Mandatory for given address");
 				}
 				
 			case 7:
@@ -461,6 +608,9 @@ public class Shippingpage {
 				util.Clear(element_obj.address1);
 				
 				util.Sendkeys(element_obj.address1,smoke_data.Address1);
+				
+				Select Country7 = new Select(element_obj.countryField);
+				Country7.selectByVisibleText(smoke_data.Country);
 
 				util.Clear(element_obj.city);
 				
@@ -470,8 +620,23 @@ public class Shippingpage {
 				
 				util.Sendkeys(element_obj.zipcode,smoke_data.Zip_Code);
 				
-				Select C7_state = new Select(element_obj.stateField);
-				C7_state.selectByVisibleText(smoke_data.State);
+				switch(smoke_data.Country)
+				{
+					case "United States":
+						Select US_state = new Select(element_obj.stateField);
+						US_state.selectByVisibleText(smoke_data.State);
+						break;
+					
+					case "Canada":
+						Select CA_state = new Select(element_obj.CAstateField);
+						CA_state.selectByVisibleText(smoke_data.State);
+						break;
+					
+					default:
+						util.Clear(element_obj.IstateField);
+						util.Sendkeys(element_obj.IstateField, smoke_data.State);
+						break;
+				}
 				
 				util.Clear(element_obj.phone);
 				
@@ -488,7 +653,17 @@ public class Shippingpage {
 				else
 				{
 					System.out.println("\t\t\t"+"Mandatory field: Phone verify Unsucessful");
+					fail++;
 				}
+		}
+		
+		if(fail>0)
+		{
+			func.write_Smoketest(false, 12);
+		}
+		else
+		{
+			func.write_Smoketest(true, 12);
 		}
 	}
 	
@@ -512,6 +687,9 @@ public class Shippingpage {
 			util.Clear(element_obj.address1);
 			
 			util.Sendkeys(element_obj.address1,smoke_data.Address1);
+			
+			Select Country = new Select(element_obj.countryField);
+			Country.selectByVisibleText(smoke_data.Country);
 
 			util.Clear(element_obj.city);
 			
@@ -521,8 +699,23 @@ public class Shippingpage {
 			
 			util.Sendkeys(element_obj.zipcode,smoke_data.Zip_Code);
 			
-			Select state = new Select(element_obj.stateField);
-			state.selectByVisibleText(smoke_data.State);
+			switch(smoke_data.Country)
+			{
+				case "United States":
+					Select US_state = new Select(element_obj.stateField);
+					US_state.selectByVisibleText(smoke_data.State);
+					break;
+				
+				case "Canada":
+					Select CA_state = new Select(element_obj.CAstateField);
+					CA_state.selectByVisibleText(smoke_data.State);
+					break;
+				
+				default:
+					util.Clear(element_obj.IstateField);
+					util.Sendkeys(element_obj.IstateField, smoke_data.State);
+					break;
+			}
 			
 			util.Clear(element_obj.phone);
 			
@@ -531,12 +724,14 @@ public class Shippingpage {
 			if(util.Isdisplayed(element_obj.shippingtable))
 			{
 				System.out.println("\t\t\t"+"Shipping Method table displayed after entering address - Successfully");
+				func.write_Smoketest(true, 9);
 			}
 		}
 		
 		else
 		{
 			System.out.println("\t\t\t"+"Shipping Method table Displayed without address - Unsuccessfully");
+			func.write_Smoketest(false, 9);
 		}
 		
 		System.out.println("\tSmoke Testing: Product Title in Shipping Table");
@@ -557,10 +752,12 @@ public class Shippingpage {
 			if(prod_list.get(i).contains(smoke_data.PDP_prdName.get(i)))
 			{
 				System.out.println("\t\t\t"+prod_list.get(i)+": Product name displayed in Shipping Method Table Successfully ");
+				func.write_Smoketest(true, 10);
 			}
 			else
 			{
 				System.out.println("\t\t\t"+prod_list.get(i)+" Product name displayed in Shipping Method Table Unsuccessfully");
+				func.write_Smoketest(false, 10);
 			}
 		}
 		
@@ -570,11 +767,13 @@ public class Shippingpage {
 		
 		if(util.Isdisplayed(element_obj.shiplater_title))
 		{
-			System.out.println("\t\t\t"+"Ship Later section displayed in Shipping method table");		
+			System.out.println("\t\t\t"+"Ship Later section displayed in Shipping method table Successfully");	
+			func.write_Smoketest(true, 11);
 		}
 		else
 		{
-			System.out.println("\t\t\t"+"Ship Later section NOT displayed in Shipping method table");
+			System.out.println("\t\t\t"+"Ship Later section NOT displayed in Shipping method table - Unsuccessful");
+			func.write_Smoketest(false, 11);
 		}
 		
 	}

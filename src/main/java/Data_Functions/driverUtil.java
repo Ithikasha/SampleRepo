@@ -155,7 +155,11 @@ public class driverUtil {
 						System.out.println("Retrying isDisplayed Method "+count);
 						Thread.sleep(1000);
 						return Isdisplayed(element);
-					}				
+					}
+					else
+					{
+						return false;
+					}
 				}
 				catch(NoSuchElementException ex)
 				{
@@ -247,11 +251,11 @@ public class driverUtil {
     }
 	
 	
-	public void jClick(WebElement element) throws InterruptedException
+	public void jClick(WebDriver driver, WebElement element) throws InterruptedException
 	{
 		if(waitForElementToLoad(element))
 			{
-				js = (JavascriptExecutor)data_obj.driver;
+				js = (JavascriptExecutor)driver;
 					
 				js.executeScript("arguments[0].click();", element);
 			}

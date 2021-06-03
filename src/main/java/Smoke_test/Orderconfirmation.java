@@ -48,15 +48,19 @@ public class Orderconfirmation {
 			System.out.println("\t\t\t"+smoke_data.orderNumber.substring(15));
 			
 			System.out.println("\t\t\t"+"Order Number displayed Successfully");
+			func.write_Smoketest(true, 25);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Order Number display Unsuccessfully");
+			func.write_Smoketest(false, 25);
 		}
 		
 		System.out.println("\tSmoke Testing: Order Details validation");
 		
 		System.out.println("\t\tTestcase - 26");
+		
+		int fail = 0;
 		
 		for(int i = 0; i < smoke_data.itemlist.length; i++)
 		{
@@ -69,6 +73,7 @@ public class Orderconfirmation {
 			else
 			{
 				System.out.println("\t\t\t"+"Product: "+smoke_data.PDP_prdName.get(i)+" Product name Validation Unsuccessfully");
+				fail++;
 			}
 			
 			if(smoke_data.OC_price.get(i).equalsIgnoreCase(smoke_data.POP_price.get(i)))
@@ -78,6 +83,7 @@ public class Orderconfirmation {
 			else
 			{
 				System.out.println("\t\t\t"+"Product: "+smoke_data.POP_price.get(i)+" Price Validation Unsuccessfully");
+				fail++;
 			}
 			
 			if(smoke_data.OC_qty.get(i).equalsIgnoreCase(smoke_data.POP_qty.get(i)))
@@ -87,7 +93,43 @@ public class Orderconfirmation {
 			else
 			{
 				System.out.println("\t\t\t"+"Product: "+smoke_data.POP_qty.get(i)+" Quantity Validation Unsuccessfully");
+				fail++;
 			}
+		}
+		
+		String Shipping_address = element_obj.driver.findElement(By.xpath("(//p[text()='Shipping Address']//following::address)[1]")).getAttribute("innerText");
+		
+//		System.out.println(Shipping_address);
+		
+		if(Shipping_address.contains(smoke_data.POP_Shipaddress)) 
+		{
+			System.out.println("\t\t\t"+"Shipping details in Order confirmation page verified Successfully");
+		}
+		else
+		{
+			System.out.println("\t\t\t"+"Shipping details in Order confirmation page verified Unsuccessfully");
+			fail++;
+		}
+		
+		String Billing_address = element_obj.driver.findElement(By.xpath("//p[text()='Billing Address']//following::address")).getAttribute("innerText");
+		
+		if(Billing_address.contains(smoke_data.POP_Billaddress))
+		{
+			System.out.println("\t\t\t"+"Billing details in Order confirmation page verified Successfully");
+		}
+		else
+		{
+			System.out.println("\t\t\t"+"Billing details in Order confirmation page verified Unsuccessfully");
+			fail++;
+		}
+		
+		if(fail>0)
+		{
+			func.write_Smoketest(false, 26);
+		}
+		else
+		{
+			func.write_Smoketest(true, 26);
 		}
 		
 	}

@@ -4,17 +4,21 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import Data_Functions.*;
+import Smoke_test.Data_smoke;
 
 public class Cart_testing {
 	
 	constantData data_obj = new constantData();
+	
+	Data_smoke data_smoke = new Data_smoke();
+	
 	driverUtil util = new driverUtil();
 	
 	WebDriver driver = util.chrome();
 	
 	pageElements element_obj = new pageElements(driver);
 	
-	Functions func_obj = new Functions(data_obj, element_obj);
+	Functions func_obj = new Functions(data_obj, element_obj,data_smoke);
 	
 	@BeforeTest
 	public void beforeTesting() throws InterruptedException {

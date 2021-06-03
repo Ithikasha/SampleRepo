@@ -172,8 +172,11 @@ public class pageElements {
 	@FindBy(xpath="//span[text()='Remove']")
 	public WebElement remove;
 
-	@FindBy(xpath="")
+	@FindBy(xpath="(//td[@class='item-quantity']//child::input[@value='2'])")
 	public WebElement CP_quantity;
+	
+	@FindBy(xpath="(//span[@class='product-quantity-error error'])[1]")
+	public WebElement CP_quantityerror;
 	
 	
 	@FindBy(xpath="//div[@class='name']//child::a")

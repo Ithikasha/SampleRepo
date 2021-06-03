@@ -9,31 +9,53 @@ public class Data_smoke {
 	
 	constantData data_obj;
 	
+	boolean result ; 
+	
+	public String fileName = "Smoke_Testing.xlsx";
+	
+	public String filePath = "C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets";
+	
+	public String sheetName = "result";
+	
+	public String Input_sheetName = "input";
+			
 	public String URL = "https://storefront:Frantic81@staging.rockdevelop.com/";
 	
-	public String[] itemlist = {"T101M","ABCBOOK"};
+	public static String email ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
-	public String[] qty = {"1","1"};
+	public static String password ;  //Ithi@met07 , Qatest@met07
 	
-	public String email = "qatest0975@gmail.com"; //ithikasha@unitedtechno.com , qatest0975@gmail.com
+	public static String[] itemlist;
 	
-	public String password = "Qatest@met07" ;  //Ithi@met07 , Qatest@met07
+	public static String[] qty;
 	
-	public String firstname = "QA" ;
+	public static String[] variant;
 	
-	public String lastname = "Tester" ;
+	public static String firstname = "QA";
 	
-	public String Address1 = "6255 Sycamore Ln N";
+	public static String lastname = "Tester";
 	
-	public String City = "Maple Grove";
+	public static String Address1;
 	
-	public String State = "Minnesota"; 
+	public static String City ;
 	
-	public String Country = "United States"; 
+	public static String State; 
 	
-	public String Zip_Code = "55369";
+	public static String Country ; 
 	
-	public String phone = "9566852589";
+	public static String Zip_Code;
+	
+	public static String phone ;
+	
+	public static String paymentMethod;
+	
+	public String Shipping_Method;
+	
+	public String orderType;
+	
+	public int testCount;
+	
+	public int totalTest = 4;
 	
 	public static List<String> PDP_price = new ArrayList<>();
 
@@ -61,8 +83,6 @@ public class Data_smoke {
 	
 	public static List<String> OC_qty = new ArrayList<>() ;
 	
-	public static String paymentMethod = "Visa";
-	
 	public String GC = "OQRMKWOSGTZZHDIP";
 	
 	public static String BP_subtotal;
@@ -88,4 +108,5 @@ public class Data_smoke {
 	public String Orderstatus_email = "qatest0975@gmail.com";
 
 	public String orderNumber;
+	
 }

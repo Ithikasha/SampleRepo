@@ -43,13 +43,14 @@ public class Functions {
 	public driverUtil util = new driverUtil();
 	constantData data_obj;
 	pageElements element_obj;
-	Data_smoke smoke_data; 
+	Data_smoke smoke_data ; 
 	
 
-   public Functions(constantData data,pageElements elem)
+   public Functions(constantData data,pageElements elem, Data_smoke smoke)
    {
 	   data_obj=data;
 	   element_obj=elem;
+	   smoke_data=smoke;
    }
 	
 	
@@ -304,6 +305,8 @@ public boolean selectItems() throws InterruptedException, Exception
 			util.AcceptAlertifPresent(data_obj.driver);
 					
 			util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
+			
+			util.Click(element_obj.addcart);
 			
 			//Capturing Product price
 
@@ -1570,15 +1573,25 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 
 			element_obj.srchTxt.submit();
 			
-			util.Clear(element_obj.PDP_quantity);
+//			if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//p[@class='not-available-msg']"))))
+//			{
+//				System.out.println(prod[i]+" is Out of Stock");
+//				System.exit(1);
+//			}
 			
-			util.AcceptAlertifPresent(data_obj.driver);
-					
-			util.Clear(element_obj.PDP_quantity);
-					
-			util.AcceptAlertifPresent(data_obj.driver);
-					
-			util.Sendkeys(element_obj.PDP_quantity,qty[i]);
+//			if(qty[i] != "0")
+//			{
+//				util.Clear(element_obj.PDP_quantity);
+//				
+//				util.AcceptAlertifPresent(data_obj.driver);
+//						
+//				util.Clear(element_obj.PDP_quantity);
+//						
+//				util.AcceptAlertifPresent(data_obj.driver);
+//						
+//				util.Sendkeys(element_obj.PDP_quantity,qty[i]);
+//				
+//			}
 			
 			util.Click(element_obj.addcart);
 			
@@ -1587,6 +1600,97 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 		}
 
 		//		util.WaitAndClick(element_obj.checkout);
+		
+	}
+	
+	public void write_Smoketest(boolean result, int number) throws Exception
+	{
+		File file = new File(smoke_data.filePath+"\\"+smoke_data.fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,smoke_data.fileName);
+
+		Sheet sheet = book.getSheet(smoke_data.sheetName);
+ 
+		Row row = sheet.getRow(number);
+		
+		String value ;
+		
+		if(result)
+		{
+			value = "PASS";
+		}
+		else
+		{
+			value = "FAIL";
+		}
+		
+		switch(smoke_data.URL)
+		{
+			case "https://storefront:Frantic98@development.rockdevelop.com/":
+				
+				Cell DEVresult_cell = row.createCell(4+smoke_data.testCount);
+				
+				DEVresult_cell.setCellType(DEVresult_cell.CELL_TYPE_STRING);
+
+				DEVresult_cell.setCellValue(value);
+				
+				istream.close(); 
+		 	    
+				FileOutputStream DEV_outputstream = new FileOutputStream(smoke_data.filePath+"\\"+smoke_data.fileName);
+					
+				book.write(DEV_outputstream);
+				    
+				DEV_outputstream.close();
+				
+				break;
+				
+			case "https://storefront:Frantic81@staging.rockdevelop.com/":
+				
+				Cell STGresult_cell = row.createCell(6);
+				
+				STGresult_cell.setCellType(STGresult_cell.CELL_TYPE_STRING);
+
+				STGresult_cell.setCellValue(value);
+				
+				istream.close(); 
+		 	    
+				FileOutputStream STG_outputstream = new FileOutputStream(smoke_data.filePath+"\\"+smoke_data.fileName);
+					
+				book.write(STG_outputstream);
+				    
+				STG_outputstream.close();
+				
+				break;
+				
+			case "https://www.metallica.com/":
+				
+				Cell PRDresult_cell = row.createCell(7);
+				
+				PRDresult_cell.setCellType(PRDresult_cell.CELL_TYPE_STRING);
+
+				PRDresult_cell.setCellValue(value);
+				
+				istream.close(); 
+		 	    
+				FileOutputStream PRD_outputstream = new FileOutputStream(smoke_data.filePath+"\\"+smoke_data.fileName);
+					
+				book.write(PRD_outputstream);
+				    
+				PRD_outputstream.close();
+				
+				break;
+				
+			default:
+				System.out.println("\t\t\tInvalid URL - "+smoke_data.URL);
+				
+				break;
+		}
+		
+				
+		
+		
 		
 	}
 	

@@ -3,6 +3,7 @@ package Smoke_test;
 import java.util.Collections;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
 import Data_Functions.constantData;
 import Data_Functions.driverUtil;
@@ -25,14 +26,14 @@ public class Cartpage {
 	   }
 
   
-   public void cart_test() throws InterruptedException {
+   public void cart_test() throws Exception {
 	   
 	   	System.out.println("\nCart Page");
 	   	
 		data_obj.driver.get(smoke_data.URL);
 		
 //		util.Click(element_obj.no);
-	   
+//	   
 //	   func.login();
 	   
 	   for(int j = 0; j < smoke_data.itemlist.length; j++)
@@ -44,18 +45,18 @@ public class Cartpage {
 
 			element_obj.srchTxt.submit();
 					
-			if(util.Isdisplayed(element_obj.PDP_quantity)) 
-			{
+//			if(smoke_data.qty[j] != "0") 
+//			{
 						
-				util.Clear(element_obj.PDP_quantity);
-						
-				util.AcceptAlertifPresent(data_obj.driver);
-						
-				util.Clear(element_obj.PDP_quantity);
-						
-				util.AcceptAlertifPresent(data_obj.driver);
-						
-				util.Sendkeys(element_obj.PDP_quantity,smoke_data.qty[j]);	
+//				util.Clear(element_obj.PDP_quantity);
+//						
+//				util.AcceptAlertifPresent(data_obj.driver);
+//						
+//				util.Clear(element_obj.PDP_quantity);
+//						
+//				util.AcceptAlertifPresent(data_obj.driver);
+//						
+//				util.Sendkeys(element_obj.PDP_quantity,smoke_data.qty[j]);	
 				
 				//Capturing Product price
 				
@@ -68,15 +69,15 @@ public class Cartpage {
 				smoke_data.PDP_prdName.add(j, nme);
 				
 				util.Click(element_obj.addcart);
-			}
+//			}
 
-			else 
-			{
-
-				System.out.println("Quantity is not displayed");
-						
-				util.Click(element_obj.addcart);
-			}
+//			else 
+//			{
+//
+//				System.out.println("Quantity is not displayed");
+//						
+//				util.Click(element_obj.addcart);
+//			}
 
 					
 			util.Click(element_obj.miniviewcart);
@@ -102,25 +103,38 @@ public class Cartpage {
 	   	
 	   	System.out.println("\t\tTestcase - 4");
 	   	
+	   	int fail = 0;
+	   	
 		for(int i = 0; i < smoke_data.itemlist.length; i++)
 		{
 			if(smoke_data.PDP_prdName.get(i).equalsIgnoreCase(smoke_data.CP_prdName.get(i)))
 			{
-				System.out.println("\t\t\t"+smoke_data.PDP_prdName.get(i)+" Product name Validation Successfully");
+				System.out.println("\t\t\t"+" Product "+(i+1)+" Name Validation Successful");
 			}
 			else
 			{
-				System.out.println("\t\t\t"+smoke_data.PDP_prdName.get(i)+" Product name Validation Unsuccessfully");
+				System.out.println("\t\t\t"+"Product "+(i+1)+" Name Validation Unsuccessful");
+				fail++;
 			}
 			
 			if(smoke_data.PDP_price.get(i).equalsIgnoreCase(smoke_data.CP_price.get(i)))
 			{
-				System.out.println("\t\t\t"+smoke_data.PDP_price.get(i)+" Price Validation Successfully");
+				System.out.println("\t\t\t"+" Product "+(i+1)+" Price Validation Successful");
 			}
 			else
 			{
-				System.out.println("\t\t\t"+smoke_data.PDP_price.get(i)+" Price Validation Unsuccessfully");
+				System.out.println("\\t\\t\\t\"+\"Product \"+(i+1)+\" Name Validation Unsuccessful");
+				fail++;
 			}
+		}
+		
+		if(fail>0)
+		{
+			func.write_Smoketest(false, 4);
+		}
+		else
+		{
+			func.write_Smoketest(true, 4);
 		}
 		
 //		Update qty
@@ -129,28 +143,48 @@ public class Cartpage {
 		
 		System.out.println("\t\tTestcase - 5");
 		
+		fail = 0;
+		
 		System.out.println("\t\t\t"+"Total products: "+smoke_data.itemlist.length);
 		
 		for(int c = 1; c <= smoke_data.itemlist.length; c++)
 		{			
-			
-			data_obj.driver.findElement(By.xpath("(//td[@class='item-quantity']//child::input)["+c+"]")).clear();
-			
-			data_obj.driver.findElement(By.xpath("(//td[@class='item-quantity']//child::input)["+c+"]")).sendKeys("2");
-			
-			util.Click(element_obj.updatecart);
-			
-//			String value = data_obj.driver.findElement(By.xpath("(//td[@class='item-quantity']//child::input)["+c+"]")).getAttribute("value");
-			
-			if(util.Isdisplayed(data_obj.driver.findElement(By.xpath("(//td[@class='item-quantity']//child::input[@value='2'])"))))
+			if(data_obj.driver.findElement(By.xpath("(//div[@class='name']//child::a)["+c+"]")).getText().contains("Digital Download"))
 			{
-				System.out.println("\t\t\t"+"Product "+c+" updated Successfully");
+				System.out.println("\t\t\t"+"Digital Product quantity should not be more than 1 - Successful");
 			}
 			else
 			{
-				System.out.println("\t\t\t"+"Product "+c+" update Unsuccessfully");
+				data_obj.driver.findElement(By.xpath("(//td[@class='item-quantity']//child::input)["+c+"]")).clear();
+				
+				data_obj.driver.findElement(By.xpath("(//td[@class='item-quantity']//child::input)["+c+"]")).sendKeys("2");
+										
+				//Scroll and click
+				
+				int elementPosition = element_obj.updatecart.getLocation().getY();
+				String js = String.format("window.scroll(0, %s)", elementPosition);
+				((JavascriptExecutor)data_obj.driver).executeScript(js);
+				element_obj.updatecart.click();
+							
+				if(util.Isdisplayed(element_obj.CP_quantity))
+				{
+					System.out.println("\t\t\t"+"Product "+c+" updated Successfully");
+				}
+				else
+				{
+					System.out.println("\t\t\t"+"Product "+c+" update Unsuccessfully");
+					fail++;
+				}
 			}
 			
+		}
+		if(fail>0)
+		{
+			func.write_Smoketest(false, 5);
+		}
+		else
+		{
+			func.write_Smoketest(true, 5);
 		}
 		
 //		Remove prd
@@ -168,6 +202,8 @@ public class Cartpage {
 			
 			System.out.println("\t\t\tProduct "+c+" removed successfully");
 		}
+		
+		func.write_Smoketest(true, 6);
 		
 //		util.WaitAndClick(element_obj.checkout);
 		
@@ -189,6 +225,8 @@ public class Cartpage {
 	   {
 		   System.out.println("\t\t\tGuest checkout verified Successfully");
 		   
+		   func.write_Smoketest(true, 7);
+		   
 		   util.Click(element_obj.POviewcart);
 		   
 		   for(int c = 1; c <= smoke_data.itemlist.length; c++)
@@ -199,6 +237,8 @@ public class Cartpage {
 	   else
 	   {
 		   System.out.println("\t\t\tGuest checkout Unsuccessful");
+		   
+		   func.write_Smoketest(false, 7);
 		   
 		   for(int c = 1; c <= smoke_data.itemlist.length; c++)
 			{

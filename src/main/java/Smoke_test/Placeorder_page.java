@@ -38,6 +38,8 @@ public class Placeorder_page {
 		
 		System.out.println("\t\tTestcase - 20");
 		
+		int fail = 0;
+		
 		for(int i = 1; i <= smoke_data.itemlist.length; i++)
 		{
 			smoke_data.POP_prdName.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='name']//child::a)["+i+"]")).getText());
@@ -66,6 +68,7 @@ public class Placeorder_page {
 			else
 			{
 				System.out.println("\t\t\t"+smoke_data.PDP_prdName.get(i)+" Product name Validation Unsuccessfully");
+				fail++;
 			}
 			
 			if(smoke_data.BP_price.get(i).equalsIgnoreCase(smoke_data.POP_price.get(i)))
@@ -75,6 +78,7 @@ public class Placeorder_page {
 			else
 			{
 				System.out.println("\t\t\t"+smoke_data.POP_price.get(i)+" Price Validation Unsuccessfully");
+				fail++;
 			}
 			
 			if(smoke_data.BP_qty.get(i).equalsIgnoreCase(smoke_data.POP_qty.get(i)))
@@ -84,7 +88,17 @@ public class Placeorder_page {
 			else
 			{
 				System.out.println("\t\t\t"+smoke_data.POP_qty.get(i)+" Quantity Validation Unsuccessfully");
+				fail++;
 			}
+		}
+		
+		if(fail>0)
+		{
+			func.write_Smoketest(false, 20);
+		}
+		else
+		{
+			func.write_Smoketest(true, 20);
 		}
 	}
 	
@@ -93,6 +107,8 @@ public class Placeorder_page {
 		System.out.println("\tSmoke Testing: Validate Order Total");
 		
 		System.out.println("\t\tTestcase - 21");
+		
+		int fail = 0;
 		
 		smoke_data.POP_subtotal = element_obj.POP_subtotal.getText();
 		
@@ -126,19 +142,30 @@ public class Placeorder_page {
 			System.out.println("\t\t\t"+smoke_data.BP_total+" Order Total Validation Unsuccessfully");
 		}
 		
+		if(fail>0)
+		{
+			func.write_Smoketest(false, 21);
+		}
+		else
+		{
+			func.write_Smoketest(true, 21);
+		}
+		
 		System.out.println("\tSmoke Testing: Tax Return validation");
 		
 		System.out.println("\t\tTestcase - 22");
 		
-		if(smoke_data.Country == "United States" || smoke_data.Country == "United Kingdom")
+		if((smoke_data.Country == "United States") || (smoke_data.Country == "United Kingdom"))
 		{
 			if(smoke_data.POP_tax.contains("$0.00"))
 			{
 				System.out.println("\t\t\t"+"Tax not Returned - Unsuccessful");
+				func.write_Smoketest(false, 22);
 			}
 			else
 			{
 				System.out.println("\t\t\t"+"Tax Return - Successful");
+				func.write_Smoketest(true, 22);
 			}
 		}
 		else
@@ -146,11 +173,13 @@ public class Placeorder_page {
 			if(smoke_data.POP_tax.contains("$0.00"))
 			{
 				System.out.println("\t\t\t"+"Tax Return - Successful");
+				func.write_Smoketest(true, 22);
 				
 			}
 			else
 			{
 				System.out.println("\t\t\t"+"Invalid Tax Return - Unsuccessful");
+				func.write_Smoketest(false, 22);
 			}
 			
 		}
@@ -166,13 +195,15 @@ public class Placeorder_page {
 		
 	}
 	
-	public void Validate_editlink() throws Exception
+	public boolean Validate_editlink() throws Exception
 	{
 		System.out.println("\tSmoke Testing: Edit Link Validation");
 		
 		System.out.println("\t\tTestcase - 23");
 		
 		System.out.println("\t\tCart link");
+		
+		int fail = 0;
 		
 		util.Click(element_obj.driver.findElement(By.xpath("//a[@class='section-header-note gtm-edit-cart-link']")));// Edit cart link
 		
@@ -183,15 +214,33 @@ public class Placeorder_page {
 		else
 		{
 			System.out.println("\t\t\t"+"Edit Cart link Unsuccessful");
+			fail++;
 		}
 		
 		util.Click(element_obj.checkout);
 		
 		util.WaitAndClick(element_obj.continuebill);
 		
+		if(util.Isdisplayed(element_obj.userAddress)) 
+		{
+			util.WaitAndClick(element_obj.userAddress);
+		}
+		
 		func.smoke_payment();
 		
+		if(smoke_data.Country != "United States")
+		{
+			util.Click(element_obj.shpInt);
+		}
+		
 		util.Click(element_obj.continuePlaceorder);
+		
+		if(util.Isdisplayed(element_obj.userAddress)) 
+		{
+			util.WaitAndClick(element_obj.userAddress);
+			util.WaitAndClick(element_obj.continuePlaceorder);
+
+		}
 		
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Place Order']"))))
 		{
@@ -207,13 +256,31 @@ public class Placeorder_page {
 		else
 		{
 			System.out.println("\t\t\t"+"Edit Shipping Method link Unsuccessful");
+			fail++;
 		}
 		
 		util.WaitAndClick(element_obj.continuebill);
 		
+		if(util.Isdisplayed(element_obj.userAddress)) 
+		{
+			util.WaitAndClick(element_obj.userAddress);
+		}
+		
 		func.smoke_payment();
 		
+		if(smoke_data.Country != "United States")
+		{
+			util.Click(element_obj.shpInt);
+		}
+		
 		util.Click(element_obj.continuePlaceorder);
+		
+		if(util.Isdisplayed(element_obj.policyCheck))
+		{
+			util.Click(element_obj.shpInt);
+			util.WaitAndClick(element_obj.continuePlaceorder);
+
+		}
 		
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Place Order']"))))
 		{
@@ -229,13 +296,31 @@ public class Placeorder_page {
 		else
 		{
 			System.out.println("\t\t\t"+"Edit Shipping Address link Unsuccessful");
+			fail++;
 		}
 		
 		util.WaitAndClick(element_obj.continuebill);
 		
+		if(util.Isdisplayed(element_obj.userAddress)) 
+		{
+			util.WaitAndClick(element_obj.userAddress);
+		}
+		
 		func.smoke_payment();
 		
+		if(smoke_data.Country != "United States")
+		{
+			util.Click(element_obj.shpInt);
+		}
+		
 		util.Click(element_obj.continuePlaceorder);
+		
+		if(util.Isdisplayed(element_obj.policyCheck))
+		{
+			util.Click(element_obj.shpInt);
+			util.WaitAndClick(element_obj.continuePlaceorder);
+
+		}
 		
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Place Order']"))))
 		{
@@ -251,11 +336,24 @@ public class Placeorder_page {
 		else
 		{
 			System.out.println("\t\t\t"+"Edit Billing Address link Unsuccessful");
+			fail++;
 		}
 		
 		func.smoke_payment();
 		
+		if(smoke_data.Country != "United States")
+		{
+			util.Click(element_obj.shpInt);
+		}
+		
 		util.Click(element_obj.continuePlaceorder);
+		
+		if(util.Isdisplayed(element_obj.policyCheck))
+		{
+			util.Click(element_obj.shpInt);
+			util.WaitAndClick(element_obj.continuePlaceorder);
+
+		}
 		
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Place Order']"))))
 		{
@@ -271,15 +369,37 @@ public class Placeorder_page {
 		else
 		{
 			System.out.println("\t\t\t"+"Edit Payment link Unsuccessful");
+			fail++;
 		}
 		
 		func.smoke_payment();
 		
+		if(smoke_data.Country != "United States")
+		{
+			util.Click(element_obj.shpInt);
+		}
+		
 		util.Click(element_obj.continuePlaceorder);
+		
+		if(util.Isdisplayed(element_obj.policyCheck))
+		{
+			util.Click(element_obj.shpInt);
+			util.WaitAndClick(element_obj.continuePlaceorder);
+
+		}
+		
+		if(fail>0)
+		{
+			func.write_Smoketest(false, 23);
+		}
+		else
+		{
+			func.write_Smoketest(true, 23);
+		}
 		
 		if(smoke_data.URL == data_obj.Prod_url)
 		{
-			System.exit(1);
+			return false;
 		}
 		
 		System.out.println("\tSmoke Testing: Place Order validation");
@@ -291,11 +411,15 @@ public class Placeorder_page {
 		if(util.Isdisplayed(element_obj.orderNumber))
 		{
 			System.out.println("\t\t\t"+"Order placed Successfully");
+			func.write_Smoketest(true, 24);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Order Unsuccessfully");
+			func.write_Smoketest(false, 24);
 		}
+		
+		return true;
 	}
 
 }

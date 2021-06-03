@@ -22,7 +22,7 @@ public class Login_smoke {
 		   func= functions;
 	   }
 	
-	public void Login_Loginpage() throws InterruptedException
+	public void Login_Loginpage() throws Exception
 	{
 		System.out.println("\nLoginpage");
 		
@@ -32,18 +32,29 @@ public class Login_smoke {
 		
 	   	data_obj.driver.get(smoke_data.URL);
 		
-		util.Click(element_obj.no);
+		if(util.Isdisplayed(element_obj.no))
+		{
+			util.Click(element_obj.no);
+		}
 		
 		func.smoke_login(smoke_data.email, smoke_data.password);
 		
 		if(util.Isdisplayed(data_obj.driver.findElement(By.xpath("//h1[@class='overview-header']"))))
 		{
 			System.out.println("\t\t\tLoginpage - Login Successful for "+smoke_data.email);
+			
+			smoke_data.result = true;
+			
+			func.write_Smoketest(smoke_data.result, 1);
 		}
 		
 		else
 		{
 			System.out.println("\t\t\tLoginpage - Login Unsuccessful for "+smoke_data.password);
+			
+			smoke_data.result = false;
+			
+			func.write_Smoketest(smoke_data.result, 1);
 		}
 
 		util.WaitAndClick(element_obj.MyAccount);
@@ -77,10 +88,18 @@ public class Login_smoke {
 		if(util.Isdisplayed(data_obj.driver.findElement(By.xpath("//div[@class='shipping-header']"))))
 		{
 			System.out.println("\t\t\tCartpage - Login Successful for "+smoke_data.email);
+			
+			smoke_data.result = true;
+			
+			func.write_Smoketest(smoke_data.result, 2);
 		}
 		else
 		{
 			System.out.println("\t\t\tCartpage - Login Unsuccessful for "+smoke_data.email);
+			
+			smoke_data.result = false;
+			
+			func.write_Smoketest(smoke_data.result, 2);
 		}
 		
 		element_obj.POviewcart.click();
@@ -116,10 +135,18 @@ public class Login_smoke {
 		if(util.Isdisplayed(element_obj.orderNumber))
 		{
 			System.out.println("\t\t\tOrder Status Check Successful");
+			
+			smoke_data.result = true;
+			
+			func.write_Smoketest(smoke_data.result, 3);
 		}
 		else
 		{
 			System.out.println("\t\t\tOrder Status Check Unsuccessful");
+			
+			smoke_data.result = false;
+			
+			func.write_Smoketest(smoke_data.result, 3);
 		}
 	}
 

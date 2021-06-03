@@ -4,6 +4,7 @@ import Data_Functions.Functions;
 import Data_Functions.constantData;
 import Data_Functions.driverUtil;
 import Data_Functions.pageElements;
+import Smoke_test.Data_smoke;
 
 
 
@@ -17,6 +18,8 @@ public class placeOrder {
 		
 		    constantData data = new constantData();
 		    
+		    Data_smoke data_smoke = new Data_smoke();
+		    
 		   // data.URL = data.STG_url ; // Setting to DEV or STG for testing 
 		    
 		    data.driver = util.chrome();
@@ -25,9 +28,9 @@ public class placeOrder {
 		
 			pageElements elements = new pageElements(data.driver);
 			
-			Functions functions = new Functions(data,elements);
+			Functions functions = new Functions(data,elements, data_smoke);
 			
-			data.driver.get(data.Prod_url);
+			data.driver.get(data.DEV_url);
 			
 			
 //			data.driver.findElement(By.xpath("//button[@id='details-button']")).click();
@@ -44,13 +47,13 @@ public class placeOrder {
 //			
 			util.Click(elements.no);
 			
-			functions.PDPTesting(data.Prod_url);;
+//			functions.PDPTesting(data.Prod_url);;
 //			
 //			functions.Date_Time();
 //			
 //			functions.bulkOrder_testing();
 //			
-//			functions.bulkOrder_International();
+			functions.bulkOrder_International();
 			
 			data.driver.close();	
 			

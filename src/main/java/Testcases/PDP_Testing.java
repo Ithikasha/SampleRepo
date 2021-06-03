@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import com.itextpdf.text.log.SysoLogger;
 
 import Data_Functions.*;
+import Smoke_test.Data_smoke;
 
 
 public class PDP_Testing {
@@ -20,6 +21,8 @@ public class PDP_Testing {
 	constantData data_obj = new constantData();
 	
 	driverUtil util = new driverUtil();
+	
+	Data_smoke data_smoke = new Data_smoke();
 	
 	pageElements element_obj ;
 	
@@ -35,7 +38,7 @@ public class PDP_Testing {
 		
 		element_obj = new pageElements(driver);
 		
-		func_obj = new Functions(data_obj, element_obj);
+		func_obj = new Functions(data_obj, element_obj, data_smoke);
 		
 		driver.manage().window().maximize();
 		

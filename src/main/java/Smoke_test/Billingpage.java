@@ -53,6 +53,8 @@ public class Billingpage {
 		
 		System.out.println("\t\tTestcase - 14");
 		
+		int fail = 0;
+		
 		if(util.Isdisplayed(element_obj.firstname))
 		{
 			System.out.println("\t\t\t"+"Firstname verified Successfully");
@@ -60,6 +62,7 @@ public class Billingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Firstname verify Unsuccessfully");
+			fail++;
 		}
 
 		
@@ -70,6 +73,7 @@ public class Billingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Lastname verify Unsuccessfully");
+			fail++;
 		}
 
 		
@@ -80,6 +84,7 @@ public class Billingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Address Line1 verify Unsuccessfully");
+			fail++;
 		}
 		
 		if(util.Isdisplayed(element_obj.address2))
@@ -89,6 +94,7 @@ public class Billingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Address Line2 verify Unsuccessfully");
+			fail++;
 		}
 
 		if(util.Isdisplayed(element_obj.city))
@@ -98,6 +104,7 @@ public class Billingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"City verify Unsuccessfully");
+			fail++;
 		}
 		
 		if(util.Isdisplayed(element_obj.Bill_stateField))
@@ -107,6 +114,7 @@ public class Billingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"State verify Unsuccessfully");
+			fail++;
 		}
 		
 		if(util.Isdisplayed(element_obj.countryField))
@@ -116,6 +124,7 @@ public class Billingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Country verify Unsuccessfully");
+			fail++;
 		}
 		
 		if(util.Isdisplayed(element_obj.zipcode))
@@ -125,6 +134,7 @@ public class Billingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Zipcode verify Unsuccessfully");
+			fail++;
 		}
 		
 		if(util.Isdisplayed(element_obj.phone))
@@ -134,6 +144,7 @@ public class Billingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Phone verify Unsuccessfully");
+			fail++;
 		}
 		
 		if(util.Isdisplayed(element_obj.saveAddress))
@@ -143,6 +154,7 @@ public class Billingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Add to Address Book checkbox verify Unsuccessfully");
+			fail++;
 		}
 		
 		if(util.Isdisplayed(element_obj.useAsBillingAddress))
@@ -153,6 +165,30 @@ public class Billingpage {
 		else
 		{
 			System.out.println("\t\t\t"+"Use as Billing address checkbox verify Unsuccessfully");
+			fail++;
+		}
+		
+		if(smoke_data.Country != "United States")
+		{
+			if(util.Isdisplayed(element_obj.policyCheck))
+			{
+				
+				System.out.println("\t\t\t"+"Policy checkbox verified Successfully");
+			}
+			else
+			{
+				System.out.println("\t\t\t"+"Policy checkbox verify Unsuccessfully");
+				fail++;
+			}
+		}
+		
+		if(fail>0)
+		{
+			func.write_Smoketest(false, 14);
+		}
+		else
+		{
+			func.write_Smoketest(true, 14);
 		}
 
 	}
@@ -175,15 +211,22 @@ public class Billingpage {
 		
 		element_obj.cardname.sendKeys(data_obj.firstname);
 		
+		if(smoke_data.Country != "United States")
+		{
+			util.Click(element_obj.shpInt);
+		}
+		
 		element_obj.continuePlaceorder.click();
 		
 		if(util.Isdisplayed(element_obj.continuePlaceorder))
 		{
 			System.out.println("\t\t\t"+"Invalid Credit card NOT Accepted Sucessfully");
+			func.write_Smoketest(true, 15);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Invalid Credit card Accepted - Unsucessful");
+			func.write_Smoketest(false, 15);
 		}
 		
 		
@@ -207,10 +250,12 @@ public class Billingpage {
 		if(util.Isdisplayed(element_obj.GC_successmsg))
 		{
 			System.out.println("\t\t\t"+"The E-Gift card redeemed Successfully");
+			func.write_Smoketest(true, 16);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"The E-Gift card redeem Unsuccessfully");
+			func.write_Smoketest(false, 16);
 		}
 	}
 	
@@ -320,15 +365,31 @@ public class Billingpage {
 			
 		}
 		
-		util.WaitAndClick(element_obj.continuePlaceorder);;
+		if(util.Isdisplayed(element_obj.policyCheck))
+		{
+			Thread.sleep(3000);
+			
+			element_obj.shpInt.click();
+		}
+		
+		util.WaitAndClick(element_obj.continuePlaceorder);
+		
+		if(util.Isdisplayed(element_obj.policyCheck))
+		{
+			util.Click(element_obj.shpInt);	
+			util.WaitAndClick(element_obj.continuePlaceorder);
+
+		}
 		
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Place Order']"))))
 		{
 			System.out.println("\t\t\t"+"Payment using "+smoke_data.paymentMethod+" Credit card is Successful");
+			func.write_Smoketest(true, 17);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Payment using "+smoke_data.paymentMethod+" Credit card is Unsuccessful");
+			func.write_Smoketest(false, 17);
 		}
 
 	}
