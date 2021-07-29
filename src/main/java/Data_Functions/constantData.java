@@ -36,9 +36,9 @@ public class constantData {
 	
 	public String fileName = "Metallica.xlsx";
 
-	public String sheetName = "31052021I";
+	public String sheetName = "28072021";
 	
-	public int totalOrder = 6;
+	public int totalOrder = 11;
 	
 	public String firstname = "Tester" ;
 	
@@ -109,6 +109,10 @@ public class constantData {
 	
 	@FindBy(xpath="//a[@id='proceed-link']")
 	public WebElement STG_proceed;
+
+	public String subTotal;
+	
+	public int preorder_flag = 0;
 	
 }
 

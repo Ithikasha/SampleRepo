@@ -143,6 +143,16 @@ public class pageElements {
 	@FindBy(xpath="//*[@id='add-to-cart']")
 	public WebElement addcart;
 	
+	@FindBy(xpath="//button[@value='Pre-order']")
+	public WebElement preorder;
+	
+	@FindBy(xpath="//label[@for='preorder-acknowledgement']")
+	public WebElement preorder_ack;
+	
+	@FindBy(xpath="//*[@value='Add to Cart']")
+	public WebElement preorder_ATC;
+
+	
 	//Cart page
 	
 	@FindBy(xpath="(//*[@title='Go to Cart'])[1]")
@@ -309,7 +319,7 @@ public class pageElements {
 	@FindBy(xpath="//input[@placeholder='Search Metallica.com']")
 	public WebElement srchTxt;
 	
-	@FindBy(xpath="//label[contains(@for,'dwfrm_billing_shipInt')]")
+	@FindBy(xpath="//label[contains(@for,'dwfrm_vatdisclaimer_shipInt')]")
 	public WebElement shpInt;
 	
 	@FindBy(xpath="//div[@class='billing-coupon-giftcard-toggle']")
@@ -327,7 +337,7 @@ public class pageElements {
 	@FindBy(xpath="//div[@class='success giftcert-pi']")
 	public WebElement GC_successmsg;
 	
-	@FindBy(xpath="//input[@name='dwfrm_billing_couponCode']")
+	@FindBy(xpath="//input[@name='dwfrm_cart_couponCode']")
 	public WebElement coupon;
 	
 	@FindBy(xpath="//button[@id='add-coupon']")
@@ -515,6 +525,8 @@ public class pageElements {
 	String Shipping_Method;
 	
 	String Payment_Method;
+	
+	String couponCode;
 	
 	public String[] itemlist;
 	

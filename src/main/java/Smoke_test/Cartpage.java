@@ -105,26 +105,63 @@ public class Cartpage {
 	   	
 	   	int fail = 0;
 	   	
+//		for(int i = 0; i < smoke_data.itemlist.length; i++)
+//		{
+//			if(smoke_data.PDP_prdName.get(i).contains(smoke_data.CP_prdName.get(i)))
+//			{
+//				System.out.println("\t\t\t"+" Product "+(i+1)+" Name Validation Successful");
+//			}
+//			else
+//			{
+//				System.out.println("\t\t\t"+"Product "+(i+1)+" Name Validation Unsuccessful");
+//				fail++;
+//			}
+//			
+//			if(smoke_data.PDP_price.get(i).contains(smoke_data.CP_price.get(i)))
+//			{
+//				System.out.println("\t\t\t"+" Product "+(i+1)+" Price Validation Successful");
+//			}
+//			else
+//			{
+//				System.out.println("\\t\\t\\t\"+\"Product \"+(i+1)+\" Name Validation Unsuccessful");
+//				fail++;
+//			}
+//		}
+	   	
+	   	for(int i = 0; i < smoke_data.itemlist.length; i++)
+		{
+			for(int j=0; j < smoke_data.itemlist.length; j++)
+			{
+				if(smoke_data.PDP_prdName.get(i).contains(smoke_data.CP_prdName.get(i)))
+				{
+					System.out.println("\t\t\t"+" Product "+(i+1)+" Name Validation Successful");
+					break;
+				}
+				else if (j == (smoke_data.itemlist.length - 1))
+				{
+					System.out.println("\t\t\t"+"Product "+(i+1)+" Name Validation Unsuccessful");
+					fail++;
+					break;
+				}
+			}
+		}
+	   	
 		for(int i = 0; i < smoke_data.itemlist.length; i++)
 		{
-			if(smoke_data.PDP_prdName.get(i).equalsIgnoreCase(smoke_data.CP_prdName.get(i)))
+			for(int j=0; j < smoke_data.itemlist.length; j++)
 			{
-				System.out.println("\t\t\t"+" Product "+(i+1)+" Name Validation Successful");
-			}
-			else
-			{
-				System.out.println("\t\t\t"+"Product "+(i+1)+" Name Validation Unsuccessful");
-				fail++;
-			}
-			
-			if(smoke_data.PDP_price.get(i).equalsIgnoreCase(smoke_data.CP_price.get(i)))
-			{
-				System.out.println("\t\t\t"+" Product "+(i+1)+" Price Validation Successful");
-			}
-			else
-			{
-				System.out.println("\\t\\t\\t\"+\"Product \"+(i+1)+\" Name Validation Unsuccessful");
-				fail++;
+				
+				if(smoke_data.PDP_price.get(i).contains(smoke_data.CP_price.get(i)))
+				{
+					System.out.println("\t\t\t"+" Product "+(i+1)+" Price Validation Successful");
+					break;
+				}
+				else if (j == (smoke_data.itemlist.length - 1))
+				{
+					System.out.println("\\t\\t\\t\"+\"Product \"+(i+1)+\" Name Validation Unsuccessful");
+					fail++;
+					break;
+				}
 			}
 		}
 		

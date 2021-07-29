@@ -48,7 +48,7 @@ public class Smoke_test
 			
 			Orderconfirmation oc = new Orderconfirmation(data,elements,functions);
 			
-//			File file = new File("C:\\Users\\UNITS\\Desktop\\Staging_out.txt"); //Your file
+//			File file = new File("C:\\Users\\UNITS\\Desktop\\PRO_output.txt"); //Your file
 //			
 //			FileOutputStream fos = new FileOutputStream(file);
 //			

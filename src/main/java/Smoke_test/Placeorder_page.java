@@ -155,7 +155,20 @@ public class Placeorder_page {
 		
 		System.out.println("\t\tTestcase - 22");
 		
-		if((smoke_data.Country == "United States") || (smoke_data.Country == "United Kingdom"))
+		if(smoke_data.Country.equalsIgnoreCase("United States"))
+		{
+			if(smoke_data.POP_tax.contains("$0.00"))
+			{
+				System.out.println("\t\t\t"+"Tax not Returned - Unsuccessful");
+				func.write_Smoketest(false, 22);
+			}
+			else
+			{
+				System.out.println("\t\t\t"+"Tax Return - Successful");
+				func.write_Smoketest(true, 22);
+			}
+		}
+		else if(smoke_data.Country.equalsIgnoreCase("United Kingdom"))
 		{
 			if(smoke_data.POP_tax.contains("$0.00"))
 			{
@@ -228,7 +241,7 @@ public class Placeorder_page {
 		
 		func.smoke_payment();
 		
-		if(smoke_data.Country != "United States")
+		if(util.Isdisplayed(element_obj.shpInt))
 		{
 			util.Click(element_obj.shpInt);
 		}
@@ -268,14 +281,14 @@ public class Placeorder_page {
 		
 		func.smoke_payment();
 		
-		if(smoke_data.Country != "United States")
+		if(util.Isdisplayed(element_obj.shpInt))
 		{
 			util.Click(element_obj.shpInt);
 		}
 		
 		util.Click(element_obj.continuePlaceorder);
 		
-		if(util.Isdisplayed(element_obj.policyCheck))
+		if(util.Isdisplayed(element_obj.shpInt))
 		{
 			util.Click(element_obj.shpInt);
 			util.WaitAndClick(element_obj.continuePlaceorder);
@@ -308,14 +321,14 @@ public class Placeorder_page {
 		
 		func.smoke_payment();
 		
-		if(smoke_data.Country != "United States")
+		if(util.Isdisplayed(element_obj.shpInt))
 		{
 			util.Click(element_obj.shpInt);
 		}
 		
 		util.Click(element_obj.continuePlaceorder);
 		
-		if(util.Isdisplayed(element_obj.policyCheck))
+		if(util.Isdisplayed(element_obj.shpInt))
 		{
 			util.Click(element_obj.shpInt);
 			util.WaitAndClick(element_obj.continuePlaceorder);
@@ -341,14 +354,14 @@ public class Placeorder_page {
 		
 		func.smoke_payment();
 		
-		if(smoke_data.Country != "United States")
+		if(util.Isdisplayed(element_obj.shpInt))
 		{
 			util.Click(element_obj.shpInt);
 		}
 		
 		util.Click(element_obj.continuePlaceorder);
 		
-		if(util.Isdisplayed(element_obj.policyCheck))
+		if(util.Isdisplayed(element_obj.shpInt))
 		{
 			util.Click(element_obj.shpInt);
 			util.WaitAndClick(element_obj.continuePlaceorder);
@@ -374,14 +387,14 @@ public class Placeorder_page {
 		
 		func.smoke_payment();
 		
-		if(smoke_data.Country != "United States")
+		if(util.Isdisplayed(element_obj.shpInt))
 		{
 			util.Click(element_obj.shpInt);
 		}
 		
 		util.Click(element_obj.continuePlaceorder);
 		
-		if(util.Isdisplayed(element_obj.policyCheck))
+		if(util.Isdisplayed(element_obj.shpInt))
 		{
 			util.Click(element_obj.shpInt);
 			util.WaitAndClick(element_obj.continuePlaceorder);

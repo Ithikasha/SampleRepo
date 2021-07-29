@@ -51,9 +51,9 @@ public class placeOrder {
 //			
 //			functions.Date_Time();
 //			
-//			functions.bulkOrder_testing();
-//			
-			functions.bulkOrder_International();
+			functions.bulkOrder_testing();
+			
+//			functions.bulkOrder_International();
 			
 			data.driver.close();	
 			

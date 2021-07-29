@@ -91,7 +91,7 @@ public class Functions {
 
 		login();
  
-		for (data_obj.orderCount = 1; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
+		for (data_obj.orderCount = 6; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
 
 			data_obj.flag = true;
 			
@@ -114,6 +114,8 @@ public class Functions {
 			element_obj.Shipping_Method = formatter.formatCellValue(row.getCell(8));
 
 			element_obj.Payment_Method = formatter.formatCellValue(row.getCell(9));
+			
+			element_obj.couponCode = formatter.formatCellValue(row.getCell(17));
 
 			System.out.println("Variable data_obj are Collected");
 
@@ -131,14 +133,14 @@ public class Functions {
 				continue;
 			}
 
-			data_obj.flag = payment("Domestic") ;
+			data_obj.flag = payment() ;
 			
 			if(data_obj.flag==false)
 			{
 				continue;
 			}
 			
-			data_obj.flag = placeOrder() ;
+			data_obj.flag = placeOrder("Domestic") ;
 			
 			if(data_obj.flag==false)
 			{
@@ -150,7 +152,7 @@ public class Functions {
 		
    }
    
-   public boolean placeOrder()
+   public boolean placeOrder(String orderType) throws InterruptedException
    {
 //	   if(element_obj.Error_form.isDisplayed())
 //			
@@ -158,7 +160,36 @@ public class Functions {
 //			System.out.println(element_obj.Error_form.getText());
 //			return false;
 //		}
-		element_obj.placeorder.click();
+	   
+//	   if(orderType.equalsIgnoreCase("Domestic"))
+//		{
+//			element_obj.placeorder.click();
+//			return true;
+//		}
+//		
+//		else if(orderType.equalsIgnoreCase("International"))
+//		{
+//			
+//			Thread.sleep(3000);
+//			
+////			util.jClick(element_obj.shpInt);
+//			
+//			
+//			element_obj.shpInt.click();
+//			
+//			element_obj.placeorder.click();
+//			return true;
+//		}
+	   if(util.Isdisplayed(element_obj.shpInt))
+	   {
+		   Thread.sleep(3000);
+		   util.Click(element_obj.shpInt);
+		   util.Click(element_obj.placeorder);
+	   }
+	   else
+	   {
+		   util.Click(element_obj.placeorder);
+	   }
 		return true;
    }
    
@@ -214,9 +245,9 @@ public class Functions {
 
 			shipping("International") ;
 
-			payment("International") ;
+			payment() ;
 		
-			element_obj.placeorder.click();
+			data_obj.flag = placeOrder("International") ;
 			
 			orderConfirmation();
 
@@ -227,15 +258,25 @@ public class Functions {
 
 public void orderConfirmation() throws Exception {
 	
+//	util.Click(data_obj.driver.findElement(By.xpath("//a[@title='Order History']")));
+//	
+//	util.Click(data_obj.driver.findElement(By.xpath("(//button[@value='Order Details'])[1]")));
+//	
 	System.out.println("Order"+(data_obj.orderCount));
 
 	element_obj.itemlist = null;
 
 	element_obj.qty = null;
+	
+	data_obj.preorder_flag = 0;
 
 	data_obj.orderNumber = element_obj.orderNumber.getText().toString();
 
 	System.out.println(data_obj.orderNumber.substring(15));
+	
+	data_obj.subTotal = element_obj.Subtotal.getText().toString();
+
+	System.out.println(data_obj.subTotal);
 	
 	if(util.Isdisplayed(element_obj.Shipping_cost)) {
 	
@@ -263,7 +304,7 @@ public void orderConfirmation() throws Exception {
 
 	System.out.println(data_obj.orderTotal);
 
-	writeOrderDetail(data_obj.orderCount, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost);
+	writeOrderDetail(data_obj.orderCount, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost,data_obj.subTotal);
 
 	util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
 }
@@ -292,7 +333,8 @@ public boolean selectItems() throws InterruptedException, Exception
 //			size(element_obj.variant[j]);
 ////			No available variant
 //		}
-				
+			
+		
 		if(util.Isdisplayed(element_obj.PDP_quantity)) 
 		{
 					
@@ -306,7 +348,23 @@ public boolean selectItems() throws InterruptedException, Exception
 					
 			util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
 			
-			util.Click(element_obj.addcart);
+			if(util.Isdisplayed(element_obj.preorder))
+			{
+				util.Click(element_obj.preorder);
+				
+				util.Click(element_obj.preorder_ack);
+				
+				util.Click(element_obj.preorder_ATC);
+				
+				data_obj.preorder_flag++;
+				
+			}
+			
+			else
+			{
+				util.Click(element_obj.addcart);
+			}
+			
 			
 			//Capturing Product price
 
@@ -316,6 +374,23 @@ public boolean selectItems() throws InterruptedException, Exception
 		{
 
 			System.out.println("Quantity is not displayed");
+			
+			if(util.Isdisplayed(element_obj.preorder))
+			{
+				util.Click(element_obj.preorder);
+				
+				util.Click(element_obj.preorder_ack);
+				
+				util.Click(element_obj.preorder_ATC);
+				
+				data_obj.preorder_flag++;
+				
+			}
+			
+			else
+			{
+				util.Click(element_obj.addcart);
+			}
 					
 			util.Click(element_obj.addcart);
 		}
@@ -326,6 +401,10 @@ public boolean selectItems() throws InterruptedException, Exception
 		System.out.println("Product "+(j+1)+" is added");
 				
 	}
+	
+//	util.Sendkeys(element_obj.coupon, element_obj.couponCode);  //Coupon apply
+//	
+//	util.Click(element_obj.Coupon_apply);
 	
 	util.WaitAndClick(element_obj.checkout);
 	
@@ -542,6 +621,11 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 //			System.out.println("Shipping method table missing");
 //			System.exit(0);
 //		}
+		
+		if(data_obj.preorder_flag > 1)
+		{
+			util.Click(element_obj.preorder_ack);
+		}
 
 		util.WaitAndClick(element_obj.continuebill);
 		
@@ -630,7 +714,7 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 
 	}
 
-	public boolean payment(String orderType) throws Exception
+	public boolean payment() throws Exception
 	{
 		switch(element_obj.Payment_Method) 
 		{
@@ -718,25 +802,7 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 			break;
 		}
 		
-		if(orderType.equalsIgnoreCase("Domestic"))
-		{
-			element_obj.continuePlaceorder.click();
-			return true;
-		}
-		
-		else if(orderType.equalsIgnoreCase("International"))
-		{
-			
-			Thread.sleep(3000);
-			
-//			util.jClick(element_obj.shpInt);
-			
-			
-			element_obj.shpInt.click();
-			
-			element_obj.continuePlaceorder.click();
-			return true;
-		}
+		element_obj.continuePlaceorder.click();
 		
 		return true;
 
@@ -999,7 +1065,7 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 	}
 	
 	@SuppressWarnings("static-access")
-	public void writeOrderDetail(int rowNumber, String orderNumber, String handling_cost, String salesTax, String orderTotal, String shippinging_cost) throws IOException
+	public void writeOrderDetail(int rowNumber, String orderNumber, String handling_cost, String salesTax, String orderTotal, String shippinging_cost, String subtotal) throws IOException
 	{
 		File file = new File(data_obj.filePath+"\\"+data_obj.fileName);
 
@@ -1040,6 +1106,12 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 	    orderTotal_cell.setCellType(orderTotal_cell.CELL_TYPE_STRING);
 
 	    orderTotal_cell.setCellValue(orderTotal);
+	    
+	    Cell subtotal_cell = row.createCell(17);
+		
+	    subtotal_cell.setCellType(subtotal_cell.CELL_TYPE_STRING);
+
+	    subtotal_cell.setCellValue(subtotal);
 	    
 	    
 	    istream.close(); 
@@ -1495,7 +1567,7 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 				continue;
 			}
 
-			data_obj.flag = payment("Domestic") ;
+			data_obj.flag = payment() ;
 			
 			
 			element_obj.POviewcart.click();
@@ -1601,6 +1673,19 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 
 		//		util.WaitAndClick(element_obj.checkout);
 		
+	}
+	
+	public void Add_product(String prod) throws InterruptedException
+	{
+			util.Click(element_obj.srch);
+			
+			util.Sendkeys(element_obj.srchIP,prod);
+
+			element_obj.srchTxt.submit();
+			
+			util.Click(element_obj.addcart);
+			
+			util.Click(element_obj.miniviewcart);
 	}
 	
 	public void write_Smoketest(boolean result, int number) throws Exception

@@ -251,6 +251,8 @@ public class Shippingpage {
 				
 				util.Sendkeys(element_obj.phone,smoke_data.phone);
 				
+				util.AcceptAlertifPresent(element_obj.driver);
+				
 				util.WaitAndClick(element_obj.continuebill);
 				
 				if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//span[@class='error'])[1]"))))
@@ -673,64 +675,59 @@ public class Shippingpage {
 		
 		System.out.println("\t\tTestcase - 9");
 		
-		if(!util.Isdisplayed(element_obj.shippingtable))
+		util.Clear(element_obj.firstname);
+
+		util.Sendkeys(element_obj.firstname,smoke_data.firstname);
+		
+		util.Clear(element_obj.lastname);
+
+		util.Sendkeys(element_obj.lastname,smoke_data.lastname);
+
+		util.Clear(element_obj.address1);
+		
+		util.Sendkeys(element_obj.address1,smoke_data.Address1);
+		
+		Select Country = new Select(element_obj.countryField);
+		Country.selectByVisibleText(smoke_data.Country);
+
+		util.Clear(element_obj.city);
+		
+		util.Sendkeys(element_obj.city,smoke_data.City);
+
+		util.Clear(element_obj.zipcode);
+		
+		util.Sendkeys(element_obj.zipcode,smoke_data.Zip_Code);
+		
+		switch(smoke_data.Country)
 		{
+			case "United States":
+				Select US_state = new Select(element_obj.stateField);
+				US_state.selectByVisibleText(smoke_data.State);
+				break;
 			
-			util.Clear(element_obj.firstname);
-
-			util.Sendkeys(element_obj.firstname,smoke_data.firstname);
+			case "Canada":
+				Select CA_state = new Select(element_obj.CAstateField);
+				CA_state.selectByVisibleText(smoke_data.State);
+				break;
 			
-			util.Clear(element_obj.lastname);
-
-			util.Sendkeys(element_obj.lastname,smoke_data.lastname);
-
-			util.Clear(element_obj.address1);
-			
-			util.Sendkeys(element_obj.address1,smoke_data.Address1);
-			
-			Select Country = new Select(element_obj.countryField);
-			Country.selectByVisibleText(smoke_data.Country);
-
-			util.Clear(element_obj.city);
-			
-			util.Sendkeys(element_obj.city,smoke_data.City);
-
-			util.Clear(element_obj.zipcode);
-			
-			util.Sendkeys(element_obj.zipcode,smoke_data.Zip_Code);
-			
-			switch(smoke_data.Country)
-			{
-				case "United States":
-					Select US_state = new Select(element_obj.stateField);
-					US_state.selectByVisibleText(smoke_data.State);
-					break;
-				
-				case "Canada":
-					Select CA_state = new Select(element_obj.CAstateField);
-					CA_state.selectByVisibleText(smoke_data.State);
-					break;
-				
-				default:
-					util.Clear(element_obj.IstateField);
-					util.Sendkeys(element_obj.IstateField, smoke_data.State);
-					break;
-			}
-			
-			util.Clear(element_obj.phone);
-			
-			util.Sendkeys(element_obj.phone,smoke_data.phone);
-			
-			if(util.Isdisplayed(element_obj.shippingtable))
-			{
-				System.out.println("\t\t\t"+"Shipping Method table displayed after entering address - Successfully");
-				func.write_Smoketest(true, 9);
-			}
+			default:
+				util.Clear(element_obj.IstateField);
+				util.Sendkeys(element_obj.IstateField, smoke_data.State);
+				break;
 		}
 		
+		util.Clear(element_obj.phone);
+		
+		util.Sendkeys(element_obj.phone,smoke_data.phone);
+		
+		if(util.Isdisplayed(element_obj.shippingtable))
+		{
+			System.out.println("\t\t\t"+"Shipping Method table displayed after entering address - Successfully");
+			func.write_Smoketest(true, 9);
+		}
 		else
 		{
-			System.out.println("\t\t\t"+"Shipping Method table Displayed without address - Unsuccessfully");
+			System.out.println("\t\t\t"+"Shipping Method table not displayed - Unsuccessfully");
 			func.write_Smoketest(false, 9);
 		}
 		
@@ -749,16 +746,22 @@ public class Shippingpage {
 		
 		for(int i = 0; i < smoke_data.itemlist.length; i++)
 		{
-			if(prod_list.get(i).contains(smoke_data.PDP_prdName.get(i)))
+			for(int j=0; j < smoke_data.itemlist.length; j++)
 			{
-				System.out.println("\t\t\t"+prod_list.get(i)+": Product name displayed in Shipping Method Table Successfully ");
-				func.write_Smoketest(true, 10);
+				if(prod_list.get(i).contains(smoke_data.PDP_prdName.get(i)))
+				{
+					System.out.println("\t\t\t"+prod_list.get(i)+": Product name displayed in Shipping Method Table Successfully ");
+					func.write_Smoketest(true, 10);
+					break;
+				}
+				else if (j == (smoke_data.itemlist.length - 1))
+				{
+					System.out.println("\t\t\t"+prod_list.get(i)+" Product name displayed in Shipping Method Table Unsuccessfully");
+					func.write_Smoketest(false, 10);
+					break;
+				}
 			}
-			else
-			{
-				System.out.println("\t\t\t"+prod_list.get(i)+" Product name displayed in Shipping Method Table Unsuccessfully");
-				func.write_Smoketest(false, 10);
-			}
+			
 		}
 		
 		System.out.println("\tSmoke Testing: Ship Later section in Shipping Table");

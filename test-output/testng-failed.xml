@@ -3,15 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Testcases.PDP_Testing">
+      <class name="Testcases.Login_TNG">
         <methods>
-          <include name="testcase2"/>
-          <include name="testcase1"/>
-          <include name="testcase3"/>
-          <include name="afterTesting"/>
-          <include name="beforeTesting"/>
+          <include name="afterMethod"/>
+          <include name="beforeMethod"/>
+          <include name="beforeClass"/>
+          <include name="cartPage" invocation-numbers="0 1"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="loginPage" invocation-numbers="0 1"/>
         </methods>
-      </class> <!-- Testcases.PDP_Testing -->
+      </class> <!-- Testcases.Login_TNG -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

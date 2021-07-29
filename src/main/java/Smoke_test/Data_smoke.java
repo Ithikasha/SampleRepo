@@ -9,7 +9,7 @@ public class Data_smoke {
 	
 	constantData data_obj;
 	
-	boolean result ; 
+	public boolean result ; 
 	
 	public String fileName = "Smoke_Testing.xlsx";
 	
@@ -19,7 +19,7 @@ public class Data_smoke {
 	
 	public String Input_sheetName = "input";
 			
-	public String URL = "https://storefront:Frantic81@staging.rockdevelop.com/";
+	public String URL = "https://www.metallica.com/";
 	
 	public static String email ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	

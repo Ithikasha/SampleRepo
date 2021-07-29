@@ -55,6 +55,10 @@ public class Billingpage {
 		
 		int fail = 0;
 		
+		util.AcceptAlertifPresent(element_obj.driver);
+		
+		util.AcceptAlertifPresent(element_obj.driver);
+		
 		if(util.Isdisplayed(element_obj.firstname))
 		{
 			System.out.println("\t\t\t"+"Firstname verified Successfully");
@@ -211,7 +215,7 @@ public class Billingpage {
 		
 		element_obj.cardname.sendKeys(data_obj.firstname);
 		
-		if(smoke_data.Country != "United States")
+		if(smoke_data.testCount == 2)
 		{
 			util.Click(element_obj.shpInt);
 		}
@@ -365,7 +369,7 @@ public class Billingpage {
 			
 		}
 		
-		if(util.Isdisplayed(element_obj.policyCheck))
+		if(util.Isdisplayed(element_obj.shpInt))
 		{
 			Thread.sleep(3000);
 			
