@@ -104,7 +104,7 @@ public class Smoke_test
 				smoke_data.password = formatter.formatCellValue(row.getCell(13));
 
 
-				System.out.println("Variable data_obj are Collected");
+				System.out.println("Variable data objects are Collected");
 				
 				boolean flag = true;
 
