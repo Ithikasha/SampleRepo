@@ -727,7 +727,7 @@ public class Shippingpage {
 		}
 		else
 		{
-			System.out.println("\t\t\t"+"Shipping Method table not displayed - Unsuccessfully");
+			System.out.println("\t\t\t"+"Shipping Method table not displayed - Unsuccessfull");
 			func.write_Smoketest(false, 9);
 		}
 		
@@ -744,25 +744,22 @@ public class Shippingpage {
 		
 		Collections.sort(prod_list);
 		
-		for(int i = 0; i < smoke_data.itemlist.length; i++)
-		{
-			for(int j=0; j < smoke_data.itemlist.length; j++)
+		
+			for(int i=0; i < smoke_data.itemlist.length; i++)
 			{
-				if(prod_list.get(i).contains(smoke_data.PDP_prdName.get(i)))
+				if(prod_list.get(i).contains(smoke_data.CP_prdName.get(i).toUpperCase()))
 				{
-					System.out.println("\t\t\t"+prod_list.get(i)+": Product name displayed in Shipping Method Table Successfully ");
+					System.out.println("\t\t\t"+smoke_data.CP_prdName.get(i)+": Product name displayed in Shipping Method Table Successfully ");
 					func.write_Smoketest(true, 10);
 					break;
 				}
-				else if (j == (smoke_data.itemlist.length - 1))
+				else
 				{
-					System.out.println("\t\t\t"+prod_list.get(i)+" Product name displayed in Shipping Method Table Unsuccessfully");
+					System.out.println("\t\t\t"+smoke_data.CP_prdName.get(i)+" Product name not displayed in Shipping Method Table - Unsuccessful");
 					func.write_Smoketest(false, 10);
 					break;
 				}
 			}
-			
-		}
 		
 		System.out.println("\tSmoke Testing: Ship Later section in Shipping Table");
 		

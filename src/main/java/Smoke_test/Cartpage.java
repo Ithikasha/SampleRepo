@@ -65,10 +65,25 @@ public class Cartpage {
 				smoke_data.PDP_price.add(j, prc);
 				
 				String nme = element_obj.driver.findElement(By.xpath("//h1[@class='product-name']")).getAttribute("innerText");
-				
+								
 				smoke_data.PDP_prdName.add(j, nme);
 				
-				util.Click(element_obj.addcart);
+				if(util.Isdisplayed(element_obj.preorder))
+				{
+					util.Click(element_obj.preorder);
+					
+					util.Click(element_obj.preorder_ack);
+					
+					util.Click(element_obj.preorder_ATC);
+					
+					smoke_data.preorder_flag++;
+					
+				}
+				
+				else
+				{
+					util.Click(element_obj.addcart);
+				}
 //			}
 
 //			else 
@@ -99,71 +114,39 @@ public class Cartpage {
 		
 		Collections.sort(smoke_data.PDP_price);
 		
+		System.out.println(smoke_data.CP_prdName);
+		
+		System.out.println(smoke_data.PDP_prdName);
+		
 		System.out.println("\tSmoke Testing: Product list and Price in Cartpage");
 	   	
 	   	System.out.println("\t\tTestcase - 4");
 	   	
 	   	int fail = 0;
 	   	
-//		for(int i = 0; i < smoke_data.itemlist.length; i++)
-//		{
-//			if(smoke_data.PDP_prdName.get(i).contains(smoke_data.CP_prdName.get(i)))
-//			{
-//				System.out.println("\t\t\t"+" Product "+(i+1)+" Name Validation Successful");
-//			}
-//			else
-//			{
-//				System.out.println("\t\t\t"+"Product "+(i+1)+" Name Validation Unsuccessful");
-//				fail++;
-//			}
-//			
-//			if(smoke_data.PDP_price.get(i).contains(smoke_data.CP_price.get(i)))
-//			{
-//				System.out.println("\t\t\t"+" Product "+(i+1)+" Price Validation Successful");
-//			}
-//			else
-//			{
-//				System.out.println("\\t\\t\\t\"+\"Product \"+(i+1)+\" Name Validation Unsuccessful");
-//				fail++;
-//			}
-//		}
-	   	
-	   	for(int i = 0; i < smoke_data.itemlist.length; i++)
-		{
-			for(int j=0; j < smoke_data.itemlist.length; j++)
-			{
-				if(smoke_data.PDP_prdName.get(i).contains(smoke_data.CP_prdName.get(i)))
-				{
-					System.out.println("\t\t\t"+" Product "+(i+1)+" Name Validation Successful");
-					break;
-				}
-				else if (j == (smoke_data.itemlist.length - 1))
-				{
-					System.out.println("\t\t\t"+"Product "+(i+1)+" Name Validation Unsuccessful");
-					fail++;
-					break;
-				}
-			}
-		}
-	   	
 		for(int i = 0; i < smoke_data.itemlist.length; i++)
 		{
-			for(int j=0; j < smoke_data.itemlist.length; j++)
+			if(smoke_data.PDP_prdName.get(i).contains(smoke_data.CP_prdName.get(i).toUpperCase()))
 			{
-				
-				if(smoke_data.PDP_price.get(i).contains(smoke_data.CP_price.get(i)))
-				{
-					System.out.println("\t\t\t"+" Product "+(i+1)+" Price Validation Successful");
-					break;
-				}
-				else if (j == (smoke_data.itemlist.length - 1))
-				{
-					System.out.println("\\t\\t\\t\"+\"Product \"+(i+1)+\" Name Validation Unsuccessful");
-					fail++;
-					break;
-				}
+				System.out.println("\t\t\t"+" Product "+(i+1)+" Name Validation Successful");
+			}
+			else
+			{
+				System.out.println("\t\t\t"+"Product "+(i+1)+" Name Validation Unsuccessful");
+				fail++;
+			}
+			
+			if(smoke_data.PDP_price.contains(smoke_data.CP_price.get(i)))
+			{
+				System.out.println("\t\t\t"+" Product "+(i+1)+" Price Validation Successful");
+			}
+			else
+			{
+				System.out.println("\\t\\t\\t\"+\"Product \"+(i+1)+\" Name Validation Unsuccessful");
+				fail++;
 			}
 		}
+	   	
 		
 		if(fail>0)
 		{

@@ -75,6 +75,10 @@ public class Login_smoke {
 		
 		func.Add_product(smoke_data.itemlist, smoke_data.qty);
 		
+//		util.WaitAndClick(element_obj.viewcart);
+		
+//		element_obj.viewcart.click();
+		
 		element_obj.email.clear();
 		
 		element_obj.email.sendKeys(smoke_data.email);
@@ -112,9 +116,9 @@ public class Login_smoke {
 
 		}
 		
-		util.WaitAndClick(element_obj.MyAccount);
+		util.Click(element_obj.MyAccount);
 		
-		util.WaitAndClick(element_obj.Logout);
+		util.Click(element_obj.Logout);
 		
 	}
 	

@@ -78,21 +78,21 @@ public class Orderconfirmation {
 			
 			if(smoke_data.OC_price.get(i).equalsIgnoreCase(smoke_data.POP_price.get(i)))
 			{
-				System.out.println("\t\t\t"+"Product: "+smoke_data.POP_price.get(i)+" Price Validation Successfully");
+				System.out.println("\t\t\t"+"Price: "+smoke_data.POP_price.get(i)+" Price Validation Successfully");
 			}
 			else
 			{
-				System.out.println("\t\t\t"+"Product: "+smoke_data.POP_price.get(i)+" Price Validation Unsuccessfully");
+				System.out.println("\t\t\t"+"Price: "+smoke_data.POP_price.get(i)+" Price Validation Unsuccessfully");
 				fail++;
 			}
 			
 			if(smoke_data.OC_qty.get(i).equalsIgnoreCase(smoke_data.POP_qty.get(i)))
 			{
-				System.out.println("\t\t\t"+"Product: "+smoke_data.POP_qty.get(i)+" Quantity Validation Successfully");
+				System.out.println("\t\t\t"+"Quantity: "+smoke_data.POP_qty.get(i)+" Quantity Validation Successfully");
 			}
 			else
 			{
-				System.out.println("\t\t\t"+"Product: "+smoke_data.POP_qty.get(i)+" Quantity Validation Unsuccessfully");
+				System.out.println("\t\t\t"+"Quantity: "+smoke_data.POP_qty.get(i)+" Quantity Validation Unsuccessfully");
 				fail++;
 			}
 		}

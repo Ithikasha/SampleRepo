@@ -288,12 +288,6 @@ public class Placeorder_page {
 		
 		util.Click(element_obj.continuePlaceorder);
 		
-		if(util.Isdisplayed(element_obj.shpInt))
-		{
-			util.Click(element_obj.shpInt);
-			util.WaitAndClick(element_obj.continuePlaceorder);
-
-		}
 		
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Place Order']"))))
 		{
@@ -321,19 +315,7 @@ public class Placeorder_page {
 		
 		func.smoke_payment();
 		
-		if(util.Isdisplayed(element_obj.shpInt))
-		{
-			util.Click(element_obj.shpInt);
-		}
-		
 		util.Click(element_obj.continuePlaceorder);
-		
-		if(util.Isdisplayed(element_obj.shpInt))
-		{
-			util.Click(element_obj.shpInt);
-			util.WaitAndClick(element_obj.continuePlaceorder);
-
-		}
 		
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Place Order']"))))
 		{
@@ -354,19 +336,7 @@ public class Placeorder_page {
 		
 		func.smoke_payment();
 		
-		if(util.Isdisplayed(element_obj.shpInt))
-		{
-			util.Click(element_obj.shpInt);
-		}
-		
 		util.Click(element_obj.continuePlaceorder);
-		
-		if(util.Isdisplayed(element_obj.shpInt))
-		{
-			util.Click(element_obj.shpInt);
-			util.WaitAndClick(element_obj.continuePlaceorder);
-
-		}
 		
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Place Order']"))))
 		{
@@ -387,19 +357,7 @@ public class Placeorder_page {
 		
 		func.smoke_payment();
 		
-		if(util.Isdisplayed(element_obj.shpInt))
-		{
-			util.Click(element_obj.shpInt);
-		}
-		
 		util.Click(element_obj.continuePlaceorder);
-		
-		if(util.Isdisplayed(element_obj.shpInt))
-		{
-			util.Click(element_obj.shpInt);
-			util.WaitAndClick(element_obj.continuePlaceorder);
-
-		}
 		
 		if(fail>0)
 		{
@@ -418,6 +376,11 @@ public class Placeorder_page {
 		System.out.println("\tSmoke Testing: Place Order validation");
 		
 		System.out.println("\t\tTestcase - 24");
+		
+		if(util.Isdisplayed(element_obj.shpInt))
+		{
+			util.Click(element_obj.shpInt);
+		}
 		
 		util.Click(element_obj.placeorder);
 		

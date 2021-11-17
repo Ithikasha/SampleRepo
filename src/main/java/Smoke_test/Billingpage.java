@@ -172,19 +172,19 @@ public class Billingpage {
 			fail++;
 		}
 		
-		if(smoke_data.Country != "United States")
-		{
-			if(util.Isdisplayed(element_obj.policyCheck))
-			{
-				
-				System.out.println("\t\t\t"+"Policy checkbox verified Successfully");
-			}
-			else
-			{
-				System.out.println("\t\t\t"+"Policy checkbox verify Unsuccessfully");
-				fail++;
-			}
-		}
+//		if(smoke_data.Country != "United States")
+//		{
+//			if(util.Isdisplayed(element_obj.policyCheck))
+//			{
+//				
+//				System.out.println("\t\t\t"+"Policy checkbox verified Successfully");
+//			}
+//			else
+//			{
+//				System.out.println("\t\t\t"+"Policy checkbox verify Unsuccessfully");
+//				fail++;
+//			}
+//		}
 		
 		if(fail>0)
 		{

@@ -73,6 +73,22 @@ public class pageElements {
 	@FindBy(xpath="//a[@href='https://development.rockdevelop.com/tour/past/']")
 	public WebElement pastShow;
 	
+	@FindBy(xpath="(//div[@class='paginationCount'])[2]")
+	public WebElement pagination;
+	
+	@FindBy(xpath="//div[text()='Select Styles for Availability']")
+	public WebElement AvailabilityW;
+	
+	@FindBy(xpath="//p[@class='not-available-msg']")
+	public WebElement AvailabilityOOS;
+	
+	//Metstore
+	
+	@FindBy(xpath="(//a[@class='view-all'])[1]")
+	public WebElement viewAll; 
+
+	@FindBy(xpath="//a[@id='quickviewbutton']")
+	public WebElement quickView; 
 	
 	//Loginpage
 	@FindBy(xpath="//button[@value='Login']")

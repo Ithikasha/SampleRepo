@@ -1,7 +1,11 @@
 package Testcases;
 
+import static org.testng.Assert.assertTrue;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import Data_Functions.*;
 import Smoke_test.Data_smoke;
@@ -25,21 +29,26 @@ public class Cart_testing {
 		
 		driver.manage().window().maximize();
 		
-		data_obj.driver.get(data_obj.DEV_url);
+		driver.get("https://storefront:Frantic98@development.rockdevelop.com/");
 		
 		util.Click(element_obj.no);
 		
-		func_obj.login();
 		
 	}
 	
 	@Test
-	public void testcase1() {
+	public void testcase1() throws InterruptedException {
 		
+		func_obj.smoke_login("ithikasha@unitedtechno.com", "Ithi@met07");
+		assertTrue(driver.findElement(By.xpath("//h1[@class='overview-header']")).isDisplayed());
+		func_obj.Logout();		
 	}
 	
 	@Test
-	public void testcase2() {
+	public void testcase2() throws Exception {
+		
+		func_obj.smoke_login("ithikasha@unitedtechno.com", "Ithi@met7");
+		assertTrue(driver.findElement(By.xpath("//div[@class='error-form']")).isDisplayed());
 		
 	}
 	
@@ -58,5 +67,19 @@ public class Cart_testing {
 		
 	}
 	
+//	@DataProvider(name="address")
+//	public Object[][] testData()
+//	{
+//		Object[][] obj = new Object[3][3];
+//		
+//		obj[0][0] ="";
+//		obj[0][0] ="";
+//		obj[0][0] ="";
+//		obj[0][0] ="";
+//		obj[0][0] ="";
+//		obj[0][0] ="";
+//		obj[0][0] ="";
+//		obj[0][0] ="";
+//	}
 	
 }

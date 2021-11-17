@@ -20,23 +20,23 @@ public class constantData {
 	
 	public String Prod_url = "https://www.metallica.com/";
 	
-	public String DEV_url = "https://storefront:Frantic98@development.rockdevelop.com/" ;
+	public String DEV_url = "https://storefront:Frantic98@development.rockdevelop.com/";
 	
-	public String STG_url = "https://storefront:Frantic81@staging.rockdevelop.com/" ;
+	public String STG_url = "https://storefront:Frantic81@staging.rockdevelop.com/";
 	
-	public String DEV03_url = "https://dev03-na01-metallica.demandware.net/s/Metallica/home/" ;
+	public String DEV03_url = "https://dev03-na01-metallica.demandware.net/s/Metallica/home/";
 	
 	public String filePath = "C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets";
 	
-	public String username = "ithikasha@unitedtechno.com" ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
+	public String username = "ithikasha@unitedtechno.com"; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
-	public String DEV_password = "Ithi@met07" ;  //Ithi@met07 , Qatest@met07
+	public String DEV_password = "Ithi@met07";  //Ithi@met07 , Qatest@met07
 	
-	public String STG_password = "Ithi@utis08" ;
+	public String STG_password = "Ithi@utis08";
 	
 	public String fileName = "Metallica.xlsx";
 
-	public String sheetName = "28072021";
+	public String sheetName = "08112021I";
 	
 	public int totalOrder = 11;
 	
@@ -79,6 +79,16 @@ public class constantData {
 	public String Dis_year = "2025";
 	
 	public String Dis_cvv = "123";
+	
+	public String Mas_number = "5555555555554444";
+	
+	public String Mas_date = "08";
+	
+	public String Mas_month = "10";
+	
+	public String Mas_year = "2026";
+	
+	public String Mas_cvv = "123";
 	
 	public String orderNumber;
 	

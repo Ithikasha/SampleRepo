@@ -19,7 +19,7 @@ public class Data_smoke {
 	
 	public String Input_sheetName = "input";
 			
-	public String URL = "https://www.metallica.com/";
+	public String URL = "https://www.metallica.com/"; // https://www.metallica.com/ , https://storefront:Frantic81@staging.rockdevelop.com/ , https://storefront:Frantic98@development.rockdevelop.com/
 	
 	public static String email ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
@@ -101,12 +101,14 @@ public class Data_smoke {
 	
 	public static String POP_Billaddress;
 	
-	public String Orderstatus_Ordernumber = "00032412" ;
+	public String Orderstatus_Ordernumber = "00037027" ; //00037027, 00112653
 	
-	public String Orderstatus_zipcode = "55369-6322";
+	public String Orderstatus_zipcode = "4215";  //60431-4722, 4215 
 	
-	public String Orderstatus_email = "qatest0975@gmail.com";
+	public String Orderstatus_email = "ithikasha@unitedtechno.com";
 
 	public String orderNumber;
+
+	public int preorder_flag = 0;
 	
 }

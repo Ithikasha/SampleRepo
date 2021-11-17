@@ -91,7 +91,7 @@ public class Functions {
 
 		login();
  
-		for (data_obj.orderCount = 6; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
+		for (data_obj.orderCount = 1; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
 
 			data_obj.flag = true;
 			
@@ -172,7 +172,7 @@ public class Functions {
 //			
 //			Thread.sleep(3000);
 //			
-////			util.jClick(element_obj.shpInt);
+//			util.jClick(element_obj.shpInt);
 //			
 //			
 //			element_obj.shpInt.click();
@@ -185,12 +185,17 @@ public class Functions {
 		   Thread.sleep(3000);
 		   util.Click(element_obj.shpInt);
 		   util.Click(element_obj.placeorder);
+		   if(util.Isdisplayed(element_obj.shpInt))
+		   {
+			   util.Click(element_obj.shpInt);
+			   util.Click(element_obj.placeorder);
+		   }
 	   }
 	   else
 	   {
 		   util.Click(element_obj.placeorder);
 	   }
-		return true;
+	   return true;
    }
    
    public void bulkOrder_International() throws Exception
@@ -221,11 +226,11 @@ public class Functions {
 
 			element_obj.City = formatter.formatCellValue(row.getCell(5));
 
-			element_obj.Zip_Code = formatter.formatCellValue(row.getCell(6)); 
+			element_obj.Zip_Code = formatter.formatCellValue(row.getCell(6));
 			
 			element_obj.State = formatter.formatCellValue(row.getCell(16));
 		
-			element_obj.Country = formatter.formatCellValue(row.getCell(7)); 
+			element_obj.Country = formatter.formatCellValue(row.getCell(7));
 			
 			element_obj.Shipping_Method = formatter.formatCellValue(row.getCell(8));
 
@@ -335,18 +340,18 @@ public boolean selectItems() throws InterruptedException, Exception
 //		}
 			
 		
-		if(util.Isdisplayed(element_obj.PDP_quantity)) 
-		{
-					
-			util.Clear(element_obj.PDP_quantity);
-					
-			util.AcceptAlertifPresent(data_obj.driver);
-					
-			util.Clear(element_obj.PDP_quantity);
-					
-			util.AcceptAlertifPresent(data_obj.driver);
-					
-			util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
+//		if(util.Isdisplayed(element_obj.PDP_quantity)) 
+//		{
+//					
+//			util.Clear(element_obj.PDP_quantity);
+//					
+//			util.AcceptAlertifPresent(data_obj.driver);
+//					
+//			util.Clear(element_obj.PDP_quantity);
+//					
+//			util.AcceptAlertifPresent(data_obj.driver);
+//					
+//			util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
 			
 			if(util.Isdisplayed(element_obj.preorder))
 			{
@@ -368,32 +373,32 @@ public boolean selectItems() throws InterruptedException, Exception
 			
 			//Capturing Product price
 
-		}
-
-		else 
-		{
-
-			System.out.println("Quantity is not displayed");
-			
-			if(util.Isdisplayed(element_obj.preorder))
-			{
-				util.Click(element_obj.preorder);
-				
-				util.Click(element_obj.preorder_ack);
-				
-				util.Click(element_obj.preorder_ATC);
-				
-				data_obj.preorder_flag++;
-				
-			}
-			
-			else
-			{
-				util.Click(element_obj.addcart);
-			}
-					
-			util.Click(element_obj.addcart);
-		}
+//		}
+//
+//		else 
+//		{
+//
+//			System.out.println("Quantity is not displayed");
+//			
+//			if(util.Isdisplayed(element_obj.preorder))
+//			{
+//				util.Click(element_obj.preorder);
+//				
+//				util.Click(element_obj.preorder_ack);
+//				
+//				util.Click(element_obj.preorder_ATC);
+//				
+//				data_obj.preorder_flag++;
+//				
+//			}
+//			
+//			else
+//			{
+//				util.Click(element_obj.addcart);
+//			}
+//					
+//			util.Click(element_obj.addcart);
+//		}
 
 				
 		util.Click(element_obj.miniviewcart);
@@ -480,6 +485,16 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 //		util.Click(element_obj.Metallica);
 
 	}
+
+public void Logout() throws InterruptedException {
+	
+	util.Click(element_obj.Metallica);
+	
+	util.Click(element_obj.MyAccount);
+	
+	util.Click(element_obj.Logout);
+	
+}
 	
 	public void Validate_Login() throws InterruptedException, IOException {
 		
@@ -579,6 +594,14 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 				util.Clear(element_obj.phone);
 				
 				util.Sendkeys(element_obj.phone,"9856475245255");
+				
+				break;
+				
+			case "France":
+				
+				util.Clear(element_obj.phone);
+				
+				util.Sendkeys(element_obj.phone,"06457894141");
 				
 				break;
 				
@@ -787,6 +810,21 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 			element_obj.cardyear.sendKeys(data_obj.Dis_year);
 			
 			element_obj.cardcvn.sendKeys(data_obj.Dis_cvv);
+			
+			break;
+			
+		case "Mas":
+			
+			element_obj.cardname.sendKeys(data_obj.firstname);
+			
+			element_obj.cardnumber.sendKeys(data_obj.Mas_number);
+
+			Select Mas_month = new Select(element_obj.cardmonth);
+			Mas_month.selectByValue(data_obj.Mas_month);
+
+			element_obj.cardyear.sendKeys(data_obj.Mas_year);
+			
+			element_obj.cardcvn.sendKeys(data_obj.Mas_cvv);
 			
 			break;
 
@@ -1486,9 +1524,7 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
         	element_obj.driver.get(product.get(i+1).getAttribute("href"));
           
         }
-        
-        
-		
+        	
 //		String Image_path = "//div[@class='product-image main-image' or @class='product-thumbnails ' or @class='product-image recommendation_image']//child::img";
 	}
 	
@@ -1665,13 +1701,26 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 //				
 //			}
 			
-			util.Click(element_obj.addcart);
+			if(util.Isdisplayed(element_obj.preorder))
+			{
+				util.Click(element_obj.preorder);
+				
+				util.Click(element_obj.preorder_ack);
+				
+				util.Click(element_obj.preorder_ATC);
+				
+			}
 			
-			util.Click(element_obj.miniviewcart);
+			else
+			{
+				util.Click(element_obj.addcart);
+			}
 			
 		}
+		
+		util.Click(element_obj.miniviewcart);
 
-		//		util.WaitAndClick(element_obj.checkout);
+//				util.WaitAndClick(element_obj.checkout);
 		
 	}
 	
@@ -1733,7 +1782,7 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 				
 			case "https://storefront:Frantic81@staging.rockdevelop.com/":
 				
-				Cell STGresult_cell = row.createCell(6);
+				Cell STGresult_cell = row.createCell(4+smoke_data.testCount);
 				
 				STGresult_cell.setCellType(STGresult_cell.CELL_TYPE_STRING);
 
@@ -1751,7 +1800,7 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 				
 			case "https://www.metallica.com/":
 				
-				Cell PRDresult_cell = row.createCell(7);
+				Cell PRDresult_cell = row.createCell(4+smoke_data.testCount);
 				
 				PRDresult_cell.setCellType(PRDresult_cell.CELL_TYPE_STRING);
 
@@ -1771,11 +1820,58 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 				System.out.println("\t\t\tInvalid URL - "+smoke_data.URL);
 				
 				break;
+		}		
+		
+	}
+	
+	public void InventoryCheck() throws Exception
+	{
+		util.Click(element_obj.store);
+		
+//		util.Click(element_obj.viewAll);
+//		
+//		Thread.sleep(30000);
+		
+//		while(!element_obj.pagination.getText().contains(" Showing 1 - 705 of 705 ")) 
+//		{
+//			
+//		}
+		
+//		util.WaitAndClick(element_);
+		
+		List<WebElement> products = data_obj.driver.findElements(By.xpath("//a[@class='name-link']"));
+		
+		for(int i = 0; i < products.size(); i++)
+		{
+			data_obj.driver.get(products.get(i).getAttribute("href"));
+			
+			if(util.Isdisplayed(element_obj.AvailabilityW))
+			{
+				List<WebElement> sizeList = data_obj.driver.findElements(By.xpath("//a[@class='swatchanchor']"));
+				
+				for(int j = 0; j < sizeList.size(); j++)
+				{
+					if(sizeList.get(j).getAttribute("title").contentEquals("not available"))
+					{
+						System.out.println(products.get(i).getAttribute("href"));
+						System.out.println(sizeList.get(j).getAttribute("title"));
+					}
+							
+				}
+			}
+			else if(util.Isdisplayed(element_obj.AvailabilityOOS))
+			{
+				System.out.println(products.get(i).getAttribute("href"));
+				System.out.println(element_obj.AvailabilityOOS.getText());
+			}
 		}
 		
-				
+		System.out.println(products.size());
 		
-		
+	}
+	
+	public void writeInventory()
+	{
 		
 	}
 	

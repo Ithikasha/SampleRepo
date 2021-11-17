@@ -48,7 +48,7 @@ public class Smoke_test
 			
 			Orderconfirmation oc = new Orderconfirmation(data,elements,functions);
 			
-//			File file = new File("C:\\Users\\UNITS\\Desktop\\PRO_output.txt"); //Your file
+//			File file = new File("C:\\Users\\UNITS\\Desktop\\DEV_output.txt"); //Your file
 //			
 //			FileOutputStream fos = new FileOutputStream(file);
 //			
@@ -57,7 +57,7 @@ public class Smoke_test
 //			System.setOut(ps);
 //			
 //			System.setErr(ps);
-//			
+			
 			System.out.println("\t\t\t\t\t\t\t\t\tSmoke Test Suite");
 			
 			
@@ -112,7 +112,7 @@ public class Smoke_test
 					
 				lp.Login_Cartpage();
 					
-//				lp.Check_Orderstatus(smoke_data.Orderstatus_Ordernumber, smoke_data.Orderstatus_email,smoke_data.Orderstatus_zipcode);
+				lp.Check_Orderstatus(smoke_data.Orderstatus_Ordernumber, smoke_data.Orderstatus_email,smoke_data.Orderstatus_zipcode);
 					
 				cp.cart_test();
 				
@@ -128,7 +128,7 @@ public class Smoke_test
 				
 				bp.Invalid_creditcard();
 				
-//				bp.Redeem_GC(smoke_data.GC);
+				bp.Redeem_GC(smoke_data.GC);
 				
 				bp.ValidatePayment();
 				
