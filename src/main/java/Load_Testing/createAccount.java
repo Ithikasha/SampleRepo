@@ -22,7 +22,7 @@ public class createAccount {
 	
 		pageElements elements = new pageElements(data.driver);
 		
-		Functions functions = new Functions(data,elements, data_smoke);
+		Functions functions = new Functions(data,elements);
 		
 		data.driver.get(data.DEV_url);
 		

@@ -38,7 +38,7 @@ public class PDP_Testing {
 		
 		element_obj = new pageElements(driver);
 		
-		func_obj = new Functions(data_obj, element_obj, data_smoke);
+		func_obj = new Functions(data_obj, element_obj);
 		
 		driver.manage().window().maximize();
 		

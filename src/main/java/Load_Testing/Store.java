@@ -4,7 +4,7 @@ import Data_Functions.Functions;
 import Data_Functions.constantData;
 import Data_Functions.driverUtil;
 import Data_Functions.pageElements;
-import Smoke_test.Data_smoke;
+import Smoke_test.*;
 
 public class Store {
 	
@@ -22,7 +22,7 @@ public static driverUtil util = new driverUtil();
 	
 		pageElements elements = new pageElements(data.driver);
 		
-		Functions functions = new Functions(data,elements,data_smoke);
+		Functions functions = new Functions(data,elements);
 		
 		data.driver.get(data.DEV_url);
 		

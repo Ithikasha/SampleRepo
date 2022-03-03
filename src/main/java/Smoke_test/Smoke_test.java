@@ -32,7 +32,7 @@ public class Smoke_test
 			
 			Data_smoke smoke_data = new Data_smoke();
 			
-			Functions functions = new Functions(data,elements,smoke_data);
+			Functions functions = new Functions(data,elements);
 			
 			Collect_smokedata collect = new Collect_smokedata(data,elements,functions);
 			

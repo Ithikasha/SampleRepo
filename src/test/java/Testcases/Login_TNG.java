@@ -25,7 +25,7 @@ public class Login_TNG {
 	  data_obj.driver = util.chrome();
 	  pageElements element_obj = new pageElements(data_obj.driver);
 	  Data_smoke smoke_data = new Data_smoke();
-	  Functions func = new Functions(data_obj, element_obj, smoke_data);
+	  Functions func = new Functions(data_obj, element_obj);
 	 
 	  try
 	  {
@@ -69,7 +69,7 @@ public class Login_TNG {
 	  data_obj.driver = util.chrome();
 	  pageElements element_obj = new pageElements(data_obj.driver);
 	  Data_smoke smoke_data = new Data_smoke();
-	  Functions func = new Functions(data_obj, element_obj, smoke_data);
+	  Functions func = new Functions(data_obj, element_obj);
 	  
 	  try
 	  {

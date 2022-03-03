@@ -22,7 +22,7 @@ public class Cart_testing {
 	
 	pageElements element_obj = new pageElements(driver);
 	
-	Functions func_obj = new Functions(data_obj, element_obj,data_smoke);
+	Functions func_obj = new Functions(data_obj, element_obj);
 	
 	@BeforeTest
 	public void beforeTesting() throws InterruptedException {

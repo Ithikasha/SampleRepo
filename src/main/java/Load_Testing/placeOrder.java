@@ -4,7 +4,7 @@ import Data_Functions.Functions;
 import Data_Functions.constantData;
 import Data_Functions.driverUtil;
 import Data_Functions.pageElements;
-import Smoke_test.Data_smoke;
+import Smoke_test.*;
 
 
 
@@ -14,23 +14,21 @@ public class placeOrder {
 	public static driverUtil util = new driverUtil();
 	
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String args[]) throws Exception {
 		
 		    constantData data = new constantData();
 		    
 		    Data_smoke data_smoke = new Data_smoke();
-		    
-		   // data.URL = data.STG_url ; // Setting to DEV or STG for testing 
-		    
+		    		    
 		    data.driver = util.chrome();
 		
 			data.driver.manage().window().maximize();
 		
 			pageElements elements = new pageElements(data.driver);
 			
-			Functions functions = new Functions(data,elements, data_smoke);
+			Functions functions = new Functions(data,elements);
 			
-			data.driver.get(data.STG_url);
+			data.driver.get(data.DEV_url);
 			
 			
 //			data.driver.findElement(By.xpath("//button[@id='details-button']")).click();
@@ -53,9 +51,12 @@ public class placeOrder {
 //			
 //			functions.Date_Time();
 //			
-//			functions.bulkOrder_testing();
+//			functions.bulkOrder_testing("Regression");
 			
-			functions.bulkOrder_International();
+			functions.bulkOrder_testing("C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets","Browser1D","28022022",10,"Regression");
+
+			
+			functions.bulkOrder_International("Regression");
 			
 			data.driver.close();	
 			

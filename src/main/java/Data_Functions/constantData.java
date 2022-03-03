@@ -20,7 +20,7 @@ public class constantData {
 	
 	public String Prod_url = "https://www.metallica.com/";
 	
-	public String DEV_url = "https://storefront:Frantic98@development.rockdevelop.com/";
+	public String DEV_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@development.rockdevelop.com/";
 	
 	public String STG_url = "https://storefront:Frantic81@staging.rockdevelop.com/";
 	
@@ -36,9 +36,9 @@ public class constantData {
 	
 	public String fileName = "Metallica.xlsx";
 
-	public String sheetName = "08112021I";
+	public String sheetName = "25022022";
 	
-	public int totalOrder = 11;
+	public int totalOrder = 16;
 	
 	public String firstname = "Tester" ;
 	

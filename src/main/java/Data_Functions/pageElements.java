@@ -195,7 +195,7 @@ public class pageElements {
 	@FindBy(xpath="//button[@class='add-to-cart button button--cta checkout guest-checkout']")
 	public WebElement Guest_CO;
 	
-	@FindBy(xpath="//span[text()='Remove']")
+	@FindBy(xpath="(//tr[@class='cart-row']//following-sibling::button[@value='Remove'])[2]")
 	public WebElement remove;
 
 	@FindBy(xpath="(//td[@class='item-quantity']//child::input[@value='2'])")
@@ -257,7 +257,7 @@ public class pageElements {
 	@FindBy(xpath="//select[contains(@id,'country')]")
 	public WebElement countryField;
 
-	@FindBy(xpath="//input[@id='dwfrm_singleshipping_shippingAddress_isGift']")
+	@FindBy(xpath="//label[@for='dwfrm_singleshipping_shippingAddress_isGift']")
 	public WebElement gift;
 
 	@FindBy(xpath="//textarea[@id='dwfrm_singleshipping_shippingAddress_giftMessage']")
@@ -301,6 +301,12 @@ public class pageElements {
 	
 	@FindBy(xpath="")
 	public WebElement shippingmethods_shipnow;
+	
+	@FindBy(xpath="//p[@class='error preorder-error-msg label-inline']")
+	public WebElement Preorder_Acknowledgement_Error;
+	
+	@FindBy(xpath="//input[@id='preorder-acknowledgement']")
+	public WebElement Preorder_Acknowledgement;
 	
 	
 	//Billingpage
@@ -526,8 +532,32 @@ public class pageElements {
 	@FindBy(xpath="//span[contains(@class,'error')]")
 	public WebElement Error_span;
 	
+	// MyAccount page
 	
+	@FindBy(xpath="(//a[@title='Show or update your personal information'])[1]")
+	public WebElement MyAccount_PersonalInfo;
 	
+	@FindBy(xpath="(//a[@title='Order History'])")
+	public WebElement MyAccount_Order;
+	
+	@FindBy(xpath="(//a[@title='Manage your billing and shipping addresses'])[1]")
+	public WebElement MyAccount_Address;
+
+	@FindBy(xpath="(//a[@title='Manage credit cards'])[1]")
+	public WebElement MyAccount_Payment;
+
+	@FindBy(xpath="(//a[@title='Manage Vinyl Club'])")
+	public WebElement MyAccount_Vinylclub;
+
+	@FindBy(xpath="(//a[@title='Manage exclusives presale codes'])[1]")
+	public WebElement MyAccount_Presale;
+
+	@FindBy(xpath="(//a[@title='Show your free downloads'])")
+	public WebElement MyAccount_Freedownload;
+	
+	@FindBy(xpath="(//a[@title='Manage your contest entries'])")
+	public WebElement MyAccount_Contest;
+
 	String Address1;
 	
 	String City;

@@ -239,7 +239,7 @@ public class Placeorder_page {
 			util.WaitAndClick(element_obj.userAddress);
 		}
 		
-		func.smoke_payment();
+		func.smoke_payment(smoke_data.paymentMethod);
 		
 		if(util.Isdisplayed(element_obj.shpInt))
 		{
@@ -279,7 +279,7 @@ public class Placeorder_page {
 			util.WaitAndClick(element_obj.userAddress);
 		}
 		
-		func.smoke_payment();
+		func.smoke_payment(smoke_data.paymentMethod);
 		
 		if(util.Isdisplayed(element_obj.shpInt))
 		{
@@ -313,7 +313,7 @@ public class Placeorder_page {
 			util.WaitAndClick(element_obj.userAddress);
 		}
 		
-		func.smoke_payment();
+		func.smoke_payment(smoke_data.paymentMethod);
 		
 		util.Click(element_obj.continuePlaceorder);
 		
@@ -334,7 +334,7 @@ public class Placeorder_page {
 			fail++;
 		}
 		
-		func.smoke_payment();
+		func.smoke_payment(smoke_data.paymentMethod);
 		
 		util.Click(element_obj.continuePlaceorder);
 		
@@ -355,7 +355,7 @@ public class Placeorder_page {
 			fail++;
 		}
 		
-		func.smoke_payment();
+		func.smoke_payment(smoke_data.paymentMethod);
 		
 		util.Click(element_obj.continuePlaceorder);
 		

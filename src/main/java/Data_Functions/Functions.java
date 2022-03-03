@@ -33,9 +33,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.itextpdf.text.log.SysoLogger;
 
-import Smoke_test.Data_smoke;
+import Regression.*;
 
 import org.openqa.selenium.WebElement;
+import Smoke_test.*;
 
 public class Functions {
 	
@@ -46,15 +47,14 @@ public class Functions {
 	Data_smoke smoke_data ; 
 	
 
-   public Functions(constantData data,pageElements elem, Data_smoke smoke)
+   public Functions(constantData data,pageElements elem)
    {
 	   data_obj=data;
 	   element_obj=elem;
-	   smoke_data=smoke;
    }
 	
 	
-   public Workbook fileSetup(FileInputStream istream, String fileName) throws IOException
+   public static Workbook fileSetup(FileInputStream istream, String fileName) throws IOException
    {
 		Workbook book = null;
 
@@ -76,7 +76,7 @@ public class Functions {
    }
 	
 	
-   public void bulkOrder_testing() throws Exception  
+   public void bulkOrder_testing(String type) throws Exception  
    {
 
 		DataFormatter formatter = new DataFormatter();
@@ -89,7 +89,10 @@ public class Functions {
 
 		Sheet sheet = book.getSheet(data_obj.sheetName);
 
-		login();
+		if(type=="Regression")
+		{
+			login();
+		}
  
 		for (data_obj.orderCount = 1; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
 
@@ -133,7 +136,7 @@ public class Functions {
 				continue;
 			}
 
-			data_obj.flag = payment() ;
+			payment() ;
 			
 			if(data_obj.flag==false)
 			{
@@ -149,6 +152,89 @@ public class Functions {
 
 			orderConfirmation();
 		}
+		
+		Logout();
+		
+   }
+   
+   public void bulkOrder_testing(String filePath, String fileName, String sheetName, int totalOrders, String type) throws Exception  
+   {
+
+		DataFormatter formatter = new DataFormatter();
+
+		File file = new File(filePath+"\\"+fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,data_obj.fileName);
+
+		Sheet sheet = book.getSheet(sheetName);
+
+		if(type=="Regression")
+		{
+			login();
+		}
+ 
+		for (data_obj.orderCount = 1; data_obj.orderCount < totalOrders; data_obj.orderCount++) {
+
+			data_obj.flag = true;
+			
+			Row row = sheet.getRow(data_obj.orderCount);
+
+			element_obj.itemlist = formatter.formatCellValue(row.getCell(1)).split(",");
+
+			element_obj.qty = formatter.formatCellValue(row.getCell(2)).split(",");
+			
+			element_obj.variant = formatter.formatCellValue(row.getCell(3)).split(",");
+
+			element_obj.Address1 = formatter.formatCellValue(row.getCell(4));
+
+			element_obj.City = formatter.formatCellValue(row.getCell(5));
+
+			element_obj.Zip_Code = formatter.formatCellValue(row.getCell(6)); 
+			
+			element_obj.State = formatter.formatCellValue(row.getCell(7)); 
+
+			element_obj.Shipping_Method = formatter.formatCellValue(row.getCell(8));
+
+			element_obj.Payment_Method = formatter.formatCellValue(row.getCell(9));
+			
+			element_obj.couponCode = formatter.formatCellValue(row.getCell(17));
+
+//			System.out.println("Variable data_obj are Collected");
+
+			data_obj.flag = selectItems();
+			
+			if(data_obj.flag==false)
+			{
+				continue;
+			}
+
+			data_obj.flag = shipping("Domestic") ;
+			
+			if(data_obj.flag==false)
+			{
+				continue;
+			}
+
+			payment() ;
+			
+			if(data_obj.flag==false)
+			{
+				continue;
+			}
+			
+			data_obj.flag = placeOrder("Domestic") ;
+			
+			if(data_obj.flag==false)
+			{
+				continue;
+			}
+
+			orderConfirmation(filePath,fileName,sheetName);
+		}
+		
+		Logout();
 		
    }
    
@@ -198,7 +284,7 @@ public class Functions {
 	   return true;
    }
    
-   public void bulkOrder_International() throws Exception
+   public void bulkOrder_International(String type) throws Exception
    {
 	   DataFormatter formatter = new DataFormatter();
 
@@ -210,7 +296,10 @@ public class Functions {
 
 		Sheet sheet = book.getSheet(data_obj.sheetName);
 
-		login();
+		if(type=="Regression")
+		{
+			login();
+		}
 
 		for (data_obj.orderCount = 1; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
 
@@ -257,8 +346,71 @@ public class Functions {
 			orderConfirmation();
 
 		}
+		
+		Logout();
    }
 
+   public void bulkOrder_International(String filePath, String fileName, String sheetName, int totalOrders, String type) throws Exception
+   {
+	   DataFormatter formatter = new DataFormatter();
+
+		File file = new File(filePath+"\\"+fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,fileName);
+
+		Sheet sheet = book.getSheet(sheetName);
+
+		if(type=="Regression")
+		{
+			login();
+		}
+
+		for (data_obj.orderCount = 1; data_obj.orderCount < totalOrders; data_obj.orderCount++) {
+
+			Row row = sheet.getRow(data_obj.orderCount);
+
+			element_obj.itemlist = formatter.formatCellValue(row.getCell(1)).split(",");
+
+			element_obj.qty = formatter.formatCellValue(row.getCell(2)).split(",");
+		
+			element_obj.variant = formatter.formatCellValue(row.getCell(3)).split(",");
+
+			element_obj.Address1 = formatter.formatCellValue(row.getCell(4));
+
+			element_obj.City = formatter.formatCellValue(row.getCell(5));
+
+			element_obj.Zip_Code = formatter.formatCellValue(row.getCell(6));
+			
+			element_obj.State = formatter.formatCellValue(row.getCell(16));
+		
+			element_obj.Country = formatter.formatCellValue(row.getCell(7));
+			
+			element_obj.Shipping_Method = formatter.formatCellValue(row.getCell(8));
+
+			element_obj.Payment_Method = formatter.formatCellValue(row.getCell(9));
+
+			data_obj.flag = selectItems();
+		
+			if(!data_obj.flag)
+			{
+				element_obj.remove.click();
+				continue;
+			}
+
+			shipping("International") ;
+
+			payment() ;
+		
+			data_obj.flag = placeOrder("International") ;
+			
+			orderConfirmation(filePath,fileName,sheetName);
+
+		}
+		
+		Logout();
+   }
 	
 
 public void orderConfirmation() throws Exception {
@@ -310,6 +462,59 @@ public void orderConfirmation() throws Exception {
 	System.out.println(data_obj.orderTotal);
 
 	writeOrderDetail(data_obj.orderCount, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost,data_obj.subTotal);
+
+	util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
+}
+
+public void orderConfirmation(String filePath, String fileName, String sheetName) throws Exception {
+	
+//	util.Click(data_obj.driver.findElement(By.xpath("//a[@title='Order History']")));
+//	
+//	util.Click(data_obj.driver.findElement(By.xpath("(//button[@value='Order Details'])[1]")));
+//	
+	System.out.println("Order"+(data_obj.orderCount));
+
+	element_obj.itemlist = null;
+
+	element_obj.qty = null;
+	
+	data_obj.preorder_flag = 0;
+
+	data_obj.orderNumber = element_obj.orderNumber.getText().toString();
+
+	System.out.println(data_obj.orderNumber.substring(15));
+	
+	data_obj.subTotal = element_obj.Subtotal.getText().toString();
+
+	System.out.println(data_obj.subTotal);
+	
+	if(util.Isdisplayed(element_obj.Shipping_cost)) {
+	
+		data_obj.shippinging_cost = element_obj.Shipping_cost.getText().toString();
+	}
+
+	else{
+	
+		data_obj.shippinging_cost1 = element_obj.Shipping_cost1.getText().toString();
+	
+		data_obj.shippinging_cost2 = element_obj.Shipping_cost2.getText().toString();
+	
+		data_obj.shippinging_cost = data_obj.shippinging_cost1.concat("+"+data_obj.shippinging_cost2);
+	}
+
+	data_obj.handling_cost = element_obj.Handling_cost.getText().toString();
+
+	System.out.println(data_obj.handling_cost);
+
+	data_obj.salesTax = element_obj.salesTax.getText().toString();
+
+	System.out.println(data_obj.salesTax);
+
+	data_obj.orderTotal = element_obj.orderTotal.getText().toString();
+
+	System.out.println(data_obj.orderTotal);
+
+	writeOrderDetail(data_obj.orderCount, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost,data_obj.subTotal,filePath,fileName,sheetName);
 
 	util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
 }
@@ -403,7 +608,7 @@ public boolean selectItems() throws InterruptedException, Exception
 				
 		util.Click(element_obj.miniviewcart);
 			
-		System.out.println("Product "+(j+1)+" is added");
+//		System.out.println("Product "+(j+1)+" is added");
 				
 	}
 	
@@ -413,7 +618,7 @@ public boolean selectItems() throws InterruptedException, Exception
 	
 	util.WaitAndClick(element_obj.checkout);
 	
-	System.out.println("Cart is ready");
+//	System.out.println("Cart is ready");
 			
 	return true;
 
@@ -453,7 +658,6 @@ public boolean selectItems() throws InterruptedException, Exception
 		
 	}
 	
-	
 	public void login() throws InterruptedException {
 		
 		util.Click(element_obj.login);
@@ -464,7 +668,7 @@ public boolean selectItems() throws InterruptedException, Exception
 	
 		util.Click(element_obj.login_button);
 		
-		System.out.println("User is Logged in");
+//		System.out.println("User is Logged in");
 		
 //		util.Click(element_obj.Metallica);
 
@@ -488,7 +692,7 @@ public void smoke_login(String email, String password) throws InterruptedExcepti
 
 public void Logout() throws InterruptedException {
 	
-	util.Click(element_obj.Metallica);
+//	util.Click(element_obj.Metallica);
 	
 	util.Click(element_obj.MyAccount);
 	
@@ -737,7 +941,7 @@ public void Logout() throws InterruptedException {
 
 	}
 
-	public boolean payment() throws Exception
+	public void payment() throws Exception
 	{
 		switch(element_obj.Payment_Method) 
 		{
@@ -841,14 +1045,12 @@ public void Logout() throws InterruptedException {
 		}
 		
 		element_obj.continuePlaceorder.click();
-		
-		return true;
 
 	}
 	
-	public void smoke_payment() throws Exception
+	public void smoke_payment(String card) throws Exception
 	{
-		switch(smoke_data.paymentMethod) 
+		switch(card) 
 		{
 
 		case "Visa":
@@ -1155,6 +1357,67 @@ public void Logout() throws InterruptedException {
 	    istream.close(); 
 	    	    
 	    FileOutputStream outputstream = new FileOutputStream(data_obj.filePath+"\\"+data_obj.fileName);
+		
+	    book.write(outputstream);
+	    
+	    outputstream.close();
+	    
+//	    System.out.println(row.getCell(10));
+		
+
+	}
+	
+	public void writeOrderDetail(int rowNumber, String orderNumber, String handling_cost, String salesTax, String orderTotal, String shippinging_cost, String subtotal,String filePath, String fileName, String sheetName) throws IOException
+	{
+		File file = new File(filePath+"\\"+fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,fileName);
+
+		Sheet sheet = book.getSheet(sheetName);
+
+		Row row = sheet.getRow(rowNumber);
+		
+		Cell orderNumber_cell = row.createCell(10);
+		
+		orderNumber_cell.setCellType(orderNumber_cell.CELL_TYPE_STRING);
+
+		orderNumber_cell.setCellValue(orderNumber.substring(14));
+	    
+	    Cell shippingCost_cell = row.createCell(11);
+		
+	    shippingCost_cell.setCellType(shippingCost_cell.CELL_TYPE_STRING);
+
+	    shippingCost_cell.setCellValue(shippinging_cost);
+	    
+	    Cell handlingCost_cell = row.createCell(12);
+		
+	    handlingCost_cell.setCellType(handlingCost_cell.CELL_TYPE_STRING);
+
+	    handlingCost_cell.setCellValue(handling_cost);
+	    
+	    Cell salesTax_cell = row.createCell(13);
+		
+	    salesTax_cell.setCellType(shippingCost_cell.CELL_TYPE_STRING);
+
+	    salesTax_cell.setCellValue(salesTax);
+	    
+	    Cell subtotal_cell = row.createCell(14);
+		
+	    subtotal_cell.setCellType(subtotal_cell.CELL_TYPE_STRING);
+
+	    subtotal_cell.setCellValue(subtotal);
+	    
+	    Cell orderTotal_cell = row.createCell(15);
+		
+	    orderTotal_cell.setCellType(orderTotal_cell.CELL_TYPE_STRING);
+
+	    orderTotal_cell.setCellValue(orderTotal);
+	        
+	    istream.close(); 
+	    	    
+	    FileOutputStream outputstream = new FileOutputStream(filePath+"\\"+fileName);
 		
 	    book.write(outputstream);
 	    
@@ -1603,7 +1866,7 @@ public void Logout() throws InterruptedException {
 				continue;
 			}
 
-			data_obj.flag = payment() ;
+			payment() ;
 			
 			
 			element_obj.POviewcart.click();
@@ -1677,7 +1940,7 @@ public void Logout() throws InterruptedException {
 		{
 			util.Click(element_obj.srch);
 			
-			util.Sendkeys(element_obj.srchIP,prod[i]);
+			util.Sendkeys(element_obj.srchIP,prod[i].toString());
 
 			element_obj.srchTxt.submit();
 			
@@ -1735,17 +1998,18 @@ public void Logout() throws InterruptedException {
 			util.Click(element_obj.addcart);
 			
 			util.Click(element_obj.miniviewcart);
+			
 	}
 	
 	public void write_Smoketest(boolean result, int number) throws Exception
 	{
-		File file = new File(smoke_data.filePath+"\\"+smoke_data.fileName);
+		File file = new File(smoke_data.filePath+"\\"+Regression.Data_Regression.Result_fileName);
 
 		FileInputStream istream = new FileInputStream(file);
 
-		Workbook book = fileSetup(istream,smoke_data.fileName);
+		Workbook book = fileSetup(istream,Regression.Data_Regression.Result_fileName);
 
-		Sheet sheet = book.getSheet(smoke_data.sheetName);
+		Sheet sheet = book.getSheet(Regression.Data_Regression.Result_sheetName);
  
 		Row row = sheet.getRow(number);
 		
@@ -1764,7 +2028,7 @@ public void Logout() throws InterruptedException {
 		{
 			case "https://storefront:Frantic98@development.rockdevelop.com/":
 				
-				Cell DEVresult_cell = row.createCell(4+smoke_data.testCount);
+				Cell DEVresult_cell = row.createCell(4);
 				
 				DEVresult_cell.setCellType(DEVresult_cell.CELL_TYPE_STRING);
 
@@ -1772,7 +2036,7 @@ public void Logout() throws InterruptedException {
 				
 				istream.close(); 
 		 	    
-				FileOutputStream DEV_outputstream = new FileOutputStream(smoke_data.filePath+"\\"+smoke_data.fileName);
+				FileOutputStream DEV_outputstream = new FileOutputStream(smoke_data.filePath+"\\"+Regression.Data_Regression.Result_fileName);
 					
 				book.write(DEV_outputstream);
 				    
@@ -1782,7 +2046,7 @@ public void Logout() throws InterruptedException {
 				
 			case "https://storefront:Frantic81@staging.rockdevelop.com/":
 				
-				Cell STGresult_cell = row.createCell(4+smoke_data.testCount);
+				Cell STGresult_cell = row.createCell(5);
 				
 				STGresult_cell.setCellType(STGresult_cell.CELL_TYPE_STRING);
 
@@ -1790,7 +2054,7 @@ public void Logout() throws InterruptedException {
 				
 				istream.close(); 
 		 	    
-				FileOutputStream STG_outputstream = new FileOutputStream(smoke_data.filePath+"\\"+smoke_data.fileName);
+				FileOutputStream STG_outputstream = new FileOutputStream(smoke_data.filePath+"\\"+Regression.Data_Regression.Result_fileName);
 					
 				book.write(STG_outputstream);
 				    
@@ -1800,7 +2064,7 @@ public void Logout() throws InterruptedException {
 				
 			case "https://www.metallica.com/":
 				
-				Cell PRDresult_cell = row.createCell(4+smoke_data.testCount);
+				Cell PRDresult_cell = row.createCell(6);
 				
 				PRDresult_cell.setCellType(PRDresult_cell.CELL_TYPE_STRING);
 
@@ -1808,7 +2072,7 @@ public void Logout() throws InterruptedException {
 				
 				istream.close(); 
 		 	    
-				FileOutputStream PRD_outputstream = new FileOutputStream(smoke_data.filePath+"\\"+smoke_data.fileName);
+				FileOutputStream PRD_outputstream = new FileOutputStream(smoke_data.filePath+"\\"+Regression.Data_Regression.Result_fileName);
 					
 				book.write(PRD_outputstream);
 				    
