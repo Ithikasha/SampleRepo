@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite name="Failed suite [Multibrowser]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" parallel="methods" name="NewTest(failed)">
     <classes>
-      <class name="Testcases.UiTest">
+      <class name="Load_Testing.NewTest">
         <methods>
-          <include name="tearDown"/>
-          <include name="testUi"/>
-          <include name="setUp"/>
+          <include name="ChromeTest1"/>
+          <include name="ChromeTest2"/>
         </methods>
-      </class> <!-- Testcases.UiTest -->
+      </class> <!-- Load_Testing.NewTest -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- NewTest(failed) -->
+</suite> <!-- Failed suite [Multibrowser] -->

@@ -1,5 +1,8 @@
 package Data_Functions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,25 +18,27 @@ public class constantData {
 	
 	public int orderCount ;
 	
-	public String DEV_url = "https://storefront:Frantic98@development.rockdevelop.com/" ;
+	public String Prod_url = "https://www.metallica.com/";
 	
-	public String STG_url = "https://storefront:Frantic98@staging.rockdevelop.com/" ;
+	public String DEV_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@development.rockdevelop.com/";
 	
-	public String DEV03_url = "https://dev03-na01-metallica.demandware.net/s/Metallica/home/" ;
+	public String STG_url = "https://storefront:Frantic81@staging.rockdevelop.com/";
+	
+	public String DEV03_url = "https://dev03-na01-metallica.demandware.net/s/Metallica/home/";
 	
 	public String filePath = "C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets";
 	
-	public String username = "ithikasha@unitedtechno.com" ;
+	public String username = "ithikasha@unitedtechno.com"; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
-	public String DEV_password = "Ithi@met07" ;
+	public String DEV_password = "Ithi@met07";  //Ithi@met07 , Qatest@met07
 	
-	public String STG_password = "Ithi@utis08" ;
+	public String STG_password = "Ithi@utis08";
 	
 	public String fileName = "Metallica.xlsx";
 
-	public String sheetName = "18032021";
+	public String sheetName = "25022022";
 	
-	public int totalOrder = 30;
+	public int totalOrder = 16;
 	
 	public String firstname = "Tester" ;
 	
@@ -65,6 +70,26 @@ public class constantData {
 	
 	public String Amex_cvv = "7373";
 	
+	public String Dis_number ="6011111111111117";
+	
+	public String Dis_date = "10";
+	
+	public String Dis_month = "12";
+	
+	public String Dis_year = "2025";
+	
+	public String Dis_cvv = "123";
+	
+	public String Mas_number = "5555555555554444";
+	
+	public String Mas_date = "08";
+	
+	public String Mas_month = "10";
+	
+	public String Mas_year = "2026";
+	
+	public String Mas_cvv = "123";
+	
 	public String orderNumber;
 	
 	public String[] orderList;
@@ -87,7 +112,7 @@ public class constantData {
 	
 	public String errorType;
 
-	public boolean flag; 
+	public boolean flag;
 	
 	@FindBy(xpath="//button[@class='secondary-button small-link']") //(//div[@class='nav-wrapper']//button)[3]
 	public WebElement STG_advanced;
@@ -95,6 +120,10 @@ public class constantData {
 	@FindBy(xpath="//a[@id='proceed-link']")
 	public WebElement STG_proceed;
 
+	public String subTotal;
+	
+	public int preorder_flag = 0;
+	
 }
 
 

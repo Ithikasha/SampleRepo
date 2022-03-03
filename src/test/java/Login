@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="Suite">
+  <test name="Test">
+    <classes>
+      <class name="Testcases.Login_TNG"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

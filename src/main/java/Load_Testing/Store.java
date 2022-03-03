@@ -4,11 +4,11 @@ import Data_Functions.Functions;
 import Data_Functions.constantData;
 import Data_Functions.driverUtil;
 import Data_Functions.pageElements;
-import Smoke_test.Data_smoke;
+import Smoke_test.*;
 
-public class createAccount {
+public class Store {
 	
-	public static driverUtil util = new driverUtil();
+public static driverUtil util = new driverUtil();
 	
 	public static void main(String[] args) throws Exception {
 		
@@ -28,8 +28,13 @@ public class createAccount {
 		
 		util.Click(elements.no);
 		
-		functions.createAccount();
+		util.Click(elements.store);
 		
+		functions.Validate_Store();
+		
+		data.driver.close();
+	
+	
 	}
-
+	
 }

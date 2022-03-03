@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import com.itextpdf.text.log.SysoLogger;
 
 import Data_Functions.*;
+import Smoke_test.Data_smoke;
 
 
 public class PDP_Testing {
@@ -20,6 +21,8 @@ public class PDP_Testing {
 	constantData data_obj = new constantData();
 	
 	driverUtil util = new driverUtil();
+	
+	Data_smoke data_smoke = new Data_smoke();
 	
 	pageElements element_obj ;
 	
@@ -29,7 +32,7 @@ public class PDP_Testing {
 	
 	public void beforeTesting() throws InterruptedException {
 		
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\UNITS\\Downloads\\chromedriver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\UNITS\\Documents\\BitBucket\\chromedriver.exe");
 		
 		WebDriver driver = new ChromeDriver();
 		

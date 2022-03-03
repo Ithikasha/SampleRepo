@@ -6,9 +6,9 @@ import Data_Functions.driverUtil;
 import Data_Functions.pageElements;
 import Smoke_test.Data_smoke;
 
-public class createAccount {
+public class Pastshow {
 	
-	public static driverUtil util = new driverUtil();
+public static driverUtil util = new driverUtil();
 	
 	public static void main(String[] args) throws Exception {
 		
@@ -26,9 +26,15 @@ public class createAccount {
 		
 		data.driver.get(data.DEV_url);
 		
+		String page = "https://development.rockdevelop.com/tour/past/";
+		
 		util.Click(elements.no);
 		
-		functions.createAccount();
+		util.Click(elements.menu);
+		
+		util.Click(elements.pastShow);
+		
+		functions.LinkTest(page);
 		
 	}
 

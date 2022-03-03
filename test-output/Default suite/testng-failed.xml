@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Testcases.UiTest">
+      <class name="Load_Testing.NewTest">
         <methods>
-          <include name="tearDown"/>
-          <include name="testUi"/>
-          <include name="setUp"/>
+          <include name="ChromeTest1"/>
+          <include name="ChromeTest2"/>
         </methods>
-      </class> <!-- Testcases.UiTest -->
+      </class> <!-- Load_Testing.NewTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

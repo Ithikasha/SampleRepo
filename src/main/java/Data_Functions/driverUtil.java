@@ -45,7 +45,7 @@ public class driverUtil {
 	
 	constantData data_obj ;
 
-	public static void SwitchtoLatestWindow(WebDriver driver)//switching to the latest window
+	public void SwitchtoLatestWindow(WebDriver driver)//switching to the latest window
 	{
 		Set<String> handles = driver.getWindowHandles();
 		
@@ -56,7 +56,7 @@ public class driverUtil {
 	}
 	
 	
-	public static void SwitchtoWindowByTitle(WebDriver driver, String title)//switching to the window using title
+	public void SwitchtoWindowByTitle(WebDriver driver, String title)//switching to the window using title
 	{
 		Set<String> handles = driver.getWindowHandles();
 		
@@ -127,7 +127,7 @@ public class driverUtil {
 			{
 				if(count++<10)
 				{
-					System.out.println("Retrying Click Method"+count);
+//					System.out.println("Retrying Click Method"+count);
 					Thread.sleep(1000);
 				}
 			
@@ -155,7 +155,11 @@ public class driverUtil {
 						System.out.println("Retrying isDisplayed Method "+count);
 						Thread.sleep(1000);
 						return Isdisplayed(element);
-					}				
+					}
+					else
+					{
+						return false;
+					}
 				}
 				catch(NoSuchElementException ex)
 				{
@@ -228,7 +232,7 @@ public class driverUtil {
         
 		int count = 0;
 		
-		while(count<5)
+		while(count<10)
 		{
 			try
 			{
@@ -239,7 +243,7 @@ public class driverUtil {
 			catch(NoAlertPresentException ex)
 			{
 				count++;
-				System.out.println("Retrying Alert accept"+count);
+//				System.out.println("Retrying Alert accept"+count);
 				Thread.sleep(1000);
 			}
 		}
@@ -247,11 +251,11 @@ public class driverUtil {
     }
 	
 	
-	public void jClick(WebElement element) throws InterruptedException
+	public void jClick(WebDriver driver, WebElement element) throws InterruptedException
 	{
 		if(waitForElementToLoad(element))
 			{
-				js = (JavascriptExecutor)data_obj.driver;
+				js = (JavascriptExecutor)driver;
 					
 				js.executeScript("arguments[0].click();", element);
 			}
@@ -408,25 +412,27 @@ public class driverUtil {
 	{
 		int count=0;
 		
-		while(count < 60)
+		try
 		{
-	
-			if(!element.isEnabled() && count < 60)
+			while(count < 60)
 			{
-				System.out.println("Waiting for element- "+(++count)+"secs");
-				Thread.sleep(1000);
-			}
-			
-			else if(element.isEnabled() && count < 60)
-			{
-				element.click();
-				count = 60;
-			}
-			
-			else
-			{
+		
+				if(!element.isEnabled() && count < 60)
+				{
+//					System.out.println("Waiting for element- "+(++count)+"secs");
+					Thread.sleep(1000);
+				}
 				
+				else if(element.isEnabled() && count < 60)
+				{
+					element.click();
+					count = 60;
+				}
 			}
+		}
+		catch(StaleElementReferenceException se)
+		{
+			se.getMessage();
 		}
 		
 	}

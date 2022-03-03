@@ -6,9 +6,9 @@ import Data_Functions.driverUtil;
 import Data_Functions.pageElements;
 import Smoke_test.Data_smoke;
 
-public class createAccount {
-	
-	public static driverUtil util = new driverUtil();
+public class Login {
+//	Use Login.xlsx file
+public static driverUtil util = new driverUtil();
 	
 	public static void main(String[] args) throws Exception {
 		
@@ -28,8 +28,10 @@ public class createAccount {
 		
 		util.Click(elements.no);
 		
-		functions.createAccount();
+		functions.Validate_Login();
 		
+		data.driver.close();
+	
 	}
 
 }
