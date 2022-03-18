@@ -67,7 +67,7 @@ public class Login_smoke {
 	
 	public void Login_Invalid() throws Exception
 	{
-		System.out.println("\tSmoke Testing: Login with Invalid Credentials");
+		System.out.println("\tRegression Testing: Login with Invalid Credentials");
 		
 		System.out.println("\t\tTestcase - 2");
 		
