@@ -26,7 +26,7 @@ public class MyAccount_page {
 	{
 		System.out.println("MyAccount Page");
 		
-		System.out.println("\tSmoke Testing: Personal Information Link");
+		System.out.println("\tRegression Testing: Personal Information Link");
 		
 		System.out.println("\t\tTestcase - 5");
 
