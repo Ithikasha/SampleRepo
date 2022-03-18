@@ -11,15 +11,15 @@ public class Data_smoke {
 	
 	public boolean result ; 
 	
-	public String fileName = "Smoke_Testing.xlsx";
+	public static String fileName = "Smoke_Testing.xlsx";
 	
-	public String filePath = "C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets";
+	public static String filePath = "C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets";
 	
-	public String sheetName = "result";
+	public static String sheetName = "result";
 	
-	public String Input_sheetName = "input";
+	public static String Input_sheetName = "input";
 			
-	public String URL = "https://www.metallica.com/"; // https://www.metallica.com/ , https://storefront:Frantic81@staging.rockdevelop.com/ , https://storefront:Frantic98@development.rockdevelop.com/
+	public static String URL = "https://www.metallica.com/"; // https://www.metallica.com/ , https://storefront:Frantic81@staging.rockdevelop.com/ , https://storefront:Frantic98@development.rockdevelop.com/
 	
 	public static String email ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
@@ -49,13 +49,13 @@ public class Data_smoke {
 	
 	public static String paymentMethod;
 	
-	public String Shipping_Method;
+	public static String Shipping_Method;
 	
-	public String orderType;
+	public static String orderType;
 	
-	public int testCount;
+	public static int testCount;
 	
-	public int totalTest = 4;
+	public static int totalTest = 4;
 	
 	public static List<String> PDP_price = new ArrayList<>();
 
@@ -101,13 +101,13 @@ public class Data_smoke {
 	
 	public static String POP_Billaddress;
 	
-	public String Orderstatus_Ordernumber = "00037027" ; //00037027, 00112653
+	public static String Orderstatus_Ordernumber = "00037027" ; //00037027, 00112653
 	
-	public String Orderstatus_zipcode = "4215";  //60431-4722, 4215 
+	public static String Orderstatus_zipcode = "4215";  //60431-4722, 4215 
 	
-	public String Orderstatus_email = "ithikasha@unitedtechno.com";
+	public static String Orderstatus_email = "ithikasha@unitedtechno.com";
 
-	public String orderNumber;
+	public static String orderNumber;
 
 	public int preorder_flag = 0;
 	

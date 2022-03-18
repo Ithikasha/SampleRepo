@@ -146,8 +146,8 @@ public class Regression_test
 			
 			Regression_data.variant = null;
 			
-//			System.out.println("Domestic Orders");
-//			
+			System.out.println("Domestic Orders");
+			
 //			functions.bulkOrder_testing(smoke_data.filePath, smoke_data.Result_fileName, "Regression_DomesticOrders",smoke_data.DOrders);
 //			
 //			System.out.println();
@@ -155,7 +155,7 @@ public class Regression_test
 //			System.out.println("International Orders");
 //			
 //			functions.bulkOrder_International(smoke_data.filePath, smoke_data.Result_fileName, "Regression_InternationalOrders",smoke_data.IOrders);
-		
+//		
 			data.driver.close();
 			
 	}

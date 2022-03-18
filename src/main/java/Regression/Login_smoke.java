@@ -26,7 +26,7 @@ public class Login_smoke {
 	{
 		System.out.println("\nLoginpage");
 		
-		System.out.println("\tSmoke Testing: Login from Loginpage");
+		System.out.println("\tRegression Testing: Login from Loginpage");
 
 		System.out.println("\t\tTestcase - 1");
 		
@@ -45,7 +45,7 @@ public class Login_smoke {
 			
 			data_regression.result = true;
 			
-			func.write_Smoketest(data_regression.result, 1);
+			func.write_Regressiontest(data_regression.result, 1);
 		}
 		
 		else
@@ -54,7 +54,7 @@ public class Login_smoke {
 			
 			data_regression.result = false;
 			
-			func.write_Smoketest(data_regression.result, 1);
+			func.write_Regressiontest(data_regression.result, 1);
 		}
 
 		util.WaitAndClick(element_obj.MyAccount);
@@ -124,7 +124,7 @@ public class Login_smoke {
 			
 			data_regression.result = true;
 			
-			func.write_Smoketest(data_regression.result, 2);
+			func.write_Regressiontest(data_regression.result, 2);
 		}
 		
 		else
@@ -133,7 +133,7 @@ public class Login_smoke {
 			
 			data_regression.result = false;
 			
-			func.write_Smoketest(data_regression.result, 2);
+			func.write_Regressiontest(data_regression.result, 2);
 		}
 	}
 	
@@ -167,7 +167,7 @@ public class Login_smoke {
 			
 			data_regression.result = true;
 			
-			func.write_Smoketest(data_regression.result, 3);
+			func.write_Regressiontest(data_regression.result, 3);
 		}
 		else
 		{
@@ -175,7 +175,7 @@ public class Login_smoke {
 			
 			data_regression.result = false;
 			
-			func.write_Smoketest(data_regression.result, 3);
+			func.write_Regressiontest(data_regression.result, 3);
 		}
 		
 		element_obj.POviewcart.click();
@@ -193,37 +193,42 @@ public class Login_smoke {
 		util.Click(element_obj.Logout);
 		
 	}
-	
+
 	public void Check_Orderstatus(String number, String email, String zipcode) throws Exception
 	{
-		System.out.println("\tSmoke Testing: Check Order Status");
 		
-		System.out.println("\t\tTestcase - 4");
-		
-		util.Sendkeys(element_obj.driver.findElement(By.xpath("//input[@id='dwfrm_ordertrack_orderNumber']")), number);
-		
-		util.Sendkeys(element_obj.driver.findElement(By.xpath("//input[@id='dwfrm_ordertrack_orderEmail']")), email);
-		
-		util.Sendkeys(element_obj.driver.findElement(By.xpath("//input[@id='dwfrm_ordertrack_postalCode']")), zipcode);
-		
-		util.Click(element_obj.driver.findElement(By.xpath("//button[@value='Check Status']")));
-		
-		if(util.Isdisplayed(element_obj.orderNumber))
+		if(data_regression.URL != "https://www.metallica.com/")
 		{
-			System.out.println("\t\t\tOrder Status Check Successful");
+			System.out.println("\tSmoke Testing: Check Order Status");
 			
-			data_regression.result = true;
+			System.out.println("\t\tTestcase - 4");
 			
-			func.write_Smoketest(data_regression.result, 4);
+			util.Sendkeys(element_obj.driver.findElement(By.xpath("//input[@id='dwfrm_ordertrack_orderNumber']")), number);
+			
+			util.Sendkeys(element_obj.driver.findElement(By.xpath("//input[@id='dwfrm_ordertrack_orderEmail']")), email);
+			
+			util.Sendkeys(element_obj.driver.findElement(By.xpath("//input[@id='dwfrm_ordertrack_postalCode']")), zipcode);
+			
+			util.Click(element_obj.driver.findElement(By.xpath("//button[@value='Check Status']")));
+			
+			if(util.Isdisplayed(element_obj.orderNumber))
+			{
+				System.out.println("\t\t\tOrder Status Check Successful");
+				
+				data_regression.result = true;
+				
+				func.write_Regressiontest(data_regression.result, 4);
+			}
+			else
+			{
+				System.out.println("\t\t\tOrder Status Check Unsuccessful");
+				
+				data_regression.result = false;
+				
+				func.write_Regressiontest(data_regression.result, 4);
+			}
 		}
-		else
-		{
-			System.out.println("\t\t\tOrder Status Check Unsuccessful");
-			
-			data_regression.result = false;
-			
-			func.write_Smoketest(data_regression.result, 4);
-		}
+		
 	}
 
 

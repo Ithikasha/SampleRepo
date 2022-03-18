@@ -15,7 +15,7 @@ import Data_Functions.constantData;
 import Data_Functions.driverUtil;
 import Data_Functions.pageElements;
 
-public class Smoke_test
+public class smoke_test
 {
 	public static driverUtil util = new driverUtil();
 	

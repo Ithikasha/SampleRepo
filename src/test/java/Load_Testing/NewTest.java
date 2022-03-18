@@ -37,7 +37,7 @@ public class NewTest {
 		
 		functions.smoke_login("ithikasha@unitedtechno.com","Ithi@met07");
 		
-		functions.bulkOrder_testing("C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets","Browser1D.xlsx","02032022",51,"MultiBrowser");
+		functions.bulkOrder_testing("C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets","Browser1D.xlsx","07032022",30,"MultiBrowser");
 		
 //		functions.bulkOrder_International("C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets","Browser1I","28022022",10,"MultiBrowser");
 		
@@ -69,7 +69,7 @@ public class NewTest {
 				
 //		functions.bulkOrder_testing();
 		
-		functions.bulkOrder_testing("C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets","Browser2I.xlsx","02032022",51,"MultiBrowser");
+		functions.bulkOrder_testing("C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets","Browser2I.xlsx","07032022",30,"MultiBrowser");
 		
 		data.driver.close();	
  	}

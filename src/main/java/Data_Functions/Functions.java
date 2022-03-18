@@ -43,8 +43,7 @@ public class Functions {
 
 	public driverUtil util = new driverUtil();
 	constantData data_obj;
-	pageElements element_obj;
-	Data_smoke smoke_data ; 
+	pageElements element_obj; 
 	
 
    public Functions(constantData data,pageElements elem)
@@ -545,18 +544,18 @@ public boolean selectItems() throws InterruptedException, Exception
 //		}
 			
 		
-//		if(util.Isdisplayed(element_obj.PDP_quantity)) 
-//		{
-//					
-//			util.Clear(element_obj.PDP_quantity);
-//					
-//			util.AcceptAlertifPresent(data_obj.driver);
-//					
-//			util.Clear(element_obj.PDP_quantity);
-//					
-//			util.AcceptAlertifPresent(data_obj.driver);
-//					
-//			util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
+		if(util.Isdisplayed(element_obj.PDP_quantity)) 
+		{
+					
+			util.Clear(element_obj.PDP_quantity);
+					
+			util.AcceptAlertifPresent(data_obj.driver);
+					
+			util.Clear(element_obj.PDP_quantity);
+					
+			util.AcceptAlertifPresent(data_obj.driver);
+					
+			util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
 			
 			if(util.Isdisplayed(element_obj.preorder))
 			{
@@ -578,32 +577,32 @@ public boolean selectItems() throws InterruptedException, Exception
 			
 			//Capturing Product price
 
-//		}
-//
-//		else 
-//		{
-//
-//			System.out.println("Quantity is not displayed");
-//			
-//			if(util.Isdisplayed(element_obj.preorder))
-//			{
-//				util.Click(element_obj.preorder);
-//				
-//				util.Click(element_obj.preorder_ack);
-//				
-//				util.Click(element_obj.preorder_ATC);
-//				
-//				data_obj.preorder_flag++;
-//				
-//			}
-//			
-//			else
-//			{
-//				util.Click(element_obj.addcart);
-//			}
-//					
-//			util.Click(element_obj.addcart);
-//		}
+		}
+
+		else 
+		{
+
+			System.out.println("Quantity is not displayed");
+			
+			if(util.Isdisplayed(element_obj.preorder))
+			{
+				util.Click(element_obj.preorder);
+				
+				util.Click(element_obj.preorder_ack);
+				
+				util.Click(element_obj.preorder_ATC);
+				
+				data_obj.preorder_flag++;
+				
+			}
+			
+			else
+			{
+				util.Click(element_obj.addcart);
+			}
+					
+			util.Click(element_obj.addcart);
+		}
 
 				
 		util.Click(element_obj.miniviewcart);
@@ -1164,7 +1163,7 @@ public void Logout() throws InterruptedException {
 		
 		util.Sendkeys(element_obj.Paypal_CC_CVV, data_obj.Visa_cvv);
 		
-		util.Sendkeys(element_obj.Paypal_email, smoke_data.email);
+		util.Sendkeys(element_obj.Paypal_email, data_obj.email);
 		
 		util.Click(element_obj.Paypal_confirm);
 		
@@ -1188,7 +1187,7 @@ public void Logout() throws InterruptedException {
 //		
 //		util.Sendkeys(element_obj.Paypal_phone, smoke_data.phone);
 		
-		util.Sendkeys(element_obj.Paypal_email, smoke_data.email);
+		util.Sendkeys(element_obj.Paypal_email, data_obj.email);
 		
 		util.Click(element_obj.Paypal_pay);	
 		
@@ -2003,7 +2002,94 @@ public void Logout() throws InterruptedException {
 	
 	public void write_Smoketest(boolean result, int number) throws Exception
 	{
-		File file = new File(smoke_data.filePath+"\\"+Regression.Data_Regression.Result_fileName);
+		File file = new File(Smoke_test.Data_smoke.filePath+"\\"+Smoke_test.Data_smoke.fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,Smoke_test.Data_smoke.fileName);
+
+		Sheet sheet = book.getSheet(Smoke_test.Data_smoke.sheetName);
+ 
+		Row row = sheet.getRow(number);
+		
+		String value ;
+		
+		if(result)
+		{
+			value = "PASS";
+		}
+		else
+		{
+			value = "FAIL";
+		}
+		
+		switch(Smoke_test.Data_smoke.URL)
+		{
+			case "https://storefront:Frantic98@development.rockdevelop.com/":
+				
+				Cell DEVresult_cell = row.createCell(4);
+				
+				DEVresult_cell.setCellType(DEVresult_cell.CELL_TYPE_STRING);
+
+				DEVresult_cell.setCellValue(value);
+				
+				istream.close(); 
+		 	    
+				FileOutputStream DEV_outputstream = new FileOutputStream(Smoke_test.Data_smoke.filePath+"\\"+Smoke_test.Data_smoke.fileName);
+					
+				book.write(DEV_outputstream);
+				    
+				DEV_outputstream.close();
+				
+				break;
+				
+			case "https://storefront:Frantic81@staging.rockdevelop.com/":
+				
+				Cell STGresult_cell = row.createCell(5);
+				
+				STGresult_cell.setCellType(STGresult_cell.CELL_TYPE_STRING);
+
+				STGresult_cell.setCellValue(value);
+				
+				istream.close(); 
+		 	    
+				FileOutputStream STG_outputstream = new FileOutputStream(Smoke_test.Data_smoke.filePath+"\\"+Smoke_test.Data_smoke.fileName);
+					
+				book.write(STG_outputstream);
+				    
+				STG_outputstream.close();
+				
+				break;
+				
+			case "https://www.metallica.com/":
+				
+				Cell PRDresult_cell = row.createCell(6);
+				
+				PRDresult_cell.setCellType(PRDresult_cell.CELL_TYPE_STRING);
+
+				PRDresult_cell.setCellValue(value);
+				
+				istream.close(); 
+		 	    
+				FileOutputStream PRD_outputstream = new FileOutputStream(Smoke_test.Data_smoke.filePath+"\\"+Smoke_test.Data_smoke.fileName);
+					
+				book.write(PRD_outputstream);
+				    
+				PRD_outputstream.close();
+				
+				break;
+				
+			default:
+				System.out.println("\t\t\tInvalid URL - "+Smoke_test.Data_smoke.URL);
+				
+				break;
+		}		
+		
+	}
+	
+	public void write_Regressiontest(boolean result, int number) throws Exception
+	{
+		File file = new File(Regression.Data_Regression.filePath+"\\"+Regression.Data_Regression.Result_fileName);
 
 		FileInputStream istream = new FileInputStream(file);
 
@@ -2023,70 +2109,23 @@ public void Logout() throws InterruptedException {
 		{
 			value = "FAIL";
 		}
-		
-		switch(smoke_data.URL)
-		{
-			case "https://storefront:Frantic98@development.rockdevelop.com/":
 				
-				Cell DEVresult_cell = row.createCell(4);
+		Cell result_cell = row.createCell(4);
 				
-				DEVresult_cell.setCellType(DEVresult_cell.CELL_TYPE_STRING);
+		result_cell.setCellType(result_cell.CELL_TYPE_STRING);
 
-				DEVresult_cell.setCellValue(value);
+		result_cell.setCellValue(value);
 				
-				istream.close(); 
+		istream.close(); 
 		 	    
-				FileOutputStream DEV_outputstream = new FileOutputStream(smoke_data.filePath+"\\"+Regression.Data_Regression.Result_fileName);
+		FileOutputStream outputstream = new FileOutputStream(Regression.Data_Regression.filePath+"\\"+Regression.Data_Regression.Result_fileName);
 					
-				book.write(DEV_outputstream);
-				    
-				DEV_outputstream.close();
-				
-				break;
-				
-			case "https://storefront:Frantic81@staging.rockdevelop.com/":
-				
-				Cell STGresult_cell = row.createCell(5);
-				
-				STGresult_cell.setCellType(STGresult_cell.CELL_TYPE_STRING);
-
-				STGresult_cell.setCellValue(value);
-				
-				istream.close(); 
-		 	    
-				FileOutputStream STG_outputstream = new FileOutputStream(smoke_data.filePath+"\\"+Regression.Data_Regression.Result_fileName);
-					
-				book.write(STG_outputstream);
-				    
-				STG_outputstream.close();
-				
-				break;
-				
-			case "https://www.metallica.com/":
-				
-				Cell PRDresult_cell = row.createCell(6);
-				
-				PRDresult_cell.setCellType(PRDresult_cell.CELL_TYPE_STRING);
-
-				PRDresult_cell.setCellValue(value);
-				
-				istream.close(); 
-		 	    
-				FileOutputStream PRD_outputstream = new FileOutputStream(smoke_data.filePath+"\\"+Regression.Data_Regression.Result_fileName);
-					
-				book.write(PRD_outputstream);
-				    
-				PRD_outputstream.close();
-				
-				break;
-				
-			default:
-				System.out.println("\t\t\tInvalid URL - "+smoke_data.URL);
-				
-				break;
-		}		
-		
+		book.write(outputstream);
+			    
+		outputstream.close();
 	}
+	
+				
 	
 	public void InventoryCheck() throws Exception
 	{
