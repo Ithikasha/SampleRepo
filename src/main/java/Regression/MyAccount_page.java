@@ -53,7 +53,7 @@ public class MyAccount_page {
 			func.write_Smoketest(data_regression.result, 5);
 		}
 		
-		System.out.println("\tSmoke Testing: Address Link");
+		System.out.println("\tRegression Testing: Address Link");
 		
 		System.out.println("\t\tTestcase - 6");
 		
