@@ -199,7 +199,7 @@ public class Login_smoke {
 		
 		if(data_regression.URL != "https://www.metallica.com/")
 		{
-			System.out.println("\tSmoke Testing: Check Order Status");
+			System.out.println("\tRegression Testing: Check Order Status");
 			
 			System.out.println("\t\tTestcase - 4");
 			
