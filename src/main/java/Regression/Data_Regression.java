@@ -29,7 +29,7 @@ public class Data_Regression {
 	
 	public String fileName = "Regression_Testing.xlsx";
 	
-	public String filePath = "C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets";
+	public static String filePath = "C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets";
 	
 	public static String Result_sheetName = "result";
 	
@@ -57,7 +57,15 @@ public class Data_Regression {
 	
 	public static String Digital2;
 	
-	public static String[] itemlist;
+	public static String[] instock ;
+	
+	public static String[] preorder ;
+	
+	public static String[] digital ;
+	
+	public static String[] vinyl ;
+	
+	public static String[] itemlist ;
 	
 	public static String[] preorderlist;
 	
@@ -215,37 +223,40 @@ public class Data_Regression {
 		Sheet Products = book.getSheet("Products");
 		
 		Row Products_row = Products.getRow(1);
+			
+		instock = formatter.formatCellValue(Products_row.getCell(1)).split(",");
 		
+		instock1 = instock[0];
 		
-		instock1 = formatter.formatCellValue(Products_row.getCell(1));
-		
-		instock2 = formatter.formatCellValue(Products_row.getCell(2));
+		instock2 = instock[1];
 		
 		Products_row = Products.getRow(2);
 		
-		preorder1 = formatter.formatCellValue(Products_row.getCell(1));
+		preorder = formatter.formatCellValue(Products_row.getCell(1)).split(",");
 		
-		preorder2 = formatter.formatCellValue(Products_row.getCell(2));
+		preorder1 = preorder[0];
+		
+		preorder2 = preorder[1];
 		
 		Products_row = Products.getRow(3);
 		
-		Digital1 = formatter.formatCellValue(Products_row.getCell(1));
+		digital = formatter.formatCellValue(Products_row.getCell(1)).split(",");
 		
-		Digital2 = formatter.formatCellValue(Products_row.getCell(2));
+		Digital1 = digital[0];
+		
+		Digital2 = digital[1];
 		
 		Products_row = Products.getRow(4);
 		
-		vinylQ = formatter.formatCellValue(Products_row.getCell(1));
+		vinyl = formatter.formatCellValue(Products_row.getCell(1)).split(",");
+
+		vinylQ = vinyl[0];
 		
-		vinylA = formatter.formatCellValue(Products_row.getCell(2));
+		vinylA = vinyl[1];
 		
-		itemlist[0] = instock1;
-		
-		itemlist[1] = preorder1;
-		
-		preorderlist[0] = (preorder1);
-		
-		preorderlist[1] = (preorder2);
+		itemlist = instock;
+
+		preorderlist = preorder;
 		
 	}
 	public void readAddresss()

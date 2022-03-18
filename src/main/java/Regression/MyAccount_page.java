@@ -26,7 +26,7 @@ public class MyAccount_page {
 	{
 		System.out.println("MyAccount Page");
 		
-		System.out.println("\tSmoke Testing: Personal Information Link");
+		System.out.println("\tRegression Testing: Personal Information Link");
 		
 		System.out.println("\t\tTestcase - 5");
 
@@ -53,7 +53,7 @@ public class MyAccount_page {
 			func.write_Smoketest(data_regression.result, 5);
 		}
 		
-		System.out.println("\tSmoke Testing: Address Link");
+		System.out.println("\tRegression Testing: Address Link");
 		
 		System.out.println("\t\tTestcase - 6");
 		
@@ -76,7 +76,7 @@ public class MyAccount_page {
 			func.write_Smoketest(data_regression.result, 6);
 		}
 		
-		System.out.println("\tSmoke Testing: Payment Link");
+		System.out.println("\tRegression Testing: Payment Link");
 		
 		System.out.println("\t\tTestcase - 7");
 		
