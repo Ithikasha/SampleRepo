@@ -139,7 +139,7 @@ public class Login_smoke {
 	
 	public void Login_Cartpage() throws Exception
 	{
-		System.out.println("\tSmoke Testing: Login from Cartpage");
+		System.out.println("\tRegression Testing: Login from Cartpage");
 		
 		System.out.println("\t\tTestcase - 3");
 		
