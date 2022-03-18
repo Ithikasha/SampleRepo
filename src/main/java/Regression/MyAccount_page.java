@@ -76,7 +76,7 @@ public class MyAccount_page {
 			func.write_Smoketest(data_regression.result, 6);
 		}
 		
-		System.out.println("\tSmoke Testing: Payment Link");
+		System.out.println("\tRegression Testing: Payment Link");
 		
 		System.out.println("\t\tTestcase - 7");
 		
