@@ -25,21 +25,21 @@ public class Data_Regression {
 	
 	public boolean result ; 
 	
-	public static String Result_fileName = "Regression_Results.xlsx";
+	public static String Result_fileName = "Regression_Results.xls";
 	
-	public String fileName = "Regression_Testing.xlsx";
+	public String fileName = "Regression_testing.xls";
 	
-	public static String filePath = "C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets";
+	public static String filePath = "C:\\Users\\UTIS LAPTOP 38\\Desktop";
 	
 	public static String Result_sheetName = "result";
 	
 	public String Input_sheetName = "input";
 			
-	public String URL = "https://www.metallica.com/"; // https://www.metallica.com/ , https://storefront:Frantic81@staging.rockdevelop.com/ , https://storefront:Frantic98@development.rockdevelop.com/
+	public String URL = "https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@development.rockdevelop.com/"; // https://www.metallica.com/ , https://storefront:Frantic81@staging.rockdevelop.com/ , https://storefront:Frantic98@development.rockdevelop.com/
 	
 	public static String email = "ithikasha@unitedtechno.com " ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
-	public static String password = "Ithi@utis07" ;  //Ithi@met07 , Qatest@met07
+	public static String password = "Ithi@met07" ;  //Ithi@met07 , Qatest@met07
 	
 	public static String instock1;
 	

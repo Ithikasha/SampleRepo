@@ -94,11 +94,11 @@ public class Placeorder_page {
 		
 		if(fail>0)
 		{
-			func.write_Smoketest(false, 37);
+			func.write_Regressiontest(false, 37);
 		}
 		else
 		{
-			func.write_Smoketest(true, 37);
+			func.write_Regressiontest(true, 37);
 		}
 	}
 	
@@ -144,11 +144,11 @@ public class Placeorder_page {
 		
 		if(fail>0)
 		{
-			func.write_Smoketest(false, 38);
+			func.write_Regressiontest(false, 38);
 		}
 		else
 		{
-			func.write_Smoketest(true, 38);
+			func.write_Regressiontest(true, 38);
 		}
 		
 		System.out.println("\tSmoke Testing: Tax Return validation");
@@ -160,12 +160,12 @@ public class Placeorder_page {
 			if(data_regression.POP_tax.contains("$0.00"))
 			{
 				System.out.println("\t\t\t"+"Tax not Returned - Unsuccessful");
-				func.write_Smoketest(false, 39);
+				func.write_Regressiontest(false, 39);
 			}
 			else
 			{
 				System.out.println("\t\t\t"+"Tax Return - Successful");
-				func.write_Smoketest(true, 39);
+				func.write_Regressiontest(true, 39);
 			}
 		}
 		else
@@ -173,13 +173,13 @@ public class Placeorder_page {
 			if(data_regression.POP_tax.contains("$0.00"))
 			{
 				System.out.println("\t\t\t"+"Tax Return - Successful");
-				func.write_Smoketest(true, 39);
+				func.write_Regressiontest(true, 39);
 				
 			}
 			else
 			{
 				System.out.println("\t\t\t"+"Invalid Tax Return - Unsuccessful");
-				func.write_Smoketest(false, 39);
+				func.write_Regressiontest(false, 39);
 			}
 			
 		}
@@ -348,11 +348,11 @@ public class Placeorder_page {
 		
 		if(fail>0)
 		{
-			func.write_Smoketest(false, 40);
+			func.write_Regressiontest(false, 40);
 		}
 		else
 		{
-			func.write_Smoketest(true, 40);
+			func.write_Regressiontest(true, 40);
 		}
 		
 		if(data_regression.URL == data_obj.Prod_url)
@@ -374,12 +374,12 @@ public class Placeorder_page {
 		if(util.Isdisplayed(element_obj.orderNumber))
 		{
 			System.out.println("\t\t\t"+"Order placed Successfully");
-			func.write_Smoketest(true, 41);
+			func.write_Regressiontest(true, 41);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Order Unsuccessfully");
-			func.write_Smoketest(false, 41);
+			func.write_Regressiontest(false, 41);
 		}
 		
 		return true;

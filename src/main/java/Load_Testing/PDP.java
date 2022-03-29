@@ -74,7 +74,7 @@ public class PDP {
 				
 			data_Regression.result = true;
 				
-			func.write_Smoketest(data_Regression.result, 13);
+			func.write_Regressiontest(data_Regression.result, 13);
 		}
 		else
 		{
@@ -82,7 +82,7 @@ public class PDP {
 				
 			data_Regression.result = false;
 				
-			func.write_Smoketest(data_Regression.result, 13);
+			func.write_Regressiontest(data_Regression.result, 13);
 				
 		}
 			
@@ -103,7 +103,7 @@ public class PDP {
 				
 			data_Regression.result = true;
 				
-			func.write_Smoketest(data_Regression.result, 14);
+			func.write_Regressiontest(data_Regression.result, 14);
 		}
 		else
 		{
@@ -111,7 +111,7 @@ public class PDP {
 				
 			data_Regression.result = false;
 				
-			func.write_Smoketest(data_Regression.result, 14);
+			func.write_Regressiontest(data_Regression.result, 14);
 				
 		}
 			
@@ -155,7 +155,7 @@ public class PDP {
 				
 			data_Regression.result = true;
 				
-			func.write_Smoketest(data_Regression.result, 15);
+			func.write_Regressiontest(data_Regression.result, 15);
 		}
 		else
 		{
@@ -163,7 +163,7 @@ public class PDP {
 				
 			data_Regression.result = false;
 				
-			func.write_Smoketest(data_Regression.result, 15);
+			func.write_Regressiontest(data_Regression.result, 15);
 				
 		}
 			
@@ -197,7 +197,7 @@ public class PDP {
 			
 			data_Regression.result = true;
 			
-			func.write_Smoketest(data_Regression.result, 16);
+			func.write_Regressiontest(data_Regression.result, 16);
 		}
 		else
 		{
@@ -205,7 +205,7 @@ public class PDP {
 			
 			data_Regression.result = false;
 			
-			func.write_Smoketest(data_Regression.result, 16);
+			func.write_Regressiontest(data_Regression.result, 16);
 		}
 		
 		util.Click(element_obj.driver.findElement(By.xpath("(//tr[@class='cart-row']//following-sibling::button[@value='Remove'])[2]")));
@@ -238,7 +238,7 @@ public class PDP {
 //			
 //			data_Regression.result = true;
 //			
-//			func.write_Smoketest(data_Regression.result, 17);
+//			func.write_Regressiontest(data_Regression.result, 17);
 //		}
 //		else
 //		{
@@ -246,7 +246,7 @@ public class PDP {
 //			
 //			data_Regression.result = false;
 //			
-//			func.write_Smoketest(data_Regression.result, 17);
+//			func.write_Regressiontest(data_Regression.result, 17);
 //		}
 //		
 		fail = 0;

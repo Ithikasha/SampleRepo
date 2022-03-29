@@ -151,11 +151,11 @@ public class Cartpage {
 		
 		if(fail>0)
 		{
-			func.write_Smoketest(false, 18);
+			func.write_Regressiontest(false, 18);
 		}
 		else
 		{
-			func.write_Smoketest(true, 18);
+			func.write_Regressiontest(true, 18);
 		}
 		
 //		Update qty
@@ -201,11 +201,11 @@ public class Cartpage {
 		}
 		if(fail>0)
 		{
-			func.write_Smoketest(false, 19);
+			func.write_Regressiontest(false, 19);
 		}
 		else
 		{
-			func.write_Smoketest(true, 19);
+			func.write_Regressiontest(true, 19);
 		}
 		
 //		Remove prd
@@ -224,7 +224,7 @@ public class Cartpage {
 			System.out.println("\t\t\tProduct "+c+" removed successfully");
 		}
 		
-		func.write_Smoketest(true, 20);
+		func.write_Regressiontest(true, 20);
 		
 //		util.WaitAndClick(element_obj.checkout);
 		
@@ -246,7 +246,7 @@ public class Cartpage {
 	   {
 		   System.out.println("\t\t\tGuest checkout verified Successfully");
 		   
-		   func.write_Smoketest(true, 21);
+		   func.write_Regressiontest(true, 21);
 		   
 		   util.Click(element_obj.POviewcart);
 		   
@@ -261,7 +261,7 @@ public class Cartpage {
 	   {
 		   System.out.println("\t\t\tGuest checkout Unsuccessful");
 		   
-		   func.write_Smoketest(false, 21);
+		   func.write_Regressiontest(false, 21);
 		   
 		   for(int c = 1; c <= data_regression.itemlist.length; c++)
 			{

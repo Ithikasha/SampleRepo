@@ -462,7 +462,7 @@ public void orderConfirmation() throws Exception {
 
 	writeOrderDetail(data_obj.orderCount, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost,data_obj.subTotal);
 
-	util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
+	//util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
 }
 
 public void orderConfirmation(String filePath, String fileName, String sheetName) throws Exception {
@@ -547,16 +547,16 @@ public boolean selectItems() throws InterruptedException, Exception
 		if(util.Isdisplayed(element_obj.PDP_quantity)) 
 		{
 					
-			util.Clear(element_obj.PDP_quantity);
-					
-			util.AcceptAlertifPresent(data_obj.driver);
-					
-			util.Clear(element_obj.PDP_quantity);
-					
-			util.AcceptAlertifPresent(data_obj.driver);
-					
-			util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
-			
+//			util.Clear(element_obj.PDP_quantity);
+//					
+//			util.AcceptAlertifPresent(data_obj.driver);
+//					
+//			util.Clear(element_obj.PDP_quantity);
+//					
+//			util.AcceptAlertifPresent(data_obj.driver);
+//					
+//			util.Sendkeys(element_obj.PDP_quantity,element_obj.qty[j]);	
+//			
 			if(util.Isdisplayed(element_obj.preorder))
 			{
 				util.Click(element_obj.preorder);
@@ -601,7 +601,7 @@ public boolean selectItems() throws InterruptedException, Exception
 				util.Click(element_obj.addcart);
 			}
 					
-			util.Click(element_obj.addcart);
+	//		util.Click(element_obj.addcart);
 		}
 
 				
@@ -951,6 +951,7 @@ public void Logout() throws InterruptedException {
 			util.Sendkeys(element_obj.cardnumber, data_obj.Visa_number);
 			
 			Select card_month = new Select(element_obj.cardmonth);
+			
 			card_month.selectByValue(data_obj.Visa_month);
 
 			element_obj.cardyear.sendKeys(data_obj.Visa_year);
