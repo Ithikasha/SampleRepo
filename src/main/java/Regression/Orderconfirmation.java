@@ -48,12 +48,12 @@ public class Orderconfirmation {
 			System.out.println("\t\t\t"+data_regression.orderNumber.substring(15));
 			
 			System.out.println("\t\t\t"+"Order Number displayed Successfully");
-			func.write_Smoketest(true, 42);
+			func.write_Regressiontest(true, 42);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Order Number display Unsuccessfully");
-			func.write_Smoketest(false, 42);
+			func.write_Regressiontest(false, 42);
 		}
 		
 		System.out.println("\tSmoke Testing: Order Details validation");
@@ -125,11 +125,11 @@ public class Orderconfirmation {
 		
 		if(fail>0)
 		{
-			func.write_Smoketest(false, 43);
+			func.write_Regressiontest(false, 43);
 		}
 		else
 		{
-			func.write_Smoketest(true, 43);
+			func.write_Regressiontest(true, 43);
 		}
 		
 	}

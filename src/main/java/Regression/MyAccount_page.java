@@ -42,7 +42,7 @@ public class MyAccount_page {
 			
 			data_regression.result = true;
 			
-			func.write_Smoketest(data_regression.result, 5);
+			func.write_Regressiontest(data_regression.result, 5);
 		}
 		else
 		{
@@ -50,7 +50,7 @@ public class MyAccount_page {
 			
 			data_regression.result = false;
 			
-			func.write_Smoketest(data_regression.result, 5);
+			func.write_Regressiontest(data_regression.result, 5);
 		}
 		
 		System.out.println("\tRegression Testing: Address Link");
@@ -65,7 +65,7 @@ public class MyAccount_page {
 			
 			data_regression.result = true;
 			
-			func.write_Smoketest(data_regression.result, 6);
+			func.write_Regressiontest(data_regression.result, 6);
 		}
 		else
 		{
@@ -73,7 +73,7 @@ public class MyAccount_page {
 			
 			data_regression.result = false;
 			
-			func.write_Smoketest(data_regression.result, 6);
+			func.write_Regressiontest(data_regression.result, 6);
 		}
 		
 		System.out.println("\tRegression Testing: Payment Link");
@@ -88,7 +88,7 @@ public class MyAccount_page {
 			
 			data_regression.result = true;
 			
-			func.write_Smoketest(data_regression.result, 7);
+			func.write_Regressiontest(data_regression.result, 7);
 		}
 		else
 		{
@@ -96,10 +96,10 @@ public class MyAccount_page {
 			
 			data_regression.result = false;
 			
-			func.write_Smoketest(data_regression.result, 7);
+			func.write_Regressiontest(data_regression.result, 7);
 		}
 		
-		System.out.println("\tSmoke Testing: Presale Link");
+		System.out.println("\tRegression Testing: Presale Link");
 
 		System.out.println("\t\tTestcase - 8");
 		
@@ -111,7 +111,7 @@ public class MyAccount_page {
 		
 			data_regression.result = true;
 			
-			func.write_Smoketest(data_regression.result, 8);
+			func.write_Regressiontest(data_regression.result, 8);
 		}
 		else
 		{
@@ -119,10 +119,10 @@ public class MyAccount_page {
 			
 			data_regression.result = false;
 			
-			func.write_Smoketest(data_regression.result, 8);
+			func.write_Regressiontest(data_regression.result, 8);
 		}
 		
-		System.out.println("\tSmoke Testing: Free Download Link");
+		System.out.println("\tRegression Testing: Free Download Link");
 		
 		System.out.println("\t\tTestcase - 9");
 		
@@ -134,7 +134,7 @@ public class MyAccount_page {
 		
 			data_regression.result = true;
 			
-			func.write_Smoketest(data_regression.result, 9);
+			func.write_Regressiontest(data_regression.result, 9);
 		}
 		else
 		{
@@ -142,10 +142,10 @@ public class MyAccount_page {
 			
 			data_regression.result = false;
 			
-			func.write_Smoketest(data_regression.result, 9);
+			func.write_Regressiontest(data_regression.result, 9);
 		}
 		
-		System.out.println("\tSmoke Testing: Contest Link");
+		System.out.println("\tRegression Testing: Contest Link");
 		
 		System.out.println("\t\tTestcase - 10");
 		
@@ -157,7 +157,7 @@ public class MyAccount_page {
 		
 			data_regression.result = true;
 			
-			func.write_Smoketest(data_regression.result, 10);
+			func.write_Regressiontest(data_regression.result, 10);
 		}
 		else
 		{
@@ -165,10 +165,10 @@ public class MyAccount_page {
 			
 			data_regression.result = false;
 			
-			func.write_Smoketest(data_regression.result, 10);
+			func.write_Regressiontest(data_regression.result, 10);
 		}
 		
-		System.out.println("\tSmoke Testing: Vinyl Club Link");
+		System.out.println("\tRegression Testing: Vinyl Club Link");
 		
 		System.out.println("\t\tTestcase - 11");
 		
@@ -180,7 +180,7 @@ public class MyAccount_page {
 			
 			data_regression.result = true;
 			
-			func.write_Smoketest(data_regression.result, 11);
+			func.write_Regressiontest(data_regression.result, 11);
 		}
 		else
 		{
@@ -188,10 +188,10 @@ public class MyAccount_page {
 			
 			data_regression.result = false;
 			
-			func.write_Smoketest(data_regression.result, 11);
+			func.write_Regressiontest(data_regression.result, 11);
 		}
 		
-		System.out.println("\tSmoke Testing: Order History Link");
+		System.out.println("\tRegression Testing: Order History Link");
 		
 		System.out.println("\t\tTestcase - 12");
 		
@@ -203,7 +203,7 @@ public class MyAccount_page {
 			
 			data_regression.result = true;
 			
-			func.write_Smoketest(data_regression.result, 12);
+			func.write_Regressiontest(data_regression.result, 12);
 		}
 		else
 		{
@@ -211,7 +211,7 @@ public class MyAccount_page {
 			
 			data_regression.result = true;
 			
-			func.write_Smoketest(data_regression.result, 12);
+			func.write_Regressiontest(data_regression.result, 12);
 		}
 		
 		util.WaitAndClick(element_obj.MyAccount);

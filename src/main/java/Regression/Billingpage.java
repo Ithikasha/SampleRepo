@@ -188,11 +188,11 @@ public class Billingpage {
 		
 		if(fail>0)
 		{
-			func.write_Smoketest(false, 33);
+			func.write_Regressiontest(false, 33);
 		}
 		else
 		{
-			func.write_Smoketest(true, 33);
+			func.write_Regressiontest(true, 33);
 		}
 
 	}
@@ -204,11 +204,17 @@ public class Billingpage {
 		
 		System.out.println("\t\tTestcase - 34");
 		
-//		util.WaitAndClick(element_obj.continuebill);
+		//util.WaitAndClick(element_obj.continuebill);
+		
+		if(util.Isdisplayed(element_obj.userAddress)) 
+		{
+			util.WaitAndClick(element_obj.userAddress);
+		}		
 		
 		util.Sendkeys(element_obj.cardnumber, "41111111111111111");
 		
 		Select card_month = new Select(element_obj.cardmonth);
+		
 		card_month.selectByValue(data_obj.Visa_month);
 
 		element_obj.cardyear.sendKeys("2021");
@@ -227,12 +233,12 @@ public class Billingpage {
 		if(util.Isdisplayed(element_obj.continuePlaceorder))
 		{
 			System.out.println("\t\t\t"+"Invalid Credit card NOT Accepted Sucessfully");
-			func.write_Smoketest(true, 34);
+			func.write_Regressiontest(true, 34);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Invalid Credit card Accepted - Unsucessful");
-			func.write_Smoketest(false, 34);
+			func.write_Regressiontest(false, 34);
 		}
 		
 		
@@ -256,12 +262,12 @@ public class Billingpage {
 		if(util.Isdisplayed(element_obj.GC_successmsg))
 		{
 			System.out.println("\t\t\t"+"The E-Gift card redeemed Successfully");
-			func.write_Smoketest(true, 35);
+			func.write_Regressiontest(true, 35);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"The E-Gift card redeem Unsuccessfully");
-			func.write_Smoketest(false, 35);
+			func.write_Regressiontest(false, 35);
 		}
 	}
 	
@@ -308,6 +314,7 @@ public class Billingpage {
 			element_obj.cardnumber.sendKeys(data_obj.Amex_number);
 
 			Select AmexCard_month = new Select(element_obj.cardmonth);
+			
 			AmexCard_month.selectByValue(data_obj.Amex_month);
 
 			element_obj.cardyear.sendKeys(data_obj.Amex_year);
@@ -390,12 +397,12 @@ public class Billingpage {
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Place Order']"))))
 		{
 			System.out.println("\t\t\t"+"Payment using Credit card is Successful");
-			func.write_Smoketest(true, 36);
+			func.write_Regressiontest(true, 36);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Payment using Credit card is Unsuccessful");
-			func.write_Smoketest(false, 36);
+			func.write_Regressiontest(false, 36);
 		}
 
 	}
