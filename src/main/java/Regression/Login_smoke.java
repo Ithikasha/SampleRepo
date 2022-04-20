@@ -161,7 +161,7 @@ public class Login_smoke {
 		
 		util.WaitAndClick(element_obj.Cart_CO);
 		
-		if(util.Isdisplayed(data_obj.driver.findElement(By.xpath("//div[@class='shipping-header']"))))
+		if(util.Isdisplayed(data_obj.driver.findElement(By.xpath("//div[@class='shipping-header ']"))))
 		{
 			System.out.println("\t\t\tCartpage - Login Successful for "+data_regression.email);
 			

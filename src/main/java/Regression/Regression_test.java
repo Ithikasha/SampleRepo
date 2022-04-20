@@ -56,15 +56,15 @@ public class Regression_test
 			
 			Orderconfirmation oc = new Orderconfirmation(data,elements,functions);
 			
-			File file = new File("C:\\Users\\UTIS LAPTOP 38\\Desktop\\Dev_output"); //Your file
-			
-			FileOutputStream fos = new FileOutputStream(file);
-			
-			PrintStream ps = new PrintStream(fos);
-			
-			System.setOut(ps);
-			
-			System.setErr(ps);
+//			File file = new File("C:\\Users\\UTIS LAPTOP 38\\Desktop\\Dev_output"); //Your file
+//			
+//			FileOutputStream fos = new FileOutputStream(file);
+//			
+//			PrintStream ps = new PrintStream(fos);
+//			
+//			System.setOut(ps);
+//			
+//			System.setErr(ps);
 			
 			System.out.println("\t\t\t\t\t\t\t\t\tSmoke Test Suite");
 			
@@ -102,7 +102,7 @@ public class Regression_test
 			
 			sp.UseAddress_checkbox();
 			
-//			sp.Preorder_Validation(); 
+			sp.Preorder_Validation(); 
 			
 			sp.VC_Validation();
 			
