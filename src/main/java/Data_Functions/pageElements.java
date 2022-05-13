@@ -82,6 +82,36 @@ public class pageElements {
 	@FindBy(xpath="//p[@class='not-available-msg']")
 	public WebElement AvailabilityOOS;
 	
+	@FindBy(xpath="//button[@class='menu-toggle']")
+	public WebElement MenuIcon_click;
+	
+	@FindBy(xpath="//nav[@id='navigation']/a[@class='navigation-close']")
+	public WebElement MenuClose;
+	
+	@FindBy(xpath="//a[@class='search-close']")
+	public WebElement SearchClose;
+	
+	@FindBy(xpath="//div[@class='header-right-icons-homepage']/a[@class='fifth-member']")
+	public WebElement FifthMemberIcon;
+	
+	@FindBy(xpath="//a[@class='met-store']")
+	public WebElement MetStoreIcon;
+	
+	@FindBy(xpath="//div[@class='mini-cart-total']")
+	public WebElement MinicartIcon;
+	
+	@FindBy(xpath="//a[contains(text(),'Help')]")
+	public WebElement HelpLink;
+	
+	@FindBy(xpath="//a[contains(text(),'Credits')]")
+	public WebElement CreditsLink;
+	
+	@FindBy(xpath="//a[contains(text(),'Terms of Use')]")
+	public WebElement TermsOfUseLink;
+	
+	@FindBy(xpath="//a[contains(text(),'Privacy Policy')]")
+	public WebElement PrivacyPolicyLink;
+
 	//Metstore
 	
 	@FindBy(xpath="(//a[@class='view-all'])[1]")
@@ -167,6 +197,9 @@ public class pageElements {
 	
 	@FindBy(xpath="//*[@value='Add to Cart']")
 	public WebElement preorder_ATC;
+	
+	@FindBy(xpath="//a[@class='button button--cta']")
+	public WebElement PreorderLogin;
 
 	
 	//Cart page
@@ -283,6 +316,9 @@ public class pageElements {
 	
 	@FindBy(xpath="//button[@id='buttonSelectAddressUser']")
 	public WebElement userAddress;
+	
+	@FindBy(xpath="//button[@id='buttonSelectAddress0']")
+	public WebElement SuggestionAddress;
 	
 	@FindBy(xpath="//input[contains(@id,'addToAddressBook')]")
 	public WebElement saveAddress;
@@ -557,7 +593,8 @@ public class pageElements {
 	
 	@FindBy(xpath="(//a[@title='Manage your contest entries'])")
 	public WebElement MyAccount_Contest;
-
+	
+	
 	String Address1;
 	
 	String City;

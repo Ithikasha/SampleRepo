@@ -31,15 +31,15 @@ public class Data_Regression {
 	
 	public static String filePath = "C:\\Users\\UTIS LAPTOP 38\\Desktop";
 	
-	public static String Result_sheetName = "result";
+	public static String Result_sheetName = "Dev_Result";
 	
 	public String Input_sheetName = "input";
 			
-	public String URL = "https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@staging.rockdevelop.com/"; // https://www.metallica.com/ , https://storefront:Frantic81@staging.rockdevelop.com/ , https://storefront:Frantic98@development.rockdevelop.com/
+	public String URL =  "https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@development.rockdevelop.com/"; // https://www.metallica.com/ , https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@staging.rockdevelop.com/ , https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@development.rockdevelop.com/
 	
 	public static String email = "ithikasha@unitedtechno.com " ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
-	public static String password = "Ithi@met07" ;  //Ithi@met07 , Qatest@met07
+	public static String password = "Ithi@met07" ; //Ithi@met07 , Qatest@met07 , Ithi@utis07
 	
 	public static String instock1;
 	
@@ -57,6 +57,10 @@ public class Data_Regression {
 	
 	public static String Digital2;
 	
+	public static String PreOrder;
+	
+	public static String Instock;
+	
 	public static String[] instock ;
 	
 	public static String[] preorder ;
@@ -65,9 +69,13 @@ public class Data_Regression {
 	
 	public static String[] vinyl ;
 	
+	public static String[] PreOrderInstock;
+	
 	public static String[] itemlist ;
 	
 	public static String[] preorderlist;
+	
+	public static String[] Preorderinstock;
 	
 	public static String[] qty = {"1","1"};
 	
@@ -165,11 +173,11 @@ public class Data_Regression {
 	
 	public static HashMap<String, String> IAddress = new HashMap<String, String>();    
 	
-	public static HashMap<String, String> Address = new HashMap<String, String>();
+	public static HashMap<String, String> Address = new HashMap<String, String>(); 
 	
-	public static HashMap<String, String> TaxableAddress = new HashMap<String, String>();
+	public static HashMap<String, String> TaxableAddress = new HashMap<String, String>(); 
 
-	public static HashMap<String, String> NonTaxableAddress = new HashMap<String, String>();
+	public static HashMap<String, String> NonTaxableAddress = new HashMap<String, String>(); 
 
 	
 	public void readTaxableCountries()
@@ -254,10 +262,20 @@ public class Data_Regression {
 		
 		vinylA = vinyl[1];
 		
+		Products_row = Products.getRow(5);
+		
+		PreOrderInstock = formatter.formatCellValue(Products_row.getCell(1)).split(",");
+
+		PreOrder = PreOrderInstock[0];
+		
+		Instock = PreOrderInstock[1];
+	
 		itemlist = instock;
 
 		preorderlist = preorder;
 		
+		Preorderinstock = PreOrderInstock;
+				
 	}
 	public void readAddresss()
 	{

@@ -44,7 +44,7 @@ public class PDP {
 		
 		System.out.println("\tSmoke Testing: Product Detail Page_Image and Description");
 			
-		System.out.println("\t\tTestcase - 13");
+		System.out.println("\t\tTestcase - 23");
 			
 		int fail = 0;
 			
@@ -74,7 +74,7 @@ public class PDP {
 				
 			data_Regression.result = true;
 				
-			func.write_Regressiontest(data_Regression.result, 13);
+			func.write_Regressiontest(data_Regression.result, 23);
 		}
 		else
 		{
@@ -82,7 +82,7 @@ public class PDP {
 				
 			data_Regression.result = false;
 				
-			func.write_Regressiontest(data_Regression.result, 13);
+			func.write_Regressiontest(data_Regression.result, 23);
 				
 		}
 			
@@ -90,7 +90,7 @@ public class PDP {
 		
 		System.out.println("\tSmoke Testing: Einstein Product Suggestion");
 		
-		System.out.println("\t\tTestcase - 14");
+		System.out.println("\t\tTestcase - 24");
 		
 //		int elementPosition = element_obj.driver.findElement(By.xpath("//div[@class='slick-track']")).getLocation().getY();
 //		String js = String.format("window.scroll(0, %s)", elementPosition);
@@ -103,7 +103,7 @@ public class PDP {
 				
 			data_Regression.result = true;
 				
-			func.write_Regressiontest(data_Regression.result, 14);
+			func.write_Regressiontest(data_Regression.result, 24);
 		}
 		else
 		{
@@ -111,13 +111,13 @@ public class PDP {
 				
 			data_Regression.result = false;
 				
-			func.write_Regressiontest(data_Regression.result, 14);
+			func.write_Regressiontest(data_Regression.result, 24);
 				
 		}
 			
 		System.out.println("\tSmoke Testing: Shared Links ");
 		
-		System.out.println("\t\tTestcase - 15");
+		System.out.println("\t\tTestcase - 25");
 		
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//i[@class='pinterest-follow-white-icon']"))))
 		{
@@ -155,7 +155,7 @@ public class PDP {
 				
 			data_Regression.result = true;
 				
-			func.write_Regressiontest(data_Regression.result, 15);
+			func.write_Regressiontest(data_Regression.result, 25);
 		}
 		else
 		{
@@ -163,7 +163,7 @@ public class PDP {
 				
 			data_Regression.result = false;
 				
-			func.write_Regressiontest(data_Regression.result, 15);
+			func.write_Regressiontest(data_Regression.result, 25);
 				
 		}
 			
@@ -171,7 +171,7 @@ public class PDP {
 		
 		System.out.println("\tSmoke Testing: Product Quantity");
 			
-		System.out.println("\t\tTestcase - 16");
+		System.out.println("\t\tTestcase - 26");
 			
 		util.Clear(element_obj.PDP_quantity);
 			
@@ -197,7 +197,7 @@ public class PDP {
 			
 			data_Regression.result = true;
 			
-			func.write_Regressiontest(data_Regression.result, 16);
+			func.write_Regressiontest(data_Regression.result, 26);
 		}
 		else
 		{
@@ -205,28 +205,49 @@ public class PDP {
 			
 			data_Regression.result = false;
 			
-			func.write_Regressiontest(data_Regression.result, 16);
+			func.write_Regressiontest(data_Regression.result, 26);
 		}
 		
 		util.Click(element_obj.driver.findElement(By.xpath("(//tr[@class='cart-row']//following-sibling::button[@value='Remove'])[2]")));
 		
 //		System.out.println("\tSmoke Testing: Pre-order Product");
 //		
-//		System.out.println("\t\tTestcase - 17");
-//		
+//		System.out.println("\t\tTestcase - 27");
+		
 //		util.Click(element_obj.srch);
 //		
-//		util.Sendkeys(element_obj.srchIP,"REBA3CD");
+//		util.Sendkeys(element_obj.srchIP,"REBACD");
 //
 //		element_obj.srchTxt.submit();
+//		
+//		element_obj.PreorderLogin.click();
+//		
+//		func.smoke_login(data_Regression.email, data_Regression.password);
+//		
+//      util.Click(element_obj.srch);
+//		
+//		util.Sendkeys(element_obj.srchIP,"REBACD");
+//
+//		element_obj.srchTxt.submit();
+		
+//		if(util.Isdisplayed(element_obj.addcart))
+//		{
+//			System.out.println("Pre-order button is unavailable");
+//		}
+//	
+//		else
+//		{
 //			
-//		util.Click(element_obj.preorder);
+//			util.Isdisplayed(element_obj.preorder);
+//			
+		
+//  	util.Click(element_obj.preorder);
 //				
 //		util.Click(element_obj.preorder_ack);
 //				
 //		util.Click(element_obj.preorder_ATC);			
 //			
-////		util.Click(element_obj.addcart);
+////	util.Click(element_obj.addcart);
 //		
 //		if(util.Isdisplayed(element_obj.miniviewcart))
 //		{
@@ -238,7 +259,7 @@ public class PDP {
 //			
 //			data_Regression.result = true;
 //			
-//			func.write_Regressiontest(data_Regression.result, 17);
+//			func.write_Regressiontest(data_Regression.result, 27);
 //		}
 //		else
 //		{
@@ -246,12 +267,16 @@ public class PDP {
 //			
 //			data_Regression.result = false;
 //			
-//			func.write_Regressiontest(data_Regression.result, 17);
+//			func.write_Regressiontest(data_Regression.result, 27);
 //		}
 //		
-		fail = 0;
+//		fail = 0;
 		
+//		util.WaitAndClick(element_obj.MyAccount);
 		
+//		util.WaitAndClick(element_obj.Logout);
+			
+//		}		
 	
 	}
 

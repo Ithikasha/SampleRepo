@@ -29,7 +29,7 @@ public class Orderconfirmation {
 		
 		System.out.println("\tSmoke Testing: Order Number validation");
 		
-		System.out.println("\t\tTestcase - 42");
+		System.out.println("\t\tTestcase - 52");
 		
 		for(int i = 1; i <= data_regression.itemlist.length; i++)
 		{
@@ -48,17 +48,17 @@ public class Orderconfirmation {
 			System.out.println("\t\t\t"+data_regression.orderNumber.substring(15));
 			
 			System.out.println("\t\t\t"+"Order Number displayed Successfully");
-			func.write_Regressiontest(true, 42);
+			func.write_Regressiontest(true, 52);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Order Number display Unsuccessfully");
-			func.write_Regressiontest(false, 42);
+			func.write_Regressiontest(false, 52);
 		}
 		
 		System.out.println("\tSmoke Testing: Order Details validation");
 		
-		System.out.println("\t\tTestcase - 43");
+		System.out.println("\t\tTestcase - 53");
 		
 		int fail = 0;
 		
@@ -125,11 +125,11 @@ public class Orderconfirmation {
 		
 		if(fail>0)
 		{
-			func.write_Regressiontest(false, 43);
+			func.write_Regressiontest(false, 53);
 		}
 		else
 		{
-			func.write_Regressiontest(true, 43);
+			func.write_Regressiontest(true, 53);
 		}
 		
 	}

@@ -36,7 +36,7 @@ public class Placeorder_page {
 		
 		System.out.println("\tSmoke Testing: Validate Order Details");
 		
-		System.out.println("\t\tTestcase - 37");
+		System.out.println("\t\tTestcase - 47");
 		
 		int fail = 0;
 		
@@ -94,11 +94,11 @@ public class Placeorder_page {
 		
 		if(fail>0)
 		{
-			func.write_Regressiontest(false, 37);
+			func.write_Regressiontest(false, 47);
 		}
 		else
 		{
-			func.write_Regressiontest(true, 37);
+			func.write_Regressiontest(true, 47);
 		}
 	}
 	
@@ -106,7 +106,7 @@ public class Placeorder_page {
 	{
 		System.out.println("\tSmoke Testing: Validate Order Total");
 		
-		System.out.println("\t\tTestcase - 38");
+		System.out.println("\t\tTestcase - 48");
 		
 		int fail = 0;
 		
@@ -144,28 +144,28 @@ public class Placeorder_page {
 		
 		if(fail>0)
 		{
-			func.write_Regressiontest(false, 38);
+			func.write_Regressiontest(false, 48);
 		}
 		else
 		{
-			func.write_Regressiontest(true, 38);
+			func.write_Regressiontest(true, 48);
 		}
 		
 		System.out.println("\tSmoke Testing: Tax Return validation");
 		
-		System.out.println("\t\tTestcase - 39");
+		System.out.println("\t\tTestcase - 49");
 		
 		if(data_regression.TaxableCountryList.contains(data_regression.Address.get("Country")))
 		{
 			if(data_regression.POP_tax.contains("$0.00"))
 			{
 				System.out.println("\t\t\t"+"Tax not Returned - Unsuccessful");
-				func.write_Regressiontest(false, 39);
+				func.write_Regressiontest(false, 49);
 			}
 			else
 			{
 				System.out.println("\t\t\t"+"Tax Return - Successful");
-				func.write_Regressiontest(true, 39);
+				func.write_Regressiontest(true, 49);
 			}
 		}
 		else
@@ -173,13 +173,13 @@ public class Placeorder_page {
 			if(data_regression.POP_tax.contains("$0.00"))
 			{
 				System.out.println("\t\t\t"+"Tax Return - Successful");
-				func.write_Regressiontest(true, 39);
+				func.write_Regressiontest(true, 49);
 				
 			}
 			else
 			{
 				System.out.println("\t\t\t"+"Invalid Tax Return - Unsuccessful");
-				func.write_Regressiontest(false, 39);
+				func.write_Regressiontest(false, 49);
 			}
 			
 		}
@@ -199,7 +199,7 @@ public class Placeorder_page {
 	{
 		System.out.println("\tSmoke Testing: Edit Link Validation");
 		
-		System.out.println("\t\tTestcase - 40");
+		System.out.println("\t\tTestcase - 50");
 		
 		System.out.println("\t\tCart link");
 		
@@ -348,11 +348,11 @@ public class Placeorder_page {
 		
 		if(fail>0)
 		{
-			func.write_Regressiontest(false, 40);
+			func.write_Regressiontest(false, 50);
 		}
 		else
 		{
-			func.write_Regressiontest(true, 40);
+			func.write_Regressiontest(true, 50);
 		}
 		
 		if(data_regression.URL == data_obj.Prod_url)
@@ -362,7 +362,7 @@ public class Placeorder_page {
 		
 		System.out.println("\tSmoke Testing: Place Order validation");
 		
-		System.out.println("\t\tTestcase - 41");
+		System.out.println("\t\tTestcase - 51");
 		
 		if(util.Isdisplayed(element_obj.shpInt))
 		{
@@ -374,12 +374,12 @@ public class Placeorder_page {
 		if(util.Isdisplayed(element_obj.orderNumber))
 		{
 			System.out.println("\t\t\t"+"Order placed Successfully");
-			func.write_Regressiontest(true, 41);
+			func.write_Regressiontest(true, 51);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Order Unsuccessfully");
-			func.write_Regressiontest(false, 41);
+			func.write_Regressiontest(false, 51);
 		}
 		
 		return true;
