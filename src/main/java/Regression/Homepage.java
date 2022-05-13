@@ -1,0 +1,333 @@
+package Regression;
+
+import org.openqa.selenium.By;
+
+import Data_Functions.Functions;
+import Data_Functions.constantData;
+import Data_Functions.driverUtil;
+import Data_Functions.pageElements;
+
+public class Homepage {
+	
+	public driverUtil util = new driverUtil() ;
+	constantData data_obj ;
+	pageElements element_obj ;
+	Functions func ;
+	Data_Regression data_regression = new Data_Regression() ;
+	
+	public Homepage(constantData data,pageElements elem,Functions functions) throws Exception
+	   {
+		   data_obj=data;
+		   element_obj=elem;
+		   func= functions;		   
+	   }
+	
+	public void Homepage_Links() throws Exception
+	{
+        System.out.println("Home Page");
+		
+		System.out.println("\tRegression Testing: Menu Icon Click");
+		
+		System.out.println("\t\tTestcase - 1"); 
+		
+	    data_obj.driver.get(data_regression.URL);
+		
+		if(util.Isdisplayed(element_obj.no))
+		{
+			util.Click(element_obj.no);
+		}
+		
+		int fail=0 ;
+		
+		util.Click(element_obj.MenuIcon_click);
+		
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//span[contains(text(),'Fifth Member Fan Club')]"))))
+		{
+			System.out.println("\t\t\t"+"Menu icon verification Successful");
+			
+			data_regression.result = true;
+			
+			func.write_Regressiontest(data_regression.result, 1);
+		}
+		
+		else
+		{
+			System.out.println("\t\t\t"+"Menu icon verification UnSuccessful");
+			
+			data_regression.result = false;
+			
+			func.write_Regressiontest(data_regression.result, 1);
+		}
+		
+		util.Click(element_obj.MenuClose);
+		
+		System.out.println("\tRegression Testing: Search icon click");
+		
+		System.out.println("\t\tTestcase - 2"); 
+		
+		util.Click(element_obj.srch);
+		
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='quick-links']"))))
+		{
+			System.out.println("\t\t\t"+"Search icon verification Successful");
+			
+			data_regression.result = true;
+			
+			func.write_Regressiontest(data_regression.result, 2);
+		}
+		
+		else
+		{
+			System.out.println("\t\t\t"+"Search Icon verification UnSuccessful");
+			
+			data_regression.result = false;
+			
+			func.write_Regressiontest(data_regression.result, 2);
+		}
+		
+		util.Click(element_obj.SearchClose);
+		
+        System.out.println("\tRegression Testing: Login icon click");
+		
+		System.out.println("\t\tTestcase - 3"); 
+		
+		util.Click(element_obj.login);
+		
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='login-box login-account']"))))
+		{
+			System.out.println("\t\t\t"+"Login Icon verification Successful");
+			
+			data_regression.result = true;
+			
+			func.write_Regressiontest(data_regression.result, 3);
+		}
+		
+		else
+		{
+			System.out.println("\t\t\t"+"Login Icon verification UnSuccessful");
+			
+			data_regression.result = false;
+			
+			func.write_Regressiontest(data_regression.result, 3);
+		}
+		
+		 data_obj.driver.navigate().back();
+		
+		 System.out.println("\tRegression Testing: Fifth Member Club Icon click");
+			
+		 System.out.println("\t\tTestcase - 4"); 
+			
+			util.Click(element_obj.FifthMemberIcon);
+			
+			if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='col metclub-heading']/h3[contains(text(),'Become A Fifth Member')]"))))
+			{
+				System.out.println("\t\t\t"+"Fifth Member Club Icon verification Successful");
+				
+				data_regression.result = true;
+				
+				func.write_Regressiontest(data_regression.result, 4);
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Fifth Member Club Icon verification UnSuccessful");
+				
+				data_regression.result = false;
+				
+				func.write_Regressiontest(data_regression.result, 4);
+			}
+			
+		   data_obj.driver.navigate().back();
+		   
+		   System.out.println("\tRegression Testing: Metstore Icon click");
+			
+			 System.out.println("\t\tTestcase - 5"); 
+				
+				util.Click(element_obj.MetStoreIcon);
+				
+				if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='refinement-content refinement']"))))
+				{
+					System.out.println("\t\t\t"+"Metstore Icon verification Successful");
+					
+					data_regression.result = true;
+					
+					func.write_Regressiontest(data_regression.result, 5);
+				}
+				
+				else
+					
+				{
+					System.out.println("\t\t\t"+"Metstore Icon verification UnSuccessful");
+					
+					data_regression.result = false;
+					
+					func.write_Regressiontest(data_regression.result, 5);
+				}
+				
+			   data_obj.driver.navigate().back();
+			   
+			   System.out.println("\tRegression Testing: Cart Icon click");
+				
+				 System.out.println("\t\tTestcase - 6"); 
+					
+					util.Click(element_obj.MinicartIcon);
+					
+					if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//button[@class='button']"))))
+					{
+						System.out.println("\t\t\t"+"Cart Icon verification Successful");
+						
+						data_regression.result = true;
+						
+						func.write_Regressiontest(data_regression.result, 6);
+					}
+					
+					else
+						
+					{
+						System.out.println("\t\t\t"+"Cart Icon verification UnSuccessful");
+						
+						data_regression.result = false;
+						
+						func.write_Regressiontest(data_regression.result, 6);
+					}
+					
+				   data_obj.driver.navigate().back();
+				   
+				   System.out.println("\t\tTestcase - 7"); 
+				   
+				   System.out.println("\tRegression Testing: Help Link click");
+					
+					util.Click(element_obj.HelpLink);
+					
+					if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[@class='button']"))))
+					{
+						System.out.println("\t\t\t"+"Help Link verification Successful");
+						
+						data_regression.result = true;
+						
+						func.write_Regressiontest(data_regression.result, 7);
+					}
+					
+					else
+						
+					{
+						System.out.println("\t\t\t"+"Help Link verification UnSuccessful");
+						
+						data_regression.result = false;
+						
+						func.write_Regressiontest(data_regression.result, 7);
+					}
+					
+				   data_obj.driver.navigate().back();
+				   
+				   System.out.println("\t\tTestcase - 8"); 
+				   
+				   System.out.println("\tRegression Testing: Credit Link click");
+					
+					util.Click(element_obj.CreditsLink);
+					
+					if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h3[contains(text(),'METALLICA.COM')]"))))
+					{
+						System.out.println("\t\t\t"+"Credit Link verification Successful");
+						
+						data_regression.result = true;
+						
+						func.write_Regressiontest(data_regression.result, 8);
+					}
+					
+					else
+						
+					{
+						System.out.println("\t\t\t"+"Credit Link verification UnSuccessful");
+						
+						data_regression.result = false;
+						
+						func.write_Regressiontest(data_regression.result, 8);
+					}
+					
+				   data_obj.driver.navigate().back();
+				   
+				   System.out.println("\t\tTestcase - 9"); 
+				   
+				   System.out.println("\tRegression Testing: Terms Of Use Link click");
+					
+					util.Click(element_obj.TermsOfUseLink);
+					
+					if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='content-asset']/h1"))))
+					{
+						System.out.println("\t\t\t"+"Terms Of Use Link verification Successful");
+						
+						data_regression.result = true;
+						
+						func.write_Regressiontest(data_regression.result, 9);
+					}
+					
+					else
+						
+					{
+						System.out.println("\t\t\t"+"Terms Of Use Link verification UnSuccessful");
+						
+						data_regression.result = false;
+						
+						func.write_Regressiontest(data_regression.result, 9);
+					}
+					
+				   data_obj.driver.navigate().back();
+				   
+				   System.out.println("\t\tTestcase - 10"); 
+				   
+				   System.out.println("\tRegression Testing: Terms Of Use Link click");
+					
+					util.Click(element_obj.PrivacyPolicyLink);
+					
+					if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//span[contains(text(),'GENERAL TERMS:')]"))))
+					{
+						System.out.println("\t\t\t"+"Terms Of Use Link verification Successful");
+						
+						data_regression.result = true;
+						
+						func.write_Regressiontest(data_regression.result, 10);
+					}
+					
+					else
+						
+					{
+						System.out.println("\t\t\t"+"Terms Of Use Link verification UnSuccessful");
+						
+						data_regression.result = false;
+						
+						func.write_Regressiontest(data_regression.result, 10);
+					}
+					
+				    data_obj.driver.navigate().back();
+		
+//		
+//                    System.out.println("\t\tTestcase - 54");
+//				   
+//				    System.out.println(" \tRegression Testing: Adding pre-order and instock product to cart ");
+//					
+//				    func.Add_product(data_regression.Preorderinstock, data_regression.qty);
+//					
+//					if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='col col--xs-12 col--md-4']/h3"))))
+//					{
+//						System.out.println("\t\t\t"+"Adding pre-order and instock product to cart Successful");
+//						
+//						func.write_Regressiontest(true, 54);
+//					}
+//					else
+//					{
+//						System.out.println("\t\t\t"+"Adding pre-order and instock product to cart  Unsuccessful");
+//						
+//						func.write_Regressiontest(false, 54);
+//					}
+////					
+////					util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])[2]")));
+////					
+////					util.WaitAndClick(element_obj.remove);
+////				}   
+				   
+		   	   
+	}
+
+}
