@@ -45,6 +45,8 @@ public class Data_Regression {
 	
 	public static String Gift1;
 	
+	public static String Gift2;
+	
 	public static String instock1;
 	
 	public static String instock2;
