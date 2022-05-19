@@ -93,7 +93,7 @@ public class driverUtil {
 	
 	public WebDriver chrome()
 	{
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\UTIS LAPTOP 38\\Downloads\\chromedriver_win32 (2)\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\UTIS LAPTOP 38\\Downloads\\chromedriver_win32 (5)\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;

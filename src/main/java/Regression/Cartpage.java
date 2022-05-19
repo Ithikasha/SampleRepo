@@ -121,7 +121,7 @@ public class Cartpage {
 		
 		System.out.println("\tSmoke Testing: Product list and Price in Cartpage");
 	   	
-	   	System.out.println("\t\tTestcase - 18");
+	   	System.out.println("\t\tTestcase - 28");
 	   	
 	   	int fail = 0;
 	   	
@@ -143,7 +143,7 @@ public class Cartpage {
 			}
 			else
 			{
-				System.out.println("\\t\\t\\t\"+\"Product \"+(i+1)+\" Name Validation Unsuccessful");
+				System.out.println("\\t\\t\\t\"+\"Product"+(i+1)+" Name Validation Unsuccessful");
 				fail++;
 			}
 		}
@@ -151,18 +151,18 @@ public class Cartpage {
 		
 		if(fail>0)
 		{
-			func.write_Regressiontest(false, 18);
+			func.write_Regressiontest(false, 28);
 		}
 		else
 		{
-			func.write_Regressiontest(true, 18);
+			func.write_Regressiontest(true, 28);
 		}
 		
 //		Update qty
 		
 		System.out.println("\tSmoke Testing: Update Quantity in Cartpage");
 		
-		System.out.println("\t\tTestcase - 19");
+		System.out.println("\t\tTestcase - 29");
 		
 		fail = 0;
 		
@@ -201,18 +201,18 @@ public class Cartpage {
 		}
 		if(fail>0)
 		{
-			func.write_Regressiontest(false, 19);
+			func.write_Regressiontest(false, 29);
 		}
 		else
 		{
-			func.write_Regressiontest(true, 19);
+			func.write_Regressiontest(true, 29);
 		}
 		
 //		Remove prd
 		
 		System.out.println("\tSmoke Testing: Remove Product in Cartpage");
 		
-		System.out.println("\t\tTestcase - 20");
+		System.out.println("\t\tTestcase - 30");
 		
 		System.out.println("\t\t\tTotal products: "+data_regression.itemlist.length);
 		
@@ -224,7 +224,7 @@ public class Cartpage {
 			System.out.println("\t\t\tProduct "+c+" removed successfully");
 		}
 		
-		func.write_Regressiontest(true, 20);
+		func.write_Regressiontest(true, 30);
 		
 //		util.WaitAndClick(element_obj.checkout);
 		
@@ -236,7 +236,7 @@ public class Cartpage {
    {
 	   System.out.println("\tSmoke Testing: Guest Checkout from Cartpage");
 		
-	   System.out.println("\t\tTestcase - 21");
+	   System.out.println("\t\tTestcase - 31");
 	   
 	   func.Add_product(data_regression.itemlist, data_regression.qty);
 	   
@@ -246,7 +246,7 @@ public class Cartpage {
 	   {
 		   System.out.println("\t\t\tGuest checkout verified Successfully");
 		   
-		   func.write_Regressiontest(true, 21);
+		   func.write_Regressiontest(true, 31);
 		   
 		   util.Click(element_obj.POviewcart);
 		   
@@ -261,7 +261,7 @@ public class Cartpage {
 	   {
 		   System.out.println("\t\t\tGuest checkout Unsuccessful");
 		   
-		   func.write_Regressiontest(false, 21);
+		   func.write_Regressiontest(false, 31);
 		   
 		   for(int c = 1; c <= data_regression.itemlist.length; c++)
 			{

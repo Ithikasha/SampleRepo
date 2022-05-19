@@ -18,13 +18,14 @@ import Load_Testing.PDP;
 import Load_Testing.placeOrder;
 
 public class Regression_test
+
 {
 	public static driverUtil util = new driverUtil();
 	
 
 	public static void main(String[] args) throws Exception {
 		
-//		placeOrder.placeorder();
+//		    placeOrder.placeorder();
 		
 		    constantData data = new constantData();
 		    
@@ -56,28 +57,32 @@ public class Regression_test
 			
 			Orderconfirmation oc = new Orderconfirmation(data,elements,functions);
 			
-			File file = new File("C:\\Users\\UTIS LAPTOP 38\\Desktop\\Dev_output"); //Your file
+			Homepage hp = new Homepage(data,elements,functions);
 			
-			FileOutputStream fos = new FileOutputStream(file);
-			
-			PrintStream ps = new PrintStream(fos);
-			
-			System.setOut(ps);
-			
-			System.setErr(ps);
-			
+//			File file = new File("C:\\Users\\UTIS LAPTOP 38\\Desktop\\Dev_Output"); //Your file
+//			
+//			FileOutputStream fos = new FileOutputStream(file);
+//			
+//			PrintStream ps = new PrintStream(fos);
+//			
+//			System.setOut(ps);
+//			
+//			System.setErr(ps);
+		
 			System.out.println("\t\t\t\t\t\t\t\t\tSmoke Test Suite");
 			
 			Regression_data.readTaxableCountries();
 			
 			Regression_data.readInputs();
 			
+			hp.Homepage_Links();  
+			
 			lp.Login_Loginpage();
 			
 			lp.Login_Invalid();
 			
 			lp.Login_Cartpage();
-				
+			
 			lp.Check_Orderstatus(Regression_data.Orderstatus_Ordernumber,Regression_data.Orderstatus_email,Regression_data.Orderstatus_zipcode);
 			
 			ma.MyAccount_Links();
@@ -86,41 +91,41 @@ public class Regression_test
 			
 			cp.cart_test();
 			
-			cp.guestCheckout();
+			cp.guestCheckout(); 
 			
-			sp.ValidateFields();
+			sp.ValidateFields(); 
 			
-			sp.Validate_MandatoryFields();
+			sp.Validate_MandatoryFields(); 
 			
-			sp.Validate_Table();
+			sp.Validate_Table(); 
 			
-			sp.Validate_ProductTitle();
-						
-			sp.Validate_SavedAddress();
+			sp.Validate_ProductTitle(); 
+					
+			sp.Validate_SavedAddress(); 
 			
-			sp.Gift_message();
+			sp.Gift_message(); 
 			
-			sp.UseAddress_checkbox();
+			sp.UseAddress_checkbox(); 
 			
-//			sp.Preorder_Validation(); 
+//       	sp.Preorder_Validation(); 
 			
-			sp.VC_Validation();
+//			sp.VC_Validation(); 
 			
-			bp.ValidateFields();
+			bp.ValidateFields();  
 			
-			bp.Invalid_creditcard();
+			bp.Invalid_creditcard(); 
 			
-//			bp.Redeem_GC(smoke_data.GC);
+//          bp.Redeem_GC(smoke_data.GC); 
 			
-			bp.ValidatePayment();
+			bp.ValidatePayment(); 
 			
-			pop.Validate_orderdetails();
+			pop.Validate_orderdetails(); 
 			
-			pop.Validate_orderTotalsplit();
+			pop.Validate_orderTotalsplit(); 
 			
-			boolean flag = true;
+			boolean flag = true; 
 			
-			flag = pop.Validate_editlink();
+			flag = pop.Validate_editlink();  
 			
 			if(flag)
 			{
@@ -128,24 +133,26 @@ public class Regression_test
 			}
 			
 			else
+		    
 			{
 				elements.POviewcart.click();
 			}
 			
-//			System.out.println("\n\n\n\t\t\t\t\t\t\t\tTest-"+smoke_data.testCount+" Completed!!!");
-//			
+			
+//		    System.out.println("\n\n\n\t\t\t\t\t\t\t\tTest-"+smoke_data.testCount+" Completed!!!");
 			
 			
-			util.WaitAndClick(elements.MyAccount);
+			util.WaitAndClick(elements.MyAccount); 
 			
-			util.WaitAndClick(elements.Logout);
+			util.WaitAndClick(elements.Logout); 
 			
-			Regression_data.itemlist = null;
+			Regression_data.itemlist = null; 
 			
-			Regression_data.qty = null;
+			Regression_data.qty = null; 
 			
-			Regression_data.variant = null;
+			Regression_data.variant = null; 
 			
+			           			
 //			System.out.println("Domestic Orders");
 			
 //			functions.bulkOrder_testing(smoke_data.filePath, smoke_data.Result_fileName, "Regression_DomesticOrders",smoke_data.DOrders);
@@ -156,9 +163,8 @@ public class Regression_test
 //			
 //			functions.bulkOrder_International(smoke_data.filePath, smoke_data.Result_fileName, "Regression_InternationalOrders",smoke_data.IOrders);
 //		
-			data.driver.close();
-			
+			data.driver.close(); 
+		
 	}
-	
 	
 }

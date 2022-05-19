@@ -22,20 +22,22 @@ public class Login_smoke {
 		   func= functions;
 	   }
 	
+	
+	
 	public void Login_Loginpage() throws Exception
 	{
 		System.out.println("\nLoginpage");
 		
 		System.out.println("\tRegression Testing: Login from Loginpage");
 
-		System.out.println("\t\tTestcase - 1");
+		System.out.println("\t\tTestcase - 11");
 		
-	   	data_obj.driver.get(data_regression.URL);
+	    //  data_obj.driver.get(data_regression.URL);
 		
-		if(util.Isdisplayed(element_obj.no))
-		{
-			util.Click(element_obj.no);
-		}
+		//  if(util.Isdisplayed(element_obj.no))
+		//  {
+		//	util.Click(element_obj.no);
+		//  }
 		
 		func.smoke_login(data_regression.email, data_regression.password);
 		
@@ -45,7 +47,7 @@ public class Login_smoke {
 			
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 1);
+			func.write_Regressiontest(data_regression.result, 11);
 		}
 		
 		else
@@ -54,7 +56,7 @@ public class Login_smoke {
 			
 			data_regression.result = false;
 			
-			func.write_Regressiontest(data_regression.result, 1);
+			func.write_Regressiontest(data_regression.result, 11);
 		}
 
 		util.WaitAndClick(element_obj.MyAccount);
@@ -69,9 +71,9 @@ public class Login_smoke {
 	{
 		System.out.println("\tRegression Testing: Login with Invalid Credentials");
 		
-		System.out.println("\t\tTestcase - 2");
+		System.out.println("\t\tTestcase - 12");
 		
-		int fail = 0;
+	    int fail = 0;
 		
 		func.smoke_login("ithikash@unitedtechno.com","Ithi@met0" );
 		
@@ -124,7 +126,7 @@ public class Login_smoke {
 			
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 2);
+			func.write_Regressiontest(data_regression.result, 12);
 		}
 		
 		else
@@ -133,7 +135,7 @@ public class Login_smoke {
 			
 			data_regression.result = false;
 			
-			func.write_Regressiontest(data_regression.result, 2);
+			func.write_Regressiontest(data_regression.result, 12);
 		}
 	}
 	
@@ -141,7 +143,7 @@ public class Login_smoke {
 	{
 		System.out.println("\tRegression Testing: Login from Cartpage");
 		
-		System.out.println("\t\tTestcase - 3");
+		System.out.println("\t\tTestcase - 13");
 		
 		data_obj.driver.get(data_regression.URL);
 			
@@ -167,7 +169,7 @@ public class Login_smoke {
 			
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 3);
+			func.write_Regressiontest(data_regression.result, 13);
 		}
 		else
 		{
@@ -175,7 +177,7 @@ public class Login_smoke {
 			
 			data_regression.result = false;
 			
-			func.write_Regressiontest(data_regression.result, 3);
+			func.write_Regressiontest(data_regression.result, 13);
 		}
 		
 		element_obj.POviewcart.click();
@@ -201,7 +203,7 @@ public class Login_smoke {
 		{
 			System.out.println("\tRegression Testing: Check Order Status");
 			
-			System.out.println("\t\tTestcase - 4");
+			System.out.println("\t\tTestcase - 14");
 			
 			util.Sendkeys(element_obj.driver.findElement(By.xpath("//input[@id='dwfrm_ordertrack_orderNumber']")), number);
 			
@@ -217,7 +219,7 @@ public class Login_smoke {
 				
 				data_regression.result = true;
 				
-				func.write_Regressiontest(data_regression.result, 4);
+				func.write_Regressiontest(data_regression.result, 14);
 			}
 			else
 			{
@@ -225,11 +227,11 @@ public class Login_smoke {
 				
 				data_regression.result = false;
 				
-				func.write_Regressiontest(data_regression.result, 4);
+				func.write_Regressiontest(data_regression.result, 14);
 			}
 		}
 		
 	}
-
+	
 
 }

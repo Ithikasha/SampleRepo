@@ -51,7 +51,7 @@ public class Billingpage {
 		
 		System.out.println("\tSmoke Testing: Address field validation in Billing page");
 		
-		System.out.println("\t\tTestcase - 33");
+		System.out.println("\t\tTestcase - 43");
 		
 		int fail = 0;
 		
@@ -188,11 +188,11 @@ public class Billingpage {
 		
 		if(fail>0)
 		{
-			func.write_Regressiontest(false, 33);
+			func.write_Regressiontest(false, 43);
 		}
 		else
 		{
-			func.write_Regressiontest(true, 33);
+			func.write_Regressiontest(true, 43);
 		}
 
 	}
@@ -202,13 +202,13 @@ public class Billingpage {
 		
 		System.out.println("\tSmoke Testing: Invalid Credit Card Validation");
 		
-		System.out.println("\t\tTestcase - 34");
+		System.out.println("\t\tTestcase - 44");
 		
-		//util.WaitAndClick(element_obj.continuebill);
+		util.WaitAndClick(element_obj.continuebill);
 		
-		if(util.Isdisplayed(element_obj.userAddress)) 
+		if(util.Isdisplayed(element_obj.SuggestionAddress)) 
 		{
-			util.WaitAndClick(element_obj.userAddress);
+			util.WaitAndClick(element_obj.SuggestionAddress);
 		}		
 		
 		util.Sendkeys(element_obj.cardnumber, "41111111111111111");
@@ -233,12 +233,12 @@ public class Billingpage {
 		if(util.Isdisplayed(element_obj.continuePlaceorder))
 		{
 			System.out.println("\t\t\t"+"Invalid Credit card NOT Accepted Sucessfully");
-			func.write_Regressiontest(true, 34);
+			func.write_Regressiontest(true, 44);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Invalid Credit card Accepted - Unsucessful");
-			func.write_Regressiontest(false, 34);
+			func.write_Regressiontest(false, 44);
 		}
 		
 		
@@ -249,7 +249,7 @@ public class Billingpage {
 		
 		System.out.println("\tSmoke Testing: Redeeming Gift certificate");
 		
-		System.out.println("\t\tTestcase - 35");
+		System.out.println("\t\tTestcase - 45");
 		
 		util.Click(element_obj.giftcard_coupon_toggle);
 		
@@ -262,12 +262,12 @@ public class Billingpage {
 		if(util.Isdisplayed(element_obj.GC_successmsg))
 		{
 			System.out.println("\t\t\t"+"The E-Gift card redeemed Successfully");
-			func.write_Regressiontest(true, 35);
+			func.write_Regressiontest(true, 45);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"The E-Gift card redeem Unsuccessfully");
-			func.write_Regressiontest(false, 35);
+			func.write_Regressiontest(false, 45);
 		}
 	}
 	
@@ -277,7 +277,7 @@ public class Billingpage {
 		
 		System.out.println("\tSmoke Testing: Payment using Credit card");
 		
-		System.out.println("\t\tTestcase - 36");
+		System.out.println("\t\tTestcase - 46");
 		
 		switch("Visa") 
 		{
@@ -397,12 +397,12 @@ public class Billingpage {
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Place Order']"))))
 		{
 			System.out.println("\t\t\t"+"Payment using Credit card is Successful");
-			func.write_Regressiontest(true, 36);
+			func.write_Regressiontest(true, 46);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Payment using Credit card is Unsuccessful");
-			func.write_Regressiontest(false, 36);
+			func.write_Regressiontest(false, 46);
 		}
 
 	}
