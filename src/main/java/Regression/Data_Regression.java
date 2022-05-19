@@ -43,6 +43,8 @@ public class Data_Regression {
 	
 	public static String Gift;
 	
+	public static String Gift1;
+	
 	public static String instock1;
 	
 	public static String instock2;
