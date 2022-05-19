@@ -41,6 +41,8 @@ public class Data_Regression {
 	
 	public static String password = "Ithi@utis07" ; //Ithi@met07 , Qatest@met07 , Ithi@utis07
 	
+	public static String Gift;
+	
 	public static String instock1;
 	
 	public static String instock2;
