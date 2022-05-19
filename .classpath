@@ -25,10 +25,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/UTIS LAPTOP 38/Desktop/selenium/jar files/selenium-server-standalone-3.141.59.jar"/>
-	<classpathentry kind="lib" path="C:/Users/UTIS LAPTOP 38/Desktop/selenium/jar files/sikulixsetup-1.1.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/UTIS LAPTOP 38/Desktop/selenium/jar files/javax.activation-1.1.0.v201105071233.jar/javax.activation-1.1.0.v201105071233.jar"/>
-	<classpathentry kind="lib" path="C:/Users/UTIS LAPTOP 38/Desktop/selenium/jar files/javax.mail-api-1.4.6.jar/javax.mail-api-1.4.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/UTIS LAPTOP 38/Desktop/selenium/jar files/itextpdf-5.4.0.jar/itextpdf-5.4.0.jar"/>
+	<classpathentry kind="lib" path="Jarfiles/itextpdf-5.4.0.jar"/>
+	<classpathentry kind="lib" path="Jarfiles/javax.activation-1.1.0.v201105071233.jar"/>
+	<classpathentry kind="lib" path="Jarfiles/javax.mail-api-1.4.6.jar"/>
+	<classpathentry kind="lib" path="Jarfiles/selenium-server-standalone-3.141.59.jar"/>
+	<classpathentry kind="lib" path="Jarfiles/sikulixsetup-1.1.3.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -1,6 +1,8 @@
 package Regression;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import Data_Functions.Functions;
 import Data_Functions.constantData;
@@ -326,8 +328,158 @@ public class Homepage {
 ////					
 ////					util.WaitAndClick(element_obj.remove);
 ////				}   
-				   
-		   	   
+				    
+	   	   
 	}
-
-}
+	
+	public void Pagination() throws Exception
+	{
+		  System.out.println("\t\tTestcase - 55");
+		   
+	      System.out.println(" \tRegression Testing:Navigating through page number option in metstore ");
+	      
+	      data_obj.driver.get(data_regression.URL);
+			
+			if(util.Isdisplayed(element_obj.no))
+			{
+				util.Click(element_obj.no);
+			}
+			
+			int fail=0 ;
+	     
+	  	  util.Click(element_obj.MetStoreIcon);
+	  	  
+	  	  util.Click(element_obj.page3);
+	  	  
+	  	  Thread.sleep(2000);
+	  	 
+	  	  util.Click(element_obj.page5);
+	  	  
+	  	if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[contains(text(),'...And Justice For All (Remastered) - Vinyl')]"))))
+		{
+			System.out.println("\t\t\t"+"Navigating through page number verification Successful");
+			
+			data_regression.result = true;
+			
+			func.write_Regressiontest(data_regression.result, 55);
+		}
+		
+		else
+			
+		{
+			System.out.println("\t\t\t"+"Navigating through page number verification UnSuccessful");
+			
+			data_regression.result = false;
+			
+			func.write_Regressiontest(data_regression.result, 55);
+			
+		}
+			
+	}
+			public void ViewAll() throws Exception
+			{
+			
+			 System.out.println("\t\tTestcase - 56");
+			   
+		     System.out.println(" \tRegression Testing: Displaying all the products by clicking View All buttton ");
+		     
+		     util.Click(element_obj.viewAll);
+		     
+		 	if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[@title='Refine by:2XL']"))))
+			{
+				System.out.println("\t\t\t"+"Displaying all the products by clicking View All buttton verification Successful");
+				
+				data_regression.result = true;
+				
+				func.write_Regressiontest(data_regression.result, 56);
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Displaying all the products by clicking View All buttton verification UnSuccessful");
+				
+				data_regression.result = false;
+				
+				func.write_Regressiontest(data_regression.result, 56);
+		     
+			
+			}
+		
+			}
+			
+			public void ApplyandRemovefilters() throws Exception
+			{
+				System.out.println("\t\tTestcase - 57");
+				   
+			    System.out.println(" \tRegression Testing: Applying and removing the Filters in the left panel ");
+			    
+			    Thread.sleep(2000);
+				
+				util.Click(element_obj.XXl);
+				
+				util.Click(element_obj.Price20to49);
+				
+				util.Click(element_obj.XXLRemove);
+				
+				util.Click(element_obj.Price20to49Remove);
+				
+				if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[contains(text(),'Curitiba Screen Printed Concert Poster')]"))))
+				{
+					System.out.println("\t\t\t"+"Applying and removing the Filters in the left panel verification Successful");
+					
+					data_regression.result = true;
+					
+					func.write_Regressiontest(data_regression.result, 57);
+				}
+				
+				else
+					
+				{
+					System.out.println("\t\t\t"+"Applying and removing the Filters in the left panel verification UnSuccessful");
+					
+					data_regression.result = false;
+					
+					func.write_Regressiontest(data_regression.result, 57);
+					
+				}
+				
+						
+			}
+			
+			public void SortBy() throws Exception
+			{
+				System.out.println("\t\tTestcase - 58");
+				   
+			    System.out.println(" \tRegression Testing: Sorting the products ");
+			    
+			    util.Click(element_obj.Most);
+			        
+			    Select drp = new Select(element_obj.Most);
+			    
+				drp.selectByVisibleText("Most Popular");
+			    
+				if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//select[@id='grid-sort-header']//option[contains(text(),'Most Popular')])[2]"))))
+				{
+					System.out.println("\t\t\t"+"Sorting the products verification Successful");
+					
+					data_regression.result = true;
+					
+					func.write_Regressiontest(data_regression.result, 58);
+				}
+				
+				else
+					
+				{
+					System.out.println("\t\t\t"+"Sorting the products verification UnSuccessful");
+					
+					data_regression.result = false;
+					
+					func.write_Regressiontest(data_regression.result, 58);
+					
+				}
+			    
+			    
+			    
+			}
+	}

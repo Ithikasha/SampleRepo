@@ -120,6 +120,35 @@ public class pageElements {
 	@FindBy(xpath="//a[@id='quickviewbutton']")
 	public WebElement quickView; 
 	
+	@FindBy(xpath="//div[@class='col col--xs-12 col--md-6']//a[@class='page-3']")
+	public WebElement page3;
+	
+	@FindBy(xpath="//div[@class='col col--xs-12 col--md-6']//a[@class='page-5']")
+	public WebElement page5;
+	
+	@FindBy(xpath="//a[@title='Refine by:2XL']")
+	public WebElement XXl;
+	
+	@FindBy(xpath="//span[contains(text(),'2XL')]//a[@title='Remove']")
+	public WebElement XXLRemove;
+	
+	@FindBy(xpath="//a[@title='Refine by Price: $20 - $49']")
+	public WebElement Price20to49;
+	
+	@FindBy(xpath="//span[contains(text(),'$20 - $49')]//a[@title='Remove']")
+	public WebElement Price20to49Remove;
+	
+	@FindBy(xpath="//select[@id='grid-sort-header']")
+	public WebElement Sortby;
+	
+	@FindBy(xpath="(//select[@id='grid-sort-header'])[2]")
+	public WebElement Most;
+	
+	
+	
+	
+	
+	
 	//Loginpage
 	@FindBy(xpath="//button[@value='Login']")
 	public WebElement login_button;
