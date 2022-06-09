@@ -515,7 +515,7 @@ public void orderConfirmation(String filePath, String fileName, String sheetName
 
 	writeOrderDetail(data_obj.orderCount, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost,data_obj.subTotal,filePath,fileName,sheetName);
 
-	util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
+	//util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
 }
 
 

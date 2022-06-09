@@ -37,7 +37,7 @@ public class Data_Regression {
 			
 	public String URL =  "https://www.metallica.com/"; // https://www.metallica.com/ , https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@staging.rockdevelop.com/ , https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@development.rockdevelop.com/
 	
-	public static String email = "ithikasha@unitedtechno.com " ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
+	public static String email = "ithikasha@unitedtechno.com" ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
 	public static String password = "Ithi@utis07" ; //Ithi@met07 , Qatest@met07 , Ithi@utis07
 	

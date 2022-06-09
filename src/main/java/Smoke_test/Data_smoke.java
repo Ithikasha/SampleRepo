@@ -19,7 +19,7 @@ public class Data_smoke {
 	
 	public static String Input_sheetName = "input";
 			
-	public static String URL = "https://www.metallica.com/"; // https://www.metallica.com/ , https://storefront:Frantic81@staging.rockdevelop.com/ , https://storefront:Frantic98@development.rockdevelop.com/
+	public static String URL = "https://ithikasha@unitedtechno.com:Ithi@sfcc07june@development.rockdevelop.com/"; // https://www.metallica.com/ , https://storefront:Frantic81@staging.rockdevelop.com/ , https://storefront:Frantic98@development.rockdevelop.com/
 	
 	public static String email ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	

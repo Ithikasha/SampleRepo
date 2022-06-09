@@ -53,7 +53,7 @@ public class placeOrder {
 //			
 //			functions.bulkOrder_testing("Regression");
 			
-			functions.bulkOrder_testing("C:\\Users\\UNITS\\Workspace ithi\\Excel Sheets","Browser1D","28022022",10,"Regression");
+			functions.bulkOrder_testing("C:\\Users\\UTIS LAPTOP 38\\Desktop\\Metallica new\\master\\Excelsheets","Bulk Order.xls","06072022",27,"Regression");
 
 			
 			functions.bulkOrder_International("Regression");

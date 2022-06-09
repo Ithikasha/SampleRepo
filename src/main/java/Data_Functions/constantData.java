@@ -20,7 +20,7 @@ public class constantData {
 	
 	public String Prod_url = "https://www.metallica.com/";
 	
-	public String DEV_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@development.rockdevelop.com/";
+	public String DEV_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07june@development.rockdevelop.com/";
 	
 	public String STG_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@staging.rockdevelop.com/";
 	
