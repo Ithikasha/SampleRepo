@@ -50,6 +50,8 @@ public class constantData {
 	
 	public String email = "ithikasha@unitedtechno.com" ;
 	
+	public static String subject = "Testing";
+	
 	public String Visa_number ="4111111111111111";
 	
 	public String Visa_date = "08";

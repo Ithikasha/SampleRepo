@@ -22,7 +22,6 @@ public class Regression_test
 {
 	public static driverUtil util = new driverUtil();
 	
-
 	public static void main(String[] args) throws Exception {
 		
 //		    placeOrder.placeorder();
@@ -69,7 +68,7 @@ public class Regression_test
 //			
 //			System.setErr(ps);
 		
-			System.out.println("\t\t\t\t\t\t\t\t\tSmoke Test Suite");
+			System.out.println("\t\t\t\t\t\t\t\t\tSmoke Test Suite"); 
 			
 			Regression_data.readTaxableCountries();
 			

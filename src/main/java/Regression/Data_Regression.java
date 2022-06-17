@@ -29,17 +29,19 @@ public class Data_Regression {
 	
 	public String fileName = "Regression_testing.xls";
 	
-	public static String filePath =  "C:\\Users\\UTIS LAPTOP 38\\Desktop\\Metallica new\\master\\Excelsheets";
+	public static String filePath =  "Excelsheets";
 	
 	public static String Result_sheetName = "result";
 	
 	public String Input_sheetName = "input";
 			
-	public String URL =  "https://www.metallica.com/"; // https://www.metallica.com/ , https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@staging.rockdevelop.com/ , https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@development.rockdevelop.com/
+	public String URL =  "https://ithikasha@unitedtechno.com:Ithi@sfcc07june@development.rockdevelop.com/"; // https://www.metallica.com/ , https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@staging.rockdevelop.com/ , https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@development.rockdevelop.com/
 	
 	public static String email = "ithikasha@unitedtechno.com" ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
 	public static String password = "Ithi@utis07" ; //Ithi@met07 , Qatest@met07 , Ithi@utis07
+	
+	public static String subject = "Testing";
 	
 	public static String Gift;
 	
@@ -198,8 +200,12 @@ public class Data_Regression {
 	{
 		DataFormatter formatter = new DataFormatter();
 		
-		File file1 = new File(filePath+"\\"+fileName);
+//		java.net.URL url = getClass().getClassLoader().getResource(fileName);
+//
+//		File file1 = new File(url.getPath()); //filePath+"\\"+
 		
+		File file1 = new File(filePath+"\\"+fileName);
+
 		FileInputStream istream = new FileInputStream(file1);
 		
 		Workbook book = Functions.fileSetup(istream,fileName);

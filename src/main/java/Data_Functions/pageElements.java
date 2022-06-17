@@ -623,6 +623,29 @@ public class pageElements {
 	@FindBy(xpath="(//a[@title='Manage your contest entries'])")
 	public WebElement MyAccount_Contest;
 	
+	//BRD Testing
+	
+	@FindBy(xpath="//a[@class='button']")
+	public WebElement CreateNewSupportTicket_Button;
+	
+	@FindBy(xpath="//input[@id='email']")
+	public WebElement Ticketemail;
+	
+	@FindBy(xpath="//input[@id='00N3t0000057P6T']")
+	public WebElement TicketFirstname;
+	
+	@FindBy(xpath="//input[@id='00N3t0000057P6Y']")
+	public WebElement TicketLastname;
+	
+	@FindBy(xpath="//input[@id='subject']")
+	public WebElement TicketSubject;
+	
+	@FindBy(xpath="//div[@class='g-recaptcha']")
+	public WebElement TicketReCpatcha;
+	
+	@FindBy(xpath="//input[@class='button button--cta']")
+	public WebElement TicketSubmit;
+	
 	
 	String Address1;
 	
