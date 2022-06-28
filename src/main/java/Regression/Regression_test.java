@@ -22,7 +22,6 @@ public class Regression_test
 {
 	public static driverUtil util = new driverUtil();
 	
-
 	public static void main(String[] args) throws Exception {
 		
 //		    placeOrder.placeorder();
@@ -69,7 +68,7 @@ public class Regression_test
 //			
 //			System.setErr(ps);
 		
-			System.out.println("\t\t\t\t\t\t\t\t\tSmoke Test Suite");
+			System.out.println("\t\t\t\t\t\t\t\t\tSmoke Test Suite"); 
 			
 			Regression_data.readTaxableCountries();
 			
@@ -113,7 +112,7 @@ public class Regression_test
 			
 			bp.ValidateFields();  
 			
-			bp.Invalid_creditcard(); 
+			bp.Invalid_creditcard();
 			
 //          bp.Redeem_GC(smoke_data.GC); 
 			
@@ -151,8 +150,7 @@ public class Regression_test
 			Regression_data.qty = null; 
 			
 			Regression_data.variant = null; 
-			
-			           			
+						           			
 //			System.out.println("Domestic Orders");
 			
 //			functions.bulkOrder_testing(smoke_data.filePath, smoke_data.Result_fileName, "Regression_DomesticOrders",smoke_data.DOrders);
@@ -162,7 +160,7 @@ public class Regression_test
 //			System.out.println("International Orders");
 //			
 //			functions.bulkOrder_International(smoke_data.filePath, smoke_data.Result_fileName, "Regression_InternationalOrders",smoke_data.IOrders);
-//		
+//	
 			data.driver.close(); 
 		
 	}

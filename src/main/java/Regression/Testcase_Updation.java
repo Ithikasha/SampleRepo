@@ -46,6 +46,8 @@ public static driverUtil util = new driverUtil();
 			Orderconfirmation oc = new Orderconfirmation(data,elements,functions);
 			
 			Homepage hp = new Homepage(data,elements,functions);
+			
+			Brd_smoke_Test brd = new Brd_smoke_Test(data,elements,functions);
 					
 //			File file = new File("C:\\Users\\UTIS LAPTOP 38\\Desktop\\Dev_Output"); //Your file
 //			
@@ -57,20 +59,24 @@ public static driverUtil util = new driverUtil();
 //			
 //			System.setErr(ps);
 		
-			System.out.println("\t\t\t\t\t\t\t\t\tSmoke Test Suite");
+//			System.out.println("\t\t\t\t\t\t\t\t\tSmoke Test Suite");
+			
+			System.out.println("\t\t\t\t\t\t\t\t\tBRD-Site Monitoring");
 			
 			Regression_data.readTaxableCountries();
 			
 			Regression_data.readInputs();
+//			
+//			hp.Pagination();
+//			
+//			hp.ViewAll();
+//			
+//			hp.ApplyandRemovefilters();
+//			
+//			hp.SortBy();
 			
-			hp.Pagination();
-			
-			hp.ViewAll();
-			
-			hp.ApplyandRemovefilters();
-			
-			hp.SortBy();
-										
+			brd.Service_Cloud();
+//										
 }
 	
 }

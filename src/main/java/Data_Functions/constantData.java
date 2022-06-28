@@ -20,13 +20,13 @@ public class constantData {
 	
 	public String Prod_url = "https://www.metallica.com/";
 	
-	public String DEV_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@development.rockdevelop.com/";
+	public String DEV_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07june@development.rockdevelop.com/";
 	
 	public String STG_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@staging.rockdevelop.com/";
 	
 	public String DEV03_url = "https://dev03-na01-metallica.demandware.net/s/Metallica/home/";
 	
-	public String filePath = "C:\\Users\\UTIS LAPTOP 38\\Desktop";
+	public String filePath = "Excelsheets";
 	
 	public String username = "ithikasha@unitedtechno.com"; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
@@ -49,6 +49,8 @@ public class constantData {
 	public String Phone = "9854562145" ;
 	
 	public String email = "ithikasha@unitedtechno.com" ;
+	
+	public static String subject = "Testing";
 	
 	public String Visa_number ="4111111111111111";
 	

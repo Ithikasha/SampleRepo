@@ -621,6 +621,8 @@ public class Shippingpage {
 				{
 					System.out.println("\t\t\t"+"Mandatory field: Phone verified Sucessfully");
 					
+					Thread.sleep(2000);
+					
 					util.Sendkeys(element_obj.phone,data_regression.Address.get("PhoneNumber"));
 				}
 				else

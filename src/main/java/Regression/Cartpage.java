@@ -143,7 +143,7 @@ public class Cartpage {
 			}
 			else
 			{
-				System.out.println("\\t\\t\\t\"+\"Product"+(i+1)+" Name Validation Unsuccessful");
+				System.out.println("\\t\\t\\t\"+\"Product"+(i+1)+" Price Validation Unsuccessful");
 				fail++;
 			}
 		}
