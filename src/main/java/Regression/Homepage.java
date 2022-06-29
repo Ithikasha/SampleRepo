@@ -169,6 +169,8 @@ public class Homepage {
 				
 			   data_obj.driver.navigate().back();
 			   
+			   Thread.sleep(2000);
+			   
 			   System.out.println("\tRegression Testing: Cart Icon click");
 				
 				 System.out.println("\t\tTestcase - 6"); 
@@ -199,6 +201,8 @@ public class Homepage {
 				   System.out.println("\t\tTestcase - 7"); 
 				   
 				   System.out.println("\tRegression Testing: Help Link click");
+				   
+				   Thread.sleep(2000);
 					
 					util.Click(element_obj.HelpLink);
 					
