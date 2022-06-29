@@ -361,17 +361,29 @@ public class pageElements {
 	@FindBy(xpath="//div[contains(text(),'Ship Later')]")
 	public WebElement shiplater_title;
 	
-	@FindBy(xpath="//div[contains(text(),'Ship Later')]//following::label[contains(@for,'shipping-method')]")
+	@FindBy(xpath="//div[@class='shipping-method-header vinylclub-shipment-header']")
+	public WebElement Vinylship_title;
+	
+	@FindBy(xpath="//div[@class='shipping-method-header normal-shipment-header']")
+	public WebElement shipnow_title;
+	
+	@FindBy(xpath="(//div[contains(text(),'Ship Later')]//following::label[contains(@for,'shipping-method')])[1]")
 	public WebElement shippingmethods_shiplater;
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="(//div[contains(text(),'Ship Now')]//following::label[contains(@for,'shipping-method')])[1]")
 	public WebElement shippingmethods_shipnow;
+	
+	@FindBy(xpath="(//div[contains(text(),'Vinyl Club')]//following::label[contains(@for,'shipping-method')])[1]")
+	public WebElement shippingmethods_vinyl;
 	
 	@FindBy(xpath="//p[@class='error preorder-error-msg label-inline']")
 	public WebElement Preorder_Acknowledgement_Error;
 	
 	@FindBy(xpath="//input[@id='preorder-acknowledgement']")
 	public WebElement Preorder_Acknowledgement;
+	
+	@FindBy(xpath="(//span[contains(text(),'Back to Cart')])[2]")
+	public WebElement SP_BackToCart;
 	
 	
 	//Billingpage
@@ -492,6 +504,9 @@ public class pageElements {
 	
 	@FindBy(xpath="//input[@id='billingPostalCode']") 
 	public WebElement Paypal_zipcode;
+	
+	@FindBy(xpath="//a[@class='section-header-note gtm-edit-cart-link']") 
+	public WebElement EditCart;
 	
 	
 	//Place order page
@@ -623,7 +638,47 @@ public class pageElements {
 	@FindBy(xpath="(//a[@title='Manage your contest entries'])")
 	public WebElement MyAccount_Contest;
 	
-	//BRD Testing
+	// Cloudinary
+	
+	@FindBy(xpath="//title[text()='2022-05may29_Boston-Massachusetts_Jeff-Yeager_001.jpg (742×482)']")
+	public WebElement CloudinaryImg;
+	
+	//DigitalOcean
+	
+	@FindBy(xpath="(//button[@type='submit'])[2]")
+	public WebElement OrderDetail;
+	
+	@FindBy(xpath="//input[@type='submit']")
+	public WebElement DigitalDownload;
+	
+	//ProdToms
+	
+	@FindBy(xpath="//input[@id='Email']")
+	public WebElement TomsEmail;
+	
+	@FindBy(xpath="//input[@id='Password']")
+	public WebElement TomsPassword;
+	
+	@FindBy(xpath="//input[@type='submit']")
+	public WebElement TomsLogin;
+	
+	@FindBy(xpath="(//button[@class='btn btn-bold'])[1]")
+	public WebElement AddCriterion;
+	
+	@FindBy(xpath="//input[@placeholder='Select Field']")
+	public WebElement Paymentmethod;
+	
+	@FindBy(xpath="//button[text()='Select Payment Method']")
+	public WebElement Selectpaypal;
+	
+	@FindBy(xpath="//button[@class='btn btn-bold pull-left']")
+	public WebElement Search;
+	
+	@FindBy(xpath="(//td[@class='ng-binding'])[1]")
+	public WebElement TOMS_OrderDate;
+
+	
+//BRD Testing
 	
 	@FindBy(xpath="//a[@class='button']")
 	public WebElement CreateNewSupportTicket_Button;
@@ -645,6 +700,8 @@ public class pageElements {
 	
 	@FindBy(xpath="//input[@class='button button--cta']")
 	public WebElement TicketSubmit;
+	
+	
 	
 	
 	String Address1;

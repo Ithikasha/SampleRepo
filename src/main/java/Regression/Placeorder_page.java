@@ -374,6 +374,7 @@ public class Placeorder_page {
 		if(util.Isdisplayed(element_obj.orderNumber))
 		{
 			System.out.println("\t\t\t"+"Order placed Successfully");
+			
 			func.write_Regressiontest(true, 51);
 		}
 		else

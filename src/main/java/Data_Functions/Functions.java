@@ -515,7 +515,7 @@ public void orderConfirmation(String filePath, String fileName, String sheetName
 
 	writeOrderDetail(data_obj.orderCount, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost,data_obj.subTotal,filePath,fileName,sheetName);
 
-	//util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
+	util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
 }
 
 
@@ -663,7 +663,7 @@ public boolean selectItems() throws InterruptedException, Exception
 		
 		util.Sendkeys(element_obj.email, data_obj.username);
 	
-		util.Sendkeys(element_obj.password, data_obj.DEV_password);
+		util.Sendkeys(element_obj.password, data_obj.STG_password);
 	
 		util.Click(element_obj.login_button);
 		
@@ -672,6 +672,7 @@ public boolean selectItems() throws InterruptedException, Exception
 //		util.Click(element_obj.Metallica);
 
 	}
+
 	
 public void smoke_login(String email, String password) throws InterruptedException {
 		
@@ -2001,6 +2002,24 @@ public void Logout() throws InterruptedException {
 			
 	}
 	
+	public void Add_Preorder(String prod) throws InterruptedException
+	{
+			util.Click(element_obj.srch);
+			
+			util.Sendkeys(element_obj.srchIP,prod);
+
+			element_obj.srchTxt.submit();
+			
+			util.Click(element_obj.preorder);
+			
+			util.Click(element_obj.preorder_ack);
+			
+			util.Click(element_obj.preorder_ATC);
+			
+			util.Click(element_obj.miniviewcart);
+			
+	}
+	
 	public void write_Smoketest(boolean result, int number) throws Exception
 	{
 		File file = new File(Smoke_test.Data_smoke.filePath+"\\"+Smoke_test.Data_smoke.fileName);
@@ -2173,6 +2192,8 @@ public void Logout() throws InterruptedException {
 		System.out.println(products.size());
 		
 	}
+	
+
 	
 	public void writeInventory()
 	{
