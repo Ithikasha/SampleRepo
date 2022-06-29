@@ -22,17 +22,29 @@ public class constantData {
 	
 	public String DEV_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07june@development.rockdevelop.com/";
 	
+	public String Cloudinary_Url ="https://metallica-res.cloudinary.com/image/upload/w_371,h_241,f_auto,q_auto:best,c_fill,dpr_2.0,e_sharpen:60,g_auto:subject/v1653964160/Photos/Live%20Photos/2022-05may29_Boston-Massachusetts/2022-05may29_Boston-Massachusetts_Jeff-Yeager_001.jpg";
+	
+	public String Knightlab_Url="https://www.metallica.com/band-timeline.html";
+	
+	public String Discourse_Url="https://forums.metallica.com/ ";
+	
+	public String ProdTomsUrl ="https://toms03.tejassoftware.com/Account/Login?ReturnUrl=%2F";
+	
+	public String ProdTomsusername = "ithikasha@unitedtechno.com";
+	
+	public String ProdTomspassword = "Ithi@toms03june";
+	
 	public String STG_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@staging.rockdevelop.com/";
 	
 	public String DEV03_url = "https://dev03-na01-metallica.demandware.net/s/Metallica/home/";
 	
-	public String filePath = "Excelsheets";
+	public String filePath = "C:\\Users\\UTIS LAPTOP 38\\Desktop";
 	
 	public String username = "ithikasha@unitedtechno.com"; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
 	public String DEV_password = "Ithi@met07";  //Ithi@met07 , Qatest@met07
 	
-	public String STG_password = "Ithi@utis08";
+	public String STG_password = "Ithi@utis07";
 	
 	public String fileName = "Metallica.xls";
 
@@ -44,12 +56,32 @@ public class constantData {
 	
 	public String lastname = "Test" ;
 	
-	public String country = "United States" ;
+	public static String Int_Address1 = "";
+	
+	public static String Int_City = "";
+	
+	public static String Int_State = ""; 
+	
+	public static String Int_Zip_Code = "";
+	
+	public static String Dom_Address1 = "";
+	
+	public static String Dom_City = "";
+	
+	public static String Dom_State = ""; 
+	
+	public static String Dom_Zip_Code = "";
+		
+	public static String paymentMethod = "Visa";
+	
+	public static String Int_Country = "United Kingdom"; 
+	
+	public String Dom_Country = "United States" ;
 	
 	public String Phone = "9854562145" ;
 	
 	public String email = "ithikasha@unitedtechno.com" ;
-	
+
 	public static String subject = "Testing";
 	
 	public String Visa_number ="4111111111111111";
