@@ -34,6 +34,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.itextpdf.text.log.SysoLogger;
 
 import Regression.*;
+import SiteMonitoring.SiteMonitoringConstantData;
 
 import org.openqa.selenium.WebElement;
 import Smoke_test.*;
@@ -44,12 +45,15 @@ public class Functions {
 	public driverUtil util = new driverUtil();
 	constantData data_obj;
 	pageElements element_obj; 
+	SiteMonitoringConstantData SiteData;
+	
 	
 
    public Functions(constantData data,pageElements elem)
    {
 	   data_obj=data;
 	   element_obj=elem;
+//	   SiteData=site;
    }
 	
 	
@@ -663,7 +667,7 @@ public boolean selectItems() throws InterruptedException, Exception
 		
 		util.Sendkeys(element_obj.email, data_obj.username);
 	
-		util.Sendkeys(element_obj.password, data_obj.STG_password);
+		util.Sendkeys(element_obj.password, data_obj.DEV_password);
 	
 		util.Click(element_obj.login_button);
 		
@@ -2139,6 +2143,45 @@ public void Logout() throws InterruptedException {
 		istream.close(); 
 		 	    
 		FileOutputStream outputstream = new FileOutputStream(Regression.Data_Regression.filePath+"\\"+Regression.Data_Regression.Result_fileName);
+					
+		book.write(outputstream);
+			    
+		outputstream.close();
+	}
+	
+	
+	public void write_SiteMonitoring(boolean result,int number) throws IOException
+	{
+		File file = new File(SiteMonitoring.SiteMonitoringConstantData.filePath+"\\"+SiteMonitoring.SiteMonitoringConstantData.Result_fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,SiteMonitoring.SiteMonitoringConstantData.Result_fileName);
+
+		Sheet sheet = book.getSheet(SiteMonitoring.SiteMonitoringConstantData.Result_sheetName);
+ 
+		Row row = sheet.getRow(number);
+		
+		String value ;
+		
+		if(result)
+		{
+			value = "PASS";
+		}
+		else
+		{
+			value = "FAIL";
+		}
+				
+		Cell result_cell = row.createCell(4);
+				
+		result_cell.setCellType(result_cell.CELL_TYPE_STRING);
+
+		result_cell.setCellValue(value);
+				
+		istream.close(); 
+		 	    
+		FileOutputStream outputstream = new FileOutputStream(SiteMonitoring.SiteMonitoringConstantData.filePath+"\\"+SiteMonitoring.SiteMonitoringConstantData.Result_fileName);
 					
 		book.write(outputstream);
 			    

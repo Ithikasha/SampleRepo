@@ -1,4 +1,6 @@
 package SiteMonitoring;
+import java.io.IOException;
+
 import org.apache.poi.hssf.record.aggregates.DataValidityTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
@@ -11,6 +13,8 @@ public class SiteMonitoring {
 	public static driverUtil util = new driverUtil();
 	
 	public static constantData data = new constantData();
+	
+	public static SiteMonitoringConstantData SiteData = new SiteMonitoringConstantData();
     
     public static Data_smoke data_smoke = new Data_smoke();
     
@@ -29,48 +33,59 @@ public class SiteMonitoring {
 	
 		data.driver.manage().window().maximize();
 		
-//		data.driver.get(data.DEV_url);
+		data.driver.get(data.DEV_url);
 		
-//		util.Click(elements.no);
-//		
-//		functions.login();
+		util.Click(elements.no);
 		
-//		ShipperHQ();
+		functions.login();
 		
-//	System.out.println(Avalara());
+		ShipperHQ();
 		
-//		System.out.println(UPS());
-//		
-//		System.out.println(Loqate());
+		Avalara();
 		
-//		System.out.println(Cloudinary());
+		UPS();
 		
-//		System.out.println(KnightLab());
-		
-//		System.out.println(Discourse());
-		
-//		System.out.println(DigitalOcean());
-		
-		PayPal();
+		Loqate();
 		
 		ApplePay();
 		
+		PayPal();
+		
+		Cloudinary();
+		
+		KnightLab();
+		
+		Discourse();
+		
+//		System.out.println(DigitalOcean());
+		
+		
+		
+	
+		
 	}
 	
-	public static boolean ShipperHQ() throws Exception
+	public static void ShipperHQ() throws Exception
 	{		
+//		System.out.println("ShipperHQ");
 		
-		if(ShipperHQ_Instock() && ShipperHQ_Preorder() && ShipperHQ_Vinyl())
-		{
-			return true;
-		}
-		else
-			return false;
+//		System.out.println("\tShipperHQ_Instock Testing");
+		
+		ShipperHQ_Instock();
+		
+//		System.out.println("\tShipperHQ_Pre-Order Testing");
+		
+		ShipperHQ_Preorder();
+		
+//		System.out.println("\tShipperHQ_VinylclubSubscription Testing");
+		
+		ShipperHQ_Vinyl();
+		
 	}
 	
-	public static boolean ShipperHQ_Instock() throws Exception
+	public static void ShipperHQ_Instock() throws Exception
 	{
-		
+			
 		functions.Add_product("METAL UP YOUR ASS T-SHIRT-M");
 		
 		util.Click(elements.checkout);
@@ -83,7 +98,12 @@ public class SiteMonitoring {
 			
 			util.Click(elements.remove);
 			
-			return true;
+			System.out.println("\t\t\t"+"ShipperHQ_Instock validation successful");
+			
+			SiteData.result = true;
+					
+			functions.write_SiteMonitoring(SiteData.result, 1);
+			
 		}
 		else
 		{
@@ -91,12 +111,20 @@ public class SiteMonitoring {
 			
 			util.Click(elements.remove);
 			
-			return false;
+			System.out.println("\t\t\t"+"ShipperHQ_Instock validation unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.write_Regressiontest(SiteData.result, 1);
 		}
+		
+		
+		
+		
 		
 	}
 	
-	public static boolean ShipperHQ_Preorder() throws Exception  
+	public static void ShipperHQ_Preorder() throws Exception  
 	{
 		functions.Add_Preorder("THE ABCS OF METALLICA BOOK");
 		
@@ -110,7 +138,11 @@ public class SiteMonitoring {
 			
 			util.Click(elements.remove);
 			
-			return true;
+			System.out.println("\t\t\t"+"ShipperHQ_Pre-Order validation successful");
+			
+			SiteData.result = true;
+					
+			functions.write_SiteMonitoring(SiteData.result, 2);
 		}
 		else
 		{
@@ -118,12 +150,16 @@ public class SiteMonitoring {
 		
 			util.Click(elements.remove);
 			
-			return false;
+			System.out.println("\t\t\t"+"ShipperHQ_Pre-Order validation unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.write_Regressiontest(SiteData.result, 2);
 		}
 		
 	}
 	
-	public static boolean ShipperHQ_Vinyl() throws Exception
+	public static void ShipperHQ_Vinyl() throws Exception
 	{
 		functions.Add_product("vinylclub2022-Q");
 		
@@ -137,7 +173,11 @@ public class SiteMonitoring {
 			
 			util.Click(elements.remove);
 			
-			return true;
+			System.out.println("\t\t\t"+"ShipperHQ_Vinylclub validation successful");
+			
+			SiteData.result = true;
+					
+			functions.write_SiteMonitoring(SiteData.result, 3);
 		}
 		else
 		{
@@ -145,58 +185,39 @@ public class SiteMonitoring {
 			
 			util.Click(elements.remove);
 			
-			return false;
+			System.out.println("\t\t\t"+"ShipperHQ_Vinylclub validation unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.write_Regressiontest(SiteData.result, 3);
 		}
 		
 	}
 	
-	public static boolean Avalara() throws Exception
+	public static void Avalara() throws Exception
 	{
+		
 		functions.Add_product("METAL UP YOUR ASS T-SHIRT-M");
 		
-		if(Avalara_TaxableDomestic()) 
-		{
-			if(Avalara_NonTaxableDomestic())
-			{
-				if(Avalara_TaxableInternational())
-				{
-					if(Avalara_NonTaxableInternational())
-					{						
-//						util.Click(elements.remove);
-				
-						return true;
-					}
-					else
-					{						
-						util.Click(elements.remove);
-						
-						return false;
-					}
-				}
-				else
-				{					
-					util.Click(elements.remove);
-					
-					return false;
-				}
-			}
-			else
-			{		
-				util.Click(elements.remove);
-				
-				return false;
-			}
-		}
-		else
-		{			
-			util.Click(elements.remove);
+//		System.out.println("\tAvalara_TaxableDomestic Testing");
 		
-			return false;
-		}
-	
+		Avalara_TaxableDomestic();
+		
+//		System.out.println("\tAvalara_NonTaxableDomestic Testing");
+		
+		Avalara_NonTaxableDomestic();
+		
+//		System.out.println("\tAvalara_TaxableInternational Testing");
+		
+		Avalara_TaxableInternational();
+		
+//		System.out.println("\tAvalara_NonTaxableInternational Testing");
+		
+		Avalara_NonTaxableInternational();
+		
 	}
 	
-	public static boolean Avalara_TaxableDomestic() throws InterruptedException
+	public static void Avalara_TaxableDomestic() throws Exception
 	{
 		
 		util.Click(elements.checkout);
@@ -240,7 +261,11 @@ public class SiteMonitoring {
 						
 			util.WaitAndClick(elements.EditCart);
 			
-			return true;
+			System.out.println("\t\t\t"+"Avalara_TaxableDomestic validation successful");
+			
+			SiteData.result = true;
+					
+			functions.write_SiteMonitoring(SiteData.result, 4);
 		}
 		else
 		{
@@ -248,13 +273,17 @@ public class SiteMonitoring {
 			
 			util.WaitAndClick(elements.EditCart);
 			
-			return false;
+			System.out.println("\t\t\t"+"Avalara_TaxableDomestic validation unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.write_Regressiontest(SiteData.result, 4);
 		}
 			
 		
 	}
 	
-	public static boolean Avalara_NonTaxableDomestic() throws InterruptedException
+	public static void Avalara_NonTaxableDomestic() throws Exception
 	{
 				
 		util.Click(elements.checkout);
@@ -299,7 +328,11 @@ public class SiteMonitoring {
 						
 			util.WaitAndClick(elements.EditCart);
 			
-			return true;
+			System.out.println("\t\t\t"+"Avalara_NonTaxableDomestic validation successful");
+			
+			SiteData.result = true;
+					
+			functions.write_SiteMonitoring(SiteData.result, 5);
 		}
 		
 		else
@@ -308,13 +341,17 @@ public class SiteMonitoring {
 			
 			util.WaitAndClick(elements.EditCart);
 			
-			return false;
+			System.out.println("\t\t\t"+"Avalara_NonTaxableDomestic validation unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.write_Regressiontest(SiteData.result, 5);
 		}
 			
 		
 	}
 
-	public static boolean Avalara_TaxableInternational() throws Exception
+	public static void Avalara_TaxableInternational() throws Exception
 	{
 		util.Click(elements.checkout);
 		
@@ -352,7 +389,11 @@ public class SiteMonitoring {
 						
 			util.WaitAndClick(elements.EditCart);
 			
-			return true;
+			System.out.println("\t\t\t"+"Avalara_TaxableInternational validation successful");
+			
+			SiteData.result = true;
+					
+			functions.write_SiteMonitoring(SiteData.result, 6);
 		}
 		
 		else
@@ -361,12 +402,16 @@ public class SiteMonitoring {
 			
 			util.WaitAndClick(elements.EditCart);
 			
-			return false;
+			System.out.println("\t\t\t"+"Avalara_TaxableInternational validation unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.write_Regressiontest(SiteData.result, 6);
 		}
 		
 	}
 	
-	public static boolean Avalara_NonTaxableInternational() throws Exception
+	public static void Avalara_NonTaxableInternational() throws Exception
 	{
 		util.Click(elements.checkout);
 		
@@ -410,7 +455,11 @@ public class SiteMonitoring {
 						
 			util.WaitAndClick(elements.EditCart);
 			
-			return true;
+			System.out.println("\t\t\t"+"Avalara_NonTaxableInternational validation successful");
+			
+			SiteData.result = true;
+					
+			functions.write_SiteMonitoring(SiteData.result, 7);
 		}
 		
 		else
@@ -419,13 +468,19 @@ public class SiteMonitoring {
 			
 			util.WaitAndClick(elements.EditCart);
 			
-			return false;
+			System.out.println("\t\t\t"+"Avalara_NonTaxableInternational validation unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.write_Regressiontest(SiteData.result, 7);
 		}
 		
 	}
 	
-	public static boolean UPS() throws InterruptedException
+	public static void UPS() throws Exception
 	{
+		
+		System.out.println("\tUPS Testing");
 		
 		functions.Add_product("METAL UP YOUR ASS T-SHIRT-M");
 		
@@ -464,20 +519,30 @@ public class SiteMonitoring {
 			
 		   // System.out.println("True");
 			
-			return true;
+			System.out.println("\t\t\t"+"UPS validation successful");
+			
+			SiteData.result = true;
+					
+			functions.write_SiteMonitoring(SiteData.result, 8);
 		}
 		
 		else 
 		{
 			
-		return false;
+			System.out.println("\t\t\t"+"UPS validation unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.write_Regressiontest(SiteData.result, 8);
 		
 		}
 	}
 	
-	public static boolean Loqate() throws InterruptedException
+	public static void Loqate() throws Exception
 	{
 	
+		System.out.println("\tShipperHQ_Instock Testing");	
+		
 	util.Click(elements.checkout);
 	
 	util.Clear(elements.address1);
@@ -509,20 +574,27 @@ public class SiteMonitoring {
 		
 //			data.driver.close();
 		
-			return true;
-		
+			System.out.println("\t\t\t"+"Loqate validation successful");
+			
+			SiteData.result = true;
+					
+			functions.write_SiteMonitoring(SiteData.result, 9);		
 		}	
 	else
 		{
 		
-			return false;
+		System.out.println("\t\t\t"+"Loqate validation unsuccessful");
+		
+		SiteData.result = false;
+		
+		functions.write_Regressiontest(SiteData.result, 9);
 		
 		}	
 	}
 	
-	public static void ApplePay() throws InterruptedException
+	public static void ApplePay() throws Exception
 	{
-//		data.driver.get(data.ProdTomsUrl);
+		data.driver.get(data.ProdTomsUrl);
 		
 		util.Sendkeys(elements.TomsEmail, data.ProdTomsusername);
 		
@@ -530,13 +602,32 @@ public class SiteMonitoring {
 		
 		util.Click(elements.TomsLogin);
 		
-		data.driver.get("https://toms03.tejassoftware.com/Order/Search#?page=1&pageSize=50&criteria=F.PaymentMethodId.in.29");
+		data.driver.get(SiteData.ApplepayURL);
 		
-		String ApplePayOrderDate = elements.TOMS_OrderDate.getText().toString();	
+		String ApplePayOrderDate = elements.TOMS_OrderDate.getText().toString();
+		
+		if(util.Isdisplayed(elements.driver.findElement(By.xpath("//div[@class='buttonLabel']"))))
+		{
+			System.out.println("\t\t\t"+"Applepay validation successful");
+			
+			SiteData.result = true;
+			
+			functions.write_SiteMonitoring(SiteData.result, 10);		
+		}
+		
+		else
+			
+		{
+			System.out.println("\t\t\t"+"Applepay validation unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.write_Regressiontest(SiteData.result, 10);
+		}
 		
 	}
 	
-	public static void PayPal() throws InterruptedException
+	public static void PayPal() throws Exception
 	{
 	
 //		data.driver.get(data.ProdTomsUrl);
@@ -547,13 +638,31 @@ public class SiteMonitoring {
 //		
 //		util.Click(elements.TomsLogin);
 		
-		data.driver.get("https://toms03.tejassoftware.com/Order/Search#?page=1&pageSize=50&criteria=F.PaymentMethodId.in.8");
+		data.driver.get(SiteData.PaypalURL);
 		
 		String PayPalOrderDate = elements.TOMS_OrderDate.getText().toString();	
+		
+		if(util.Isdisplayed(elements.driver.findElement(By.xpath("//div[@class='buttonLabel']"))))
+		{
+			System.out.println("\t\t\t"+"Paypal validation successful");
+			
+			SiteData.result = true;
+			
+			functions.write_SiteMonitoring(SiteData.result, 11);		
+		}
+		
+		else
+			
+		{
+			System.out.println("\t\t\t"+"Paypal validation unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.write_Regressiontest(SiteData.result, 11);
 	
 	}
-	
-	public static boolean Cloudinary() throws InterruptedException
+	}
+	public static void Cloudinary() throws Exception
 	{
 		
 //	data.driver = util.chrome();	
@@ -566,11 +675,19 @@ public class SiteMonitoring {
 		
 	{
 		
-		return true;
+		System.out.println("\t\t\t"+"Cloudinary validation successful");
+		
+		SiteData.result = true;
+		
+		functions.write_SiteMonitoring(SiteData.result, 12);	
 	}
 	else
 	{
-		return false;
+		System.out.println("\t\t\t"+"Cloudinary validation unsuccessful");
+		
+		SiteData.result = false;
+		
+		functions.write_Regressiontest(SiteData.result, 12);
 		
 	}
 	}
@@ -595,7 +712,7 @@ public class SiteMonitoring {
 		
 	}
 	
-	public static boolean KnightLab() throws InterruptedException
+	public static void KnightLab() throws Exception
 	{
 		
 		data.driver.get(data.Knightlab_Url);
@@ -604,14 +721,24 @@ public class SiteMonitoring {
 			
 		{
 			
-			return true;
+			System.out.println("\t\t\t"+"KnightLab validation successful");
+			
+			SiteData.result = true;
+			
+			functions.write_SiteMonitoring(SiteData.result, 14);	
 		}
 	
 	
 		else
 	
 		{
-			return false;
+
+			System.out.println("\t\t\t"+"KnightLab validation unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.write_Regressiontest(SiteData.result, 14);
+			
 		
 		}
 		
@@ -623,7 +750,7 @@ public class SiteMonitoring {
 		
 	}
 	
-	public static boolean Discourse()
+	public static void Discourse() throws Exception
 	{
 
 		data.driver.get(data.Discourse_Url);
@@ -632,14 +759,22 @@ public class SiteMonitoring {
 			
 		{
 			
-			return true;
+			System.out.println("\t\t\t"+"Discourse validation successful");
+			
+			SiteData.result = true;
+			
+			functions.write_SiteMonitoring(SiteData.result, 15);	
 		}
 	
 	
 		else
 	
 		{
-			return false;
+			System.out.println("\t\t\t"+"Discourse validation unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.write_Regressiontest(SiteData.result, 15);
 		
 		}
 		

@@ -44,7 +44,7 @@ public class constantData {
 	
 	public String DEV_password = "Ithi@met07";  //Ithi@met07 , Qatest@met07
 	
-	public String STG_password = "Ithi@utis07";
+	public String PRD_password = "Ithi@utis07";
 	
 	public String fileName = "Metallica.xls";
 
