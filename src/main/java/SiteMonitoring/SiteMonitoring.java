@@ -745,9 +745,47 @@ public class SiteMonitoring {
 	   
 	}
 	
-	public static void ServiceCloud()
+	public static void ServiceCloud() throws Exception
 	{
+		util.Click(elements.HelpLink);
 		
+		util.Click(elements.CreateNewSupportTicket_Button);
+		
+		util.Sendkeys(elements.Ticketemail, data.username);
+		
+		util.Sendkeys(elements.TicketFirstname, data.firstname);
+		
+		util.Sendkeys(elements.TicketLastname, data.lastname);
+		
+		util.Sendkeys(elements.TicketSubject, data.subject);
+		
+		util.Click(elements.TicketReCpatcha);
+		
+		util.Click(elements.TicketSubmit);
+		
+		Thread.sleep(2000);
+		
+		if(util.Isdisplayed(elements.driver.findElement(By.xpath("//button[@class='button button--cta']"))))
+		{
+			System.out.println("\t\t\t"+"Service Cloud ticket submitted successfully");
+			
+			SiteData.result = true;
+			
+			functions.write_SiteMonitoring(SiteData.result, 16);
+		}
+		
+		else
+			
+		{
+			System.out.println("\t\t\t"+"Service Cloud ticket submission unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.write_SiteMonitoring(SiteData.result, 16);
+		}
+	
+	
+
 	}
 	
 	public static void Discourse() throws Exception
