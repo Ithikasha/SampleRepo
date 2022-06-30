@@ -15,6 +15,7 @@ public class Brd_smoke_Test {
 	Functions func ;
 	Data_Regression data_regression = new Data_Regression() ;
 	
+	
 	public Brd_smoke_Test(constantData data,pageElements elem,Functions functions) throws Exception
 	   {
 		   data_obj=data;
