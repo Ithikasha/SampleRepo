@@ -707,7 +707,8 @@ public class pageElements {
 	@FindBy(xpath="//input[@class='button button--cta']")
 	public WebElement TicketSubmit;
 	
-	
+	@FindBy(xpath="//iframe[@src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1lHHq-yOZUoAli9ESa-Cbxwd0Tn9W1MbAW6wxLBKeE2Y&font=Default&lang=en&initial_zoom=7&height=650&start_at_end=true']")
+	public WebElement KnightLab;
 	
 	
 	String Address1;

@@ -761,7 +761,7 @@ public class SiteMonitoring {
 		
 		Thread.sleep(5000);
 		
-		if(util.MatchPageTitle(data.driver, "Band Timeline | Metallica.com"))
+		if(util.Isdisplayed(elements.KnightLab))
 			
 		{
 			

@@ -2194,7 +2194,7 @@ public void Logout() throws InterruptedException {
 				
 				result_cell.setCellType(result_cell.CELL_TYPE_STRING);
 
-				result_cell.setCellValue("No Order in Current Date"+data_obj.CurrentDate);
+				result_cell.setCellValue("No Order in Current Date: "+data_obj.CurrentDate);
 			}
 
 		}
