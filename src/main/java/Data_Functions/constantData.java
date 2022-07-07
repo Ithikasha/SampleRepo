@@ -1,6 +1,9 @@
 package Data_Functions;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -15,6 +18,8 @@ public class constantData {
 	public WebDriver driver ;
 	
 	public String URL ;
+	
+	public String CurrentDate;
 	
 	public int orderCount ;
 	
@@ -157,6 +162,20 @@ public class constantData {
 	public String subTotal;
 	
 	public int preorder_flag = 0;
+	
+	public constantData()
+	{
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy ");
+		 
+		Date date = new Date();
+		
+		
+		
+//		System.out.println(dateFormat.format(date));
+		 
+		CurrentDate= dateFormat.format(date);
+	}
+
 	
 }
 
