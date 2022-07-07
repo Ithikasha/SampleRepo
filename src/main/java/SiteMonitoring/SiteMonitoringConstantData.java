@@ -5,9 +5,7 @@ public class SiteMonitoringConstantData {
     public boolean result ; 
 	
 	public static String Result_fileName = "SiteMonitoring.xls";
-	
-//	public String fileName = "Regression_testing.xls";
-	
+		
 	public static String filePath =  "Excelsheets";
 	
 	public static String Result_sheetName = "Result";
@@ -22,3 +20,4 @@ public class SiteMonitoringConstantData {
 	
 	public static String password = "Ithi@utis07" ;
 }
+

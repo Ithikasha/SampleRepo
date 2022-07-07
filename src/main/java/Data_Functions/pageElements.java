@@ -617,8 +617,14 @@ public class pageElements {
 	@FindBy(xpath="(//a[@title='Show or update your personal information'])[1]")
 	public WebElement MyAccount_PersonalInfo;
 	
+	@FindBy(xpath="(//span[contains(text(),'Account')])[1]")
+	public WebElement Account_button;
+	
 	@FindBy(xpath="(//a[@title='Order History'])")
 	public WebElement MyAccount_Order;
+	
+	@FindBy(xpath="(//a[contains(text(),'My Account')])[2]")
+	public WebElement MyAccount_button;
 	
 	@FindBy(xpath="(//a[@title='Manage your billing and shipping addresses'])[1]")
 	public WebElement MyAccount_Address;

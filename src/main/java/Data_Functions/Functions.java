@@ -677,6 +677,22 @@ public boolean selectItems() throws InterruptedException, Exception
 
 	}
 
+	public void PRD_login() throws InterruptedException {
+		
+		util.Click(element_obj.login);
+		
+		util.Sendkeys(element_obj.email, data_obj.username);
+	
+		util.Sendkeys(element_obj.password, data_obj.PRD_password);
+	
+		util.Click(element_obj.login_button);
+		
+//		System.out.println("User is Logged in");
+		
+//		util.Click(element_obj.Metallica);
+
+	}
+
 	
 public void smoke_login(String email, String password) throws InterruptedException {
 		
@@ -2171,6 +2187,16 @@ public void Logout() throws InterruptedException {
 		else
 		{
 			value = "FAIL";
+			
+			if(number == 10 || number == 11)
+			{
+				Cell result_cell = row.createCell(5);
+				
+				result_cell.setCellType(result_cell.CELL_TYPE_STRING);
+
+				result_cell.setCellValue("No Order in Current Date"+data_obj.CurrentDate);
+			}
+
 		}
 				
 		Cell result_cell = row.createCell(4);

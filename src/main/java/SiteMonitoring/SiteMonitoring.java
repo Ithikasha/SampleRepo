@@ -1,8 +1,14 @@
 package SiteMonitoring;
+import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.poi.hssf.record.aggregates.DataValidityTable;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
@@ -24,8 +30,8 @@ public class SiteMonitoring {
 	
 	public static void main(String args[]) throws Exception
 	{
-	    		    
-	    data.driver = util.chrome();
+		
+		data.driver = util.chrome();
 	    
 	    elements = new pageElements(data.driver);
 	    
@@ -33,11 +39,11 @@ public class SiteMonitoring {
 	
 		data.driver.manage().window().maximize();
 		
-		data.driver.get(data.DEV_url);
+		data.driver.get(data.Prod_url);
 		
 		util.Click(elements.no);
 		
-		functions.login();
+		functions.PRD_login();
 		
 		ShipperHQ();
 		
@@ -55,13 +61,11 @@ public class SiteMonitoring {
 		
 		KnightLab();
 		
-		Discourse();
+		DigitalOcean();
 		
-//		System.out.println(DigitalOcean());
+		Discourse();	
 		
-		
-		
-	
+		data.driver.close();
 		
 	}
 	
@@ -79,14 +83,14 @@ public class SiteMonitoring {
 		
 //		System.out.println("\tShipperHQ_VinylclubSubscription Testing");
 		
-		ShipperHQ_Vinyl();
+//		ShipperHQ_Vinyl();
 		
 	}
 	
 	public static void ShipperHQ_Instock() throws Exception
 	{
 			
-		functions.Add_product("METAL UP YOUR ASS T-SHIRT-M");
+		functions.Add_product("DON'T TREAD ON ME T-SHIRT - MEDIUM");
 		
 		util.Click(elements.checkout);
 		
@@ -115,7 +119,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			functions.write_Regressiontest(SiteData.result, 1);
+			functions.write_SiteMonitoring(SiteData.result, 1);
 		}
 		
 		
@@ -126,7 +130,7 @@ public class SiteMonitoring {
 	
 	public static void ShipperHQ_Preorder() throws Exception  
 	{
-		functions.Add_Preorder("THE ABCS OF METALLICA BOOK");
+		functions.Add_Preorder("LIVE METALLICA: WERCHTER, BELGIUM - JULY 1, 2022 (2CD)");
 		
 		util.Click(elements.checkout);
 		
@@ -154,7 +158,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			functions.write_Regressiontest(SiteData.result, 2);
+			functions.write_SiteMonitoring(SiteData.result, 2);
 		}
 		
 	}
@@ -189,7 +193,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			functions.write_Regressiontest(SiteData.result, 3);
+			functions.write_SiteMonitoring(SiteData.result, 3);
 		}
 		
 	}
@@ -197,7 +201,7 @@ public class SiteMonitoring {
 	public static void Avalara() throws Exception
 	{
 		
-		functions.Add_product("METAL UP YOUR ASS T-SHIRT-M");
+		functions.Add_product("DON'T TREAD ON ME T-SHIRT - MEDIUM");
 		
 //		System.out.println("\tAvalara_TaxableDomestic Testing");
 		
@@ -277,7 +281,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			functions.write_Regressiontest(SiteData.result, 4);
+			functions.write_SiteMonitoring(SiteData.result, 4);
 		}
 			
 		
@@ -345,7 +349,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			functions.write_Regressiontest(SiteData.result, 5);
+			functions.write_SiteMonitoring(SiteData.result, 5);
 		}
 			
 		
@@ -406,7 +410,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			functions.write_Regressiontest(SiteData.result, 6);
+			functions.write_SiteMonitoring(SiteData.result, 6);
 		}
 		
 	}
@@ -472,7 +476,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			functions.write_Regressiontest(SiteData.result, 7);
+			functions.write_SiteMonitoring(SiteData.result, 7);
 		}
 		
 	}
@@ -482,7 +486,7 @@ public class SiteMonitoring {
 		
 		System.out.println("\tUPS Testing");
 		
-		functions.Add_product("METAL UP YOUR ASS T-SHIRT-M");
+		functions.Add_product("DON'T TREAD ON ME T-SHIRT - MEDIUM");
 		
 		util.Click(elements.checkout);
 
@@ -533,7 +537,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			functions.write_Regressiontest(SiteData.result, 8);
+			functions.write_SiteMonitoring(SiteData.result, 8);
 		
 		}
 	}
@@ -587,7 +591,7 @@ public class SiteMonitoring {
 		
 		SiteData.result = false;
 		
-		functions.write_Regressiontest(SiteData.result, 9);
+		functions.write_SiteMonitoring(SiteData.result, 9);
 		
 		}	
 	}
@@ -604,9 +608,11 @@ public class SiteMonitoring {
 		
 		data.driver.get(SiteData.ApplepayURL);
 		
-		String ApplePayOrderDate = elements.TOMS_OrderDate.getText().toString();
+		String ApplePayOrderDate = elements.TOMS_OrderDate.getText().toString().substring(0, 10);
 		
-		if(util.Isdisplayed(elements.driver.findElement(By.xpath("//div[@class='buttonLabel']"))))
+		System.out.println(ApplePayOrderDate+"---"+data.CurrentDate);
+		
+		if(data.CurrentDate.equals(ApplePayOrderDate))
 		{
 			System.out.println("\t\t\t"+"Applepay validation successful");
 			
@@ -622,7 +628,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			functions.write_Regressiontest(SiteData.result, 10);
+			functions.write_SiteMonitoring(SiteData.result, 10);
 		}
 		
 	}
@@ -640,9 +646,11 @@ public class SiteMonitoring {
 		
 		data.driver.get(SiteData.PaypalURL);
 		
-		String PayPalOrderDate = elements.TOMS_OrderDate.getText().toString();	
+		String PayPalOrderDate = elements.TOMS_OrderDate.getText().toString().substring(0, 10).trim();	
 		
-		if(util.Isdisplayed(elements.driver.findElement(By.xpath("//div[@class='buttonLabel']"))))
+		System.out.println(PayPalOrderDate+"---"+data.CurrentDate);
+		
+		if(PayPalOrderDate.equals(data.CurrentDate.trim()))
 		{
 			System.out.println("\t\t\t"+"Paypal validation successful");
 			
@@ -658,9 +666,9 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			functions.write_Regressiontest(SiteData.result, 11);
+			functions.write_SiteMonitoring(SiteData.result, 11);
 	
-	}
+		}
 	}
 	public static void Cloudinary() throws Exception
 	{
@@ -687,19 +695,23 @@ public class SiteMonitoring {
 		
 		SiteData.result = false;
 		
-		functions.write_Regressiontest(SiteData.result, 12);
+		functions.write_SiteMonitoring(SiteData.result, 12);
 		
 	}
 	}
 	
-	public static boolean DigitalOcean() throws InterruptedException
+	public static void DigitalOcean() throws InterruptedException, Exception
 	{
 		
-		data.driver.get(data.Prod_url);
+//		data.driver.get(data.Prod_url);
+//		
+//		util.Click(elements.no);
+//		
+//		functions.login();
 		
-		util.Click(elements.no);
+		util.Click(elements.Account_button);
 		
-		functions.login();
+		util.Click(elements.MyAccount_button);
 		
 		util.Click(elements.MyAccount_Order); 
 		
@@ -707,15 +719,47 @@ public class SiteMonitoring {
 		
 		util.Click(elements.DigitalDownload);
 		
-		return false;
+		Thread.sleep(10000);
 		
+		Actions action =new Actions(data.driver);
 		
+		action.sendKeys(Keys.ENTER);
+		
+		Thread.sleep(10000);
+		
+		File f = new File("C:\\Users\\UNITS\\Downloads\\I-DISAPPEAR_mp3.zip"); 
+	    
+//		System.out.println(f.exists());
+				
+		if(f.exists())
+			
+		{
+			
+			System.out.println("\t\t\t"+"Digital Ocean validation successful");
+			
+			SiteData.result = true;
+			
+			functions.write_SiteMonitoring(SiteData.result, 13);	
+		}
+		else
+		{
+			System.out.println("\t\t\t"+"Digital Ocean validation unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.write_SiteMonitoring(SiteData.result, 13);
+			
+		}
+		
+		f.delete();
 	}
 	
 	public static void KnightLab() throws Exception
 	{
 		
 		data.driver.get(data.Knightlab_Url);
+		
+		Thread.sleep(5000);
 		
 		if(util.MatchPageTitle(data.driver, "Band Timeline | Metallica.com"))
 			
@@ -737,12 +781,43 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			functions.write_Regressiontest(SiteData.result, 14);
+			functions.write_SiteMonitoring(SiteData.result, 14);
 			
 		
 		}
 		
 	   
+	}
+	
+	public static void Discourse() throws Exception
+	{
+
+		data.driver.get(data.Discourse_Url);
+		
+		if(util.MatchPageTitle(data.driver, "Metallica Forums"))
+			
+		{
+			
+			System.out.println("\t\t\t"+"Discourse validation successful");
+			
+			SiteData.result = true;
+			
+			functions.write_SiteMonitoring(SiteData.result, 15);	
+		}
+	
+	
+		else
+	
+		{
+			System.out.println("\t\t\t"+"Discourse validation unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.write_SiteMonitoring(SiteData.result, 15);
+		
+		}
+		
+		
 	}
 	
 	public static void ServiceCloud() throws Exception
@@ -786,37 +861,6 @@ public class SiteMonitoring {
 	
 	
 
-	}
-	
-	public static void Discourse() throws Exception
-	{
-
-		data.driver.get(data.Discourse_Url);
-		
-		if(util.MatchPageTitle(data.driver, "Metallica Forums"))
-			
-		{
-			
-			System.out.println("\t\t\t"+"Discourse validation successful");
-			
-			SiteData.result = true;
-			
-			functions.write_SiteMonitoring(SiteData.result, 15);	
-		}
-	
-	
-		else
-	
-		{
-			System.out.println("\t\t\t"+"Discourse validation unsuccessful");
-			
-			SiteData.result = false;
-			
-			functions.write_Regressiontest(SiteData.result, 15);
-		
-		}
-		
-		
 	}
 	
 }
