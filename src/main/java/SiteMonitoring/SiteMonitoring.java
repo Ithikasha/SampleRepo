@@ -629,11 +629,11 @@ public class SiteMonitoring {
 		
 		data.driver.get(SiteData.ApplepayURL);
 		
-		String ApplePayOrderDate = elements.TOMS_OrderDate.getText().toString().substring(0, 10);
+		SiteData.ApplePay = elements.TOMS_OrderDate.getText().toString().substring(0, 10);
 		
-		System.out.println(ApplePayOrderDate+"---"+data.CurrentDate);
+		System.out.println(SiteData.ApplePay+"---"+data.CurrentDate);
 		
-		if(ApplePayOrderDate.equals(data.CurrentDate.trim()))
+		if(SiteData.ApplePay.equals(data.CurrentDate.trim()))
 		{
 			System.out.println("\t\t\t"+"Applepay validation successful");
 			

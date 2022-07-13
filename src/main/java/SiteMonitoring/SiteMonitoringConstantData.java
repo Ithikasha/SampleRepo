@@ -19,5 +19,10 @@ public class SiteMonitoringConstantData {
 	public static String email = "ithikasha@unitedtechno.com" ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
 	public static String password = "Ithi@utis07" ;
+	
+	public static String ApplePay;
+	
 }
+
+
 

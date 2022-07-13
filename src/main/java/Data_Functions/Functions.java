@@ -46,6 +46,8 @@ public class Functions {
 	constantData data_obj;
 	pageElements element_obj; 
 	SiteMonitoringConstantData SiteData;
+	//SiteMonitoring Site = new SiteMonitoring;
+	
 	
 	
 
@@ -2042,6 +2044,7 @@ public void Logout() throws InterruptedException {
 	
 	public void write_Smoketest(boolean result, int number) throws Exception
 	{
+		
 		File file = new File(Smoke_test.Data_smoke.filePath+"\\"+Smoke_test.Data_smoke.fileName);
 
 		FileInputStream istream = new FileInputStream(file);
@@ -2168,13 +2171,13 @@ public void Logout() throws InterruptedException {
 	
 	public void write_SiteMonitoring(boolean result,int number) throws IOException
 	{
-		File file = new File(SiteMonitoring.SiteMonitoringConstantData.filePath+"\\"+SiteMonitoring.SiteMonitoringConstantData.Result_fileName);
+		File file = new File(SiteData.filePath+"\\"+SiteData.Result_fileName);
 
 		FileInputStream istream = new FileInputStream(file);
 
-		Workbook book = fileSetup(istream,SiteMonitoring.SiteMonitoringConstantData.Result_fileName);
+		Workbook book = fileSetup(istream,SiteData.Result_fileName);
 
-		Sheet sheet = book.getSheet(SiteMonitoring.SiteMonitoringConstantData.Result_sheetName);
+		Sheet sheet = book.getSheet(SiteData.Result_sheetName);
  
 		Row row = sheet.getRow(number);
 		
@@ -2194,7 +2197,7 @@ public void Logout() throws InterruptedException {
 				
 				result_cell.setCellType(result_cell.CELL_TYPE_STRING);
 
-				result_cell.setCellValue("No Order in Current Date: "+data_obj.CurrentDate);
+				result_cell.setCellValue("Last Order was placed on: "+SiteData.ApplePay);
 			}
 
 		}
