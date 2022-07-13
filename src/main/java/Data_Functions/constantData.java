@@ -23,6 +23,12 @@ public class constantData {
 	
 	public int orderCount ;
 	
+	public String Gmail="https://mail.google.com/mail/u/0/?zx=tmhp8n5asb3x#inbox";
+	
+	public String Gmailid="ublisjacobn@unitedtechno.com";
+	
+	public String Gmailpassword="Jacbeu@2024";
+	
 	public String Prod_url = "https://www.metallica.com/";
 	
 	public String DEV_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07june@development.rockdevelop.com/";
@@ -174,10 +180,8 @@ public class constantData {
 //		System.out.println(dateFormat.format(date));
 		 
 		CurrentDate= dateFormat.format(date);
+		
 	}
 
-	
 }
-
-
 

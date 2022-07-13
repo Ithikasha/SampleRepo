@@ -1,5 +1,7 @@
 package SiteMonitoring;
+
 import java.io.File;
+
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -8,11 +10,13 @@ import java.util.Date;
 import org.apache.poi.hssf.record.aggregates.DataValidityTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import Data_Functions.*;
+import Email.SendingEmail;
 import Smoke_test.Data_smoke;
 public class SiteMonitoring {
 	
@@ -21,12 +25,16 @@ public class SiteMonitoring {
 	public static constantData data = new constantData();
 	
 	public static SiteMonitoringConstantData SiteData = new SiteMonitoringConstantData();
+	
+	public static SendingEmail email = new SendingEmail();
     
     public static Data_smoke data_smoke = new Data_smoke();
     
     public static pageElements elements ;
 	
     public static Functions functions;
+    
+    public static String Email="";
 	
 	public static void main(String args[]) throws Exception
 	{
@@ -38,6 +46,12 @@ public class SiteMonitoring {
 	    functions = new Functions(data,elements);
 	
 		data.driver.manage().window().maximize();
+		
+//		Email = Email.concat("First line\n");
+//		
+//		Email = Email.concat("Second line");
+//		
+//		System.out.println(Email);
 		
 		data.driver.get(data.Prod_url);
 		
@@ -65,11 +79,14 @@ public class SiteMonitoring {
 		
 		Discourse();	
 		
+//		ServiceCloud();
+//		
 		data.driver.close();
 		
 	}
 	
 	public static void ShipperHQ() throws Exception
+	
 	{		
 //		System.out.println("ShipperHQ");
 		
@@ -120,6 +137,10 @@ public class SiteMonitoring {
 			SiteData.result = false;
 			
 			functions.write_SiteMonitoring(SiteData.result, 1);
+			
+			Email = Email.concat("Shipper HQ_Instock failed");
+			
+//			data.email(Email);
 		}
 		
 		
@@ -612,7 +633,7 @@ public class SiteMonitoring {
 		
 		System.out.println(ApplePayOrderDate+"---"+data.CurrentDate);
 		
-		if(data.CurrentDate.equals(ApplePayOrderDate))
+		if(ApplePayOrderDate.equals(data.CurrentDate.trim()))
 		{
 			System.out.println("\t\t\t"+"Applepay validation successful");
 			
@@ -727,8 +748,8 @@ public class SiteMonitoring {
 		
 		Thread.sleep(10000);
 		
-		File f = new File("C:\\Users\\UNITS\\Downloads\\I-DISAPPEAR_mp3.zip"); 
-	    
+		File f = new File("C:\\Users\\UTIS LAPTOP 38\\Downloads\\I-DISAPPEAR_mp3.zip"); 
+		
 //		System.out.println(f.exists());
 				
 		if(f.exists())
@@ -743,12 +764,13 @@ public class SiteMonitoring {
 		}
 		else
 		{
+			
 			System.out.println("\t\t\t"+"Digital Ocean validation unsuccessful");
 			
 			SiteData.result = false;
 			
 			functions.write_SiteMonitoring(SiteData.result, 13);
-			
+						
 		}
 		
 		f.delete();
@@ -822,9 +844,29 @@ public class SiteMonitoring {
 	
 	public static void ServiceCloud() throws Exception
 	{
-		util.Click(elements.HelpLink);
 		
-		util.Click(elements.CreateNewSupportTicket_Button);
+		GroupDropdown();
+		
+		GeneralInquiries();
+		
+		OrderandStoreSupport();
+		
+		HowCanWeHelpOptions(); 
+		
+	}
+	
+	
+	
+	 public static void GroupDropdown() throws InterruptedException, IOException
+	 {
+		 
+//		util.Click(elements.HelpLink);
+		
+//		util.Click(elements.CreateNewSupportTicket_Button);
+		 
+		 data.driver.get("https://www.metallica.com/contactus/");
+		 
+		 util.Click(elements.no);
 		
 		util.Sendkeys(elements.Ticketemail, data.username);
 		
@@ -834,33 +876,143 @@ public class SiteMonitoring {
 		
 		util.Sendkeys(elements.TicketSubject, data.subject);
 		
-		util.Click(elements.TicketReCpatcha);
-		
-		util.Click(elements.TicketSubmit);
-		
-		Thread.sleep(2000);
-		
-		if(util.Isdisplayed(elements.driver.findElement(By.xpath("//button[@class='button button--cta']"))))
+		util.Click(elements.GroupDropdown);
+			
+		if(util.Isdisplayed(elements.GeneralInquiries))
 		{
-			System.out.println("\t\t\t"+"Service Cloud ticket submitted successfully");
+			if(util.Isdisplayed(elements.OrderandStoreSupport)) {
+			
+			System.out.println("\t\t\t"+"GeneralInquiries and Order & Store Support field displayed Successfully");
 			
 			SiteData.result = true;
 			
-			functions.write_SiteMonitoring(SiteData.result, 16);
+			//functions.write_SiteMonitoring(SiteData.result, 16);
 		}
 		
+		}
 		else
 			
 		{
-			System.out.println("\t\t\t"+"Service Cloud ticket submission unsuccessful");
+			System.out.println("\t\t\t"+"GeneralInquiries and Order & Store Support field displayed Unuccessful");
 			
 			SiteData.result = false;
 			
-			functions.write_SiteMonitoring(SiteData.result, 16);
+			//functions.write_SiteMonitoring(SiteData.result, 16);
 		}
-	
-	
+		
 
 	}
+	 
+	 public static void GeneralInquiries() throws InterruptedException
+	 {
+		 
+		 Select General = new Select(elements.GroupDropdown);
+		    
+		 General.selectByVisibleText("General Inquiries");
+		 
+		 if(util.Isdisplayed(elements.GeneralInquiries))
+			{
+				
+				System.out.println("\t\t\t"+"GeneralInquiries field displayed Successfully");
+				
+				SiteData.result = true;
+				
+				//functions.write_SiteMonitoring(SiteData.result, 16);
+			
+		
+			}
+			else
+				
+			{
+				System.out.println("\t\t\t"+"GeneralInquiries field displayed Unuccessful");
+				
+				SiteData.result = false;
+				
+				//functions.write_SiteMonitoring(SiteData.result, 16);
+			}
+				 
+	 }
+	 
+	 
+	public static void OrderandStoreSupport() throws InterruptedException {
+		
+		
+		 Select OrderandStoreSupport = new Select(elements.GroupDropdown);
+	    
+		 OrderandStoreSupport.selectByVisibleText("Order & Store Support");
+		 
+		 if(util.Isdisplayed(elements.HowCanWeHelp))
+			{
+				
+				System.out.println("\t\t\t"+"OrderandStoreSupport field validation Successful");
+				
+				SiteData.result = true;
+				
+				//functions.write_SiteMonitoring(SiteData.result, 16);
+			
+		
+			}
+			else
+				
+			{
+				System.out.println("\t\t\t"+"OrderandStoreSupport field validation Unsuccessful");
+				
+				SiteData.result = false;
+				
+				//functions.write_SiteMonitoring(SiteData.result, 16);
+			}
+		 
+		
+	}
+	
+	
+	public static void HowCanWeHelpOptions() throws InterruptedException 
+	{
+		
+		util.Click(elements.HowCanWeHelpOptions);
+		
+		if(util.Isdisplayed(elements.OrderSupport)) 
+		{
+			if(util.Isdisplayed(elements.Shipping))
+			{
+				if(util.Isdisplayed(elements.Return))
+				{
+					if(util.Isdisplayed(elements.Exchange))
+					{
+						if(util.Isdisplayed(elements.VinylClub))
+						{
+							if(util.Isdisplayed(elements.Other)) 
+							{
+								System.out.println("\t\t\t"+"How Can We Help options validation Successful");
+								
+								SiteData.result = true;
+								
+								//functions.write_SiteMonitoring(SiteData.result, 16);
+									
+							}
+							
+							else
+								
+							{
+								System.out.println("\t\t\t"+"How Can We Help options validation Unsuccessful");
+								
+								SiteData.result = false;
+								
+								//functions.write_SiteMonitoring(SiteData.result, 16);
+							}
+						}
+					}
+				}
+				
+			}
+			
+		}
+		
+		
+		
+		
+		
+	}
+	
 	
 }
