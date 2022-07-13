@@ -100,7 +100,7 @@ public class pageElements {
 	@FindBy(xpath="//div[@class='mini-cart-total']")
 	public WebElement MinicartIcon;
 	
-	@FindBy(xpath="//a[contains(text(),'Help')]")
+	@FindBy(xpath="(//a[contains(text(),'Help')])[2]")
 	public WebElement HelpLink;
 	
 	@FindBy(xpath="//a[contains(text(),'Credits')]")
@@ -684,7 +684,7 @@ public class pageElements {
 	public WebElement TOMS_OrderDate;
 
 	
-//BRD Testing
+//Contact Us form
 	
 	@FindBy(xpath="//a[@class='button']")
 	public WebElement CreateNewSupportTicket_Button;
@@ -701,6 +701,39 @@ public class pageElements {
 	@FindBy(xpath="//input[@id='subject']")
 	public WebElement TicketSubject;
 	
+	@FindBy(xpath="(//select[@class='input-select valid'])[1]")
+	public WebElement GroupDropdown;
+	
+	@FindBy(xpath="//option[@value='General Inquiries']")
+	public WebElement GeneralInquiries;
+	
+	@FindBy(xpath="//option[@value='Order & Store Support']")
+	public WebElement OrderandStoreSupport;
+	
+	@FindBy(xpath="//span[contains(text(),'How can we help')]")
+	public WebElement HowCanWeHelp;
+	
+	@FindBy(xpath="//select[@id='Order_Store_Support_Reason__c']")
+	public WebElement HowCanWeHelpOptions;
+	
+	@FindBy(xpath="//option[@value='Order Support']")
+	public WebElement OrderSupport;
+	
+	@FindBy(xpath="//option[@value='Shipping']")
+	public WebElement Shipping;
+	
+	@FindBy(xpath="//option[@value='Return']")
+	public WebElement Return;
+	
+	@FindBy(xpath="//option[@value='Exchange']")
+	public WebElement Exchange;
+	
+	@FindBy(xpath="//option[@value='Vinyl Club']")
+	public WebElement VinylClub;
+	
+	@FindBy(xpath="//option[@value='Other']")
+	public WebElement Other;
+	
 	@FindBy(xpath="//div[@class='g-recaptcha']")
 	public WebElement TicketReCpatcha;
 	
@@ -710,6 +743,35 @@ public class pageElements {
 	@FindBy(xpath="//iframe[@src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1lHHq-yOZUoAli9ESa-Cbxwd0Tn9W1MbAW6wxLBKeE2Y&font=Default&lang=en&initial_zoom=7&height=650&start_at_end=true']")
 	public WebElement KnightLab;
 	
+	
+//Gmail
+	
+	@FindBy(xpath="(//input[@class='whsOnd zHQkBf'])[1]")
+	public WebElement Emailid;
+	
+	@FindBy(xpath="(//div[@class='VfPpkd-Jh9lGc'])[2]")
+	public WebElement Next;
+	
+	@FindBy(xpath="(//input[@class='whsOnd zHQkBf'])[1]")
+	public WebElement EmailPassword;
+	
+	@FindBy(xpath="//button[@class='by7 T-I T-I-JW']")
+	public WebElement MobileNotificationNo;
+	
+	@FindBy(xpath="//input[@placeholder='Search in mail']")
+	public WebElement SearchinMail;
+	
+	@FindBy(xpath="//button[@class='gb_mf gb_nf']")
+	public WebElement SearchButton;
+	
+	@FindBy(xpath="(//div[@class='yW'])[1]")
+	public WebElement Currentmail;
+	
+	@FindBy(xpath="//span[@id=':pk']")
+	public WebElement CurrentDateandTime;
+	
+	//span[@title='Mon, Jul 11, 2022, 3:04 PM']
+		
 	
 	String Address1;
 	

@@ -24,6 +24,12 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.Email;
+import org.apache.commons.mail.EmailAttachment;
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.MultiPartEmail;
+import org.apache.commons.mail.SimpleEmail;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
@@ -109,7 +115,8 @@ public class driverUtil {
 	public WebDriver chrome()
 	{
 //		System.setProperty("webdriver.chrome.driver","C:\\Users\\UNITS\\Documents\\BitBucket\\chromedriver_win32\\chromedriver.exe");
-		System.setProperty("webdriver.chrome.driver","Chromedriver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\UTIS LAPTOP 38\\Downloads\\chromedriver_win32 (9)\\chromedriver.exe");
+//		System.setProperty("webdriver.chrome.driver","Chromedriver\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
@@ -182,7 +189,7 @@ public class driverUtil {
 					return false;
 				}
 			}
-			return true;
+			return true;		
 	}
 	
 	public void Clear(WebElement element) throws InterruptedException
@@ -301,6 +308,47 @@ public class driverUtil {
 		File dest = new File(filePath);
 		
 		FileUtils.copyFile(source, dest);
+	}
+	
+	public void SendStatusByGmail(String Message, boolean result ) throws EmailException
+	{
+		// Attachment
+		
+		System.out.println("Started");
+		
+		EmailAttachment attachment = new EmailAttachment();
+		
+		attachment.setPath("Excelsheets");
+		
+		attachment.setDisposition(EmailAttachment.ATTACHMENT);
+		
+		attachment.setDescription("SiteMonitoring Results");
+		
+		attachment.setName("SiteMonitoring.xls");
+		
+		
+		//Email message
+		  MultiPartEmail email = new MultiPartEmail();
+		  
+		  email.setHostName("smtp.gmail.com");
+		  
+		  email.addTo("ublisjacobn@unitedtechno.com","Jacbeu@2024");
+		  
+		  email.setFrom("ublisjacobn@unitdtechno.com");
+		  
+		  email.setSubject("SiteMonitoring Results");
+		  
+		  email.setMsg("");
+
+		  // add the attachment
+		  email.attach(attachment);
+
+		  // send the email
+		  email.send();
+		  
+		  
+		
+		
 	}
 	
 	
