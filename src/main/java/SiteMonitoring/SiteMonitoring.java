@@ -933,6 +933,11 @@ public class SiteMonitoring {
 				 
 	 }
 	 
+	 public void ContactForm()
+	 {
+		 
+	 }
+	 
 	 
 	public static void OrderandStoreSupport() throws InterruptedException {
 		
