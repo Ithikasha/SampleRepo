@@ -1963,21 +1963,11 @@ public class SiteMonitoring {
 			{
 			
 			case 1:
-				
-				
-			
-			
-			
+						
 			}
-			
-			
-			
-			
-			
+					
 		}
-		
-		
-		
+						
 }
 		
 		
