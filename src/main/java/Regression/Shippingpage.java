@@ -36,7 +36,7 @@ public class Shippingpage {
 		
 		data_obj.driver.get(data_regression.URL);
 		
-//		util.Click(element_obj.no);
+		util.Click(element_obj.no);
 
 		func.smoke_login(data_regression.email, data_regression.password);
 		
@@ -736,7 +736,6 @@ public class Shippingpage {
 		}
 		
 		Collections.sort(prod_list);
-		
 		
 			for(int i=0; i < data_regression.itemlist.length; i++)
 			{

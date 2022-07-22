@@ -227,7 +227,7 @@ public class pageElements {
 	@FindBy(xpath="//*[@value='Add to Cart']")
 	public WebElement preorder_ATC;
 	
-	@FindBy(xpath="//a[@class='button button--cta']")
+	@FindBy(xpath="//a[@class='user-account not-logged-in']")
 	public WebElement PreorderLogin;
 
 	
@@ -701,7 +701,7 @@ public class pageElements {
 	@FindBy(xpath="//input[@id='subject']")
 	public WebElement TicketSubject;
 	
-	@FindBy(xpath="(//select[@class='input-select valid'])[1]")
+	@FindBy(xpath="//select[@class='input-select required valid']")
 	public WebElement GroupDropdown;
 	
 	@FindBy(xpath="//option[@value='General Inquiries']")
@@ -733,6 +733,67 @@ public class pageElements {
 	
 	@FindBy(xpath="//option[@value='Other']")
 	public WebElement Other;
+	
+	@FindBy(xpath="(//select[@class='input-select valid'])[1]")
+	public WebElement Didyoualreadyplacedyourorder;
+	
+	@FindBy(xpath="(//input[@id='Order_Number__c'])[2]")
+	public WebElement OrderNumberField;
+	
+	@FindBy(xpath="//span[contains(text(),'Description')]")
+	public WebElement DescriptionField;
+	
+	@FindBy(xpath="//select[@id='ordersupport-shippinganswer']")
+	public WebElement Hasyourorderalreadyshipped;
+	
+	@FindBy(xpath="//input[@id='Tracking_Number__c']")
+	public WebElement Trackingnumberfield;
+	
+	@FindBy(xpath="(//input[@id='Order_Number__c'])[1]")
+	public WebElement OrderNumber;
+	
+	@FindBy(xpath="(//input[@id='00N3t0000057LgN'])[1]")
+	public WebElement ReasonforReturn;
+	
+	@FindBy(xpath="(//input[@id='00N3t00000GO6Mo'])[1]")
+	public WebElement QtyField;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6Mt']")
+	public WebElement Itemfield;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6My']")
+	public WebElement Sizefield;
+	
+	@FindBy(xpath="//a[@class='addReturn-js']")
+	public WebElement AddanotherReturnItem;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6Xh']")
+	public WebElement AddExtrafield;
+	
+	@FindBy(xpath="(//div[@class='form-row remove-rline-js'])[1]")
+	public WebElement RemoveExtrafield;
+	
+	@FindBy(xpath="//input[@id='00N3t0000057LgS']")
+	public WebElement ReasonforExchange;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6O6']")
+	public WebElement ExchangeItems_Qty;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6O1']")
+	public WebElement ExchangeItems_Item;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6OB']")
+	public WebElement ExchangeItems_Size;
+	
+	@FindBy(xpath="//a[@class='addExchange-js']")
+	public WebElement AddanotherExchangeItem;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6YB']")
+	public WebElement AddExtraExchangeField;
+	
+	@FindBy(xpath="(//div[@class='form-row remove-xline-js'])[1]")
+	public WebElement RemoveExtraExchangeField;
+	
 	
 	@FindBy(xpath="//div[@class='g-recaptcha']")
 	public WebElement TicketReCpatcha;

@@ -27,12 +27,12 @@ public class PDP {
 	public void PDP_Testing() throws Exception
 	{
 		
-//		data_obj.driver.get(data_Regression.URL);
-//		
-//		if(util.Isdisplayed(element_obj.no))
-//		{
-//			util.Click(element_obj.no);
-//		}
+		data_obj.driver.get(data_Regression.URL);
+		
+		if(util.Isdisplayed(element_obj.no))
+		{
+			util.Click(element_obj.no);
+		}
 		
 		util.Click(element_obj.srch);
 			
@@ -210,73 +210,73 @@ public class PDP {
 		
 		util.Click(element_obj.driver.findElement(By.xpath("(//tr[@class='cart-row']//following-sibling::button[@value='Remove'])[2]")));
 		
-//		System.out.println("\tSmoke Testing: Pre-order Product");
-//		
-//		System.out.println("\t\tTestcase - 27");
+		System.out.println("\tSmoke Testing: Pre-order Product");
 		
-//		util.Click(element_obj.srch);
-//		
-//		util.Sendkeys(element_obj.srchIP,"REBACD");
-//
-//		element_obj.srchTxt.submit();
-//		
-//		element_obj.PreorderLogin.click();
-//		
-//		func.smoke_login(data_Regression.email, data_Regression.password);
-//		
-//      util.Click(element_obj.srch);
-//		
-//		util.Sendkeys(element_obj.srchIP,"REBACD");
-//
-//		element_obj.srchTxt.submit();
+		System.out.println("\t\tTestcase - 27");
 		
-//		if(util.Isdisplayed(element_obj.addcart))
-//		{
-//			System.out.println("Pre-order button is unavailable");
-//		}
-//	
-//		else
-//		{
-//			
-//			util.Isdisplayed(element_obj.preorder);
-//			
+		util.Click(element_obj.srch);
 		
-//  	util.Click(element_obj.preorder);
-//				
-//		util.Click(element_obj.preorder_ack);
-//				
-//		util.Click(element_obj.preorder_ATC);			
-//			
-////	util.Click(element_obj.addcart);
-//		
-//		if(util.Isdisplayed(element_obj.miniviewcart))
-//		{
-//			System.out.println("\t\t\t"+"Pre-order Product Validation Successful");
-//			
-//			util.Click(element_obj.miniviewcart);
-//			
-//			util.Click(element_obj.driver.findElement(By.xpath("(//tr[@class='cart-row']//following-sibling::button[@value='Remove'])[2]")));
-//			
-//			data_Regression.result = true;
-//			
-//			func.write_Regressiontest(data_Regression.result, 27);
-//		}
-//		else
-//		{
-//			System.out.println("\t\t\t"+"Pre-order Product Validation Unsuccessful");
-//			
-//			data_Regression.result = false;
-//			
-//			func.write_Regressiontest(data_Regression.result, 27);
-//		}
-//		
-//		fail = 0;
+		util.Sendkeys(element_obj.srchIP,"LIVE METALLICA: WERCHTER, BELGIUM - JULY 1, 2022 (2CD)");
+
+		element_obj.srchTxt.submit();
 		
-//		util.WaitAndClick(element_obj.MyAccount);
+		element_obj.PreorderLogin.click();
 		
-//		util.WaitAndClick(element_obj.Logout);
+		func.smoke_login(data_Regression.email, data_Regression.password);
+		
+		util.Click(element_obj.srch);
+		
+		util.Sendkeys(element_obj.srchIP,"LIVE METALLICA: WERCHTER, BELGIUM - JULY 1, 2022 (2CD)");
+
+		element_obj.srchTxt.submit();
+		
+		if(util.Isdisplayed(element_obj.addcart))
+		{
+			System.out.println("Pre-order button is unavailable");
+		}
+	
+		else
+		{
 			
-//		}		
+			util.Isdisplayed(element_obj.preorder);
+			
+		
+		util.Click(element_obj.preorder);
+				
+		util.Click(element_obj.preorder_ack);
+				
+		util.Click(element_obj.preorder_ATC);			
+			
+		util.Click(element_obj.addcart);
+		
+		if(util.Isdisplayed(element_obj.miniviewcart))
+		{
+			System.out.println("\t\t\t"+"Pre-order Product Validation Successful");
+			
+			util.Click(element_obj.miniviewcart);
+			
+			util.Click(element_obj.driver.findElement(By.xpath("(//tr[@class='cart-row']//following-sibling::button[@value='Remove'])[2]")));
+			
+			data_Regression.result = true;
+			
+			func.write_Regressiontest(data_Regression.result, 27);
+		}
+		else
+		{
+			System.out.println("\t\t\t"+"Pre-order Product Validation Unsuccessful");
+			
+			data_Regression.result = false;
+			
+			func.write_Regressiontest(data_Regression.result, 27);
+		}
+		
+		fail = 0;
+		
+		util.WaitAndClick(element_obj.MyAccount);
+		
+		util.WaitAndClick(element_obj.Logout);
+			
+		}		
 	
 	}
 

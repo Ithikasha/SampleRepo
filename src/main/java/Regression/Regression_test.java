@@ -106,7 +106,7 @@ public class Regression_test
 			
 			sp.UseAddress_checkbox(); 
 			
-//       	sp.Preorder_Validation(); 
+			sp.Preorder_Validation(); 
 			
 //			sp.VC_Validation(); 
 			

@@ -80,7 +80,7 @@ public class SiteMonitoring {
 		Discourse();	
 		
 //		ServiceCloud();
-//		
+		
 		data.driver.close();
 		
 	}
@@ -667,11 +667,11 @@ public class SiteMonitoring {
 		
 		data.driver.get(SiteData.PaypalURL);
 		
-		String PayPalOrderDate = elements.TOMS_OrderDate.getText().toString().substring(0, 10).trim();	
+		SiteData.PayPal = elements.TOMS_OrderDate.getText().toString().substring(0, 10);	
 		
-		System.out.println(PayPalOrderDate+"---"+data.CurrentDate);
+		System.out.println(SiteData.PayPal+"---"+data.CurrentDate);
 		
-		if(PayPalOrderDate.equals(data.CurrentDate.trim()))
+		if(SiteData.PayPal.equals(data.CurrentDate.trim()))
 		{
 			System.out.println("\t\t\t"+"Paypal validation successful");
 			
@@ -751,11 +751,12 @@ public class SiteMonitoring {
 		File f = new File("C:\\Users\\UTIS LAPTOP 38\\Downloads\\I-DISAPPEAR_mp3.zip"); 
 		
 //		System.out.println(f.exists());
-				
+			
+		Thread.sleep(2000);
+		
 		if(f.exists())
 			
 		{
-			
 			System.out.println("\t\t\t"+"Digital Ocean validation successful");
 			
 			SiteData.result = true;
@@ -842,20 +843,129 @@ public class SiteMonitoring {
 		
 	}
 	
+	
 	public static void ServiceCloud() throws Exception
 	{
+		Groupfield();
 		
+		OrderandStoreSupportoption();
+		
+		Ordersupport();
+		
+		shipping();
+		
+		Return();
+	
+		Exchange();
+		
+		Vinyl();
+		
+		Others();
+		
+	}
+	
+	
+	public static void Groupfield() throws InterruptedException, IOException 
+	
+	{
 		GroupDropdown();
 		
 		GeneralInquiries();
 		
 		OrderandStoreSupport();
+					
+	}
+	
+	
+	public static void OrderandStoreSupportoption() throws InterruptedException, IOException
+	{
+		
+		OrderandStoreSupportfields();
 		
 		HowCanWeHelpOptions(); 
 		
 	}
 	
+	public static void Ordersupport() throws InterruptedException, IOException
+	{
+		
+		OrderSupport();
+		
+		OrderNumberFieldYes();
+		
+		OrderNumberFieldNo();
+			
+	}
 	
+	public static void shipping() throws InterruptedException, IOException
+	{
+		
+		Shipping();
+		
+		TrackingnumberYes();
+			
+	}
+	
+	public static void Return() throws InterruptedException, IOException
+	{
+		
+		ReturnOrderNumber();
+		
+		ReasonforReturn();
+		
+		Qtyfield();
+		
+		Itemfield();
+		
+		Sizefield();
+		
+		AddExtrafield();
+		
+		RemoveExtrafield();
+		
+	}
+	
+	public static void Exchange() throws InterruptedException, IOException
+	{
+		ExchangeOrderNumber();
+		
+		ReasonforExchange();
+		
+		Items_to_return_Qty();
+		
+		Items_to_return_Item();
+		
+		Items_to_return_Size();
+		
+		Exchange_AddExtrafield();
+		
+		Exchange_RemoveExtrafield();
+		
+		ExchangeItems_Qty();
+
+		ExchangeItems_Item();
+
+		ExchangeItems_Size();
+
+		Exchange_Addanotherexchangeitem();
+
+		Exchange_RemoveExchangeItem();
+	
+	}
+	
+	public static void Vinyl() throws InterruptedException, IOException
+	{
+		
+		VinylClub();
+		
+		VinylClub_OrderNumberFieldYes();
+		
+	}
+	
+	public static void Others() throws InterruptedException, IOException
+	{
+		Other();
+	}
 	
 	 public static void GroupDropdown() throws InterruptedException, IOException
 	 {
@@ -886,7 +996,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = true;
 			
-			//functions.write_SiteMonitoring(SiteData.result, 16);
+			functions.ServiceCloud(SiteData.result, 1);
 		}
 		
 		}
@@ -897,13 +1007,13 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			//functions.write_SiteMonitoring(SiteData.result, 16);
+			functions.ServiceCloud(SiteData.result, 1);
 		}
 		
 
 	}
 	 
-	 public static void GeneralInquiries() throws InterruptedException
+	 public static void GeneralInquiries() throws InterruptedException, IOException
 	 {
 		 
 		 Select General = new Select(elements.GroupDropdown);
@@ -917,7 +1027,7 @@ public class SiteMonitoring {
 				
 				SiteData.result = true;
 				
-				//functions.write_SiteMonitoring(SiteData.result, 16);
+				functions.ServiceCloud(SiteData.result, 2);
 			
 		
 			}
@@ -928,18 +1038,45 @@ public class SiteMonitoring {
 				
 				SiteData.result = false;
 				
-				//functions.write_SiteMonitoring(SiteData.result, 16);
+				functions.ServiceCloud(SiteData.result, 2);
 			}
 				 
 	 }
 	 
-	 public void ContactForm()
+	 public static void OrderandStoreSupport() throws InterruptedException, IOException
 	 {
 		 
+		 Select General = new Select(elements.GroupDropdown);
+		    
+		 General.selectByVisibleText("Order & Store Support");
+		 
+		 		if(util.Isdisplayed(elements.OrderandStoreSupport)) {
+				
+				System.out.println("\t\t\t"+"Order & Store Support field displayed Successfully");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 3);
+			
+			
+			}
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Order & Store Support field displayed Unuccessful");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 3);
+			}
+			
+
 	 }
 	 
 	 
-	public static void OrderandStoreSupport() throws InterruptedException {
+	 
+
+	public static void OrderandStoreSupportfields() throws InterruptedException, IOException {
 		
 		
 		 Select OrderandStoreSupport = new Select(elements.GroupDropdown);
@@ -953,7 +1090,7 @@ public class SiteMonitoring {
 				
 				SiteData.result = true;
 				
-				//functions.write_SiteMonitoring(SiteData.result, 16);
+				functions.ServiceCloud(SiteData.result, 4);
 			
 		
 			}
@@ -964,14 +1101,14 @@ public class SiteMonitoring {
 				
 				SiteData.result = false;
 				
-				//functions.write_SiteMonitoring(SiteData.result, 16);
+				functions.ServiceCloud(SiteData.result, 4);
 			}
 		 
 		
 	}
 	
 	
-	public static void HowCanWeHelpOptions() throws InterruptedException 
+	public static void HowCanWeHelpOptions() throws InterruptedException, IOException 
 	{
 		
 		util.Click(elements.HowCanWeHelpOptions);
@@ -992,7 +1129,7 @@ public class SiteMonitoring {
 								
 								SiteData.result = true;
 								
-								//functions.write_SiteMonitoring(SiteData.result, 16);
+								functions.ServiceCloud(SiteData.result, 5);
 									
 							}
 							
@@ -1003,7 +1140,7 @@ public class SiteMonitoring {
 								
 								SiteData.result = false;
 								
-								//functions.write_SiteMonitoring(SiteData.result, 16);
+								functions.ServiceCloud(SiteData.result, 5);
 							}
 						}
 					}
@@ -1012,12 +1149,838 @@ public class SiteMonitoring {
 			}
 			
 		}
+			
+	}
+	
+	public static void OrderSupport() throws InterruptedException, IOException 
+	
+	{
+		
+		Select OrderSupport = new Select(elements.HowCanWeHelpOptions);
+		
+		OrderSupport.selectByVisibleText("Order Support");
+		
+		if(util.Isdisplayed(elements.Didyoualreadyplacedyourorder)) 
+		{
+			System.out.println("\t\t\t"+"Order support validation Successful");
+			
+			SiteData.result = true;
+			
+			functions.ServiceCloud(SiteData.result, 6);
+				
+		}
+		
+		else
+			
+		{
+			System.out.println("\t\t\t"+"order support validation Unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.ServiceCloud(SiteData.result, 6);
+		}
 		
 		
+	}
+	
+	public static void OrderNumberFieldYes() throws InterruptedException, IOException
+	{
+		Select OrderNumberField = new Select(elements.Didyoualreadyplacedyourorder);
 		
+		OrderNumberField.selectByVisibleText("Yes");
+		
+		if(util.Isdisplayed(elements.OrderNumberField)) 
+		{
+			System.out.println("\t\t\t"+"Please provide your order number field validation Successful");
+			
+			SiteData.result = true;
+			
+			functions.ServiceCloud(SiteData.result, 7);
+				
+		}
+		
+		else
+			
+		{
+			System.out.println("\t\t\t"+"Please provide your order number field validation Unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.ServiceCloud(SiteData.result, 7);
+		}
+		
+			
+	}
+
+	public static void OrderNumberFieldNo() throws InterruptedException, IOException
+	{
+		
+		Select OrderNumberField = new Select(elements.Didyoualreadyplacedyourorder);
+		
+		OrderNumberField.selectByVisibleText("No");
+		
+		if(util.Isdisplayed(elements.DescriptionField)) 
+		{
+			System.out.println("\t\t\t"+"Description field validation Successful");
+			
+			SiteData.result = true;
+			
+			functions.ServiceCloud(SiteData.result, 8);
+				
+		}
+		
+		else
+			
+		{
+			System.out.println("\t\t\t"+"Description field validation Unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.ServiceCloud(SiteData.result, 8);
+		}
+		
+		
+	}
+	
+	public static void Shipping() throws InterruptedException, IOException
+	{
+		Select OrderSupport = new Select(elements.HowCanWeHelpOptions);
+		
+		OrderSupport.selectByVisibleText("Shipping");
+		
+		if(util.Isdisplayed(elements.Hasyourorderalreadyshipped)) 
+		{
+			System.out.println("\t\t\t"+"Shipping validation Successful");
+			
+			SiteData.result = true;
+			
+			functions.ServiceCloud(SiteData.result, 9);
+				
+		}
+		
+		else
+			
+		{
+			System.out.println("\t\t\t"+"Shipping validation Unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.ServiceCloud(SiteData.result, 9);
+		}
+		
+		
+	}
+	
+	public static void TrackingnumberYes() throws InterruptedException, IOException 
+	{
+		Select Trackingnumberfield = new Select(elements.Hasyourorderalreadyshipped);
+				
+		Trackingnumberfield.selectByVisibleText("Yes");	
+		
+		if(util.Isdisplayed(elements.Trackingnumberfield)) 
+		{
+			System.out.println("\t\t\t"+"Please provide your tracking number field validation Successful");
+			
+			SiteData.result = true;
+			
+			functions.ServiceCloud(SiteData.result, 10);
+				
+		}
+		
+		else
+			
+		{
+			System.out.println("\t\t\t"+"Please provide your tracking number field validation Unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.ServiceCloud(SiteData.result, 10);		
+			
+		}
+		
+		
+	}
+	
+	public static void ReturnOrderNumber() throws InterruptedException, IOException
+	
+	{
+		Select Return = new Select(elements.HowCanWeHelpOptions);
+		
+		Return.selectByVisibleText("Return");
+		
+		if(util.Isdisplayed(elements.OrderNumber)) 
+		{
+			System.out.println("\t\t\t"+"Order number field in Return option validation Successful");
+			
+			SiteData.result = true;
+			
+			functions.ServiceCloud(SiteData.result, 11);
+				
+		}
+		
+		else
+			
+		{
+			System.out.println("\t\t\t"+"Order number field in Return option field validation Unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.ServiceCloud(SiteData.result, 11);
+		}
+	}
+
+	public static void ReasonforReturn() throws InterruptedException, IOException
+	{
+		Select Return = new Select(elements.HowCanWeHelpOptions);
+		
+		Return.selectByVisibleText("Return");
+		
+		if(util.Isdisplayed(elements.ReasonforReturn)) 
+		{
+			System.out.println("\t\t\t"+"Reason for return field in Return option validation Successful");
+			
+			SiteData.result = true;
+			
+			functions.ServiceCloud(SiteData.result, 12);
+				
+		}
+		
+		else
+			
+		{
+			System.out.println("\t\t\t"+"Reason for return field in Return option field validation Unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.ServiceCloud(SiteData.result, 12);
+		}
+		
+				
+	}
+
+	public static void Qtyfield() throws InterruptedException, IOException
+	{
+		Select Return = new Select(elements.HowCanWeHelpOptions);
+		
+		Return.selectByVisibleText("Return");
+		
+		if(util.Isdisplayed(elements.QtyField)) 
+		{
+			System.out.println("\t\t\t"+"QTY field in Return option validation Successful");
+			
+			SiteData.result = true;
+			
+			functions.ServiceCloud(SiteData.result, 13);
+				
+		}
+		
+		else
+			
+		{
+			System.out.println("\t\t\t"+"QTY field in Return option validation Unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.ServiceCloud(SiteData.result, 13);
+		}
+		
+		
+	}
+
+	
+	public static void Itemfield() throws InterruptedException, IOException
+	{
+		Select Return = new Select(elements.HowCanWeHelpOptions);
+		
+		Return.selectByVisibleText("Return");
+		
+		if(util.Isdisplayed(elements.Itemfield)) 
+		{
+			System.out.println("\t\t\t"+"Item field in Return option validation Successful");
+			
+			SiteData.result = true;
+			
+			functions.ServiceCloud(SiteData.result, 14);
+				
+		}
+		
+		else
+			
+		{
+			System.out.println("\t\t\t"+"Item field in Return option validation Unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.ServiceCloud(SiteData.result, 14);
+		}
 		
 		
 	}
 	
 	
+	public static void Sizefield() throws InterruptedException, IOException
+	{
+		Select Return = new Select(elements.HowCanWeHelpOptions);
+		
+		Return.selectByVisibleText("Return");
+		
+		if(util.Isdisplayed(elements.Sizefield)) 
+		{
+			System.out.println("\t\t\t"+"Size field in Return option validation Successful");
+			
+			SiteData.result = true;
+			
+			functions.ServiceCloud(SiteData.result, 15);
+				
+		}
+		
+		else
+			
+		{
+			System.out.println("\t\t\t"+"Size field in Return option validation Unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.ServiceCloud(SiteData.result, 15);
+		}
+		
+		
+	}
+	
+	public static void AddExtrafield() throws InterruptedException, IOException
+	{
+		Select Return = new Select(elements.HowCanWeHelpOptions);
+		
+		Return.selectByVisibleText("Return");
+		
+		util.Click(elements.AddanotherReturnItem);
+		
+		if(util.Isdisplayed(elements.AddExtrafield)) 
+		{
+			System.out.println("\t\t\t"+"Extrafield in Return option validation Successful");
+			
+			SiteData.result = true;
+			
+			functions.ServiceCloud(SiteData.result, 16);
+				
+		}
+		
+		else
+			
+		{
+			System.out.println("\t\t\t"+"Extrafield in Return option validation Unsuccessful");
+			
+			SiteData.result = false;
+			
+			functions.ServiceCloud(SiteData.result, 16);
+		}
+			
+	}
+	
+		public static void RemoveExtrafield() throws InterruptedException, IOException
+		{
+			Select Return = new Select(elements.HowCanWeHelpOptions);
+			
+			Return.selectByVisibleText("Return");
+			
+			util.Click(elements.RemoveExtrafield);
+			
+			if(util.Isdisplayed(elements.QtyField)) 
+			{
+				System.out.println("\t\t\t"+"Extrafield in Return option removed Successfully");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 17);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Extrafield in Return option removed Unsuccessfully");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 17);
+			}
+		
+		}
+	
+
+		public static void ExchangeOrderNumber() throws InterruptedException, IOException
+		
+		{
+			Select Return = new Select(elements.HowCanWeHelpOptions);
+			
+			Return.selectByVisibleText("Exchange");
+			
+			if(util.Isdisplayed(elements.OrderNumber)) 
+			{
+				System.out.println("\t\t\t"+"Order number field in Exchange option validation Successful");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 18);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Order number field in Exchange option field validation Unsuccessful");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 18);
+			}
+		}
+		
+		public static void ReasonforExchange() throws InterruptedException, IOException
+		{
+			Select Return = new Select(elements.HowCanWeHelpOptions);
+			
+			Return.selectByVisibleText("Exchange");
+			
+			if(util.Isdisplayed(elements.ReasonforExchange)) 
+			{
+				System.out.println("\t\t\t"+"Reason for Exchange field in Return option validation Successful");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 19);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Reason for Exchange field in Return option field validation Unsuccessful");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 19);
+			}
+			
+		 }
+
+		
+		public static void Items_to_return_Qty() throws InterruptedException, IOException
+		{
+			
+			Select Return = new Select(elements.HowCanWeHelpOptions);
+			
+			Return.selectByVisibleText("Exchange");
+			
+			if(util.Isdisplayed(elements.QtyField)) 
+			{
+				System.out.println("\t\t\t"+"QTY field in Items to return fields in Exchange option validation Successful");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 20);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"QTY field in Items to return fields in Exchange option validation Unsuccessful");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 20);
+			}
+			
+			
+		}
+			
+		public static void Items_to_return_Item() throws InterruptedException, IOException
+		{
+			
+			Select Return = new Select(elements.HowCanWeHelpOptions);
+			
+			Return.selectByVisibleText("Exchange");
+			
+			if(util.Isdisplayed(elements.Itemfield)) 
+			{
+				System.out.println("\t\t\t"+"Item field in Items to return fields in Exchange option validation Successful");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 21);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Item field in Items to return fields in Exchange option validation Unsuccessful");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 21);
+			}
+			
+			
+		}	
+			
+		
+		public static void Items_to_return_Size() throws InterruptedException, IOException
+		{
+			
+			Select Return = new Select(elements.HowCanWeHelpOptions);
+			
+			Return.selectByVisibleText("Exchange");
+			
+			if(util.Isdisplayed(elements.Sizefield)) 
+			{
+				System.out.println("\t\t\t"+"Size field in Items to return fields in Exchange option validation Successful");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 22);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Size field in Items to return fields in Exchange option validation Unsuccessful");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 22);
+			}
+			
+			
+		}	
+		
+		public static void Exchange_AddExtrafield() throws InterruptedException, IOException
+		{
+			Select Return = new Select(elements.HowCanWeHelpOptions);
+			
+			Return.selectByVisibleText("Exchange");
+			
+			util.Click(elements.AddanotherReturnItem);
+			
+			if(util.Isdisplayed(elements.AddExtrafield)) 
+			{
+				System.out.println("\t\t\t"+"Extrafield in Exchange option validation Successful");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 23);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Extrafield in Exchange option validation Unsuccessful");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 23);
+			}
+				
+		}
+		
+		public static void Exchange_RemoveExtrafield() throws InterruptedException, IOException
+		{
+			Select Return = new Select(elements.HowCanWeHelpOptions);
+			
+			Return.selectByVisibleText("Exchange");
+			
+			util.Click(elements.RemoveExtrafield);
+			
+			if(util.Isdisplayed(elements.QtyField)) 
+			{
+				System.out.println("\t\t\t"+"Extrafield in Exchange option removed Successfully");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 24);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Extrafield in Exchange option removed Unsuccessfully");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 24);
+			}
+		
+		}
+		
+		public static void ExchangeItems_Qty() throws InterruptedException, IOException
+		{
+			
+			Select Return = new Select(elements.HowCanWeHelpOptions);
+			
+			Return.selectByVisibleText("Exchange");
+			
+			if(util.Isdisplayed(elements.ExchangeItems_Qty)) 
+			{
+				System.out.println("\t\t\t"+"QTY field in Exchange Items validation Successful");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 25);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"QTY field in Exchange Items validation Unsuccessful");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 25);
+			}
+			
+			
+		}
+		
+		public static void ExchangeItems_Item() throws InterruptedException, IOException
+		{
+			
+			Select Return = new Select(elements.HowCanWeHelpOptions);
+			
+			Return.selectByVisibleText("Exchange");
+			
+			if(util.Isdisplayed(elements.ExchangeItems_Item)) 
+			{
+				System.out.println("\t\t\t"+"Item field in Exchange Items validation Successful");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 26);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Item field in Exchange Items validation Unsuccessful");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 26);
+			}
+			
+			
+		}
+	
+		
+		public static void ExchangeItems_Size() throws InterruptedException, IOException
+		{
+			
+			Select Return = new Select(elements.HowCanWeHelpOptions);
+			
+			Return.selectByVisibleText("Exchange");
+			
+			if(util.Isdisplayed(elements.ExchangeItems_Size)) 
+			{
+				System.out.println("\t\t\t"+"Size field in Exchange Items validation Successful");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 27);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Size field in Exchange Items validation Unsuccessful");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 27);
+			}
+			
+			
+		}
+
+		public static void Exchange_Addanotherexchangeitem() throws InterruptedException, IOException
+		{
+			Select Return = new Select(elements.HowCanWeHelpOptions);
+			
+			Return.selectByVisibleText("Exchange");
+			
+			util.Click(elements.AddanotherExchangeItem);
+			
+			if(util.Isdisplayed(elements.AddExtraExchangeField)) 
+			{
+				System.out.println("\t\t\t"+"Adding Extrafield in Exchange Items validation Successful");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 28);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Adding Extrafield in Exchange Items validation Unsuccessful");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 28);
+			}
+				
+		}
+
+		public static void Exchange_RemoveExchangeItem() throws InterruptedException, IOException
+		{
+			Select Return = new Select(elements.HowCanWeHelpOptions);
+			
+			Return.selectByVisibleText("Exchange");
+			
+			util.Click(elements.RemoveExtraExchangeField);
+			
+			if(util.Isdisplayed(elements.ExchangeItems_Qty)) 
+			{
+				System.out.println("\t\t\t"+"Extra Exchange field removed Successfully");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 29);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Extra Exchange field removed Unsuccessfully");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 29);
+			}
+		
+		}
+
+		public static void VinylClub() throws InterruptedException, IOException
+		{
+			Select OrderSupport = new Select(elements.HowCanWeHelpOptions);
+			
+			OrderSupport.selectByVisibleText("Vinyl Club");
+			
+			if(util.Isdisplayed(elements.Didyoualreadyplacedyourorder)) 
+			{
+				System.out.println("\t\t\t"+"Vinyl Club validation Successful");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 30);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Vinyl Club validation Unsuccessful");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 30);
+			}
+			
+			
+		}
+	
+		public static void VinylClub_OrderNumberFieldYes() throws InterruptedException, IOException
+		{
+			Select OrderNumberField = new Select(elements.Didyoualreadyplacedyourorder);
+			
+			OrderNumberField.selectByVisibleText("Yes");
+			
+			if(util.Isdisplayed(elements.OrderNumberField)) 
+			{
+				System.out.println("\t\t\t"+"Please provide your order number field in Vinyl Club option validation Successful");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 31);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Please provide your order number field in Vinyl Club option validation Unsuccessful");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 31);
+			}
+			
+				
+		}
+	
+		public static void Other() throws InterruptedException, IOException
+		
+		{
+			Select Return = new Select(elements.HowCanWeHelpOptions);
+			
+			Return.selectByVisibleText("Other");
+			
+			if(util.Isdisplayed(elements.DescriptionField)) 
+			{
+				System.out.println("\t\t\t"+"Other option from Group selection validation Successful");
+				
+				SiteData.result = true;
+				
+				functions.ServiceCloud(SiteData.result, 32);
+					
+			}
+			
+			else
+				
+			{
+				System.out.println("\t\t\t"+"Other option from Group selection validation Unsuccessful");
+				
+				SiteData.result = false;
+				
+				functions.ServiceCloud(SiteData.result, 32);
+			}
+			
+		}
+		
+		public static void Mandatoryfields()
+		
+		{
+			int fail = 0;
+			
+			switch(1) 
+			{
+			
+			case 1:
+				
+				
+			
+			
+			
+			}
+			
+			
+			
+			
+			
+		}
+		
+		
+		
 }
+		
+		
+
+
+

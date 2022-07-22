@@ -22,6 +22,16 @@ public class SiteMonitoringConstantData {
 	
 	public static String ApplePay;
 	
+	public static String PayPal;
+	
+	public static String ServiceCloud_Result_filename = "Service Cloud.xls";
+	
+	public static String ServiceCloud_filepath = "Excelsheets";
+	
+	public static String ServiceCloud_Result_sheetname = "Result";
+	
+//	public static String ServiceCloud_input_sheetname = "input";
+	
 }
 
 
