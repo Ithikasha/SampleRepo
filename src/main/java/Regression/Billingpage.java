@@ -204,12 +204,12 @@ public class Billingpage {
 		
 		System.out.println("\t\tTestcase - 44");
 		
-		util.WaitAndClick(element_obj.continuebill);
-		
-		if(util.Isdisplayed(element_obj.SuggestionAddress)) 
-		{
-			util.WaitAndClick(element_obj.SuggestionAddress);
-		}		
+//		util.WaitAndClick(element_obj.continuebill);
+//		
+//		if(util.Isdisplayed(element_obj.SuggestionAddress)) 
+//		{
+//			util.WaitAndClick(element_obj.SuggestionAddress);
+//		}		
 		
 		util.Sendkeys(element_obj.cardnumber, "41111111111111111");
 		

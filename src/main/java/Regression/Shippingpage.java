@@ -34,8 +34,8 @@ public class Shippingpage {
 		
 		data_regression.Address = data_regression.DAddress;
 		
-		data_obj.driver.get(data_regression.URL);
-		
+//		data_obj.driver.get(data_regression.URL);
+//		
 //		util.Click(element_obj.no);
 
 		func.smoke_login(data_regression.email, data_regression.password);
@@ -724,6 +724,16 @@ public class Shippingpage {
 		
 		System.out.println("\t\tTestcase - 35");
 		
+//		data_obj.driver.get(data_regression.URL);
+//		
+//		util.Click(element_obj.no);
+//
+//		func.smoke_login(data_regression.email, data_regression.password);
+//		
+//		func.Add_product(data_regression.itemlist, data_regression.qty);
+//		
+//		util.Click(element_obj.checkout);
+//		   
 		Thread.sleep(10000);
 
 		List<String> prod_list = new ArrayList<>();
@@ -735,11 +745,14 @@ public class Shippingpage {
 			prod_list.add(i-1,element_obj.driver.findElement(By.xpath("(//div[@class='shipping-method-products']//child::span)["+i+"]")).getText().substring(1));
 		}
 		
+		System.out.println(prod_list);
+		
 		Collections.sort(prod_list);
 		
-		
-			for(int i=0; i < data_regression.itemlist.length; i++)
+			for(int i=1; i > data_regression.itemlist.length; i++)
 			{
+				System.out.println(prod_list.contains(data_regression.CP_prdName.get(i).toUpperCase()));
+				
 				if(prod_list.contains(data_regression.CP_prdName.get(i).toUpperCase()))
 				{
 					System.out.println("\t\t\t"+data_regression.CP_prdName.get(i)+": Product name displayed in Shipping Method Table Successfully ");
@@ -750,15 +763,14 @@ public class Shippingpage {
 					System.out.println("\t\t\t"+data_regression.CP_prdName.get(i)+" Product name not displayed in Shipping Method Table - Unsuccessful");
 					func.write_Regressiontest(false, 35);
 				}
-			}
-			
+			}		
 	}
 	
 	public void Validate_SavedAddress() throws Exception
 	{
 		System.out.println("\tSaved Address field validation");
 		
-		System.out.println("\t\tTestcase - 36");		
+		System.out.println("\t\tTestcase - 36");	
 		
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//select[@id='dwfrm_singleshipping_addressList']"))))
 		{
