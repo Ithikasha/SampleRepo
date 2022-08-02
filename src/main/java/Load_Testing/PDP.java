@@ -27,13 +27,13 @@ public class PDP {
 	public void PDP_Testing() throws Exception
 	{
 		
-		data_obj.driver.get(data_Regression.URL);
-		
-		if(util.Isdisplayed(element_obj.no))
-		{
-			util.Click(element_obj.no);
-		}
-		
+//		data_obj.driver.get(data_Regression.URL);
+//		
+//		if(util.Isdisplayed(element_obj.no))
+//		{
+//			util.Click(element_obj.no);
+//		}
+//		
 		util.Click(element_obj.srch);
 			
 		util.Sendkeys(element_obj.srchIP, data_Regression.instock1);
@@ -220,17 +220,17 @@ public class PDP {
 
 		element_obj.srchTxt.submit();
 		
-		element_obj.PreorderLogin.click();
+//		element_obj.PreorderLogin.click();
+//		
+//		func.smoke_login(data_Regression.email, data_Regression.password);
+//		
+//		util.Click(element_obj.srch);
+//		
+//		util.Sendkeys(element_obj.srchIP,"LIVE METALLICA: WERCHTER, BELGIUM - JULY 1, 2022 (2CD)");
+//
+//		element_obj.srchTxt.submit();
 		
-		func.smoke_login(data_Regression.email, data_Regression.password);
-		
-		util.Click(element_obj.srch);
-		
-		util.Sendkeys(element_obj.srchIP,"LIVE METALLICA: WERCHTER, BELGIUM - JULY 1, 2022 (2CD)");
-
-		element_obj.srchTxt.submit();
-		
-		if(util.Isdisplayed(element_obj.addcart))
+		if(util.Isdisplayed(element_obj.One_year))
 		{
 			System.out.println("Pre-order button is unavailable");
 		}
@@ -238,9 +238,8 @@ public class PDP {
 		else
 		{
 			
-			util.Isdisplayed(element_obj.preorder);
+		util.Isdisplayed(element_obj.preorder);
 			
-		
 		util.Click(element_obj.preorder);
 				
 		util.Click(element_obj.preorder_ack);
@@ -272,9 +271,9 @@ public class PDP {
 		
 		fail = 0;
 		
-		util.WaitAndClick(element_obj.MyAccount);
-		
-		util.WaitAndClick(element_obj.Logout);
+//		util.WaitAndClick(element_obj.MyAccount);
+//		
+//		util.WaitAndClick(element_obj.Logout);
 			
 		}		
 	

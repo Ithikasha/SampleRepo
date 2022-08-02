@@ -12,9 +12,9 @@ public class SiteMonitoringConstantData {
 	
 	public String Input_sheetName = "input";
 	
-	public String ApplepayURL = "https://toms03.tejassoftware.com/Order/Search#?page=1&pageSize=50&criteria=F.PaymentMethodId.in.29";
+	public String ApplepayURL = "https://metclub.tejassoftware.com/toms/Order/Search#?page=1&pageSize=50&criteria=F.PaymentMethodId.in.29";
 	
-	public String PaypalURL = "https://toms03.tejassoftware.com/Order/Search#?page=1&pageSize=50&criteria=F.PaymentMethodId.in.8";
+	public String PaypalURL = "https://metclub.tejassoftware.com/toms/Order/Search#?page=1&pageSize=50&criteria=F.PaymentMethodId.in.8";
 			
 	public static String email = "ithikasha@unitedtechno.com" ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	

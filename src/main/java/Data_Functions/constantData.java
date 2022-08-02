@@ -39,7 +39,7 @@ public class constantData {
 	
 	public String Discourse_Url="https://forums.metallica.com/ ";
 	
-	public String ProdTomsUrl ="https://toms03.tejassoftware.com/Account/Login?ReturnUrl=%2F";
+	public String ProdTomsUrl ="https://metclub.tejassoftware.com/toms";
 	
 	public String ProdTomsusername = "ithikasha@unitedtechno.com";
 	

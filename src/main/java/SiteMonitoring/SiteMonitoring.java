@@ -566,7 +566,7 @@ public class SiteMonitoring {
 	public static void Loqate() throws Exception
 	{
 	
-		System.out.println("\tShipperHQ_Instock Testing");	
+		System.out.println("\tLoqate Testing");	
 		
 	util.Click(elements.checkout);
 	
@@ -752,7 +752,7 @@ public class SiteMonitoring {
 		
 //		System.out.println(f.exists());
 			
-		Thread.sleep(2000);
+		Thread.sleep(10000);
 		
 		if(f.exists())
 			
@@ -1954,19 +1954,19 @@ public class SiteMonitoring {
 			
 		}
 		
-		public static void Mandatoryfields()
-		
-		{
-			int fail = 0;
-			
-			switch(1) 
-			{
-			
-			case 1:
-						
-			}
+//		public static void Mandatoryfields()
+//		
+//		{
+//			int fail = 0;
+//			
+//			switch(1) 
+//			{
+//			
+//			case 1:
+//						
+//			}
 					
-		}
+//		}
 						
 }
 		

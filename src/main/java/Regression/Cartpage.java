@@ -240,9 +240,9 @@ public class Cartpage {
 	   
 	   System.out.println("\nCart Page");
 	   	
-		data_obj.driver.get(data_regression.URL);
-		
-		util.Click(element_obj.no);
+//		data_obj.driver.get(data_regression.URL);
+//		
+//		util.Click(element_obj.no);
 	   
 	   func.Add_product(data_regression.itemlist, data_regression.qty);
 	   
