@@ -2217,7 +2217,45 @@ public void Logout() throws InterruptedException {
 		outputstream.close();
 	}
 	
+	public void ServiceCloud(boolean result,int number) throws IOException
+	{
+		File file = new File(SiteData.ServiceCloud_filepath+"\\"+SiteData.ServiceCloud_Result_filename);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,SiteData.ServiceCloud_Result_filename);
+
+		Sheet sheet = book.getSheet(SiteData.ServiceCloud_Result_sheetname);
+ 
+		Row row = sheet.getRow(number);
+		
+		String value ;
+		
+		if(result)
+		{
+			value = "PASS";
+		}
+		else
+		{
+			value = "FAIL";
+			
+		}
 				
+		Cell result_cell = row.createCell(4);
+				
+		result_cell.setCellType(result_cell.CELL_TYPE_STRING);
+
+		result_cell.setCellValue(value);
+				
+		istream.close(); 
+		 	    
+		FileOutputStream outputstream = new FileOutputStream(SiteData.ServiceCloud_filepath+"\\"+SiteData.ServiceCloud_Result_filename);
+					
+		book.write(outputstream);
+			    
+		outputstream.close();
+	}
+			
 	
 	public void InventoryCheck() throws Exception
 	{

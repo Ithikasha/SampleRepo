@@ -238,6 +238,12 @@ public class Cartpage {
 		
 	   System.out.println("\t\tTestcase - 31");
 	   
+	   System.out.println("\nCart Page");
+	   	
+//		data_obj.driver.get(data_regression.URL);
+//		
+//		util.Click(element_obj.no);
+	   
 	   func.Add_product(data_regression.itemlist, data_regression.qty);
 	   
 	   func.guestCheckout(data_regression.email);
