@@ -669,7 +669,7 @@ public boolean selectItems() throws InterruptedException, Exception
 		
 		util.Sendkeys(element_obj.email, data_obj.username);
 	
-		util.Sendkeys(element_obj.password, data_obj.DEV_password);
+		util.Sendkeys(element_obj.password, data_obj.PRD_password);
 	
 		util.Click(element_obj.login_button);
 		
@@ -1961,7 +1961,7 @@ public void Logout() throws InterruptedException {
 	{
 		for(int i = 0; i < prod.length; i++)
 		{
-			util.Click(element_obj.srch);
+			util.WaitAndClick(element_obj.srch);
 			
 			util.Sendkeys(element_obj.srchIP,prod[i].toString());
 

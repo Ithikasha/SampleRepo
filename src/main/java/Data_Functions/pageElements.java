@@ -770,8 +770,15 @@ public class pageElements {
 	@FindBy(xpath="//input[@id='00N3t00000GO6Xh']")
 	public WebElement AddExtrafield;
 	
+	@FindBy(xpath="(//input[@id='00N3t00000GO6Xw'])[1]")
+	public WebElement Extrafield;
+	
 	@FindBy(xpath="(//div[@class='form-row remove-rline-js'])[1]")
-	public WebElement RemoveExtrafield;
+	public WebElement FirstRemoveExtrafield;
+	
+	
+	@FindBy(xpath="(//div[@class='form-row remove-rline-js'])[2]")
+	public WebElement SecondRemoveExtrafield;
 	
 	@FindBy(xpath="//input[@id='00N3t0000057LgS']")
 	public WebElement ReasonforExchange;

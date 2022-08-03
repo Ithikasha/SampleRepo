@@ -58,6 +58,8 @@ public class Regression_test
 			
 			Homepage hp = new Homepage(data,elements,functions);
 			
+			ContactUsForm ContactUS = new ContactUsForm();
+			
 //			File file = new File("C:\\Users\\UTIS LAPTOP 38\\Desktop\\Dev_Output"); //Your file
 //			
 //			FileOutputStream fos = new FileOutputStream(file);
@@ -93,7 +95,7 @@ public class Regression_test
 			cp.guestCheckout(); 
 			
 			sp.ValidateFields(); 
-			
+		
 			sp.Validate_MandatoryFields(); 
 			
 			sp.Validate_Table(); 
@@ -162,6 +164,8 @@ public class Regression_test
 //			functions.bulkOrder_International(smoke_data.filePath, smoke_data.Result_fileName, "Regression_InternationalOrders",smoke_data.IOrders);
 //	
 			data.driver.close(); 
+			
+			ContactUS.main(args);
 		
 	}
 	
