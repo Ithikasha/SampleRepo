@@ -26,13 +26,11 @@ public class Billingpage {
 	
 	public void ValidateFields() throws Exception
 	{
-//		data_obj.driver.get(data_obj.DEV_url);
+//		data_obj.driver.get(data_obj.Prod_url);
 //		
 //		util.Click(element_obj.no);
 //
 //		func.login();
-		
-		
 		
 		func.Add_product(data_Regression.itemlist, data_Regression.qty);
 			
