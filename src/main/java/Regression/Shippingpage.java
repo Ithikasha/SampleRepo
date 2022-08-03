@@ -733,7 +733,7 @@ public class Shippingpage {
 //		func.Add_product(data_regression.itemlist, data_regression.qty);
 //		
 //		util.Click(element_obj.checkout);
-//		   
+		   
 		Thread.sleep(10000);
 
 		List<String> prod_list = new ArrayList<>();

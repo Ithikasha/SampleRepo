@@ -38,6 +38,16 @@ public class Placeorder_page {
 		
 		System.out.println("\t\tTestcase - 47");
 		
+//		data_obj.driver.get(data_regression.URL);
+//		
+//		util.Click(element_obj.no);
+//
+//		func.smoke_login(data_regression.email, data_regression.password);
+//		
+//		func.Add_product(data_regression.itemlist, data_regression.qty);
+//		
+//		util.Click(element_obj.checkout);
+		
 		int fail = 0;
 		
 		for(int i = 1; i <= data_regression.itemlist.length; i++)
@@ -58,9 +68,8 @@ public class Placeorder_page {
 		
 		
 		
-		for(int i = 0; i < data_regression.itemlist.length; i++)
+		for(int i = 1; i > data_regression.itemlist.length; i++)
 		{
-			
 			if(data_regression.BP_prdName.contains(data_regression.POP_prdName.get(i)))
 			{
 				System.out.println("\t\t\t"+data_regression.PDP_prdName.get(i)+" Product name Validation Successfully");
