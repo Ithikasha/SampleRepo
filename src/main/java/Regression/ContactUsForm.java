@@ -41,7 +41,7 @@ public class ContactUsForm {
 		
 	    ServiceCloud();
 		
-		data.driver.close();
+//		data.driver.close();
 		
 	}
 
@@ -62,6 +62,8 @@ public class ContactUsForm {
 		Vinyl();
 		
 		Others();
+		
+		Mandatoryfields();
 		
 	}
 	
@@ -154,6 +156,7 @@ public class ContactUsForm {
 	
 	}
 	
+	
 	public static void Vinyl() throws InterruptedException, IOException
 	{
 		
@@ -166,6 +169,14 @@ public class ContactUsForm {
 	public static void Others() throws InterruptedException, IOException
 	{
 		Other();
+	}
+	
+	
+	public static void Mandatoryfields() throws InterruptedException
+	{
+		
+		MandatoryfieldsValidation();
+		
 	}
 	
 	 public static void GroupDropdown() throws InterruptedException, IOException
@@ -186,6 +197,8 @@ public class ContactUsForm {
 		util.Sendkeys(elements.TicketLastname, data.lastname);
 		
 		util.Sendkeys(elements.TicketSubject, data.subject);
+		
+		util.Sendkeys(elements.TicketDescription, data.Description);
 		
 		util.Click(elements.GroupDropdown);
 			
@@ -1201,19 +1214,288 @@ public class ContactUsForm {
 			
 		}
 		
-//		public static void Mandatoryfields()
-//		
-//		{
-//			int fail = 0;
-//			
-//			switch(1) 
-//			{
-//			
-//			case 1:
-//						
-//			}
+		public static void MandatoryfieldsValidation() throws InterruptedException
+		
+		{
+			int fail = 0;
+			
+			switch(1) 
+			{
+			
+			case 1:
 					
-//		}
+				util.Clear(elements.Ticketemail);
+				
+				util.Click(elements.TicketSubmit);	
+				
+				if(util.Isdisplayed(elements.EmailError))
+				{
+					
+					System.out.println("\t\t\t"+"Mandatory field: Email verified Sucessfully");
+				}
+				else
+				{
+					System.out.println("\t\t\t"+"Mandatory field: Email verify Unsucessful");
+					fail++;
+					
+					break;
+				}
+				
+			case 2:
+				
+				util.Sendkeys(elements.Ticketemail, data.username);
+				
+				util.Clear(elements.TicketFirstname);
+				
+				util.Click(elements.TicketSubmit);
+				
+				if(util.Isdisplayed(elements.FirstnameError))
+				{
+					
+					System.out.println("\t\t\t"+"Mandatory field: First name verified Sucessfully");
+				}
+				else
+				{
+					System.out.println("\t\t\t"+"Mandatory field: First name verify Unsucessful");
+					fail++;
+					
+					break;
+				}
+				
+				
+			case 3:
+				
+				util.Sendkeys(elements.TicketFirstname, data.firstname);
+				
+				util.Clear(elements.TicketLastname);
+				
+				util.Click(elements.TicketSubmit);
+				
+
+				if(util.Isdisplayed(elements.LastnameError))
+				{
+					
+					System.out.println("\t\t\t"+"Mandatory field: Last name verified Sucessfully");
+				}
+				else
+				{
+					System.out.println("\t\t\t"+"Mandatory field: Last name verify Unsucessful");
+					fail++;
+					
+					break;
+				}
+				
+				
+			case 4:
+				
+				util.Sendkeys(elements.TicketLastname, data.lastname);
+				
+				util.Clear(elements.TicketSubject);
+							
+				util.Click(elements.TicketSubmit);
+				
+				if(util.Isdisplayed(elements.SubjectError))
+				{
+					
+					System.out.println("\t\t\t"+"Mandatory field: Subject verified Sucessfully");
+				}
+				else
+				{
+					System.out.println("\t\t\t"+"Mandatory field: Subject verify Unsucessful");
+					fail++;
+					
+					break;
+				}
+				
+			
+			case 5:
+				
+				util.Sendkeys(elements.TicketSubject, data.subject);
+				
+				 Select General = new Select(elements.GroupDropdown);
+			    
+				 General.selectByVisibleText("Select");
+				 
+				 util.WaitAndClick(elements.TicketSubmit);
+				 
+				 if(util.Isdisplayed(elements.GroupDropDownError))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory field: Group Dropdown verified Sucessfully");
+						
+						
+					}
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory field: Group Dropdown verify Unsucessful");
+						fail++;
+						
+						break;
+					}
+				 
+			case 6:
+				
+				//Thread.sleep(2000);
+				
+				Select OrderandStoreSupport = new Select(elements.SelectGroupwithError);
+			    
+				 OrderandStoreSupport.selectByVisibleText("Order & Store Support");
+				 
+				 util.WaitAndClick(elements.TicketSubmit);
+				 
+				 if(util.Isdisplayed(elements.HowCanWeHelpError))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory field: How Can We Help Dropdown verified Sucessfully");
+					}
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory field: How Can We Help Dropdown verify Unsucessful");
+						fail++;
+						
+						break;
+					}
+				
+			case 7:
+				
+				Select Return = new Select(elements.HowCanWeHelpOptions);
+				
+				Return.selectByVisibleText("Return");
+				
+				util.Click(elements.TicketSubmit);
+				
+				 if(util.Isdisplayed(elements.OrderNumberError))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory field: Order Number field in Return option verified Sucessfully");
+					}
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory field:  Order Number field in Return option verify Unsucessful");
+						fail++;
+						
+						break;
+					}
+				
+			case 8:
+				
+				util.Sendkeys(elements.ReturnOrderNumber, data.ReturnOrderNumber);
+				
+				util.Click(elements.TicketSubmit);
+				
+				 if(util.Isdisplayed(elements.ReturnQtyFieldError))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory field: QTY field in Return option verified Sucessfully");
+					}
+				 
+				 if(util.Isdisplayed(elements.ReturnItemFieldError)) 
+				 
+				 {
+					 
+					 System.out.println("\t\t\t"+"Mandatory field: Item field in Return option verified Sucessfully");
+					 
+				 }
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory field:  QTY and Item fields in Return option verify Unsucessful");
+						fail++;
+						
+						break;
+					}
+			
+				
+			case 9:
+				
+				Select Return1 = new Select(elements.HowCanWeHelpOptions);
+				
+				Return1.selectByVisibleText("Exchange");
+				
+				util.Clear(elements.ReturnOrderNumber);
+				
+				util.Click(elements.TicketSubmit);
+				
+				if(util.Isdisplayed(elements.OrderNumberError))
+				{
+					
+					System.out.println("\t\t\t"+"Mandatory field: Order Number field in Exchange option verified Sucessfully");
+				}
+				
+				else
+				{
+					System.out.println("\t\t\t"+"Mandatory field:  Order Number field in Exchange option verify Unsucessful");
+					fail++;
+					
+					break;
+				}
+				 
+				
+			case 10:
+				
+				util.Sendkeys(elements.ReturnOrderNumber, data.ReturnOrderNumber);
+				
+				util.Click(elements.TicketSubmit);
+				
+				 if(util.Isdisplayed(elements.ExchangeItemQtyFieldError))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory field: QTY field in Exchange Item section verified Sucessfully");
+					}
+				 
+				 if(util.Isdisplayed(elements.ExchangeItemITEMFieldError)) 
+				 
+				 {
+					 
+					 System.out.println("\t\t\t"+"Mandatory field: Item field in Exchange Item section verified Sucessfully");
+					 
+				 }
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory field:  QTY and Item fields in Exchange Item Section verify Unsucessful");
+						fail++;
+						
+						break;
+					}
+				 
+			case 11:
+				
+				Select General1 = new Select(elements.GroupDropdown);
+			    
+				 General1.selectByVisibleText("General Inquiries");
+				 
+				 util.Clear(elements.ClearDescriptionField);
+				 
+				 util.Click(elements.TicketSubmit);
+				 
+				 if(util.Isdisplayed(elements.DescriptionFieldError))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory field: Description verified Sucessfully");
+						
+						
+					}
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory field:  Description verify Unsucessful");
+						fail++;
+						
+						break;
+					}
+				 
+				 
+				 Select General2 = new Select(elements.GroupDropdown);
+				    
+				 General2.selectByVisibleText("General Inquiries");
+				 
+				 util.Sendkeys(elements.InputDescription, data.Description);
+				 
+//				 util.Click(elements.TicketReCpatcha);
+				 
+//				 util.Click(elements.TicketSubmit);
+				
+			}
+					
+		}
 	
 	
 	

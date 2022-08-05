@@ -701,6 +701,9 @@ public class pageElements {
 	@FindBy(xpath="//input[@id='subject']")
 	public WebElement TicketSubject;
 	
+	@FindBy(xpath="//textarea[@class='input-text required']")
+	public WebElement TicketDescription;
+	
 	@FindBy(xpath="//select[@class='input-select required valid']")
 	public WebElement GroupDropdown;
 	
@@ -801,6 +804,53 @@ public class pageElements {
 	@FindBy(xpath="(//div[@class='form-row remove-xline-js'])[1]")
 	public WebElement RemoveExtraExchangeField;
 	
+	@FindBy(xpath="//span[@id='email-error']")
+	public WebElement EmailError;
+	
+	@FindBy(xpath="//span[@id='00N3t0000057P6T-error']")
+	public WebElement FirstnameError;
+	
+	@FindBy(xpath="//span[@id='00N3t0000057P6Y-error']")
+	public WebElement LastnameError;
+	
+	@FindBy(xpath="//span[@id='subject-error']")
+	public WebElement SubjectError;
+	
+	@FindBy(xpath="//span[@id='00N3t0000057LgD-error']")
+	public WebElement GroupDropDownError;
+	
+	@FindBy(xpath="//select[@class='input-select required error']")
+	public WebElement SelectGroupwithError;
+	
+	@FindBy(xpath="//span[@id='Order_Store_Support_Reason__c-error']")
+	public WebElement HowCanWeHelpError;
+	
+	@FindBy(xpath="//span[@id='Order_Number__c-error']")
+	public WebElement OrderNumberError;
+	
+	@FindBy(xpath="//input[@id='Order_Number__c']")
+	public WebElement ReturnOrderNumber;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6Mo-error']")
+	public WebElement ReturnQtyFieldError;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6Mt-error']")
+	public WebElement ReturnItemFieldError;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6O6-error']")
+	public WebElement ExchangeItemQtyFieldError;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6O1-error']")
+	public WebElement ExchangeItemITEMFieldError;
+	
+	@FindBy(xpath="//textarea[@class='input-text required valid']")
+	public WebElement ClearDescriptionField;
+	
+	@FindBy(xpath="//span[@id='description-error']")
+	public WebElement DescriptionFieldError;
+	
+	@FindBy(xpath="//textarea[@class='input-text required error']")
+	public WebElement InputDescription;
 	
 	@FindBy(xpath="//div[@class='g-recaptcha']")
 	public WebElement TicketReCpatcha;
