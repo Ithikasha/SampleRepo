@@ -31,7 +31,7 @@ public class SiteMonitoring {
     public static Data_smoke data_smoke = new Data_smoke();
     
     public static ContactUsForm ContactUs = new ContactUsForm();
-    
+       
     public static pageElements elements ;
 	
     public static Functions functions;
@@ -82,6 +82,8 @@ public class SiteMonitoring {
 		Discourse();	
 		
 //		ServiceCloud();
+		
+		ContactUs.main(args);
 		
 		data.driver.close();
 		
@@ -839,6 +841,8 @@ public class SiteMonitoring {
 			SiteData.result = false;
 			
 			functions.write_SiteMonitoring(SiteData.result, 15);
+			
+			data.driver.close();
 		
 		}
 		

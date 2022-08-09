@@ -30,6 +30,8 @@ public class SiteMonitoringConstantData {
 	
 	public static String ServiceCloud_Result_sheetname = "ContactUsForm";
 	
+	public static String FailedMandatoryField ;
+	
 //	public static String ServiceCloud_input_sheetname = "input";
 	
 }

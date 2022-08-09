@@ -2254,6 +2254,7 @@ public void Logout() throws InterruptedException {
 		book.write(outputstream);
 			    
 		outputstream.close();
+		
 	}
 			
 	

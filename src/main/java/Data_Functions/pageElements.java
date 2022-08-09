@@ -852,6 +852,72 @@ public class pageElements {
 	@FindBy(xpath="//textarea[@class='input-text required error']")
 	public WebElement InputDescription;
 	
+	@FindBy(xpath="//input[@id='00N3t00000GO6Mo']")
+	public WebElement ValueForReturnQtyField;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6Mt']")
+	public WebElement ValueForReturnItemField;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6Xh']")
+	public WebElement ValueForExtraReturnQtyField;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6XX']")
+	public WebElement ValueForExtraReturnItemField;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6Xw']")
+	public WebElement ValueForSecondExtraReturnQtyField;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6Xr']")
+	public WebElement ValueForSecondExtraReturnItemField;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6Xh-error']")
+	public WebElement ErrorForExtraReturnQtyField;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6XX-error']")
+	public WebElement ErrorForExtraReturnItemField;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6Xw-error']")
+	public WebElement ErrorForSecondExtraReturnQtyField;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6Xr-error']")
+	public WebElement ErrorForSecondExtraReturnItemField;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6O6']")
+	public WebElement ValueForQTYfieldinExchangeItemSection;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6O1']")
+	public WebElement ValueForITEMfieldinExchangeItemSection;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6YB']")
+	public WebElement ValueForQTYfieldinExtraExchangeLineItem;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6Y6']")
+	public WebElement ValueForITEMfieldinExtraExchangeLineItem;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6YQ']")
+	public WebElement ValueForQTYfieldinSecondExtraExchangeLineItem;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6YL']")
+	public WebElement ValueForITEMfieldinSecondExtraExchangeLineItem;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6O6-error']")
+	public WebElement ErrorForQTYfieldinExchangeItemSection;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6O1-error']")
+	public WebElement ErrorForITEMfieldinExchangeItemSection;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6YB-error']")
+	public WebElement ErrorForQTYfieldinExtraExchangeLineItem;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6Y6-error']")
+	public WebElement ErrorForITEMfieldinExtraExchangeLineItem;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6YQ-error']")
+	public WebElement ErrorForQTYfieldinSecondExtraExchangeLineItem;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6YL-error']")
+	public WebElement ErrorForITEMfieldinSecondExtraExchangeLineItem;
+	
 	@FindBy(xpath="//div[@class='g-recaptcha']")
 	public WebElement TicketReCpatcha;
 	
