@@ -774,12 +774,12 @@ public class Shippingpage {
 		
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//select[@id='dwfrm_singleshipping_addressList']"))))
 		{
-			System.out.println("\t\t\t"+"Ship Later section displayed in Shipping method table Successfully");	
+			System.out.println("\t\t\t"+"Saved Address validation successful");	
 			func.write_Regressiontest(true, 36);
 		}
 		else
 		{
-			System.out.println("\t\t\t"+"Ship Later section NOT displayed in Shipping method table - Unsuccessful");
+			System.out.println("\t\t\t"+"Saved Address validation Unsuccessful");
 			func.write_Regressiontest(false, 36);
 		}	
 		

@@ -137,11 +137,11 @@ public class SendingEmail {
 			
 			util.jClick(data.driver, elements.Next);
 			
-//			util.Click(elements.MobileNotificationNo);
+			util.Click(elements.MobileNotificationNo);
 			
 			Thread.sleep(2000);
 			
-			util.Sendkeys(elements.SearchinMail,"Reset your password");
+			util.Sendkeys(elements.SearchinMail,"Metallica Reset your password ");
 			
 			util.Click(elements.SearchButton);
 			

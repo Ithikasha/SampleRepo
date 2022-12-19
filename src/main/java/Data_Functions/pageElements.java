@@ -282,6 +282,11 @@ public class pageElements {
 	@FindBy(xpath="//label[@for='guest-checkout']")
 	public WebElement Guest_chkBox;
 	
+	@FindBy(xpath="//div[@class='name']")
+	public WebElement Product_Link;
+	
+	@FindBy(xpath="//h1[@class='product-name']")
+	public WebElement Product_name_PDP;
 	
 	//Shipping page
 	
@@ -385,6 +390,8 @@ public class pageElements {
 	@FindBy(xpath="(//span[contains(text(),'Back to Cart')])[2]")
 	public WebElement SP_BackToCart;
 	
+	@FindBy(xpath="//div[@class='address']")
+	public WebElement Shippingaddress;
 	
 	//Billingpage
 
@@ -755,7 +762,7 @@ public class pageElements {
 	@FindBy(xpath="(//input[@id='Order_Number__c'])[1]")
 	public WebElement OrderNumber;
 	
-	@FindBy(xpath="(//input[@id='00N3t0000057LgN'])[1]")
+	@FindBy(xpath="//select[@id='Reason_for_Returning__c']")
 	public WebElement ReasonforReturn;
 	
 	@FindBy(xpath="(//input[@id='00N3t00000GO6Mo'])[1]")
@@ -939,7 +946,7 @@ public class pageElements {
 	@FindBy(xpath="(//input[@class='whsOnd zHQkBf'])[1]")
 	public WebElement EmailPassword;
 	
-	@FindBy(xpath="//button[@class='by7 T-I T-I-JW']")
+	@FindBy(xpath="//button[@class='by7 T-I']")
 	public WebElement MobileNotificationNo;
 	
 	@FindBy(xpath="//input[@placeholder='Search in mail']")
@@ -951,8 +958,20 @@ public class pageElements {
 	@FindBy(xpath="(//div[@class='yW'])[1]")
 	public WebElement Currentmail;
 	
-	@FindBy(xpath="//span[@id=':pk']")
+	@FindBy(xpath="//span[@id=':ot']")
 	public WebElement CurrentDateandTime;
+	
+	@FindBy(xpath="//div[@class='pt_product-search-result js-gtm-wrapper minicart-active']//following::div[@class='js-nav-overlay nav-overlay']")
+	public WebElement Overlay;
+	
+	@FindBy(xpath="//a[@id='quickviewbutton']")
+	public WebElement Quickview;
+	
+	@FindBy(xpath="(//img[@class='js-blazy b-loaded'])[2]")
+	public WebElement Product;
+	
+	@FindBy(xpath="(//a[contains(@title,'Small')])[2]")
+	public WebElement SizeSmall;
 	
 	//span[@title='Mon, Jul 11, 2022, 3:04 PM']
 		

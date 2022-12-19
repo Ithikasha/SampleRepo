@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.Select;
 import Data_Functions.*;
 import Email.SendingEmail;
 import Regression.ContactUsForm;
+import Regression.Homepage;
 import Smoke_test.Data_smoke;
 public class SiteMonitoring {
 	
@@ -39,6 +40,7 @@ public class SiteMonitoring {
     public static String Email="";
 	
 	public static void main(String args[]) throws Exception
+	
 	{
 		
 		data.driver = util.chrome();
@@ -83,6 +85,8 @@ public class SiteMonitoring {
 		
 //		ServiceCloud();
 		
+		MiniCartOverlay();  
+		
 		ContactUs.main(args);
 		
 		data.driver.close();
@@ -111,7 +115,7 @@ public class SiteMonitoring {
 	public static void ShipperHQ_Instock() throws Exception
 	{
 			
-		functions.Add_product("DON'T TREAD ON ME T-SHIRT - MEDIUM");
+		functions.Add_product("BUFFALO 2022 TOUR T-SHIRT - MEDIUM");
 		
 		util.Click(elements.checkout);
 		
@@ -155,7 +159,7 @@ public class SiteMonitoring {
 	
 	public static void ShipperHQ_Preorder() throws Exception  
 	{
-		functions.Add_Preorder("LIVE METALLICA: WERCHTER, BELGIUM - JULY 1, 2022 (2CD)");
+		functions.Add_Preorder("LIVE METALLICA: HELPING HANDS BENEFIT CONCERT IN LOS ANGELES CA - DECEMBER 16 2022 (2CD)");
 		
 		util.Click(elements.checkout);
 		
@@ -226,7 +230,7 @@ public class SiteMonitoring {
 	public static void Avalara() throws Exception
 	{
 		
-		functions.Add_product("DON'T TREAD ON ME T-SHIRT - MEDIUM");
+		functions.Add_product("BUFFALO 2022 TOUR T-SHIRT - MEDIUM");
 		
 //		System.out.println("\tAvalara_TaxableDomestic Testing");
 		
@@ -511,7 +515,7 @@ public class SiteMonitoring {
 		
 		System.out.println("\tUPS Testing");
 		
-		functions.Add_product("DON'T TREAD ON ME T-SHIRT - MEDIUM");
+		functions.Add_product("BUFFALO 2022 TOUR T-SHIRT - MEDIUM");
 		
 		util.Click(elements.checkout);
 
@@ -633,6 +637,8 @@ public class SiteMonitoring {
 		
 		data.driver.get(SiteData.ApplepayURL);
 		
+		Thread.sleep(2000);
+		
 		SiteData.ApplePay = elements.TOMS_OrderDate.getText().toString().substring(0, 10);
 		
 		System.out.println(SiteData.ApplePay+"---"+data.CurrentDate);
@@ -744,7 +750,7 @@ public class SiteMonitoring {
 		
 		util.Click(elements.DigitalDownload);
 		
-		Thread.sleep(10000);
+		Thread.sleep(30000);
 		
 		Actions action =new Actions(data.driver);
 		
@@ -785,6 +791,8 @@ public class SiteMonitoring {
 	{
 		
 		data.driver.get(data.Knightlab_Url);
+		
+//		util.Click(elements.no);
 		
 		Thread.sleep(5000);
 		
@@ -849,6 +857,82 @@ public class SiteMonitoring {
 		
 	}
 	
+	public static void MiniCartOverlay() throws Exception
+	{
+		
+		
+		data.driver.get(data.Prod_url);
+		
+		if(util.Isdisplayed(elements.no))
+		{
+			util.Click(elements.no);
+		}
+	
+//		func.PRD_login();
+		
+		 util.Click(elements.MetStoreIcon);
+		 
+		 Actions act = new Actions(data.driver);
+		 
+		 act.moveToElement(elements.Product).perform();
+		 
+		 util.jClick(data.driver,elements.Quickview);
+		 
+		 if(util.Isdisplayed(elements.SizeSmall))
+		 {
+			 util.jClick(data.driver,elements.SizeSmall);
+			 
+			
+		}
+		 
+		 
+		 
+			if(util.Isdisplayed(elements.preorder))
+			{
+				util.jClick(data.driver,elements.preorder);
+				
+				util.jClick(data.driver,elements.preorder_ack);
+				
+				util.jClick(data.driver,elements.preorder_ATC);
+				
+			}
+			
+			else
+			{
+				util.jClick(data.driver,elements.addcart);
+			}
+		  
+		 	 
+	
+//		func.MiniCart("DON'T TREAD ON ME T-SHIRT - MEDIUM");
+		 
+		String opacity = elements.Overlay.getCssValue("opacity");
+		 				
+		System.out.println(opacity);
+		
+		if(opacity.equals("0.7"))
+		{
+			System.out.println("\t\t\t"+"Opacity = 0.7 validation successful");
+			
+			SiteData.result = true;
+			
+			functions.write_SiteMonitoring(SiteData.result, 16);
+			
+		}
+		else
+		{
+			
+			System.out.println("\t\t\t"+"Opacity = 0.7 validation unsuccessful");
+			
+			SiteData.result = true;
+			
+			functions.write_SiteMonitoring(SiteData.result, 16);
+			
+			data.driver.close();
+			
+		}
+		
+	}
 	
 						
 }

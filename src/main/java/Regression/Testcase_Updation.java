@@ -1,5 +1,8 @@
 package Regression;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import Data_Functions.Functions;
 import Data_Functions.constantData;
 import Data_Functions.driverUtil;
@@ -75,8 +78,20 @@ public static driverUtil util = new driverUtil();
 //			
 //			hp.SortBy();
 			
-			brd.Service_Cloud();
-//										
+//			brd.Service_Cloud();
+//			
+//			hp.AddressSuggestionScroll();
+			
+//			hp.PreOrderPopupScroll();
+			
+//			hp.MiniCartOverlay();
+			
+//			hp.Click_Product_Link_in_Cart_Page();
+			
+			hp.Shipping_and_Billing_address_validation();
+			
+			
+		
 }
 	
 }

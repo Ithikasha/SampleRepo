@@ -30,14 +30,14 @@ public class Login_smoke {
 		
 		System.out.println("\tRegression Testing: Login from Loginpage");
 
-		System.out.println("\t\tTestcase - 11");
-		
-	    //  data_obj.driver.get(data_regression.URL);
-		
-		//  if(util.Isdisplayed(element_obj.no))
-		//  {
-		//	util.Click(element_obj.no);
-		//  }
+//		System.out.println("\t\tTestcase - 11");
+//		
+//	      data_obj.driver.get(data_regression.URL);
+//		
+//		  if(util.Isdisplayed(element_obj.no))
+//		  {
+//			util.Click(element_obj.no);
+//		  }
 		
 		func.smoke_login(data_regression.email, data_regression.password);
 		

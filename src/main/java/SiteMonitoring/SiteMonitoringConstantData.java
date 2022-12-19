@@ -6,7 +6,7 @@ public class SiteMonitoringConstantData {
 	
 	public static String Result_fileName = "SiteMonitoring.xls";
 		
-	public static String filePath =  "Excelsheets";
+	public static String filePath =  "C:\\Users\\UTIS LAPTOP 38\\Desktop\\METALLICA\\master\\Excelsheets";
 	
 	public static String Result_sheetName = "Result";
 	
@@ -26,11 +26,11 @@ public class SiteMonitoringConstantData {
 	
 	public static String ServiceCloud_Result_filename = "SiteMonitoring.xls";
 	
-	public static String ServiceCloud_filepath = "Excelsheets";
+	public static String ServiceCloud_filepath = "C:\\Users\\UTIS LAPTOP 38\\Desktop\\METALLICA\\master\\Excelsheets";
 	
 	public static String ServiceCloud_Result_sheetname = "ContactUsForm";
 	
-	public static String FailedMandatoryField ;
+	public static String FailedMandatoryField = "Fields :";
 	
 //	public static String ServiceCloud_input_sheetname = "input";
 	

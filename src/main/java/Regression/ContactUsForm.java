@@ -41,11 +41,11 @@ public class ContactUsForm {
 		
 	    ServiceCloud();
 		
-//		data.driver.close();
+		data.driver.close();
 		
 	}
 
-	public static void ServiceCloud() throws Exception
+	public static void ServiceCloud() throws Exception, NullPointerException
 	{
 		Groupfield();
 		
@@ -64,6 +64,7 @@ public class ContactUsForm {
 		Others();
 		
 		Mandatoryfields();
+		
 		
 	}
 	
@@ -172,7 +173,7 @@ public class ContactUsForm {
 	}
 	
 	
-	public static void Mandatoryfields() throws InterruptedException
+	public static void Mandatoryfields() throws InterruptedException, IOException, NullPointerException
 	{
 		
 		MandatoryfieldsValidation();
@@ -551,7 +552,7 @@ public class ContactUsForm {
 		
 		if(util.Isdisplayed(elements.ReasonforReturn)) 
 		{
-			System.out.println("\t\t\t"+"Reason for return field in Return option validation Successful");
+			System.out.println("\t\t\t"+"Reason for return dropdown in Return option validation Successful");
 			
 			SiteData.result = true;
 			
@@ -562,7 +563,7 @@ public class ContactUsForm {
 		else
 			
 		{
-			System.out.println("\t\t\t"+"Reason for return field in Return option field validation Unsuccessful");
+			System.out.println("\t\t\t"+"Reason for return dropdown in Return option field validation Unsuccessful");
 			
 			SiteData.result = false;
 			
@@ -1216,11 +1217,13 @@ public class ContactUsForm {
 			
 		}
 		
-		public static void MandatoryfieldsValidation() throws InterruptedException
+		public static void MandatoryfieldsValidation() throws InterruptedException, IOException, NullPointerException
 		
 		{
 			
 			System.out.println("Mandatory Fields Validation\n");
+			
+//			System.out.println(SiteData.FailedMandatoryField.substring(0, -1));
 			
 			int fail = 0;
 			
@@ -1242,11 +1245,13 @@ public class ContactUsForm {
 				else
 				{
 					System.out.println("\t\t\t"+"Mandatory field: Email verify Unsuccessful");
+					
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Email,");
+					
 					fail++;
 					
-					SiteData.FailedMandatoryField.concat("Email, ");
 					
-				
+					
 				}
 				
 				
@@ -1269,6 +1274,8 @@ public class ContactUsForm {
 					fail++;
 					
 					
+					
+					 SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Firstname,");
 				}
 				
 				
@@ -1291,7 +1298,9 @@ public class ContactUsForm {
 					System.out.println("\t\t\t"+"Mandatory field: Last name verify Unsuccessful");
 					fail++;
 					
+				
 					
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Lastname,");
 				}
 				
 				
@@ -1314,6 +1323,8 @@ public class ContactUsForm {
 					fail++;
 					
 					
+					
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Subject,");
 							
 				}
 				
@@ -1340,7 +1351,9 @@ public class ContactUsForm {
 						System.out.println("\t\t\t"+"Mandatory field: Group Dropdown verify Unsuccessful");
 						fail++;
 						
+					
 						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("GroupDropdown,");
 					}
 				 
 			case 6:
@@ -1363,6 +1376,9 @@ public class ContactUsForm {
 						System.out.println("\t\t\t"+"Mandatory field: How Can We Help Dropdown verify Unsuccessful");
 						fail++;
 						
+					
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("HowCanWeHelp,");
 						
 					}
 				
@@ -1384,6 +1400,9 @@ public class ContactUsForm {
 						System.out.println("\t\t\t"+"Mandatory field:  Order Number field in Return option verify Unsuccessful");
 						fail++;
 						
+				
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("ReturnOrderNumber,");
 						
 					}
 				
@@ -1410,8 +1429,9 @@ public class ContactUsForm {
 					{
 						System.out.println("\t\t\t"+"Mandatory field:  QTY and Item fields in Return option verify Unsuccessful");
 						fail++;
+					
 						
-						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("QTY and Item Fields in Return option,");
 					}
 			
 				
@@ -1437,6 +1457,8 @@ public class ContactUsForm {
 					fail++;
 					
 					
+					
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("ExchangeOrderNumber,");
 				}
 				 
 				
@@ -1465,6 +1487,9 @@ public class ContactUsForm {
 						fail++;
 						
 						
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("QTY and Item Fields in Exchange Item Section,");
+						
 					}
 				 
 			case 11:
@@ -1490,6 +1515,8 @@ public class ContactUsForm {
 						fail++;
 						
 						
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Description,");
 					}
 				 
 				 
@@ -1547,8 +1574,12 @@ public class ContactUsForm {
 				 }
 					else
 					{
-						System.out.println("\t\t\t"+"Mandatory field:  QTY and Item fields in Return option verify Unsuccessful");
+						System.out.println("\t\t\t"+"Mandatory field: QTY and Item fields in Return option verify Unsuccessful");
 						fail++;
+						
+					
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("QTY and Item Fields in Return option,");
 						
 					}
 			
@@ -1579,9 +1610,13 @@ public class ContactUsForm {
 			 }
 				else
 				{
-					System.out.println("\t\t\t"+"Mandatory field: Extra QTY and Item fields First line item verify Unsuccessful");
+					System.out.println("\t\t\t"+"Mandatory field: QTY and Item fields First line item verify Unsuccessful");
+					
 					fail++;
 					
+				
+					
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("QTY and Item Fields in First line item,");
 				}
 				
 			
@@ -1612,9 +1647,12 @@ public class ContactUsForm {
 			 }
 				else
 				{
-					System.out.println("\t\t\t"+"Mandatory field: QTY and Item fields Second line item verify Unsuccessful\n\n\n");
+					System.out.println("\t\t\t"+"Mandatory field: QTY and Item fields in Second line item verify Unsuccessful\n\n\n");
 					fail++;
 					
+				
+					
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("QTY and Item Fields in Second line item, ");
 				}
 			
 			 
@@ -1673,6 +1711,9 @@ public class ContactUsForm {
 						System.out.println("\t\t\t"+"Mandatory fields:  QTY and Item field in Items to Return section in Exchange option verify Unsuccessful");
 						fail++;
 						
+						
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Items to Return: QTY and Item Fields,");
 				
 					}
 			 
@@ -1705,6 +1746,10 @@ public class ContactUsForm {
 				{
 					System.out.println("\t\t\t"+"Mandatory fields: QTY and ITEM fields in Firt Line Item in Items to Return section in Exchange option verify Unsuccessful");
 					fail++;
+					
+				
+					
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Items to Return: QTY and Item Fields in First Line Item,");
 					
 				}
 								
@@ -1739,6 +1784,8 @@ public class ContactUsForm {
 					System.out.println("\t\t\t"+"Mandatory fields: QTY and ITEM fields in Second Line Item in Items to Return section in Exchange option verify Unsuccessful\n\n\n");
 					fail++;
 					
+				
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Items to Return: QTY and Item Fields in Second Line Item,");
 				}
 								
 			
@@ -1787,7 +1834,9 @@ public class ContactUsForm {
 						System.out.println("\t\t\t"+"Mandatory fields: QTY and ITEM field in Exchange Items section in Exchange option verified Successfully");
 						fail++;
 						
+						
 				
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Exchange Items: QTY and Item Fields,");
 					}
 				
 
@@ -1821,7 +1870,9 @@ public class ContactUsForm {
 						System.out.println("\t\t\t"+"Mandatory fields: QTY and ITEM fields in First Line Item in Exchange Items section in Exchange option verified Successfully");
 						fail++;
 						
-				
+						
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Exchange Items: QTY and Item Fields in First Line Item,");
 					}
 				
 				
@@ -1848,16 +1899,36 @@ public class ContactUsForm {
 				 {
 					 
 					 System.out.println("\t\t\t"+"Mandatory field: ITEM field in Second Line Item in Exchange Items section in Exchange option verified Successfully");
+				
 					 
 				 }
 					else
 					{
 						System.out.println("\t\t\t"+"Mandatory fields:QTY and ITEM field in Second Line Item in Exchange Items section in Exchange option verified Successfully");
-						fail++;
 						
-				
+						fail++;
+					
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Exchange Items: QTY and Item Fields in Second Line Item,");	
+						
 					}
 				
+				 
+				 if(fail>0)
+					{
+						System.out.println("\t\t\t"+"Mandatory fields validation Unsuccessful");
+						functions.ServiceCloud(false, 33);
+					}
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory fields validation Successful");
+						functions.ServiceCloud(true, 33);
+					}
+				 
+				 
+				 Select Group = new Select(elements.GroupDropdown);
+				    
+				 Group.selectByVisibleText("General Inquiries");
+				 
 			}
 					
 		
