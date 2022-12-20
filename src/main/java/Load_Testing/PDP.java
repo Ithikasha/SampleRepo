@@ -27,13 +27,13 @@ public class PDP {
 	public void PDP_Testing() throws Exception
 	{
 		
-//		data_obj.driver.get(data_Regression.URL);
-//		
-//		if(util.Isdisplayed(element_obj.no))
-//		{
-//			util.Click(element_obj.no);
-//		}
-//		
+		data_obj.driver.get(data_Regression.URL);
+		
+		if(util.Isdisplayed(element_obj.no))
+		{
+			util.Click(element_obj.no);
+		}
+		
 		util.Click(element_obj.srch);
 			
 		util.Sendkeys(element_obj.srchIP, data_Regression.instock1);
@@ -211,12 +211,12 @@ public class PDP {
 		util.Click(element_obj.driver.findElement(By.xpath("(//tr[@class='cart-row']//following-sibling::button[@value='Remove'])[2]")));
 		
 		System.out.println("\tSmoke Testing: Pre-order Product");
-		
+	
 		System.out.println("\t\tTestcase - 27");
 		
 		util.Click(element_obj.srch);
 		
-		util.Sendkeys(element_obj.srchIP,"LIVE METALLICA: WERCHTER, BELGIUM - JULY 1, 2022 (2CD)");
+		util.Sendkeys(element_obj.srchIP,"LIVE METALLICA: GLOBAL CITIZEN FESTIVAL IN NEW YORK NY - SEPTEMBER 24 2022 (CD)");
 
 		element_obj.srchTxt.submit();
 		
@@ -267,7 +267,7 @@ public class PDP {
 			data_Regression.result = false;
 			
 			func.write_Regressiontest(data_Regression.result, 27);
-		}
+		} 
 		
 		fail = 0;
 		
@@ -279,4 +279,4 @@ public class PDP {
 	
 	}
 
-}
+  }

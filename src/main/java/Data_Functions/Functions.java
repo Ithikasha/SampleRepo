@@ -2024,6 +2024,20 @@ public void Logout() throws InterruptedException {
 			
 	}
 	
+	public void MiniCart(String prod) throws InterruptedException
+	{
+			util.Click(element_obj.srch);
+			
+			util.Sendkeys(element_obj.srchIP,prod);
+
+			element_obj.srchTxt.submit();
+			
+			util.Click(element_obj.addcart);
+			
+	}
+			
+	
+	
 	public void Add_Preorder(String prod) throws InterruptedException
 	{
 			util.Click(element_obj.srch);
@@ -2041,6 +2055,20 @@ public void Logout() throws InterruptedException {
 			util.Click(element_obj.miniviewcart);
 			
 	}
+	
+	public void PreorderPopupScroll(String prod) throws InterruptedException
+	{
+		
+		util.Click(element_obj.srch);
+		
+		util.Sendkeys(element_obj.srchIP,prod);
+
+		element_obj.srchTxt.submit();
+		
+		util.Click(element_obj.preorder);
+		
+	}
+	
 	
 	public void write_Smoketest(boolean result, int number) throws Exception
 	{
@@ -2217,7 +2245,7 @@ public void Logout() throws InterruptedException {
 		outputstream.close();
 	}
 	
-	public void ServiceCloud(boolean result,int number) throws IOException
+	public void ServiceCloud(boolean result,int number) throws IOException, NullPointerException
 	{
 		File file = new File(SiteData.ServiceCloud_filepath+"\\"+SiteData.ServiceCloud_Result_filename);
 
@@ -2239,7 +2267,38 @@ public void Logout() throws InterruptedException {
 		{
 			value = "FAIL";
 			
+			if( number == 33 )
+				
+			{
+				Cell result_cell = row.createCell(5);
+				
+				result_cell.setCellType(result_cell.CELL_TYPE_STRING);
+				
+//				result_cell.setCellValue(" Failed Mandatory Fields: "+SiteData.FailedMandatoryField);
+				
+				if(SiteData.FailedMandatoryField == null)
+				{
+
+					result_cell.setCellValue(" Failed Mandatory Fields: "+SiteData.FailedMandatoryField);
+					
+				
+				}
+				
+				else
+				{
+					
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.substring(0,SiteData.FailedMandatoryField.length() -1);
+					
+					
+					
+					result_cell.setCellValue(" Failed Mandatory Fields: "+SiteData.FailedMandatoryField);
+				}
+					
+			}	
+			
+			
 		}
+		
 				
 		Cell result_cell = row.createCell(4);
 				
@@ -2254,6 +2313,7 @@ public void Logout() throws InterruptedException {
 		book.write(outputstream);
 			    
 		outputstream.close();
+		
 	}
 			
 	

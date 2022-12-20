@@ -282,6 +282,11 @@ public class pageElements {
 	@FindBy(xpath="//label[@for='guest-checkout']")
 	public WebElement Guest_chkBox;
 	
+	@FindBy(xpath="//div[@class='name']")
+	public WebElement Product_Link;
+	
+	@FindBy(xpath="//h1[@class='product-name']")
+	public WebElement Product_name_PDP;
 	
 	//Shipping page
 	
@@ -385,6 +390,8 @@ public class pageElements {
 	@FindBy(xpath="(//span[contains(text(),'Back to Cart')])[2]")
 	public WebElement SP_BackToCart;
 	
+	@FindBy(xpath="//div[@class='address']")
+	public WebElement Shippingaddress;
 	
 	//Billingpage
 
@@ -701,6 +708,9 @@ public class pageElements {
 	@FindBy(xpath="//input[@id='subject']")
 	public WebElement TicketSubject;
 	
+	@FindBy(xpath="//textarea[@class='input-text required']")
+	public WebElement TicketDescription;
+	
 	@FindBy(xpath="//select[@class='input-select required valid']")
 	public WebElement GroupDropdown;
 	
@@ -752,7 +762,7 @@ public class pageElements {
 	@FindBy(xpath="(//input[@id='Order_Number__c'])[1]")
 	public WebElement OrderNumber;
 	
-	@FindBy(xpath="(//input[@id='00N3t0000057LgN'])[1]")
+	@FindBy(xpath="//select[@id='Reason_for_Returning__c']")
 	public WebElement ReasonforReturn;
 	
 	@FindBy(xpath="(//input[@id='00N3t00000GO6Mo'])[1]")
@@ -801,6 +811,119 @@ public class pageElements {
 	@FindBy(xpath="(//div[@class='form-row remove-xline-js'])[1]")
 	public WebElement RemoveExtraExchangeField;
 	
+	@FindBy(xpath="//span[@id='email-error']")
+	public WebElement EmailError;
+	
+	@FindBy(xpath="//span[@id='00N3t0000057P6T-error']")
+	public WebElement FirstnameError;
+	
+	@FindBy(xpath="//span[@id='00N3t0000057P6Y-error']")
+	public WebElement LastnameError;
+	
+	@FindBy(xpath="//span[@id='subject-error']")
+	public WebElement SubjectError;
+	
+	@FindBy(xpath="//span[@id='00N3t0000057LgD-error']")
+	public WebElement GroupDropDownError;
+	
+	@FindBy(xpath="//select[@class='input-select required error']")
+	public WebElement SelectGroupwithError;
+	
+	@FindBy(xpath="//span[@id='Order_Store_Support_Reason__c-error']")
+	public WebElement HowCanWeHelpError;
+	
+	@FindBy(xpath="//span[@id='Order_Number__c-error']")
+	public WebElement OrderNumberError;
+	
+	@FindBy(xpath="//input[@id='Order_Number__c']")
+	public WebElement ReturnOrderNumber;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6Mo-error']")
+	public WebElement ReturnQtyFieldError;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6Mt-error']")
+	public WebElement ReturnItemFieldError;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6O6-error']")
+	public WebElement ExchangeItemQtyFieldError;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6O1-error']")
+	public WebElement ExchangeItemITEMFieldError;
+	
+	@FindBy(xpath="//textarea[@class='input-text required valid']")
+	public WebElement ClearDescriptionField;
+	
+	@FindBy(xpath="//span[@id='description-error']")
+	public WebElement DescriptionFieldError;
+	
+	@FindBy(xpath="//textarea[@class='input-text required error']")
+	public WebElement InputDescription;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6Mo']")
+	public WebElement ValueForReturnQtyField;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6Mt']")
+	public WebElement ValueForReturnItemField;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6Xh']")
+	public WebElement ValueForExtraReturnQtyField;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6XX']")
+	public WebElement ValueForExtraReturnItemField;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6Xw']")
+	public WebElement ValueForSecondExtraReturnQtyField;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6Xr']")
+	public WebElement ValueForSecondExtraReturnItemField;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6Xh-error']")
+	public WebElement ErrorForExtraReturnQtyField;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6XX-error']")
+	public WebElement ErrorForExtraReturnItemField;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6Xw-error']")
+	public WebElement ErrorForSecondExtraReturnQtyField;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6Xr-error']")
+	public WebElement ErrorForSecondExtraReturnItemField;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6O6']")
+	public WebElement ValueForQTYfieldinExchangeItemSection;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6O1']")
+	public WebElement ValueForITEMfieldinExchangeItemSection;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6YB']")
+	public WebElement ValueForQTYfieldinExtraExchangeLineItem;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6Y6']")
+	public WebElement ValueForITEMfieldinExtraExchangeLineItem;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6YQ']")
+	public WebElement ValueForQTYfieldinSecondExtraExchangeLineItem;
+	
+	@FindBy(xpath="//input[@id='00N3t00000GO6YL']")
+	public WebElement ValueForITEMfieldinSecondExtraExchangeLineItem;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6O6-error']")
+	public WebElement ErrorForQTYfieldinExchangeItemSection;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6O1-error']")
+	public WebElement ErrorForITEMfieldinExchangeItemSection;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6YB-error']")
+	public WebElement ErrorForQTYfieldinExtraExchangeLineItem;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6Y6-error']")
+	public WebElement ErrorForITEMfieldinExtraExchangeLineItem;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6YQ-error']")
+	public WebElement ErrorForQTYfieldinSecondExtraExchangeLineItem;
+	
+	@FindBy(xpath="//span[@id='00N3t00000GO6YL-error']")
+	public WebElement ErrorForITEMfieldinSecondExtraExchangeLineItem;
 	
 	@FindBy(xpath="//div[@class='g-recaptcha']")
 	public WebElement TicketReCpatcha;
@@ -823,7 +946,7 @@ public class pageElements {
 	@FindBy(xpath="(//input[@class='whsOnd zHQkBf'])[1]")
 	public WebElement EmailPassword;
 	
-	@FindBy(xpath="//button[@class='by7 T-I T-I-JW']")
+	@FindBy(xpath="//button[@class='by7 T-I']")
 	public WebElement MobileNotificationNo;
 	
 	@FindBy(xpath="//input[@placeholder='Search in mail']")
@@ -835,8 +958,20 @@ public class pageElements {
 	@FindBy(xpath="(//div[@class='yW'])[1]")
 	public WebElement Currentmail;
 	
-	@FindBy(xpath="//span[@id=':pk']")
+	@FindBy(xpath="//span[@id=':ot']")
 	public WebElement CurrentDateandTime;
+	
+	@FindBy(xpath="//div[@class='pt_product-search-result js-gtm-wrapper minicart-active']//following::div[@class='js-nav-overlay nav-overlay']")
+	public WebElement Overlay;
+	
+	@FindBy(xpath="//a[@id='quickviewbutton']")
+	public WebElement Quickview;
+	
+	@FindBy(xpath="(//img[@class='js-blazy b-loaded'])[2]")
+	public WebElement Product;
+	
+	@FindBy(xpath="(//a[contains(@title,'Small')])[2]")
+	public WebElement SizeSmall;
 	
 	//span[@title='Mon, Jul 11, 2022, 3:04 PM']
 		

@@ -45,7 +45,7 @@ public class ContactUsForm {
 		
 	}
 
-	public static void ServiceCloud() throws Exception
+	public static void ServiceCloud() throws Exception, NullPointerException
 	{
 		Groupfield();
 		
@@ -62,6 +62,9 @@ public class ContactUsForm {
 		Vinyl();
 		
 		Others();
+		
+		Mandatoryfields();
+		
 		
 	}
 	
@@ -154,6 +157,7 @@ public class ContactUsForm {
 	
 	}
 	
+	
 	public static void Vinyl() throws InterruptedException, IOException
 	{
 		
@@ -166,6 +170,14 @@ public class ContactUsForm {
 	public static void Others() throws InterruptedException, IOException
 	{
 		Other();
+	}
+	
+	
+	public static void Mandatoryfields() throws InterruptedException, IOException, NullPointerException
+	{
+		
+		MandatoryfieldsValidation();
+		
 	}
 	
 	 public static void GroupDropdown() throws InterruptedException, IOException
@@ -186,6 +198,8 @@ public class ContactUsForm {
 		util.Sendkeys(elements.TicketLastname, data.lastname);
 		
 		util.Sendkeys(elements.TicketSubject, data.subject);
+		
+		util.Sendkeys(elements.TicketDescription, data.Description);
 		
 		util.Click(elements.GroupDropdown);
 			
@@ -538,7 +552,7 @@ public class ContactUsForm {
 		
 		if(util.Isdisplayed(elements.ReasonforReturn)) 
 		{
-			System.out.println("\t\t\t"+"Reason for return field in Return option validation Successful");
+			System.out.println("\t\t\t"+"Reason for return dropdown in Return option validation Successful");
 			
 			SiteData.result = true;
 			
@@ -549,7 +563,7 @@ public class ContactUsForm {
 		else
 			
 		{
-			System.out.println("\t\t\t"+"Reason for return field in Return option field validation Unsuccessful");
+			System.out.println("\t\t\t"+"Reason for return dropdown in Return option field validation Unsuccessful");
 			
 			SiteData.result = false;
 			
@@ -668,7 +682,9 @@ public class ContactUsForm {
 		
 		if(util.Isdisplayed(elements.AddanotherReturnItem))
 		{
-		util.Click(elements.AddanotherReturnItem);
+			
+			util.Click(elements.AddanotherReturnItem);
+		
 		}
 		
 		else
@@ -1181,7 +1197,7 @@ public class ContactUsForm {
 			
 			if(util.Isdisplayed(elements.DescriptionField)) 
 			{
-				System.out.println("\t\t\t"+"Other option from Group selection validation Successful");
+				System.out.println("\t\t\t"+"Other option from Group selection validation Successful\n\n\n");
 				
 				SiteData.result = true;
 				
@@ -1192,7 +1208,7 @@ public class ContactUsForm {
 			else
 				
 			{
-				System.out.println("\t\t\t"+"Other option from Group selection validation Unsuccessful");
+				System.out.println("\t\t\t"+"Other option from Group selection validation Unsuccessful\n\n\n");
 				
 				SiteData.result = false;
 				
@@ -1201,22 +1217,723 @@ public class ContactUsForm {
 			
 		}
 		
-//		public static void Mandatoryfields()
-//		
-//		{
-//			int fail = 0;
-//			
-//			switch(1) 
-//			{
-//			
-//			case 1:
-//						
-//			}
+		public static void MandatoryfieldsValidation() throws InterruptedException, IOException, NullPointerException
+		
+		{
+			
+			System.out.println("Mandatory Fields Validation\n");
+			
+//			System.out.println(SiteData.FailedMandatoryField.substring(0, -1));
+			
+			int fail = 0;
+			
+			switch(1) 
+			{
+			
+			case 1:
 					
-//		}
-	
-	
-	
-	
-	
+				util.Clear(elements.Ticketemail);
+				
+				util.Click(elements.TicketSubmit);	
+				
+				if(util.Isdisplayed(elements.EmailError))
+				{
+					
+					System.out.println("\t\t\t"+"Mandatory field: Email verified Successfully");
+				}
+				
+				else
+				{
+					System.out.println("\t\t\t"+"Mandatory field: Email verify Unsuccessful");
+					
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Email,");
+					
+					fail++;
+					
+					
+					
+				}
+				
+				
+			case 2:
+				
+				util.Sendkeys(elements.Ticketemail, data.username);
+				
+				util.Clear(elements.TicketFirstname);
+				
+				util.Click(elements.TicketSubmit);
+				
+				if(util.Isdisplayed(elements.FirstnameError))
+				{
+					
+					System.out.println("\t\t\t"+"Mandatory field: First name verified Successfully");
+				}
+				else
+				{
+					System.out.println("\t\t\t"+"Mandatory field: First name verify Unsuccessful");
+					fail++;
+					
+					
+					
+					 SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Firstname,");
+				}
+				
+				
+			case 3:
+				
+				util.Sendkeys(elements.TicketFirstname, data.firstname);
+				
+				util.Clear(elements.TicketLastname);
+				
+				util.Click(elements.TicketSubmit);
+				
+
+				if(util.Isdisplayed(elements.LastnameError))
+				{
+					
+					System.out.println("\t\t\t"+"Mandatory field: Last name verified Successfully");
+				}
+				else
+				{
+					System.out.println("\t\t\t"+"Mandatory field: Last name verify Unsuccessful");
+					fail++;
+					
+				
+					
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Lastname,");
+				}
+				
+				
+			case 4:
+				
+				util.Sendkeys(elements.TicketLastname, data.lastname);
+				
+				util.Clear(elements.TicketSubject);
+							
+				util.Click(elements.TicketSubmit);
+				
+				if(util.Isdisplayed(elements.SubjectError))
+				{
+					
+					System.out.println("\t\t\t"+"Mandatory field: Subject verified Successfully");
+				}
+				else
+				{
+					System.out.println("\t\t\t"+"Mandatory field: Subject verify Unsuccessful");
+					fail++;
+					
+					
+					
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Subject,");
+							
+				}
+				
+				
+			case 5:
+				
+				util.Sendkeys(elements.TicketSubject, data.subject);
+				
+				 Select General = new Select(elements.GroupDropdown);
+			    
+				 General.selectByVisibleText("Select");
+				 
+				 util.WaitAndClick(elements.TicketSubmit);
+				 
+				 if(util.Isdisplayed(elements.GroupDropDownError))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory field: Group Dropdown verified Successfully");
+						
+						
+					}
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory field: Group Dropdown verify Unsuccessful");
+						fail++;
+						
+					
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("GroupDropdown,");
+					}
+				 
+			case 6:
+				
+				//Thread.sleep(2000);
+				
+				Select OrderandStoreSupport = new Select(elements.SelectGroupwithError);
+			    
+				 OrderandStoreSupport.selectByVisibleText("Order & Store Support");
+				 
+				 util.WaitAndClick(elements.TicketSubmit);
+				 
+				 if(util.Isdisplayed(elements.HowCanWeHelpError))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory field: How Can We Help Dropdown verified Successfully");
+					}
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory field: How Can We Help Dropdown verify Unsuccessful");
+						fail++;
+						
+					
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("HowCanWeHelp,");
+						
+					}
+				
+			case 7:
+				
+				Select Return = new Select(elements.HowCanWeHelpOptions);
+				
+				Return.selectByVisibleText("Return");
+				
+				util.Click(elements.TicketSubmit);
+				
+				 if(util.Isdisplayed(elements.OrderNumberError))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory field: Order Number field in Return option verified Successfully");
+					}
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory field:  Order Number field in Return option verify Unsuccessful");
+						fail++;
+						
+				
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("ReturnOrderNumber,");
+						
+					}
+				
+			case 8:
+				
+				util.Sendkeys(elements.ReturnOrderNumber, data.ReturnOrderNumber);
+				
+				util.Click(elements.TicketSubmit);
+				
+				 if(util.Isdisplayed(elements.ReturnQtyFieldError))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory field: QTY field in Return option verified Successfully");
+					}
+				 
+				 if(util.Isdisplayed(elements.ReturnItemFieldError)) 
+				 
+				 {
+					 
+					 System.out.println("\t\t\t"+"Mandatory field: Item field in Return option verified Successfully");
+					 
+				 }
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory field:  QTY and Item fields in Return option verify Unsuccessful");
+						fail++;
+					
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("QTY and Item Fields in Return option,");
+					}
+			
+				
+			case 9:
+				
+				Select Return1 = new Select(elements.HowCanWeHelpOptions);
+				
+				Return1.selectByVisibleText("Exchange");
+				
+				util.Clear(elements.ReturnOrderNumber);
+				
+				util.Click(elements.TicketSubmit);
+				
+				if(util.Isdisplayed(elements.OrderNumberError))
+				{
+					
+					System.out.println("\t\t\t"+"Mandatory field: Order Number field in Exchange option verified Successfully");
+				}
+				
+				else
+				{
+					System.out.println("\t\t\t"+"Mandatory field:  Order Number field in Exchange option verify Unsuccessful");
+					fail++;
+					
+					
+					
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("ExchangeOrderNumber,");
+				}
+				 
+				
+			case 10:
+				
+				util.Sendkeys(elements.ReturnOrderNumber, data.ReturnOrderNumber);
+				
+				util.Click(elements.TicketSubmit);
+				
+				 if(util.Isdisplayed(elements.ExchangeItemQtyFieldError))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory field: QTY field in Exchange Item section verified Successfully");
+					}
+				 
+				 if(util.Isdisplayed(elements.ExchangeItemITEMFieldError)) 
+				 
+				 {
+					 
+					 System.out.println("\t\t\t"+"Mandatory field: Item field in Exchange Item section verified Successfully");
+					 
+				 }
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory field:  QTY and Item fields in Exchange Item Section verify Unsuccessful");
+						fail++;
+						
+						
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("QTY and Item Fields in Exchange Item Section,");
+						
+					}
+				 
+			case 11:
+				
+				Select General1 = new Select(elements.GroupDropdown);
+			    
+				 General1.selectByVisibleText("General Inquiries");
+				 
+				 util.Clear(elements.ClearDescriptionField);
+				 
+				 util.Click(elements.TicketSubmit);
+				 
+				 if(util.Isdisplayed(elements.DescriptionFieldError))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory field: Description verified Successfully\n\n\n");
+						
+						
+					}
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory field:  Description verify Unsuccessful\n\n\n");
+						fail++;
+						
+						
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Description,");
+					}
+				 
+				 
+				 Select General2 = new Select(elements.GroupDropdown);
+				    
+				 General2.selectByVisibleText("General Inquiries");
+				 
+				 util.Sendkeys(elements.InputDescription, data.Description);
+				 
+//				 util.Click(elements.TicketReCpatcha);
+				 
+//				 util.Click(elements.TicketSubmit);
+				 
+				 System.out.println("Validating Mandatory Fields In Return option by Adding Extra Line Items\n");
+				 
+				 
+			case 12:
+				 
+				Select General3 = new Select(elements.GroupDropdown);
+				    
+				General3.selectByVisibleText("Order & Store Support");
+				 
+				Select Return2 = new Select(elements.HowCanWeHelpOptions);
+				
+				Return2.selectByVisibleText("Return");
+				
+//				util.Sendkeys(elements.ReturnOrderNumber, data.ReturnOrderNumber);
+				
+				util.Click(elements.AddanotherReturnItem);
+				
+				util.Click(elements.AddanotherReturnItem);
+				
+				util.Sendkeys(elements.ValueForExtraReturnQtyField, "1");	
+				
+				util.Sendkeys(elements.ValueForExtraReturnItemField, "RAGLAN");
+				
+				util.Sendkeys(elements.ValueForSecondExtraReturnQtyField, "1");	
+				
+				util.Sendkeys(elements.ValueForSecondExtraReturnItemField, "Watch");
+				
+				util.Click(elements.TicketSubmit);
+				
+				 if(util.Isdisplayed(elements.ReturnQtyFieldError))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory field: QTY field in Return option verified Successfully");
+					}
+				 
+				 if(util.Isdisplayed(elements.ReturnItemFieldError)) 
+				 
+				 {
+					 
+					 System.out.println("\t\t\t"+"Mandatory field: Item field in Return option verified Successfully");
+					 
+				 }
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory field: QTY and Item fields in Return option verify Unsuccessful");
+						fail++;
+						
+					
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("QTY and Item Fields in Return option,");
+						
+					}
+			
+			case 13:
+				
+				util.Sendkeys(elements.ValueForReturnQtyField, "1");
+				
+				util.Sendkeys(elements.ValueForReturnItemField, "Shirt");
+				
+				util.Clear(elements.ValueForExtraReturnQtyField);
+				
+				util.Clear(elements.ValueForExtraReturnItemField);
+				
+				util.Click(elements.TicketSubmit);
+				
+				if(util.Isdisplayed(elements.ErrorForExtraReturnQtyField))
+				{
+					
+					System.out.println("\t\t\t"+"Mandatory field: QTY field in First line item verified Successfully");
+				}
+			 
+			 if(util.Isdisplayed(elements.ErrorForExtraReturnItemField)) 
+			 
+			 {
+				 
+				 System.out.println("\t\t\t"+"Mandatory field: Item field in First line item verified Successfully");
+				 
+			 }
+				else
+				{
+					System.out.println("\t\t\t"+"Mandatory field: QTY and Item fields First line item verify Unsuccessful");
+					
+					fail++;
+					
+				
+					
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("QTY and Item Fields in First line item,");
+				}
+				
+			
+			case 14:
+				
+				util.Sendkeys(elements.ValueForExtraReturnQtyField, "1");
+				
+				util.Sendkeys(elements.ValueForExtraReturnItemField, "Shirt");
+				
+				util.Clear(elements.ValueForSecondExtraReturnQtyField);
+				
+				util.Clear(elements.ValueForSecondExtraReturnItemField);
+				
+				util.Click(elements.TicketSubmit);
+			 
+				if(util.Isdisplayed(elements.ErrorForSecondExtraReturnQtyField))
+				{
+					
+					System.out.println("\t\t\t"+"Mandatory field: QTY field in Second line item verified Successfully");
+				}
+			 
+			 if(util.Isdisplayed(elements.ErrorForSecondExtraReturnItemField)) 
+			 
+			 {
+				 
+				 System.out.println("\t\t\t"+"Mandatory field: Item field in Second line item verified Successfully\n\n\n");
+				 
+			 }
+				else
+				{
+					System.out.println("\t\t\t"+"Mandatory field: QTY and Item fields in Second line item verify Unsuccessful\n\n\n");
+					fail++;
+					
+				
+					
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("QTY and Item Fields in Second line item, ");
+				}
+			
+			 
+			 
+			case 15:
+				
+				System.out.println("Validating Mandatory Fields In Exchange option by Adding Extra Line Items\n");
+				
+				System.out.println("QTY and ITEM Fields in Items To Return Section\n");
+				
+				Select General4 = new Select(elements.GroupDropdown);
+			    
+				General4.selectByVisibleText("Order & Store Support");
+				 
+				Select Return3 = new Select(elements.HowCanWeHelpOptions);
+				
+				Return3.selectByVisibleText("Exchange");
+				
+				util.Clear(elements.ValueForReturnQtyField);
+				
+				util.Clear(elements.ValueForReturnItemField);
+				
+				util.Click(elements.AddanotherReturnItem);
+				
+				util.Click(elements.AddanotherReturnItem);
+				
+				util.Sendkeys(elements.ValueForExtraReturnQtyField, "1");	
+				
+				util.Sendkeys(elements.ValueForExtraReturnItemField, "RAGLAN");
+				
+				util.Sendkeys(elements.ValueForSecondExtraReturnQtyField, "1");	
+				
+				util.Sendkeys(elements.ValueForSecondExtraReturnItemField, "Watch");
+				
+				util.Sendkeys(elements.ValueForQTYfieldinExchangeItemSection, "1");
+				
+				util.Sendkeys(elements.ValueForITEMfieldinExchangeItemSection, "Shirt");
+				
+				util.Click(elements.TicketSubmit);
+				
+				 if(util.Isdisplayed(elements.ReturnQtyFieldError))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory fields: QTY field in Items to Return section in Exchange option verified Successfully");
+					}
+				 
+				 if(util.Isdisplayed(elements.ReturnItemFieldError)) 
+				 
+				 {
+					 
+					 System.out.println("\t\t\t"+"Mandatory field: Item field in Items to Return section in Exchange option verified Successfully");
+					 
+				 }
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory fields:  QTY and Item field in Items to Return section in Exchange option verify Unsuccessful");
+						fail++;
+						
+						
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Items to Return: QTY and Item Fields,");
+				
+					}
+			 
+			case 16:
+				
+				util.Sendkeys(elements.ValueForReturnQtyField, "1");
+				
+				util.Sendkeys(elements.ValueForReturnItemField, "Shirt");
+				
+				util.Clear(elements.ValueForExtraReturnQtyField);
+				
+				util.Clear(elements.ValueForExtraReturnItemField);
+				
+				util.Click(elements.TicketSubmit);
+				
+				if(util.Isdisplayed(elements.ErrorForExtraReturnQtyField))
+				{
+					
+					System.out.println("\t\t\t"+"Mandatory field: QTY field in First Line Item in Items to Return section in Exchange option verified Successfully");
+				}
+			 
+			 if(util.Isdisplayed(elements.ErrorForExtraReturnItemField)) 
+			 
+			 {
+				 
+				 System.out.println("\t\t\t"+"Mandatory field: ITEM field in First Line Item in Items to Return section in Exchange option verified Successfully");
+				 
+			 }
+				else
+				{
+					System.out.println("\t\t\t"+"Mandatory fields: QTY and ITEM fields in Firt Line Item in Items to Return section in Exchange option verify Unsuccessful");
+					fail++;
+					
+				
+					
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Items to Return: QTY and Item Fields in First Line Item,");
+					
+				}
+								
+						
+			case 17:
+				
+				util.Sendkeys(elements.ValueForExtraReturnQtyField, "1");
+				
+				util.Sendkeys(elements.ValueForExtraReturnItemField, "Shirt");
+				
+				util.Clear(elements.ValueForSecondExtraReturnQtyField);
+				
+				util.Clear(elements.ValueForSecondExtraReturnItemField);
+				
+				util.Click(elements.TicketSubmit);
+				
+				if(util.Isdisplayed(elements.ErrorForSecondExtraReturnQtyField))
+				{
+					
+					System.out.println("\t\t\t"+"Mandatory field: QTY field in Second Line Item in Items to Return section in Exchange option verified Successfully");
+				}
+			 
+			 if(util.Isdisplayed(elements.ErrorForSecondExtraReturnItemField)) 
+			 
+			 {
+				 
+				 System.out.println("\t\t\t"+"Mandatory field: ITEM field in Second Line Item in Items to Return section in Exchange option verified Successfully\n\n\n");
+				 
+			 }
+				else
+				{
+					System.out.println("\t\t\t"+"Mandatory fields: QTY and ITEM fields in Second Line Item in Items to Return section in Exchange option verify Unsuccessful\n\n\n");
+					fail++;
+					
+				
+					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Items to Return: QTY and Item Fields in Second Line Item,");
+				}
+								
+			
+			case 18:
+				
+				
+				System.out.println(" QTY and ITEM Fields in Items To Exchange Section\n");
+				
+				util.Sendkeys(elements.ValueForSecondExtraReturnQtyField, "1");
+				
+				util.Sendkeys(elements.ValueForSecondExtraReturnItemField, "RAGLAN");
+				
+				util.Click(elements.AddanotherExchangeItem);
+				
+				util.Click(elements.AddanotherExchangeItem);
+				
+				util.Clear(elements.ValueForQTYfieldinExchangeItemSection);
+				
+				util.Clear(elements.ValueForITEMfieldinExchangeItemSection);
+				
+				util.Sendkeys(elements.ValueForQTYfieldinExtraExchangeLineItem, "1");
+				
+				util.Sendkeys(elements.ValueForITEMfieldinExtraExchangeLineItem, "Slipmat");
+				
+				util.Sendkeys(elements.ValueForQTYfieldinSecondExtraExchangeLineItem, "1");
+				
+				util.Sendkeys(elements.ValueForITEMfieldinSecondExtraExchangeLineItem, "T shirt");
+				
+				util.Click(elements.TicketSubmit);
+				
+				 if(util.Isdisplayed(elements.ErrorForQTYfieldinExchangeItemSection))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory fields: QTY field in Exchange Items section in Exchange option verified Successfully");
+					}
+				 
+				 if(util.Isdisplayed(elements.ErrorForITEMfieldinExchangeItemSection)) 
+				 
+				 {
+					 
+					 System.out.println("\t\t\t"+"Mandatory fields: ITEM field in Exchange Items section in Exchange option verified Successfully");
+					 
+				 }
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory fields: QTY and ITEM field in Exchange Items section in Exchange option verified Successfully");
+						fail++;
+						
+						
+				
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Exchange Items: QTY and Item Fields,");
+					}
+				
+
+			case 19:
+				
+				util.Sendkeys(elements.ValueForQTYfieldinExchangeItemSection, "1");
+				
+				util.Sendkeys(elements.ValueForITEMfieldinExchangeItemSection, "Watch");
+				
+				util.Clear(elements.ValueForQTYfieldinExtraExchangeLineItem);
+				
+				util.Clear(elements.ValueForITEMfieldinExtraExchangeLineItem);
+				
+				util.Click(elements.TicketSubmit);
+				
+				 if(util.Isdisplayed(elements.ErrorForQTYfieldinExtraExchangeLineItem))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory fields: QTY field in First Line Item in Exchange Items section in Exchange option verified Successfully");
+					}
+				 
+				 if(util.Isdisplayed(elements.ErrorForITEMfieldinExtraExchangeLineItem)) 
+				 
+				 {
+					 
+					 System.out.println("\t\t\t"+"Mandatory fields: ITEM field in First Line Item in Exchange Items section in Exchange option verified Successfully");
+					 
+				 }
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory fields: QTY and ITEM fields in First Line Item in Exchange Items section in Exchange option verified Successfully");
+						fail++;
+						
+						
+						
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Exchange Items: QTY and Item Fields in First Line Item,");
+					}
+				
+				
+			case 20:
+				
+				util.Sendkeys(elements.ValueForQTYfieldinExtraExchangeLineItem, "1");
+				
+				util.Sendkeys(elements.ValueForITEMfieldinExtraExchangeLineItem, "Watch");
+				
+				util.Clear(elements.ValueForQTYfieldinSecondExtraExchangeLineItem);
+				
+				util.Clear(elements.ValueForITEMfieldinSecondExtraExchangeLineItem);
+				
+				util.Click(elements.TicketSubmit);
+				 
+				 if(util.Isdisplayed(elements.ErrorForQTYfieldinExtraExchangeLineItem))
+					{
+						
+						System.out.println("\t\t\t"+"Mandatory field: QTY field in Second Line Item in Exchange Items section in Exchange option verified Successfully");
+					}
+				 
+				 if(util.Isdisplayed(elements.ErrorForITEMfieldinExtraExchangeLineItem)) 
+				 
+				 {
+					 
+					 System.out.println("\t\t\t"+"Mandatory field: ITEM field in Second Line Item in Exchange Items section in Exchange option verified Successfully");
+				
+					 
+				 }
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory fields:QTY and ITEM field in Second Line Item in Exchange Items section in Exchange option verified Successfully");
+						
+						fail++;
+					
+						SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.concat("Exchange Items: QTY and Item Fields in Second Line Item,");	
+						
+					}
+				
+				 
+				 if(fail>0)
+					{
+						System.out.println("\t\t\t"+"Mandatory fields validation Unsuccessful");
+						functions.ServiceCloud(false, 33);
+					}
+					else
+					{
+						System.out.println("\t\t\t"+"Mandatory fields validation Successful");
+						functions.ServiceCloud(true, 33);
+					}
+				 
+				 
+				 Select Group = new Select(elements.GroupDropdown);
+				    
+				 Group.selectByVisibleText("General Inquiries");
+				 
+			}
+					
+		
+		}
+
+		
 }
+
