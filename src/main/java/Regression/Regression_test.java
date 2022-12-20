@@ -83,8 +83,8 @@ public class Regression_test
 			lp.Login_Invalid();
 			
 			lp.Login_Cartpage();
-			
-			lp.Check_Orderstatus(Regression_data.Orderstatus_Ordernumber,Regression_data.Orderstatus_email,Regression_data.Orderstatus_zipcode);
+//			
+//			lp.Check_Orderstatus(Regression_data.Orderstatus_Ordernumber,Regression_data.Orderstatus_email,Regression_data.Orderstatus_zipcode);
 			
 			ma.MyAccount_Links();
 			

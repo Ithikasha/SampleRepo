@@ -1,7 +1,11 @@
 package Regression;
 
+import java.util.Timer;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import Data_Functions.Functions;
@@ -482,8 +486,264 @@ public class Homepage {
 					func.write_Regressiontest(data_regression.result, 58);
 					
 				}
-			    
-			    
-			    
+			        
 			}
-	}
+
+			public void AddressSuggestionScroll() throws Exception
+			{
+				   data_obj.driver.get(data_regression.URL);
+					
+					if(util.Isdisplayed(element_obj.no))
+					{
+						util.Click(element_obj.no);
+					}
+				
+					func.PRD_login();
+					
+//					func.PreorderPopupScroll("LIVE METALLICA: WERCHTER, BELGIUM - JULY 1, 2022 (2CD)");
+					
+					func.Add_product("DON'T TREAD ON ME T-SHIRT - MEDIUM");
+					
+					util.Click(element_obj.checkout);
+
+					util.Clear(element_obj.address1);
+					
+					util.Sendkeys(element_obj.address1,"1667 K Street NW");
+
+					util.Clear(element_obj.city);
+					
+					util.Sendkeys(element_obj.city,"Washington");
+					
+					Select country = new Select(element_obj.countryField);
+					country.selectByVisibleText("United States");
+
+					util.Clear(element_obj.zipcode);
+					
+					util.Sendkeys(element_obj.zipcode,"20006");
+					
+					Select state = new Select(element_obj.stateField);
+					state.selectByVisibleText("Washington");
+					
+					util.Clear(element_obj.phone);
+					
+					util.Sendkeys(element_obj.phone,"9858989588");
+							
+					util.WaitAndClick(element_obj.continuebill);
+					
+					Thread.sleep(1000);
+					
+					JavascriptExecutor scrollup = (JavascriptExecutor) data_obj.driver;
+					
+					scrollup.executeScript("window.scrollTo(0,55);");
+					
+					JavascriptExecutor scrolldown = (JavascriptExecutor) data_obj.driver;
+					
+					scrolldown.executeScript("window.scrollTo(0,2000);");
+					
+				}
+
+			public void PreOrderPopupScroll() throws Exception
+			{
+				   data_obj.driver.get(data_regression.URL);
+					
+					if(util.Isdisplayed(element_obj.no))
+					{
+						util.Click(element_obj.no);
+					}
+				
+					func.PRD_login();
+					
+					func.PreorderPopupScroll("LIVE METALLICA: WERCHTER, BELGIUM - JULY 1, 2022 (2CD)");
+					
+					Thread.sleep(2000);
+					
+					JavascriptExecutor scrollup = (JavascriptExecutor) data_obj.driver;
+					
+					scrollup.executeScript("window.scrollTo(0,55);");
+					
+					JavascriptExecutor scrolldown = (JavascriptExecutor) data_obj.driver;
+					
+					scrolldown.executeScript("window.scrollTo(0,2000);");
+					
+			}
+			
+			
+			
+			
+			public void MiniCartOverlay() throws Exception
+			{
+				
+				data_obj.driver.get(data_regression.URL);
+				
+				if(util.Isdisplayed(element_obj.no))
+				{
+					util.Click(element_obj.no);
+				}
+			
+//				func.PRD_login();
+				
+				 util.Click(element_obj.MetStoreIcon);
+				 
+				 Actions act = new Actions(data_obj.driver);
+				 
+				 act.moveToElement(element_obj.Product).perform();
+				 
+				 util.jClick(data_obj.driver,element_obj.Quickview);
+				 
+//				 util.jClick(data_obj.driver,element_obj.SizeSmall);
+				  
+				 util.jClick(data_obj.driver,element_obj.addcart);
+			
+//				func.MiniCart("DON'T TREAD ON ME T-SHIRT - MEDIUM");
+				 
+				String opacity = element_obj.Overlay.getCssValue("opacity");
+				 				
+				System.out.println(opacity);
+				
+				if(opacity.equals("0.7"))
+				{
+					System.out.println("\t\t\t"+"Opacity = 0.7 validation successful");
+					
+					data_regression.result = true;
+					
+					func.write_Regressiontest(data_regression.result, 54);
+					
+				}
+				else
+				{
+					
+					System.out.println("\t\t\t"+"Opacity = 0.7 validation unsuccessful");
+					
+					data_regression.result = false;
+					
+					func.write_Regressiontest(data_regression.result, 54);
+					
+				}
+				
+			}
+			
+			
+			public void Click_Product_Link_in_Cart_Page() throws InterruptedException
+			{
+				
+				data_obj.driver.get(data_regression.URL);
+				
+				if(util.Isdisplayed(element_obj.no))
+				{
+					util.Click(element_obj.no);
+				}
+				
+//				func.Add_product("BUFFALO 2022 TOUR T-SHIRT - MEDIUM");
+			
+//				func.PRD_login();
+				
+				 util.Click(element_obj.MetStoreIcon);
+				 
+				 Actions act = new Actions(data_obj.driver);
+				 
+				 act.moveToElement(element_obj.Product).perform();
+				 
+				 util.jClick(data_obj.driver,element_obj.Quickview);
+				 
+//				 util.jClick(data_obj.driver,element_obj.SizeSmall);
+				  
+				 
+				 if(util.Isdisplayed(element_obj.SizeSmall))
+				 {
+					 util.jClick(data_obj.driver,element_obj.SizeSmall);
+					 
+					
+				}
+				 
+				 
+				 
+					if(util.Isdisplayed(element_obj.preorder))
+					{
+						util.jClick(data_obj.driver,element_obj.preorder);
+						
+						util.jClick(data_obj.driver,element_obj.preorder_ack);
+						
+						util.jClick(data_obj.driver,element_obj.preorder_ATC);
+						
+					}
+					
+					else
+					{
+						util.jClick(data_obj.driver,element_obj.addcart);
+					}
+				  
+				 
+				 util.Click(element_obj.miniviewcart);
+				 
+				 String Product = element_obj.Product_Link.getText().toUpperCase();
+				 
+				 System.out.println(Product);
+				 
+//				 Thread.sleep(10000);
+				 
+				 util.Click(element_obj.Product_Link); 
+				 
+				 String PDP_Product = element_obj.Product_name_PDP.getText();
+				 
+				 System.out.println(PDP_Product);
+				 
+				 if(PDP_Product.equals(Product))
+				 {
+					 
+					 System.out.println("Product link in Cart page successful");
+					 
+				 }
+			
+				}
+			
+		public void Shipping_and_Billing_address_validation() throws InterruptedException
+		{
+			
+			data_obj.driver.get(data_regression.URL);
+			
+			if(util.Isdisplayed(element_obj.no))
+			{
+				util.Click(element_obj.no);
+			}
+			
+			func.PRD_login();
+			
+			func.Add_product("BUFFALO 2022 TOUR T-SHIRT - MEDIUM");
+			
+			util.Click(element_obj.checkout);
+			
+			String Shipaddress = element_obj.Shippingaddress.getText();
+			
+			System.out.println(Shipaddress);
+			
+			util.Click(element_obj.continuebill);
+			
+			if(util.Isdisplayed(element_obj.userAddress)) 
+			{
+				util.WaitAndClick(element_obj.userAddress);
+			}
+			
+			String Shipaddress_Billingpage = element_obj.Shippingaddress.getText();
+			
+			System.out.println(Shipaddress_Billingpage);
+			
+			if(Shipaddress_Billingpage.equals(Shipaddress))
+			{
+				
+				
+				System.out.println("Shipping address in billing page validation successful");
+				
+			}
+			
+			
+			
+			
+			
+		}
+			
+			
+}
+
+
+
+

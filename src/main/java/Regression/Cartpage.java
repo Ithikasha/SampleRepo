@@ -31,7 +31,7 @@ public class Cartpage {
 	   
 	   	System.out.println("\nCart Page");
 	   	
-		data_obj.driver.get(data_regression.URL);
+//		data_obj.driver.get(data_regression.URL);
 		
 //		util.Click(element_obj.no);
 //	   
