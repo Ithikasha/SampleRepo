@@ -31,16 +31,18 @@ public class Cartpage {
 	   
 	   	System.out.println("\nCart Page");
 	   	
-//		data_obj.driver.get(data_regression.URL);
+		data_obj.driver.get(data_regression.URL);
 		
-//		util.Click(element_obj.no);
-//	   
+		util.Click(element_obj.no);
+	   
 //	   func.login();
 	   
 	   for(int j = 0; j < data_regression.itemlist.length; j++)
 		{
 					
 			util.Click(element_obj.srch);
+			
+			util.Click(element_obj.SearchBar);
 				
 			util.Sendkeys(element_obj.srchIP,data_regression.itemlist[j]);
 
@@ -94,7 +96,7 @@ public class Cartpage {
 //						
 //				util.Click(element_obj.addcart);
 //			}
-
+				Thread.sleep(2000);
 					
 			util.Click(element_obj.miniviewcart);
 		}
@@ -103,7 +105,7 @@ public class Cartpage {
 		{
 			data_regression.CP_prdName.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='name']//child::a)["+i+"]")).getText());
 			
-			data_regression.CP_price.add(i-1, element_obj.driver.findElement(By.xpath("(//td[@class='item-price']//child::span)["+i+"]")).getText());
+			data_regression.CP_price.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='item-total item-info-col']//child::span)["+i+"]")).getText());
 			
 		}
 		
@@ -176,16 +178,18 @@ public class Cartpage {
 			}
 			else
 			{
-				data_obj.driver.findElement(By.xpath("(//td[@class='item-quantity']//child::input)["+c+"]")).clear();
+				data_obj.driver.findElement(By.xpath("(//div[@class='c-product-quantity']//child::input)["+c+"]")).clear();
 				
-				data_obj.driver.findElement(By.xpath("(//td[@class='item-quantity']//child::input)["+c+"]")).sendKeys("2");
+				data_obj.driver.findElement(By.xpath("(//div[@class='c-product-quantity']//child::input)["+c+"]")).sendKeys("2");
 										
 				//Scroll and click
 				
-				int elementPosition = element_obj.updatecart.getLocation().getY();
-				String js = String.format("window.scroll(0, %s)", elementPosition);
-				((JavascriptExecutor)data_obj.driver).executeScript(js);
-				element_obj.updatecart.click();
+//				int elementPosition = element_obj.updatecart.getLocation().getY();
+//				String js = String.format("window.scroll(0, %s)", elementPosition);
+//				((JavascriptExecutor)data_obj.driver).executeScript(js);
+				element_obj.ClicktoUpdatecart.click();
+				
+				
 							
 				if(util.Isdisplayed(element_obj.CP_quantity))
 				{
@@ -248,7 +252,7 @@ public class Cartpage {
 	   
 	   func.guestCheckout(data_regression.email);
 	   
-	   if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Shipping']"))))
+	   if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//h2[text()='1. Shipping'])[2]"))))
 	   {
 		   System.out.println("\t\t\tGuest checkout verified Successfully");
 		   

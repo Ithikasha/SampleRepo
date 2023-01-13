@@ -14,7 +14,11 @@ public class SiteMonitoringConstantData {
 	
 	public String ApplepayURL = "https://metclub.tejassoftware.com/toms/Order/Search#?page=1&pageSize=50&criteria=F.PaymentMethodId.in.29";
 	
+	public String DevApplepayURL = "https://sbxmetclub.tejassoftware.com/toms/Order/Search#?page=1&pageSize=50&criteria=F.PaymentMethodId.in.29";
+	
 	public String PaypalURL = "https://metclub.tejassoftware.com/toms/Order/Search#?page=1&pageSize=50&criteria=F.PaymentMethodId.in.8";
+	
+	public String DevPaypalURL = "https://sbxmetclub.tejassoftware.com/toms/Order/Search#?page=1&pageSize=50&orderBy=ReferenceId&criteria=F.PaymentMethodId.in.8";
 			
 	public static String email = "ithikasha@unitedtechno.com" ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
@@ -26,7 +30,7 @@ public class SiteMonitoringConstantData {
 	
 	public static String ServiceCloud_Result_filename = "SiteMonitoring.xls";
 	
-	public static String ServiceCloud_filepath = "C:\\Users\\UTIS LAPTOP 38\\Desktop\\METALLICA\\master\\Excelsheets";
+	public static String ServiceCloud_filepath = "Excelsheets";
 	
 	public static String ServiceCloud_Result_sheetname = "ContactUsForm";
 	

@@ -26,7 +26,7 @@ public class Billingpage {
 	
 	public void ValidateFields() throws Exception
 	{
-//		data_obj.driver.get(data_obj.Prod_url);
+//		data_obj.driver.get(data_obj.DEV_url);
 //		
 //		util.Click(element_obj.no);
 //
@@ -44,7 +44,7 @@ public class Billingpage {
 		
 		if(util.Isdisplayed(element_obj.userAddress)) 
 		{
-			util.WaitAndClick(element_obj.userAddress);
+			util.WaitAndClick(element_obj.SuggestionAddress);
 		}
 		
 		System.out.println("\tSmoke Testing: Address field validation in Billing page");
@@ -392,7 +392,7 @@ public class Billingpage {
 
 		}
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Place Order']"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='place-order-header']//child::h2"))))
 		{
 			System.out.println("\t\t\t"+"Payment using Credit card is Successful");
 			func.write_Regressiontest(true, 46);

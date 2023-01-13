@@ -30,8 +30,8 @@ public class Login_smoke {
 		
 		System.out.println("\tRegression Testing: Login from Loginpage");
 
-//		System.out.println("\t\tTestcase - 11");
-//		
+		System.out.println("\t\tTestcase - 11");
+		
 //	      data_obj.driver.get(data_regression.URL);
 //		
 //		  if(util.Isdisplayed(element_obj.no))
@@ -41,7 +41,7 @@ public class Login_smoke {
 		
 		func.smoke_login(data_regression.email, data_regression.password);
 		
-		if(util.Isdisplayed(data_obj.driver.findElement(By.xpath("//h1[@class='overview-header']"))))
+		if(util.Isdisplayed(data_obj.driver.findElement(By.xpath("//h1[@class='overview-header account-primary-heading'] "))))
 		{
 			System.out.println("\t\t\tLoginpage - Login Successful for "+data_regression.email);
 			
@@ -59,9 +59,9 @@ public class Login_smoke {
 			func.write_Regressiontest(data_regression.result, 11);
 		}
 
-		util.WaitAndClick(element_obj.MyAccount);
+//		util.WaitAndClick(element_obj.MyAccount);
 						
-		util.WaitAndClick(element_obj.Logout);
+		util.WaitAndClick(element_obj.MyAccountPageLogout);
 		
 //		data_obj.driver.close();
 		
@@ -190,7 +190,7 @@ public class Login_smoke {
 
 		}
 		
-		util.Click(element_obj.MyAccount);
+		util.Click(element_obj.srch);
 		
 		util.Click(element_obj.Logout);
 		

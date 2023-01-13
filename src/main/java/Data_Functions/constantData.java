@@ -31,7 +31,7 @@ public class constantData {
 	
 	public String Prod_url = "https://www.metallica.com/";
 	
-	public String DEV_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07june@development.rockdevelop.com/";
+	public String DEV_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07nov@development.rockdevelop.com/";
 	
 	public String Cloudinary_Url ="https://metallica-res.cloudinary.com/image/upload/w_371,h_241,f_auto,q_auto:best,c_fill,dpr_2.0,e_sharpen:60,g_auto:subject/v1653964160/Photos/Live%20Photos/2022-05may29_Boston-Massachusetts/2022-05may29_Boston-Massachusetts_Jeff-Yeager_001.jpg";
 	
@@ -41,9 +41,13 @@ public class constantData {
 	
 	public String ProdTomsUrl ="https://metclub.tejassoftware.com/toms";
 	
+	public String DevTomsUrl = "https://sbxmetclub.tejassoftware.com/toms";
+	
 	public String ProdTomsusername = "ithikasha@unitedtechno.com";
 	
 	public String ProdTomspassword = "Ithi@toms09nov";
+	
+	public String DevTomspassword ="Ithikash@toms07oct";
 	
 	public String STG_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@staging.rockdevelop.com/";
 	

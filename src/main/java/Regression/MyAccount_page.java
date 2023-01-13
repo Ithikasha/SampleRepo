@@ -36,7 +36,7 @@ public class MyAccount_page {
 		
 		util.Click(element_obj.MyAccount_PersonalInfo); // Personal Info
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//h1[@class='edit-account-header'])"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[@class='edit-account-header form-heading']"))))
 		{
 			System.out.println("\t\t\t"+"Personal Information link verification Successful");
 			
@@ -174,7 +174,7 @@ public class MyAccount_page {
 		
 		util.Click(element_obj.MyAccount_Vinylclub); // Vinyl Club
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//h1[@class='subscriptionHeader'])"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[contains(text(),'Read more')]"))))
 		{
 			System.out.println("\t\t\t"+"Vinyl Club link verification Successful");
 			
@@ -197,7 +197,7 @@ public class MyAccount_page {
 		
 		util.Click(element_obj.MyAccount_Order); // Order History
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//h1[@class='order-history-h1'])"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//h1[@class='order-history-h1 account-primary-heading'])"))))
 		{
 			System.out.println("\t\t\t"+"Order History link verification Successful");
 			
@@ -214,9 +214,9 @@ public class MyAccount_page {
 			func.write_Regressiontest(data_regression.result, 22);
 		}
 		
-		util.WaitAndClick(element_obj.MyAccount);
+		util.Click(element_obj.srch);
 		
-		util.WaitAndClick(element_obj.Logout);
+		util.Click(element_obj.Logout);
 	}
 
 }

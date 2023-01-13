@@ -669,7 +669,7 @@ public boolean selectItems() throws InterruptedException, Exception
 		
 		util.Sendkeys(element_obj.email, data_obj.username);
 	
-		util.Sendkeys(element_obj.password, data_obj.PRD_password);
+		util.Sendkeys(element_obj.password, data_obj.DEV_password);
 	
 		util.Click(element_obj.login_button);
 		
@@ -685,7 +685,7 @@ public boolean selectItems() throws InterruptedException, Exception
 		
 		util.Sendkeys(element_obj.email, data_obj.username);
 	
-		util.Sendkeys(element_obj.password, data_obj.PRD_password);
+		util.Sendkeys(element_obj.password, data_obj.DEV_password);
 	
 		util.Click(element_obj.login_button);
 		
@@ -1963,6 +1963,8 @@ public void Logout() throws InterruptedException {
 		{
 			util.WaitAndClick(element_obj.srch);
 			
+			util.Click(element_obj.SearchBar);
+			
 			util.Sendkeys(element_obj.srchIP,prod[i].toString());
 
 			element_obj.srchTxt.submit();
@@ -2013,6 +2015,8 @@ public void Logout() throws InterruptedException {
 	public void Add_product(String prod) throws InterruptedException
 	{
 			util.Click(element_obj.srch);
+			
+			util.Click(element_obj.SearchBar);
 			
 			util.Sendkeys(element_obj.srchIP,prod);
 

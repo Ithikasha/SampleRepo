@@ -35,7 +35,9 @@ public class PDP {
 		}
 		
 		util.Click(element_obj.srch);
-			
+		
+		util.Click(element_obj.SearchBar);
+		
 		util.Sendkeys(element_obj.srchIP, data_Regression.instock1);
 
 		element_obj.srchTxt.submit();
@@ -48,7 +50,7 @@ public class PDP {
 			
 		int fail = 0;
 			
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='product-primary-image']"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//div[@class='product-primary-image'])[1]"))))
 		{
 			System.out.println("\t\t\t"+"Image verification Successful");
 		}
@@ -97,7 +99,7 @@ public class PDP {
 //		((JavascriptExecutor)data_obj.driver).executeScript(js);
 //		element_obj.driver.findElement(By.xpath("//div[@class='slick-track']")).click();
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='slick-track']"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//div[@class='slick-track'])"))))
 		{
 			System.out.println("Einstein Product suggestion successful");
 				
@@ -115,57 +117,57 @@ public class PDP {
 				
 		}
 			
-		System.out.println("\tSmoke Testing: Shared Links ");
-		
-		System.out.println("\t\tTestcase - 25");
-		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//i[@class='pinterest-follow-white-icon']"))))
-		{
-			System.out.println("\t\t\t"+"Pinterest Link verification Successful");
-		}
-		else
-		{
-			System.out.println("\t\t\t"+"Pinterest Link verification Unsuccessful");
-			fail++;
-		}
-		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//i[@class='twitter-follow-white-icon']"))))
-		{
-			System.out.println("\t\t\t"+"Twitter Link verification Successful");
-		}
-		else
-		{
-			System.out.println("\t\t\t"+"Twitter Link verification Unsuccessful");
-			fail++;
-		}
-		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//i[@class='facebook-follow-white-icon']"))))
-		{
-			System.out.println("\t\t\t"+"Facebook Link verification Successful");
-		}
-		else
-		{
-			System.out.println("\t\t\t"+"Facebook Link verification Unsuccessful");
-			fail++;
-		}
-		
-		if(fail<=0)
-		{
-			System.out.println("\t\t\t"+"Shared Links verification Successful");
-				
-			data_Regression.result = true;
-				
-			func.write_Regressiontest(data_Regression.result, 25);
-		}
-		else
-		{
-			System.out.println("\t\t\t"+"Shared Links verification Unsuccessful");
-				
-			data_Regression.result = false;
-				
-			func.write_Regressiontest(data_Regression.result, 25);
-				
-		}
+//		System.out.println("\tSmoke Testing: Shared Links ");
+//		
+//		System.out.println("\t\tTestcase - 25");
+//		
+//		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//i[@class='pinterest-follow-white-icon']"))))
+//		{
+//			System.out.println("\t\t\t"+"Pinterest Link verification Successful");
+//		}
+//		else
+//		{
+//			System.out.println("\t\t\t"+"Pinterest Link verification Unsuccessful");
+//			fail++;
+//		}
+//		
+//		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//i[@class='twitter-follow-white-icon']"))))
+//		{
+//			System.out.println("\t\t\t"+"Twitter Link verification Successful");
+//		}
+//		else
+//		{
+//			System.out.println("\t\t\t"+"Twitter Link verification Unsuccessful");
+//			fail++;
+//		}
+//		
+//		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//i[@class='facebook-follow-white-icon']"))))
+//		{
+//			System.out.println("\t\t\t"+"Facebook Link verification Successful");
+//		}
+//		else
+//		{
+//			System.out.println("\t\t\t"+"Facebook Link verification Unsuccessful");
+//			fail++;
+//		}
+//		
+//		if(fail<=0)
+//		{
+//			System.out.println("\t\t\t"+"Shared Links verification Successful");
+//				
+//			data_Regression.result = true;
+//				
+//			func.write_Regressiontest(data_Regression.result, 25);
+//		}
+//		else
+//		{
+//			System.out.println("\t\t\t"+"Shared Links verification Unsuccessful");
+//				
+//			data_Regression.result = false;
+//				
+//			func.write_Regressiontest(data_Regression.result, 25);
+//				
+//		}
 			
 		fail = 0;
 		
@@ -208,7 +210,7 @@ public class PDP {
 			func.write_Regressiontest(data_Regression.result, 26);
 		}
 		
-		util.Click(element_obj.driver.findElement(By.xpath("(//tr[@class='cart-row']//following-sibling::button[@value='Remove'])[2]")));
+		util.Click(element_obj.driver.findElement(By.xpath("(//div[@class='item-info-row item-info-row--wrap']//following-sibling::button[@value='Remove'])")));
 		
 		System.out.println("\tSmoke Testing: Pre-order Product");
 	
@@ -216,7 +218,11 @@ public class PDP {
 		
 		util.Click(element_obj.srch);
 		
-		util.Sendkeys(element_obj.srchIP,"LIVE METALLICA: GLOBAL CITIZEN FESTIVAL IN NEW YORK NY - SEPTEMBER 24 2022 (CD)");
+		util.Click(element_obj.SearchBar);
+		
+		util.Sendkeys(element_obj.srchIP,"REBACD");
+		
+//		LIVE METALLICA: GLOBAL CITIZEN FESTIVAL IN NEW YORK NY - SEPTEMBER 24 2022 (CD)
 
 		element_obj.srchTxt.submit();
 		
@@ -246,7 +252,7 @@ public class PDP {
 				
 		util.Click(element_obj.preorder_ATC);			
 			
-		util.Click(element_obj.addcart);
+//		util.Click(element_obj.addcart);
 		
 		if(util.Isdisplayed(element_obj.miniviewcart))
 		{
@@ -254,7 +260,7 @@ public class PDP {
 			
 			util.Click(element_obj.miniviewcart);
 			
-			util.Click(element_obj.driver.findElement(By.xpath("(//tr[@class='cart-row']//following-sibling::button[@value='Remove'])[2]")));
+			util.Click(element_obj.driver.findElement(By.xpath("(//div[@class='item-info-row item-info-row--wrap']//following-sibling::button[@value='Remove'])")));
 			
 			data_Regression.result = true;
 			

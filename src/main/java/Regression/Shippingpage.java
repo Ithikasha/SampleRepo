@@ -187,7 +187,7 @@ public class Shippingpage {
 			fail++;
 		}
 		
-		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])[2]")));
+		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])")));
 		
 		if(fail>0)
 		{
@@ -530,7 +530,7 @@ public class Shippingpage {
 				
 				util.Sendkeys(element_obj.phone,data_regression.Address.get("PhoneNumber"));
 				
-				if(!element_obj.driver.findElement(By.xpath("//button[@class='add-to-cart button button--cta']")).isEnabled()) //element_obj.driver.findElement(By.xpath("(//span[@class='error'])"
+				if(!element_obj.driver.findElement(By.xpath("//button[@class='add-to-cart button button--secondary']")).isEnabled()) //element_obj.driver.findElement(By.xpath("(//span[@class='error'])"
 				{
 					System.out.println("\t\t\t"+"Mandatory field: Zipcode verified Sucessfully");
 				}
@@ -632,7 +632,7 @@ public class Shippingpage {
 				}
 		}
 		
-		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])[2]")));
+		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])")));
 		
 		if(fail>0)
 		{
@@ -826,8 +826,12 @@ public class Shippingpage {
 				util.WaitAndClick(element_obj.userAddress);
 			}
 		}	
+		
+		Thread.sleep(2000);
 			
-		func.smoke_payment("Visa");
+		func.smoke_payment("Amex");
+		
+		Thread.sleep(2000);
 		
 		util.WaitAndClick(element_obj.continuePlaceorder);
 		
@@ -842,7 +846,7 @@ public class Shippingpage {
 			func.write_Regressiontest(false, 38);
 		}
 		
-		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])[2]")));
+		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])")));
 		
 		for(int c = 1; c <= data_regression.itemlist.length; c++)
 		{
@@ -862,7 +866,7 @@ public class Shippingpage {
 		
 		Preorder_Acknowledge();		
 		
-		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])[2]")));
+		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])")));
 		
 		for(int c = 0; c < data_regression.itemlist.length; c++)
 		{

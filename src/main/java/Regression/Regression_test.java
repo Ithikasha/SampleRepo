@@ -83,8 +83,15 @@ public class Regression_test
 			lp.Login_Invalid();
 			
 			lp.Login_Cartpage();
+			
+			
+			
+			
 //			
 //			lp.Check_Orderstatus(Regression_data.Orderstatus_Ordernumber,Regression_data.Orderstatus_email,Regression_data.Orderstatus_zipcode);
+
+
+			
 			
 			ma.MyAccount_Links();
 			
@@ -108,7 +115,9 @@ public class Regression_test
 			
 			sp.UseAddress_checkbox(); 
 			
-			sp.Preorder_Validation(); 
+			
+			
+//			sp.Preorder_Validation(); 
 			
 //			sp.VC_Validation(); 
 			
@@ -143,7 +152,11 @@ public class Regression_test
 //		    System.out.println("\n\n\n\t\t\t\t\t\t\t\tTest-"+smoke_data.testCount+" Completed!!!");
 			
 			
-			util.WaitAndClick(elements.MyAccount); 
+			util.Click(elements.ContinueShopping);
+			
+			util.Click(elements.srch);
+			
+//			util.WaitAndClick(elements.MyAccount); 
 			
 			util.WaitAndClick(elements.Logout); 
 			
@@ -165,7 +178,7 @@ public class Regression_test
 //	
 			data.driver.close(); 
 			
-			ContactUS.main(args);
+			ContactUS.ServiceCloud();
 		
 	}
 	

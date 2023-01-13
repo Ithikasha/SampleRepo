@@ -33,11 +33,11 @@ public class Orderconfirmation {
 		
 		for(int i = 1; i <= data_regression.itemlist.length; i++)
 		{
-			data_regression.OC_prdName.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='name']//child::a)["+i+"]")).getText());
+			data_regression.OC_prdName.add(i-1, element_obj.driver.findElement(By.xpath("(//div[contains(@class,'confirmation row')]//div[@class='name']//child::a)["+i+"]")).getText());
 			
-			data_regression.OC_price.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='line-item-price'])["+i+"]")).getAttribute("innerText").strip());
+			data_regression.OC_price.add(i-1, element_obj.driver.findElement(By.xpath("(//div[contains(@class,'confirmation row')]//td[@class='line-item-price'])["+i+"]")).getAttribute("innerText").strip());
 			
-			data_regression.OC_qty.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='line-item-quantity'])["+i+"]")).getAttribute("innerText").strip());
+			data_regression.OC_qty.add(i-1, element_obj.driver.findElement(By.xpath("(//div[contains(@class,'confirmation row')]//td[@class='line-item-quantity'])["+i+"]")).getAttribute("innerText").strip());
 			
 		}
 		
@@ -45,7 +45,7 @@ public class Orderconfirmation {
 		{
 			data_regression.orderNumber = element_obj.orderNumber.getText().toString();
 			
-			System.out.println("\t\t\t"+data_regression.orderNumber.substring(15));
+			System.out.println("\t\t\t"+data_regression.orderNumber.substring(8));
 			
 			System.out.println("\t\t\t"+"Order Number displayed Successfully");
 			func.write_Regressiontest(true, 52);
@@ -97,7 +97,7 @@ public class Orderconfirmation {
 			}
 		}
 		
-		String Shipping_address = element_obj.driver.findElement(By.xpath("(//p[text()='Shipping Address']//following::address)[1]")).getAttribute("innerText");
+		String Shipping_address = element_obj.driver.findElement(By.xpath("(//h2[text()='Shipping Address']//following::address)[3]")).getAttribute("innerText");
 		
 //		System.out.println(Shipping_address);
 		
@@ -111,7 +111,7 @@ public class Orderconfirmation {
 			fail++;
 		}
 		
-		String Billing_address = element_obj.driver.findElement(By.xpath("//p[text()='Billing Address']//following::address")).getAttribute("innerText");
+		String Billing_address = element_obj.driver.findElement(By.xpath("(//h2[text()='Shipping Address']//following::address)[4]")).getAttribute("innerText");
 		
 		if(Billing_address.contains(data_regression.POP_Billaddress))
 		{
@@ -136,7 +136,7 @@ public class Orderconfirmation {
 	
 	public void Shippingdetails()
 	{
-		String Shipping_address = element_obj.driver.findElement(By.xpath("(//p[text()='Shipping Address']//following::address)[1]")).getAttribute("innerText");
+		String Shipping_address = element_obj.driver.findElement(By.xpath("(//h2[text()='Shipping Address']//following::address)[3]")).getAttribute("innerText");
 		
 //		System.out.println(Shipping_address);
 		
@@ -152,7 +152,7 @@ public class Orderconfirmation {
 	
 	public void Billingdetails()
 	{
-		String Billing_address = element_obj.driver.findElement(By.xpath("//p[text()='Billing Address']//following::address")).getAttribute("innerText");
+		String Billing_address = element_obj.driver.findElement(By.xpath("(//h2[text()='Shipping Address']//following::address)[4]")).getAttribute("innerText");
 		
 		if(Billing_address.contains(data_regression.POP_Billaddress))
 		{
