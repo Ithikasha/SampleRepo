@@ -56,7 +56,7 @@ public class SiteMonitoring {
 //		Email = Email.concat("Second line");
 //		
 //		System.out.println(Email);
-//		
+	
 		data.driver.get(data.DEV_url);
 		
 		util.Click(elements.no);
@@ -81,11 +81,11 @@ public class SiteMonitoring {
 		
 		DigitalOcean();
 		
-		Discourse();	
+		Discourse();
+		
+		MiniCartOverlay();  
 		
 		ServiceCloud();
-		
-//		MiniCartOverlay();  
 		
 		data.driver.close();
 		
@@ -638,6 +638,8 @@ public class SiteMonitoring {
 		
 //		data.driver.get(SiteData.ApplepayURL);
 		
+		Thread.sleep(2000);
+		
 		data.driver.get(SiteData.DevApplepayURL);
 		
 		Thread.sleep(2000);
@@ -745,13 +747,17 @@ public class SiteMonitoring {
 //		
 //		functions.login();
 		
-		util.Click(elements.Account_button);
-		
+//		util.Click(elements.Account_button);
+//		
 //		util.Click(elements.MyAccount_button);
+//		
+//		util.Click(elements.MyAccount_Order); 
+//		
+//		util.Click(elements.OrderDetail);
+//		
+//		util.Click(elements.DigitalDownload);
 		
-		util.Click(elements.MyAccount_Order); 
-		
-		util.Click(elements.OrderDetail);
+		functions.GuestOrderCheck("00134707","KT15 2BQ", "ithikasha@unitedtechno.com" );
 		
 		util.Click(elements.DigitalDownload);
 		
@@ -763,7 +769,7 @@ public class SiteMonitoring {
 		
 		Thread.sleep(10000);
 		
-		File f = new File("C:\\Users\\UTIS LAPTOP 38\\Downloads\\I-DISAPPEAR_mp3.zip"); 
+		File f = new File("C:\\Users\\UTIS LAPTOP 38\\Downloads\\BLCKND043_mp3.zip"); 
 		
 //		System.out.println(f.exists());
 			
@@ -795,7 +801,9 @@ public class SiteMonitoring {
 	public static void KnightLab() throws Exception
 	{
 		
-		data.driver.get(data.Knightlab_Url);
+//		data.driver.get(data.Knightlab_Url);
+		
+		data.driver.get(data.DevKnightlab_Url);
 		
 //		util.Click(elements.no);
 		
@@ -825,6 +833,10 @@ public class SiteMonitoring {
 			
 		
 		}
+		
+		util.Click(elements.srch);
+		
+		util.Click(elements.Logout);
 		
 	   
 	}
@@ -866,26 +878,34 @@ public class SiteMonitoring {
 	{
 		
 		
-		data.driver.get(data.Prod_url);
+		data.driver.get(data.DEV_url);
 		
 		if(util.Isdisplayed(elements.no))
 		{
 			util.Click(elements.no);
 		}
 	
-//		func.PRD_login();
+		functions.PRD_login();
 		
-		 util.Click(elements.MetStoreIcon);
-		 
-		 Actions act = new Actions(data.driver);
+		util.Click(elements.srch);
+		
+		util.Click(elements.SearchBar);
+		
+		util.Sendkeys(elements.srchIP,"Shirt");
+
+		elements.srchTxt.submit();
+
+		Actions act = new Actions(data.driver);
 		 
 		 act.moveToElement(elements.Product).perform();
 		 
 		 util.jClick(data.driver,elements.Quickview);
 		 
-		 if(util.Isdisplayed(elements.SizeSmall))
+		 Thread.sleep(2000);
+		 
+		 if(util.Isdisplayed(elements.SizeMedium))
 		 {
-			 util.jClick(data.driver,elements.SizeSmall);
+			 util.jClick(data.driver,elements.SizeMedium);
 			 
 			
 		}
@@ -910,8 +930,10 @@ public class SiteMonitoring {
 		 	 
 	
 //		func.MiniCart("DON'T TREAD ON ME T-SHIRT - MEDIUM");
+			
+		util.waitForElementToLoad(elements.Overlay);
 		 
-		String opacity = elements.Overlay.getCssValue("opacity");
+		String opacity = elements.Overlay.getCssValue("opacity").toString();
 		 				
 		System.out.println(opacity);
 		
@@ -923,17 +945,43 @@ public class SiteMonitoring {
 			
 			functions.write_SiteMonitoring(SiteData.result, 16);
 			
+			util.Click(elements.miniviewcart);
+			
+			int Site = elements.Multipleremove.size();
+			
+			System.out.println(Site);
+			
+			for(int i=1; i <= Site; i++)
+			
+			{
+				util.Click(elements.Multipleremove.get(0));
+				
+		    } 
+			
 		}
 		else
 		{
 			
 			System.out.println("\t\t\t"+"Opacity = 0.7 validation unsuccessful");
 			
-			SiteData.result = true;
+			SiteData.result = false;
 			
 			functions.write_SiteMonitoring(SiteData.result, 16);
 			
-			data.driver.close();
+			util.Click(elements.miniviewcart);
+			
+			int Site = elements.Multipleremove.size();
+			
+			System.out.println(Site);
+			
+			for(int i=1; i <= Site; i++)
+			
+			{
+				util.Click(elements.Multipleremove.get(0));
+				
+		    } 
+			
+//			data.driver.close();
 			
 		}
 		
@@ -1082,9 +1130,11 @@ public class SiteMonitoring {
 		
 //		util.Click(elements.CreateNewSupportTicket_Button);
 		 
-		 data.driver.get("https://ithikasha@unitedtechno.com:Ithi@sfcc07nov@development.rockdevelop.com/contactus/");
+		 Thread.sleep(2000);
 		 
-		util.Click(elements.no);
+		data.driver.get("https://ithikasha@unitedtechno.com:Ithi@sfcc07nov@development.rockdevelop.com/contactus/");
+		 
+//		util.Click(elements.no);
 		
 		util.Sendkeys(elements.Ticketemail, data.username);
 		

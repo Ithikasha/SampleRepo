@@ -37,6 +37,8 @@ public class constantData {
 	
 	public String Knightlab_Url="https://www.metallica.com/band-timeline.html";
 	
+	public String DevKnightlab_Url ="https://development.rockdevelop.com/band-timeline.html";
+	
 	public String Discourse_Url="https://forums.metallica.com/ ";
 	
 	public String ProdTomsUrl ="https://metclub.tejassoftware.com/toms";

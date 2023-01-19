@@ -46,7 +46,7 @@ public class PDP {
 		
 		System.out.println("\tSmoke Testing: Product Detail Page_Image and Description");
 			
-		System.out.println("\t\tTestcase - 23");
+		System.out.println("\t\tTestcase - 21");
 			
 		int fail = 0;
 			
@@ -76,7 +76,7 @@ public class PDP {
 				
 			data_Regression.result = true;
 				
-			func.write_Regressiontest(data_Regression.result, 23);
+			func.write_Regressiontest(data_Regression.result, 21);
 		}
 		else
 		{
@@ -84,7 +84,7 @@ public class PDP {
 				
 			data_Regression.result = false;
 				
-			func.write_Regressiontest(data_Regression.result, 23);
+			func.write_Regressiontest(data_Regression.result, 21);
 				
 		}
 			
@@ -92,7 +92,7 @@ public class PDP {
 		
 		System.out.println("\tSmoke Testing: Einstein Product Suggestion");
 		
-		System.out.println("\t\tTestcase - 24");
+		System.out.println("\t\tTestcase - 22");
 		
 //		int elementPosition = element_obj.driver.findElement(By.xpath("//div[@class='slick-track']")).getLocation().getY();
 //		String js = String.format("window.scroll(0, %s)", elementPosition);
@@ -105,7 +105,7 @@ public class PDP {
 				
 			data_Regression.result = true;
 				
-			func.write_Regressiontest(data_Regression.result, 24);
+			func.write_Regressiontest(data_Regression.result, 22);
 		}
 		else
 		{
@@ -113,7 +113,7 @@ public class PDP {
 				
 			data_Regression.result = false;
 				
-			func.write_Regressiontest(data_Regression.result, 24);
+			func.write_Regressiontest(data_Regression.result, 22);
 				
 		}
 			
@@ -173,7 +173,7 @@ public class PDP {
 		
 		System.out.println("\tSmoke Testing: Product Quantity");
 			
-		System.out.println("\t\tTestcase - 26");
+		System.out.println("\t\tTestcase - 23");
 			
 		util.Clear(element_obj.PDP_quantity);
 			
@@ -199,7 +199,7 @@ public class PDP {
 			
 			data_Regression.result = true;
 			
-			func.write_Regressiontest(data_Regression.result, 26);
+			func.write_Regressiontest(data_Regression.result, 23);
 		}
 		else
 		{
@@ -207,14 +207,14 @@ public class PDP {
 			
 			data_Regression.result = false;
 			
-			func.write_Regressiontest(data_Regression.result, 26);
+			func.write_Regressiontest(data_Regression.result, 23);
 		}
 		
 		util.Click(element_obj.driver.findElement(By.xpath("(//div[@class='item-info-row item-info-row--wrap']//following-sibling::button[@value='Remove'])")));
 		
 		System.out.println("\tSmoke Testing: Pre-order Product");
 	
-		System.out.println("\t\tTestcase - 27");
+		System.out.println("\t\tTestcase - 24");
 		
 		util.Click(element_obj.srch);
 		
@@ -264,7 +264,7 @@ public class PDP {
 			
 			data_Regression.result = true;
 			
-			func.write_Regressiontest(data_Regression.result, 27);
+			func.write_Regressiontest(data_Regression.result, 24);
 		}
 		else
 		{
@@ -272,7 +272,7 @@ public class PDP {
 			
 			data_Regression.result = false;
 			
-			func.write_Regressiontest(data_Regression.result, 27);
+			func.write_Regressiontest(data_Regression.result, 24);
 		} 
 		
 		fail = 0;

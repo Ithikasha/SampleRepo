@@ -69,17 +69,17 @@ public class Homepage {
 		
 		System.out.println("\tRegression Testing: Search icon click");
 		
-		System.out.println("\t\tTestcase - 2"); 
+		System.out.println("\t\tTestcase - 1"); 
 		
 		util.Click(element_obj.srch);
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//button[contains(text(),'Tour')])[2]"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//a[contains(text(),'Tour')])[1]"))))
 		{
 			System.out.println("\t\t\t"+"Search icon verification Successful");
 			
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 2);
+			func.write_Regressiontest(data_regression.result, 1);
 		}
 		
 		else
@@ -88,14 +88,14 @@ public class Homepage {
 			
 			data_regression.result = false;
 			
-			func.write_Regressiontest(data_regression.result, 2);
+			func.write_Regressiontest(data_regression.result, 1);
 		}
 		
 		util.Click(element_obj.SearchClose);
 		
         System.out.println("\tRegression Testing: Login icon click");
 		
-		System.out.println("\t\tTestcase - 3"); 
+		System.out.println("\t\tTestcase - 2"); 
 		
 		util.Click(element_obj.login);
 		
@@ -105,7 +105,7 @@ public class Homepage {
 			
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 3);
+			func.write_Regressiontest(data_regression.result, 2);
 		}
 		
 		else
@@ -114,7 +114,7 @@ public class Homepage {
 			
 			data_regression.result = false;
 			
-			func.write_Regressiontest(data_regression.result, 3);
+			func.write_Regressiontest(data_regression.result, 2);
 		}
 		
 		 data_obj.driver.navigate().back();
@@ -177,7 +177,7 @@ public class Homepage {
 			   
 			   System.out.println("\tRegression Testing: Cart Icon click");
 				
-				 System.out.println("\t\tTestcase - 6"); 
+				 System.out.println("\t\tTestcase - 3"); 
 					
 					util.Click(element_obj.MinicartIcon);
 					
@@ -187,7 +187,7 @@ public class Homepage {
 						
 						data_regression.result = true;
 						
-						func.write_Regressiontest(data_regression.result, 6);
+						func.write_Regressiontest(data_regression.result, 3);
 					}
 					
 					else
@@ -197,12 +197,12 @@ public class Homepage {
 						
 						data_regression.result = false;
 						
-						func.write_Regressiontest(data_regression.result, 6);
+						func.write_Regressiontest(data_regression.result, 3);
 					}
 					
 				   data_obj.driver.navigate().back();
 				   
-				   System.out.println("\t\tTestcase - 7"); 
+				   System.out.println("\t\tTestcase - 4"); 
 				   
 				   System.out.println("\tRegression Testing: Help Link click");
 				   
@@ -216,7 +216,7 @@ public class Homepage {
 						
 						data_regression.result = true;
 						
-						func.write_Regressiontest(data_regression.result, 7);
+						func.write_Regressiontest(data_regression.result, 4);
 					}
 					
 					else
@@ -226,12 +226,44 @@ public class Homepage {
 						
 						data_regression.result = false;
 						
-						func.write_Regressiontest(data_regression.result, 7);
+						func.write_Regressiontest(data_regression.result, 4);
 					}
 					
 				   data_obj.driver.navigate().back();
+
+
+				   System.out.println("\t\tTestcase - 5"); 
+
+				   System.out.println("\tRegression Testing: Return Link click");
+
+				   Thread.sleep(2000);	
+	
+				   util.Click(element_obj.ReturnLink);
+	
+				   if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[contains(text(),'Join Us Today')]"))))
+				   {
+					   System.out.println("\t\t\t"+"Return Link verification Successful");
+		
+					   data_regression.result = true;
+		
+					   func.write_Regressiontest(data_regression.result, 5);
+				   }
+	
+				   else
+		
+				   {
+					   System.out.println("\t\t\t"+"Return Link verification UnSuccessful");
+		
+					   data_regression.result = false;
+		
+					   func.write_Regressiontest(data_regression.result, 5);
+				   }
+	
+				   data_obj.driver.navigate().back();
 				   
-				   System.out.println("\t\tTestcase - 8"); 
+				   
+				   
+				   System.out.println("\t\tTestcase - 6"); 
 				   
 				   System.out.println("\tRegression Testing: Credit Link click");
 					
@@ -243,7 +275,7 @@ public class Homepage {
 						
 						data_regression.result = true;
 						
-						func.write_Regressiontest(data_regression.result, 8);
+						func.write_Regressiontest(data_regression.result, 6);
 					}
 					
 					else
@@ -253,12 +285,12 @@ public class Homepage {
 						
 						data_regression.result = false;
 						
-						func.write_Regressiontest(data_regression.result, 8);
+						func.write_Regressiontest(data_regression.result, 6);
 					}
 					
 				   data_obj.driver.navigate().back();
 				   
-				   System.out.println("\t\tTestcase - 9"); 
+				   System.out.println("\t\tTestcase - 7"); 
 				   
 				   System.out.println("\tRegression Testing: Terms Of Use Link click");
 					
@@ -270,7 +302,7 @@ public class Homepage {
 						
 						data_regression.result = true;
 						
-						func.write_Regressiontest(data_regression.result, 9);
+						func.write_Regressiontest(data_regression.result, 7);
 					}
 					
 					else
@@ -280,12 +312,12 @@ public class Homepage {
 						
 						data_regression.result = false;
 						
-						func.write_Regressiontest(data_regression.result, 9);
+						func.write_Regressiontest(data_regression.result, 7);
 					}
 					
 				   data_obj.driver.navigate().back();
 				   
-				   System.out.println("\t\tTestcase - 10"); 
+				   System.out.println("\t\tTestcase - 8"); 
 				   
 				   System.out.println("\tRegression Testing: Privacy Policy Link click");
 					
@@ -293,21 +325,21 @@ public class Homepage {
 					
 					if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[contains(text(),'Join Us Today')]"))))
 					{
-						System.out.println("\t\t\t"+"Terms Of Use Link verification Successful");
+						System.out.println("\t\t\t"+"Privacy Policy Link verification Successful");
 						
 						data_regression.result = true;
 						
-						func.write_Regressiontest(data_regression.result, 10);
+						func.write_Regressiontest(data_regression.result, 8);
 					}
 					
 					else
 						
 					{
-						System.out.println("\t\t\t"+"Terms Of Use Link verification UnSuccessful");
+						System.out.println("\t\t\t"+"Privacy Policy verification UnSuccessful");
 						
 						data_regression.result = false;
 						
-						func.write_Regressiontest(data_regression.result, 10);
+						func.write_Regressiontest(data_regression.result, 8);
 					}
 					
 				    data_obj.driver.navigate().back();
@@ -573,30 +605,62 @@ public class Homepage {
 			public void MiniCartOverlay() throws Exception
 			{
 				
-				data_obj.driver.get(data_regression.URL);
+				data_obj.driver.get(data_obj.DEV_url);
 				
 				if(util.Isdisplayed(element_obj.no))
 				{
 					util.Click(element_obj.no);
 				}
 			
-//				func.PRD_login();
+				func.PRD_login();
 				
-				 util.Click(element_obj.MetStoreIcon);
-				 
-				 Actions act = new Actions(data_obj.driver);
+				util.Click(element_obj.srch);
+				
+				util.Click(element_obj.SearchBar);
+				
+				util.Sendkeys(element_obj.srchIP,"Shirt");
+
+				element_obj.srchTxt.submit();
+
+				Actions act = new Actions(data_obj.driver);
 				 
 				 act.moveToElement(element_obj.Product).perform();
 				 
 				 util.jClick(data_obj.driver,element_obj.Quickview);
 				 
-//				 util.jClick(data_obj.driver,element_obj.SizeSmall);
+				 Thread.sleep(2000);
+				 
+				 if(util.Isdisplayed(element_obj.SizeMedium))
+				 {
+					 util.jClick(data_obj.driver,element_obj.SizeMedium);
+					 
+					
+				}
+				 
+				 
+				 
+					if(util.Isdisplayed(element_obj.preorder))
+					{
+						util.jClick(data_obj.driver,element_obj.preorder);
+						
+						util.jClick(data_obj.driver,element_obj.preorder_ack);
+						
+						util.jClick(data_obj.driver,element_obj.preorder_ATC);
+						
+					}
+					
+					else
+					{
+						util.jClick(data_obj.driver,element_obj.addcart);
+					}
 				  
-				 util.jClick(data_obj.driver,element_obj.addcart);
+				 	 
 			
 //				func.MiniCart("DON'T TREAD ON ME T-SHIRT - MEDIUM");
+					
+				util.waitForElementToLoad(element_obj.Overlay);
 				 
-				String opacity = element_obj.Overlay.getCssValue("opacity");
+				String opacity = element_obj.Overlay.getCssValue("opacity").toString();
 				 				
 				System.out.println(opacity);
 				
@@ -606,7 +670,20 @@ public class Homepage {
 					
 					data_regression.result = true;
 					
-					func.write_Regressiontest(data_regression.result, 54);
+					func.write_Regressiontest(data_regression.result, 51);
+					
+					util.Click(element_obj.miniviewcart);
+					
+					int Site = element_obj.Multipleremove.size();
+					
+					System.out.println(Site);
+					
+					for(int i=1; i <= Site; i++)
+					
+					{
+						util.Click(element_obj.Multipleremove.get(0));
+						
+				    } 
 					
 				}
 				else
@@ -616,9 +693,25 @@ public class Homepage {
 					
 					data_regression.result = false;
 					
-					func.write_Regressiontest(data_regression.result, 54);
+					func.write_Regressiontest(data_regression.result, 51);
+					
+					util.Click(element_obj.miniviewcart);
+					
+					int Site = element_obj.Multipleremove.size();
+					
+					System.out.println(Site);
+					
+					for(int i=1; i <= Site; i++)
+					
+					{
+						util.Click(element_obj.Multipleremove.get(0));
+						
+				    } 
+					
+//					data_obj.driver.close();
 					
 				}
+				
 				
 			}
 			
@@ -735,13 +828,13 @@ public class Homepage {
 				
 			}
 			
+			}
 			
-			
-			
-			
-		}
-			
-			
+	
+		
+		
+		
+		
 }
 
 

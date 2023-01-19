@@ -29,7 +29,7 @@ public class Orderconfirmation {
 		
 		System.out.println("\tSmoke Testing: Order Number validation");
 		
-		System.out.println("\t\tTestcase - 52");
+		System.out.println("\t\tTestcase - 49");
 		
 		for(int i = 1; i <= data_regression.itemlist.length; i++)
 		{
@@ -45,20 +45,20 @@ public class Orderconfirmation {
 		{
 			data_regression.orderNumber = element_obj.orderNumber.getText().toString();
 			
-			System.out.println("\t\t\t"+data_regression.orderNumber.substring(8));
+			System.out.println("\t\t\t"+data_regression.orderNumber.substring(8).strip());
 			
 			System.out.println("\t\t\t"+"Order Number displayed Successfully");
-			func.write_Regressiontest(true, 52);
+			func.write_Regressiontest(true, 49);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Order Number display Unsuccessfully");
-			func.write_Regressiontest(false, 52);
+			func.write_Regressiontest(false, 49);
 		}
 		
 		System.out.println("\tSmoke Testing: Order Details validation");
 		
-		System.out.println("\t\tTestcase - 53");
+		System.out.println("\t\tTestcase - 50");
 		
 		int fail = 0;
 		
@@ -125,11 +125,11 @@ public class Orderconfirmation {
 		
 		if(fail>0)
 		{
-			func.write_Regressiontest(false, 53);
+			func.write_Regressiontest(false, 50);
 		}
 		else
 		{
-			func.write_Regressiontest(true, 53);
+			func.write_Regressiontest(true, 50);
 		}
 		
 	}
@@ -148,6 +148,7 @@ public class Orderconfirmation {
 		{
 			System.out.println("\t\t\t"+"Shipping details in Order confirmation page verified Unsuccessfully");
 		}
+		
 	}
 	
 	public void Billingdetails()
@@ -164,5 +165,9 @@ public class Orderconfirmation {
 		}
 	
 	}
+	
+	
+	
+	
 
 }

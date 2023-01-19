@@ -76,6 +76,9 @@ public class Regression_test
 			
 			Regression_data.readInputs();
 			
+			
+			
+			
 			hp.Homepage_Links();  
 			
 			lp.Login_Loginpage();
@@ -83,6 +86,8 @@ public class Regression_test
 			lp.Login_Invalid();
 			
 			lp.Login_Cartpage();
+			
+			lp.Check_Orderstatus();
 			
 			
 			
@@ -115,17 +120,21 @@ public class Regression_test
 			
 			sp.UseAddress_checkbox(); 
 			
+			sp.Preorder_Validation(); 
 			
-			
-//			sp.Preorder_Validation(); 
-			
-//			sp.VC_Validation(); 
+			sp.VC_Validation(); 
 			
 			bp.ValidateFields();  
 			
 			bp.Invalid_creditcard();
 			
+			
+			
+			
+			
 //          bp.Redeem_GC(smoke_data.GC); 
+			
+			
 			
 			bp.ValidatePayment(); 
 			
@@ -156,7 +165,12 @@ public class Regression_test
 			
 			util.Click(elements.srch);
 			
+			
+			
+			
 //			util.WaitAndClick(elements.MyAccount); 
+			
+			
 			
 			util.WaitAndClick(elements.Logout); 
 			
@@ -165,6 +179,9 @@ public class Regression_test
 			Regression_data.qty = null; 
 			
 			Regression_data.variant = null; 
+			
+			
+			
 						           			
 //			System.out.println("Domestic Orders");
 			
@@ -176,9 +193,15 @@ public class Regression_test
 //			
 //			functions.bulkOrder_International(smoke_data.filePath, smoke_data.Result_fileName, "Regression_InternationalOrders",smoke_data.IOrders);
 //	
-			data.driver.close(); 
+//			data.driver.close(); 
+			
+			hp.MiniCartOverlay();
 			
 			ContactUS.ServiceCloud();
+			
+			
+			
+			
 		
 	}
 	

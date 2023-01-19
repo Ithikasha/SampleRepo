@@ -245,7 +245,7 @@ public class pageElements {
 	
 	//Cart page
 	
-	@FindBy(xpath="(//*[@title='Go to Cart'])[1]")
+	@FindBy(xpath="(//*[@title='Checkout'])[1]")
 	public WebElement miniviewcart;
 
 	@FindBy(xpath="(//a[@class='mini-cart-close'])[1]")
@@ -299,6 +299,9 @@ public class pageElements {
 	
 	@FindBy(xpath="//h1[@class='product-name']")
 	public WebElement Product_name_PDP;
+	
+	@FindBy(xpath="//span[contains(text(),'Remove')]")
+	public List<WebElement> Multipleremove;
 	
 	//Shipping page
 	
@@ -547,7 +550,10 @@ public class pageElements {
 	
 	//Order Confirmation page
 	
-	@FindBy(xpath="(//div[@class='order-confirmation-details col']//following::span)[1]") ////div[@class='order-information']//following::h3
+	@FindBy(xpath="(//div[@class='row orderdetails-content']//following::span)[1]") ////div[@class='order-information']//following::h3
+	public WebElement GuestCheckorderNumber;
+	
+	@FindBy(xpath="(//h1[@class='order-history-h1 account-primary-heading']//span)[2]")
 	public WebElement orderNumber;
 	
 	@FindBy(xpath="(//dd[@class='order-subtotal-value'])[2]")
@@ -975,19 +981,38 @@ public class pageElements {
 	@FindBy(xpath="//span[@id=':ot']")
 	public WebElement CurrentDateandTime;
 	
-	@FindBy(xpath="//div[@class='pt_product-search-result js-gtm-wrapper minicart-active']//following::div[@class='js-nav-overlay nav-overlay']")
+	@FindBy(xpath="(//div[@id='wrapper']//following::div[@class='js-nav-overlay nav-overlay'])")
 	public WebElement Overlay;
 	
 	@FindBy(xpath="//a[@id='quickviewbutton']")
 	public WebElement Quickview;
 	
-	@FindBy(xpath="(//img[@class='js-blazy b-loaded'])[2]")
+	@FindBy(xpath="(//img[@class='js-blazy b-loaded'])[3]")
 	public WebElement Product;
 	
 	@FindBy(xpath="(//a[contains(@title,'Small')])[2]")
 	public WebElement SizeSmall;
 	
+	@FindBy(xpath="(//a[contains(@title,'Select Size: Medium')])")
+	public WebElement SizeMedium;
+	
 	//span[@title='Mon, Jul 11, 2022, 3:04 PM']
+
+	
+//Guest Order Check
+	
+	@FindBy(xpath="//input[@id='dwfrm_ordertrack_orderNumber']")
+	public WebElement GuestOrderNumber;
+	
+	@FindBy(xpath="//input[@id='dwfrm_ordertrack_orderEmail']")
+	public WebElement GuestEmail;
+	
+	@FindBy(xpath="//input[@id='dwfrm_ordertrack_postalCode']")
+	public WebElement GuestZipcode;
+	
+	@FindBy(xpath="//button[@name='dwfrm_ordertrack_findorder']")
+	public WebElement GuestSubmit;
+	
 		
 	
 	String Address1;

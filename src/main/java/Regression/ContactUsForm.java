@@ -47,6 +47,15 @@ public class ContactUsForm {
 
 	public static void ServiceCloud() throws Exception, NullPointerException
 	{
+		
+		data.driver = util.chrome();
+	    
+	    elements = new pageElements(data.driver);
+	    
+	    functions = new Functions(data,elements);
+	
+		data.driver.manage().window().maximize();
+		
 		Groupfield();
 		
 		OrderandStoreSupportoption();

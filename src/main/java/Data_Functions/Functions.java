@@ -534,6 +534,8 @@ public boolean selectItems() throws InterruptedException, Exception
 		Thread.sleep(2000);
 				
 		util.Click(element_obj.srch);
+		
+		util.Click(element_obj.SearchBar);
 			
 		util.Sendkeys(element_obj.srchIP,element_obj.itemlist[j]);
 
@@ -2012,6 +2014,19 @@ public void Logout() throws InterruptedException {
 		
 	}
 	
+	
+	public void GuestOrderCheck(String Ordernumber,String Zipcode, String Email) throws InterruptedException
+	{
+		
+		util.Sendkeys(element_obj.GuestOrderNumber, Ordernumber);
+		
+		util.Sendkeys(element_obj.GuestEmail, Email);
+		
+		util.Sendkeys(element_obj.GuestZipcode, Zipcode);
+		
+		util.Click(element_obj.GuestSubmit);		
+	}
+	
 	public void Add_product(String prod) throws InterruptedException
 	{
 			util.Click(element_obj.srch);
@@ -2045,6 +2060,8 @@ public void Logout() throws InterruptedException {
 	public void Add_Preorder(String prod) throws InterruptedException
 	{
 			util.Click(element_obj.srch);
+			
+			util.Click(element_obj.SearchBar);
 			
 			util.Sendkeys(element_obj.srchIP,prod);
 
@@ -2223,7 +2240,7 @@ public void Logout() throws InterruptedException {
 		{
 			value = "FAIL";
 			
-			if(number == 10 || number == 11)
+			if(number == 10) 
 			{
 				Cell result_cell = row.createCell(5);
 				
@@ -2231,7 +2248,15 @@ public void Logout() throws InterruptedException {
 
 				result_cell.setCellValue("Last Order was placed on: "+SiteData.ApplePay);
 			}
+			
+			if(number == 11)
+				{
+					Cell result_cell = row.createCell(5);
+					
+					result_cell.setCellType(result_cell.CELL_TYPE_STRING);
 
+					result_cell.setCellValue("Last Order was placed on: "+SiteData.PayPal);
+				}
 		}
 				
 		Cell result_cell = row.createCell(4);
