@@ -36,7 +36,7 @@ public class Placeorder_page {
 		
 		System.out.println("\tSmoke Testing: Validate Order Details");
 		
-		System.out.println("\t\tTestcase - 47");
+		System.out.println("\t\tTestcase - 44");
 		
 //		data_obj.driver.get(data_regression.URL);
 //		
@@ -54,7 +54,7 @@ public class Placeorder_page {
 		{
 			data_regression.POP_prdName.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='name']//child::a)["+i+"]")).getText());
 			
-			data_regression.POP_price.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='item-price'])["+i+"]")).getAttribute("innerText").strip());
+			data_regression.POP_price.add(i-1, element_obj.driver.findElement(By.xpath("(//td[@class='item-total'])[\"+i+\"]")).getAttribute("innerText").strip());
 			
 			data_regression.POP_qty.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='item-qty'])["+i+"]")).getAttribute("innerText").strip());
 			
@@ -103,11 +103,11 @@ public class Placeorder_page {
 		
 		if(fail>0)
 		{
-			func.write_Regressiontest(false, 47);
+			func.write_Regressiontest(false, 44);
 		}
 		else
 		{
-			func.write_Regressiontest(true, 47);
+			func.write_Regressiontest(true, 44);
 		}
 	}
 	
@@ -115,7 +115,7 @@ public class Placeorder_page {
 	{
 		System.out.println("\tSmoke Testing: Validate Order Total");
 		
-		System.out.println("\t\tTestcase - 48");
+		System.out.println("\t\tTestcase - 45");
 		
 		int fail = 0;
 		
@@ -153,28 +153,28 @@ public class Placeorder_page {
 		
 		if(fail>0)
 		{
-			func.write_Regressiontest(false, 48);
+			func.write_Regressiontest(false, 45);
 		}
 		else
 		{
-			func.write_Regressiontest(true, 48);
+			func.write_Regressiontest(true, 45);
 		}
 		
 		System.out.println("\tSmoke Testing: Tax Return validation");
 		
-		System.out.println("\t\tTestcase - 49");
+		System.out.println("\t\tTestcase - 46");
 		
 		if(data_regression.TaxableCountryList.contains(data_regression.Address.get("Country")))
 		{
 			if(data_regression.POP_tax.contains("$0.00"))
 			{
 				System.out.println("\t\t\t"+"Tax not Returned - Unsuccessful");
-				func.write_Regressiontest(false, 49);
+				func.write_Regressiontest(false, 46);
 			}
 			else
 			{
 				System.out.println("\t\t\t"+"Tax Return - Successful");
-				func.write_Regressiontest(true, 49);
+				func.write_Regressiontest(true, 46);
 			}
 		}
 		else
@@ -182,13 +182,13 @@ public class Placeorder_page {
 			if(data_regression.POP_tax.contains("$0.00"))
 			{
 				System.out.println("\t\t\t"+"Tax Return - Successful");
-				func.write_Regressiontest(true, 49);
+				func.write_Regressiontest(true, 46);
 				
 			}
 			else
 			{
 				System.out.println("\t\t\t"+"Invalid Tax Return - Unsuccessful");
-				func.write_Regressiontest(false, 49);
+				func.write_Regressiontest(false, 46);
 			}
 			
 		}
@@ -208,15 +208,15 @@ public class Placeorder_page {
 	{
 		System.out.println("\tSmoke Testing: Edit Link Validation");
 		
-		System.out.println("\t\tTestcase - 50");
+		System.out.println("\t\tTestcase - 47");
 		
 		System.out.println("\t\tCart link");
 		
 		int fail = 0;
 		
-		util.Click(element_obj.driver.findElement(By.xpath("//a[@class='section-header-note gtm-edit-cart-link']")));// Edit cart link
+		util.Click(element_obj.SP_BackToCart);// Edit cart link
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Cart']"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='col col--xs-12 cart__header__content']//h2"))))
 		{
 			System.out.println("\t\t\t"+"Edit Cart link Successful");
 		}
@@ -235,7 +235,7 @@ public class Placeorder_page {
 			util.WaitAndClick(element_obj.userAddress);
 		}
 		
-		func.smoke_payment("Visa");
+		func.smoke_payment("Amex");
 		
 		if(util.Isdisplayed(element_obj.shpInt))
 		{
@@ -251,14 +251,14 @@ public class Placeorder_page {
 
 		}
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Place Order']"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='place-order-header']//child::h2"))))
 		{
 			System.out.println("\t\tShipping Method link");
 		}
 		
 		util.Click(element_obj.driver.findElement(By.xpath("(//a[text()='Edit'])[2]")));// Edit Shipping method link
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Shipping']"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//h2[text()='1. Shipping'])[2]"))))
 		{
 			System.out.println("\t\t\t"+"Edit Shipping Method link Successful");
 		}
@@ -275,7 +275,7 @@ public class Placeorder_page {
 			util.WaitAndClick(element_obj.userAddress);
 		}
 		
-		func.smoke_payment("Visa");
+		func.smoke_payment("Amex");
 		
 		if(util.Isdisplayed(element_obj.shpInt))
 		{
@@ -285,14 +285,14 @@ public class Placeorder_page {
 		util.Click(element_obj.continuePlaceorder);
 		
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Place Order']"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='place-order-header']//child::h2"))))
 		{
 			System.out.println("\t\tShipping Address link");
 		}
 		
 		util.Click(element_obj.driver.findElement(By.xpath("(//div[contains(@class,'mini-shipment order-component-block')]//child::a)[1]")));// Edit Shipping address link
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Shipping']"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//h2[text()='1. Shipping'])[2]"))))
 		{
 			System.out.println("\t\t\t"+"Edit Shipping Address link Successful");
 		}
@@ -309,18 +309,18 @@ public class Placeorder_page {
 			util.WaitAndClick(element_obj.userAddress);
 		}
 		
-		func.smoke_payment("Visa");
+		func.smoke_payment("Amex");
 		
 		util.Click(element_obj.continuePlaceorder);
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Place Order']"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='place-order-header']//child::h2"))))
 		{
 			System.out.println("\t\tBilling Address link");
 		}
 		
 		util.Click(element_obj.driver.findElement(By.xpath("//div[@class='mini-billing-address order-component-block']//child::a")));// Edit Billing address link
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Billing']"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='billing-header']//child::h2"))))
 		{
 			System.out.println("\t\t\t"+"Edit Billing Address link Successful");
 		}
@@ -330,18 +330,18 @@ public class Placeorder_page {
 			fail++;
 		}
 		
-		func.smoke_payment("Visa");
+		func.smoke_payment("Amex");
 		
 		util.Click(element_obj.continuePlaceorder);
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Place Order']"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='place-order-header']//child::h2"))))
 		{
 			System.out.println("\t\tPayment link");
 		}
 		
 		element_obj.driver.findElement(By.xpath("(//div[contains(@class,'mini-payment-instrument order-component-block')]//child::a)[1]")).click();// Edit Payment link
         
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Billing']"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='billing-header']//child::h2"))))
 		{
 			System.out.println("\t\t\t"+"Edit Payment link Successful");
 		}
@@ -351,17 +351,17 @@ public class Placeorder_page {
 			fail++;
 		}
 		
-		func.smoke_payment("Visa");
+		func.smoke_payment("Amex");
 		
 		util.Click(element_obj.continuePlaceorder);
 		
 		if(fail>0)
 		{
-			func.write_Regressiontest(false, 50);
+			func.write_Regressiontest(false, 47);
 		}
 		else
 		{
-			func.write_Regressiontest(true, 50);
+			func.write_Regressiontest(true, 47);
 		}
 		
 		if(data_regression.URL == data_obj.Prod_url)
@@ -371,7 +371,7 @@ public class Placeorder_page {
 		
 		System.out.println("\tSmoke Testing: Place Order validation");
 		
-		System.out.println("\t\tTestcase - 51");
+		System.out.println("\t\tTestcase - 48");
 		
 		if(util.Isdisplayed(element_obj.shpInt))
 		{
@@ -384,12 +384,12 @@ public class Placeorder_page {
 		{
 			System.out.println("\t\t\t"+"Order placed Successfully");
 			
-			func.write_Regressiontest(true, 51);
+			func.write_Regressiontest(true, 48);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Order Unsuccessfully");
-			func.write_Regressiontest(false, 51);
+			func.write_Regressiontest(false, 48);
 		}
 		
 		return true;

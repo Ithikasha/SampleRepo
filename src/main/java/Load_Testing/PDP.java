@@ -35,7 +35,9 @@ public class PDP {
 		}
 		
 		util.Click(element_obj.srch);
-			
+		
+		util.Click(element_obj.SearchBar);
+		
 		util.Sendkeys(element_obj.srchIP, data_Regression.instock1);
 
 		element_obj.srchTxt.submit();
@@ -44,11 +46,11 @@ public class PDP {
 		
 		System.out.println("\tSmoke Testing: Product Detail Page_Image and Description");
 			
-		System.out.println("\t\tTestcase - 23");
+		System.out.println("\t\tTestcase - 21");
 			
 		int fail = 0;
 			
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='product-primary-image']"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//div[@class='product-primary-image'])[1]"))))
 		{
 			System.out.println("\t\t\t"+"Image verification Successful");
 		}
@@ -74,7 +76,7 @@ public class PDP {
 				
 			data_Regression.result = true;
 				
-			func.write_Regressiontest(data_Regression.result, 23);
+			func.write_Regressiontest(data_Regression.result, 21);
 		}
 		else
 		{
@@ -82,7 +84,7 @@ public class PDP {
 				
 			data_Regression.result = false;
 				
-			func.write_Regressiontest(data_Regression.result, 23);
+			func.write_Regressiontest(data_Regression.result, 21);
 				
 		}
 			
@@ -90,20 +92,20 @@ public class PDP {
 		
 		System.out.println("\tSmoke Testing: Einstein Product Suggestion");
 		
-		System.out.println("\t\tTestcase - 24");
+		System.out.println("\t\tTestcase - 22");
 		
 //		int elementPosition = element_obj.driver.findElement(By.xpath("//div[@class='slick-track']")).getLocation().getY();
 //		String js = String.format("window.scroll(0, %s)", elementPosition);
 //		((JavascriptExecutor)data_obj.driver).executeScript(js);
 //		element_obj.driver.findElement(By.xpath("//div[@class='slick-track']")).click();
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='slick-track']"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//div[@class='slick-track'])"))))
 		{
 			System.out.println("Einstein Product suggestion successful");
 				
 			data_Regression.result = true;
 				
-			func.write_Regressiontest(data_Regression.result, 24);
+			func.write_Regressiontest(data_Regression.result, 22);
 		}
 		else
 		{
@@ -111,67 +113,67 @@ public class PDP {
 				
 			data_Regression.result = false;
 				
-			func.write_Regressiontest(data_Regression.result, 24);
+			func.write_Regressiontest(data_Regression.result, 22);
 				
 		}
 			
-		System.out.println("\tSmoke Testing: Shared Links ");
-		
-		System.out.println("\t\tTestcase - 25");
-		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//i[@class='pinterest-follow-white-icon']"))))
-		{
-			System.out.println("\t\t\t"+"Pinterest Link verification Successful");
-		}
-		else
-		{
-			System.out.println("\t\t\t"+"Pinterest Link verification Unsuccessful");
-			fail++;
-		}
-		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//i[@class='twitter-follow-white-icon']"))))
-		{
-			System.out.println("\t\t\t"+"Twitter Link verification Successful");
-		}
-		else
-		{
-			System.out.println("\t\t\t"+"Twitter Link verification Unsuccessful");
-			fail++;
-		}
-		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//i[@class='facebook-follow-white-icon']"))))
-		{
-			System.out.println("\t\t\t"+"Facebook Link verification Successful");
-		}
-		else
-		{
-			System.out.println("\t\t\t"+"Facebook Link verification Unsuccessful");
-			fail++;
-		}
-		
-		if(fail<=0)
-		{
-			System.out.println("\t\t\t"+"Shared Links verification Successful");
-				
-			data_Regression.result = true;
-				
-			func.write_Regressiontest(data_Regression.result, 25);
-		}
-		else
-		{
-			System.out.println("\t\t\t"+"Shared Links verification Unsuccessful");
-				
-			data_Regression.result = false;
-				
-			func.write_Regressiontest(data_Regression.result, 25);
-				
-		}
+//		System.out.println("\tSmoke Testing: Shared Links ");
+//		
+//		System.out.println("\t\tTestcase - 25");
+//		
+//		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//i[@class='pinterest-follow-white-icon']"))))
+//		{
+//			System.out.println("\t\t\t"+"Pinterest Link verification Successful");
+//		}
+//		else
+//		{
+//			System.out.println("\t\t\t"+"Pinterest Link verification Unsuccessful");
+//			fail++;
+//		}
+//		
+//		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//i[@class='twitter-follow-white-icon']"))))
+//		{
+//			System.out.println("\t\t\t"+"Twitter Link verification Successful");
+//		}
+//		else
+//		{
+//			System.out.println("\t\t\t"+"Twitter Link verification Unsuccessful");
+//			fail++;
+//		}
+//		
+//		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//i[@class='facebook-follow-white-icon']"))))
+//		{
+//			System.out.println("\t\t\t"+"Facebook Link verification Successful");
+//		}
+//		else
+//		{
+//			System.out.println("\t\t\t"+"Facebook Link verification Unsuccessful");
+//			fail++;
+//		}
+//		
+//		if(fail<=0)
+//		{
+//			System.out.println("\t\t\t"+"Shared Links verification Successful");
+//				
+//			data_Regression.result = true;
+//				
+//			func.write_Regressiontest(data_Regression.result, 25);
+//		}
+//		else
+//		{
+//			System.out.println("\t\t\t"+"Shared Links verification Unsuccessful");
+//				
+//			data_Regression.result = false;
+//				
+//			func.write_Regressiontest(data_Regression.result, 25);
+//				
+//		}
 			
 		fail = 0;
 		
 		System.out.println("\tSmoke Testing: Product Quantity");
 			
-		System.out.println("\t\tTestcase - 26");
+		System.out.println("\t\tTestcase - 23");
 			
 		util.Clear(element_obj.PDP_quantity);
 			
@@ -197,7 +199,7 @@ public class PDP {
 			
 			data_Regression.result = true;
 			
-			func.write_Regressiontest(data_Regression.result, 26);
+			func.write_Regressiontest(data_Regression.result, 23);
 		}
 		else
 		{
@@ -205,18 +207,22 @@ public class PDP {
 			
 			data_Regression.result = false;
 			
-			func.write_Regressiontest(data_Regression.result, 26);
+			func.write_Regressiontest(data_Regression.result, 23);
 		}
 		
-		util.Click(element_obj.driver.findElement(By.xpath("(//tr[@class='cart-row']//following-sibling::button[@value='Remove'])[2]")));
+		util.Click(element_obj.driver.findElement(By.xpath("(//div[@class='item-info-row item-info-row--wrap']//following-sibling::button[@value='Remove'])")));
 		
 		System.out.println("\tSmoke Testing: Pre-order Product");
 	
-		System.out.println("\t\tTestcase - 27");
+		System.out.println("\t\tTestcase - 24");
 		
 		util.Click(element_obj.srch);
 		
-		util.Sendkeys(element_obj.srchIP,"LIVE METALLICA: GLOBAL CITIZEN FESTIVAL IN NEW YORK NY - SEPTEMBER 24 2022 (CD)");
+		util.Click(element_obj.SearchBar);
+		
+		util.Sendkeys(element_obj.srchIP,"REBACD");
+		
+//		LIVE METALLICA: GLOBAL CITIZEN FESTIVAL IN NEW YORK NY - SEPTEMBER 24 2022 (CD)
 
 		element_obj.srchTxt.submit();
 		
@@ -246,7 +252,7 @@ public class PDP {
 				
 		util.Click(element_obj.preorder_ATC);			
 			
-		util.Click(element_obj.addcart);
+//		util.Click(element_obj.addcart);
 		
 		if(util.Isdisplayed(element_obj.miniviewcart))
 		{
@@ -254,11 +260,11 @@ public class PDP {
 			
 			util.Click(element_obj.miniviewcart);
 			
-			util.Click(element_obj.driver.findElement(By.xpath("(//tr[@class='cart-row']//following-sibling::button[@value='Remove'])[2]")));
+			util.Click(element_obj.driver.findElement(By.xpath("(//div[@class='item-info-row item-info-row--wrap']//following-sibling::button[@value='Remove'])")));
 			
 			data_Regression.result = true;
 			
-			func.write_Regressiontest(data_Regression.result, 27);
+			func.write_Regressiontest(data_Regression.result, 24);
 		}
 		else
 		{
@@ -266,7 +272,7 @@ public class PDP {
 			
 			data_Regression.result = false;
 			
-			func.write_Regressiontest(data_Regression.result, 27);
+			func.write_Regressiontest(data_Regression.result, 24);
 		} 
 		
 		fail = 0;

@@ -31,16 +31,23 @@ public class Cartpage {
 	   
 	   	System.out.println("\nCart Page");
 	   	
-//		data_obj.driver.get(data_regression.URL);
+		data_obj.driver.get(data_regression.URL);
 		
+//		if(element_obj.no.isDisplayed())
+//		{
+//		
 //		util.Click(element_obj.no);
-//	   
+//		
+//		}
+	   
 //	   func.login();
 	   
 	   for(int j = 0; j < data_regression.itemlist.length; j++)
 		{
 					
 			util.Click(element_obj.srch);
+			
+			util.Click(element_obj.SearchBar);
 				
 			util.Sendkeys(element_obj.srchIP,data_regression.itemlist[j]);
 
@@ -94,7 +101,7 @@ public class Cartpage {
 //						
 //				util.Click(element_obj.addcart);
 //			}
-
+				Thread.sleep(2000);
 					
 			util.Click(element_obj.miniviewcart);
 		}
@@ -103,7 +110,7 @@ public class Cartpage {
 		{
 			data_regression.CP_prdName.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='name']//child::a)["+i+"]")).getText());
 			
-			data_regression.CP_price.add(i-1, element_obj.driver.findElement(By.xpath("(//td[@class='item-price']//child::span)["+i+"]")).getText());
+			data_regression.CP_price.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='item-total item-info-col']//child::span)["+i+"]")).getText());
 			
 		}
 		
@@ -121,7 +128,7 @@ public class Cartpage {
 		
 		System.out.println("\tSmoke Testing: Product list and Price in Cartpage");
 	   	
-	   	System.out.println("\t\tTestcase - 28");
+	   	System.out.println("\t\tTestcase - 25");
 	   	
 	   	int fail = 0;
 	   	
@@ -151,18 +158,18 @@ public class Cartpage {
 		
 		if(fail>0)
 		{
-			func.write_Regressiontest(false, 28);
+			func.write_Regressiontest(false, 25);
 		}
 		else
 		{
-			func.write_Regressiontest(true, 28);
+			func.write_Regressiontest(true, 25);
 		}
 		
 //		Update qty
 		
 		System.out.println("\tSmoke Testing: Update Quantity in Cartpage");
 		
-		System.out.println("\t\tTestcase - 29");
+		System.out.println("\t\tTestcase - 26");
 		
 		fail = 0;
 		
@@ -176,16 +183,18 @@ public class Cartpage {
 			}
 			else
 			{
-				data_obj.driver.findElement(By.xpath("(//td[@class='item-quantity']//child::input)["+c+"]")).clear();
+				data_obj.driver.findElement(By.xpath("(//div[@class='c-product-quantity']//child::input)["+c+"]")).clear();
 				
-				data_obj.driver.findElement(By.xpath("(//td[@class='item-quantity']//child::input)["+c+"]")).sendKeys("2");
+				data_obj.driver.findElement(By.xpath("(//div[@class='c-product-quantity']//child::input)["+c+"]")).sendKeys("2");
 										
 				//Scroll and click
 				
-				int elementPosition = element_obj.updatecart.getLocation().getY();
-				String js = String.format("window.scroll(0, %s)", elementPosition);
-				((JavascriptExecutor)data_obj.driver).executeScript(js);
-				element_obj.updatecart.click();
+//				int elementPosition = element_obj.updatecart.getLocation().getY();
+//				String js = String.format("window.scroll(0, %s)", elementPosition);
+//				((JavascriptExecutor)data_obj.driver).executeScript(js);
+				element_obj.ClicktoUpdatecart.click();
+				
+				
 							
 				if(util.Isdisplayed(element_obj.CP_quantity))
 				{
@@ -201,18 +210,18 @@ public class Cartpage {
 		}
 		if(fail>0)
 		{
-			func.write_Regressiontest(false, 29);
+			func.write_Regressiontest(false, 26);
 		}
 		else
 		{
-			func.write_Regressiontest(true, 29);
+			func.write_Regressiontest(true, 26);
 		}
 		
 //		Remove prd
 		
 		System.out.println("\tSmoke Testing: Remove Product in Cartpage");
 		
-		System.out.println("\t\tTestcase - 30");
+		System.out.println("\t\tTestcase - 27");
 		
 		System.out.println("\t\t\tTotal products: "+data_regression.itemlist.length);
 		
@@ -224,7 +233,7 @@ public class Cartpage {
 			System.out.println("\t\t\tProduct "+c+" removed successfully");
 		}
 		
-		func.write_Regressiontest(true, 30);
+		func.write_Regressiontest(true, 27);
 		
 //		util.WaitAndClick(element_obj.checkout);
 		
@@ -236,7 +245,7 @@ public class Cartpage {
    {
 	   System.out.println("\tSmoke Testing: Guest Checkout from Cartpage");
 		
-	   System.out.println("\t\tTestcase - 31");
+	   System.out.println("\t\tTestcase - 28");
 	   
 	   System.out.println("\nCart Page");
 	   	
@@ -248,11 +257,11 @@ public class Cartpage {
 	   
 	   func.guestCheckout(data_regression.email);
 	   
-	   if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[text()='Shipping']"))))
+	   if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//h2[text()='1. Shipping'])[2]"))))
 	   {
 		   System.out.println("\t\t\tGuest checkout verified Successfully");
 		   
-		   func.write_Regressiontest(true, 31);
+		   func.write_Regressiontest(true, 28);
 		   
 		   util.Click(element_obj.POviewcart);
 		   
@@ -267,7 +276,7 @@ public class Cartpage {
 	   {
 		   System.out.println("\t\t\tGuest checkout Unsuccessful");
 		   
-		   func.write_Regressiontest(false, 31);
+		   func.write_Regressiontest(false, 28);
 		   
 		   for(int c = 1; c <= data_regression.itemlist.length; c++)
 			{

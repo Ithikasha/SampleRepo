@@ -181,10 +181,10 @@ public class Cartpage {
 										
 				//Scroll and click
 				
-				int elementPosition = element_obj.updatecart.getLocation().getY();
-				String js = String.format("window.scroll(0, %s)", elementPosition);
-				((JavascriptExecutor)data_obj.driver).executeScript(js);
-				element_obj.updatecart.click();
+//				int elementPosition = element_obj.updatecart.getLocation().getY();
+//				String js = String.format("window.scroll(0, %s)", elementPosition);
+//				((JavascriptExecutor)data_obj.driver).executeScript(js);
+				element_obj.ClicktoUpdatecart.click();
 							
 				if(util.Isdisplayed(element_obj.CP_quantity))
 				{

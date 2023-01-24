@@ -30,8 +30,8 @@ public class Login_smoke {
 		
 		System.out.println("\tRegression Testing: Login from Loginpage");
 
-//		System.out.println("\t\tTestcase - 11");
-//		
+		System.out.println("\t\tTestcase - 9");
+		
 //	      data_obj.driver.get(data_regression.URL);
 //		
 //		  if(util.Isdisplayed(element_obj.no))
@@ -41,13 +41,13 @@ public class Login_smoke {
 		
 		func.smoke_login(data_regression.email, data_regression.password);
 		
-		if(util.Isdisplayed(data_obj.driver.findElement(By.xpath("//h1[@class='overview-header']"))))
+		if(util.Isdisplayed(data_obj.driver.findElement(By.xpath("//h1[@class='overview-header account-primary-heading'] "))))
 		{
 			System.out.println("\t\t\tLoginpage - Login Successful for "+data_regression.email);
 			
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 11);
+			func.write_Regressiontest(data_regression.result, 9);
 		}
 		
 		else
@@ -56,12 +56,12 @@ public class Login_smoke {
 			
 			data_regression.result = false;
 			
-			func.write_Regressiontest(data_regression.result, 11);
+			func.write_Regressiontest(data_regression.result, 9);
 		}
 
-		util.WaitAndClick(element_obj.MyAccount);
+//		util.WaitAndClick(element_obj.MyAccount);
 						
-		util.WaitAndClick(element_obj.Logout);
+		util.WaitAndClick(element_obj.MyAccountPageLogout);
 		
 //		data_obj.driver.close();
 		
@@ -71,7 +71,7 @@ public class Login_smoke {
 	{
 		System.out.println("\tRegression Testing: Login with Invalid Credentials");
 		
-		System.out.println("\t\tTestcase - 12");
+		System.out.println("\t\tTestcase - 10");
 		
 	    int fail = 0;
 		
@@ -126,7 +126,7 @@ public class Login_smoke {
 			
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 12);
+			func.write_Regressiontest(data_regression.result, 10);
 		}
 		
 		else
@@ -135,7 +135,7 @@ public class Login_smoke {
 			
 			data_regression.result = false;
 			
-			func.write_Regressiontest(data_regression.result, 12);
+			func.write_Regressiontest(data_regression.result, 10);
 		}
 	}
 	
@@ -143,9 +143,16 @@ public class Login_smoke {
 	{
 		System.out.println("\tRegression Testing: Login from Cartpage");
 		
-		System.out.println("\t\tTestcase - 13");
+		System.out.println("\t\tTestcase - 11");
 		
 		data_obj.driver.get(data_regression.URL);
+		
+//		if(element_obj.no.isDisplayed())
+//		{
+//		
+//		util.Click(element_obj.no);
+//		
+//		}
 			
 		func.Add_product(data_regression.itemlist, data_regression.qty);
 		
@@ -169,7 +176,7 @@ public class Login_smoke {
 			
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 13);
+			func.write_Regressiontest(data_regression.result, 11);
 		}
 		else
 		{
@@ -177,7 +184,7 @@ public class Login_smoke {
 			
 			data_regression.result = false;
 			
-			func.write_Regressiontest(data_regression.result, 13);
+			func.write_Regressiontest(data_regression.result, 11);
 		}
 		
 		element_obj.POviewcart.click();
@@ -190,46 +197,37 @@ public class Login_smoke {
 
 		}
 		
-		util.Click(element_obj.MyAccount);
+		util.Click(element_obj.srch);
 		
 		util.Click(element_obj.Logout);
 		
 	}
 
-	public void Check_Orderstatus(String number, String email, String zipcode) throws Exception
+	public void Check_Orderstatus() throws Exception
 	{
+		System.out.println("\tRegression Testing: Check Order Status");
 		
-		if(data_regression.URL != "https://www.metallica.com/")
+		System.out.println("\t\tTestcase - 12");
+		
+		func.GuestOrderCheck("00134707", "KT15 2BQ", "ithikasha@unitedtechno.com");
+		
+		if(util.Isdisplayed(element_obj.GuestCheckorderNumber))
 		{
-			System.out.println("\tRegression Testing: Check Order Status");
+			System.out.println("\t\t\tOrder Status Check Successful");
 			
-			System.out.println("\t\tTestcase - 14");
+			data_regression.result = true;
 			
-			util.Sendkeys(element_obj.driver.findElement(By.xpath("//input[@id='dwfrm_ordertrack_orderNumber']")), number);
-			
-			util.Sendkeys(element_obj.driver.findElement(By.xpath("//input[@id='dwfrm_ordertrack_orderEmail']")), email);
-			
-			util.Sendkeys(element_obj.driver.findElement(By.xpath("//input[@id='dwfrm_ordertrack_postalCode']")), zipcode);
-			
-			util.Click(element_obj.driver.findElement(By.xpath("//button[@value='Check Status']")));
-			
-			if(util.Isdisplayed(element_obj.orderNumber))
-			{
-				System.out.println("\t\t\tOrder Status Check Successful");
-				
-				data_regression.result = true;
-				
-				func.write_Regressiontest(data_regression.result, 14);
-			}
-			else
-			{
-				System.out.println("\t\t\tOrder Status Check Unsuccessful");
-				
-				data_regression.result = false;
-				
-				func.write_Regressiontest(data_regression.result, 14);
-			}
+			func.write_Regressiontest(data_regression.result, 12);
 		}
+		else
+		{
+			System.out.println("\t\t\tOrder Status Check Unsuccessful");
+			
+			data_regression.result = false;
+			
+			func.write_Regressiontest(data_regression.result, 12);
+		}
+		
 		
 	}
 	

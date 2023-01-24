@@ -44,7 +44,7 @@ public class Shippingpage {
 		
 		System.out.println("\tSmoke Testing: Address field validation in Shipping page");
 		
-		System.out.println("\t\tTestcase - 32");
+		System.out.println("\t\tTestcase - 29");
 		
 		int fail = 0;
 		
@@ -187,17 +187,17 @@ public class Shippingpage {
 			fail++;
 		}
 		
-		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])[2]")));
+		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])")));
 		
 		if(fail>0)
 		{
 			System.out.println("\t\t\t"+"Address field validation Unsuccessful");
-			func.write_Regressiontest(false, 32);
+			func.write_Regressiontest(false, 29);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Address field validation Successful");
-			func.write_Regressiontest(true, 32);
+			func.write_Regressiontest(true, 29);
 		}
 		
 	}
@@ -214,7 +214,7 @@ public class Shippingpage {
 		
 		System.out.println("\tSmoke Testing: Validate the Mandatory fields");
 		
-		System.out.println("\t\tTestcase - 33");
+		System.out.println("\t\tTestcase - 30");
 		
 		int fail = 0;
 		
@@ -530,7 +530,7 @@ public class Shippingpage {
 				
 				util.Sendkeys(element_obj.phone,data_regression.Address.get("PhoneNumber"));
 				
-				if(!element_obj.driver.findElement(By.xpath("//button[@class='add-to-cart button button--cta']")).isEnabled()) //element_obj.driver.findElement(By.xpath("(//span[@class='error'])"
+				if(!element_obj.driver.findElement(By.xpath("//button[@class='add-to-cart button button--secondary']")).isEnabled()) //element_obj.driver.findElement(By.xpath("(//span[@class='error'])"
 				{
 					System.out.println("\t\t\t"+"Mandatory field: Zipcode verified Sucessfully");
 				}
@@ -632,17 +632,17 @@ public class Shippingpage {
 				}
 		}
 		
-		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])[2]")));
+		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])")));
 		
 		if(fail>0)
 		{
 			System.out.println("\t\t\t"+"Mandatory fields validation Unsuccessful");
-			func.write_Regressiontest(false, 33);
+			func.write_Regressiontest(false, 30);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Mandatory fields validation Successful");
-			func.write_Regressiontest(true, 33);
+			func.write_Regressiontest(true, 30);
 		}
 	}
 	
@@ -651,7 +651,7 @@ public class Shippingpage {
 
 		System.out.println("\tSmoke Testing: Validate Shipping method Table");
 		
-		System.out.println("\t\tTestcase - 34");
+		System.out.println("\t\tTestcase - 31");
 		
 //		smoke_data.readAddress();
 		
@@ -707,12 +707,12 @@ public class Shippingpage {
 		if(util.Isdisplayed(element_obj.shippingtable))
 		{
 			System.out.println("\t\t\t"+"Shipping Method table displayed after entering address - Successfully");
-			func.write_Regressiontest(true, 34);
+			func.write_Regressiontest(true, 31);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Shipping Method table not displayed - Unsuccessful");
-			func.write_Regressiontest(false, 34);
+			func.write_Regressiontest(false, 31);
 		}
 		
 	}
@@ -722,7 +722,7 @@ public class Shippingpage {
 		
 		System.out.println("\tSmoke Testing: Product Title in Shipping Table");
 		
-		System.out.println("\t\tTestcase - 35");
+		System.out.println("\t\tTestcase - 32");
 		
 //		data_obj.driver.get(data_regression.URL);
 //		
@@ -756,12 +756,12 @@ public class Shippingpage {
 				if(prod_list.contains(data_regression.CP_prdName.get(i).toUpperCase()))
 				{
 					System.out.println("\t\t\t"+data_regression.CP_prdName.get(i)+": Product name displayed in Shipping Method Table Successfully ");
-					func.write_Regressiontest(true, 35);
+					func.write_Regressiontest(true, 32);
 				}
 				else
 				{
 					System.out.println("\t\t\t"+data_regression.CP_prdName.get(i)+" Product name not displayed in Shipping Method Table - Unsuccessful");
-					func.write_Regressiontest(false, 35);
+					func.write_Regressiontest(false, 32);
 				}
 			}		
 	}
@@ -770,17 +770,17 @@ public class Shippingpage {
 	{
 		System.out.println("\tSaved Address field validation");
 		
-		System.out.println("\t\tTestcase - 36");	
+		System.out.println("\t\tTestcase - 33");	
 		
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//select[@id='dwfrm_singleshipping_addressList']"))))
 		{
 			System.out.println("\t\t\t"+"Saved Address validation successful");	
-			func.write_Regressiontest(true, 36);
+			func.write_Regressiontest(true, 33);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Saved Address validation Unsuccessful");
-			func.write_Regressiontest(false, 36);
+			func.write_Regressiontest(false, 33);
 		}	
 		
 	}
@@ -789,19 +789,19 @@ public class Shippingpage {
 	{
 		System.out.println("\tGift Message Text box");
 		
-		System.out.println("\t\tTestcase - 37");		
+		System.out.println("\t\tTestcase - 34");		
 		
 		util.Click(element_obj.gift);
 		
 		if(util.Isdisplayed(element_obj.giftMsg))
 		{
 			System.out.println("\t\t\t"+"The Gift Message text box validation Successful");	
-			func.write_Regressiontest(true, 37);
+			func.write_Regressiontest(true, 34);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"The Gift Message text box validation Unsuccessful");
-			func.write_Regressiontest(false, 37);
+			func.write_Regressiontest(false, 34);
 		}
 	}
 	
@@ -809,7 +809,7 @@ public class Shippingpage {
 	{
 		System.out.println("\tUse Shipping address as Billing address");
 		
-		System.out.println("\t\tTestcase - 38");
+		System.out.println("\t\tTestcase - 35");
 		
 		if(util.Isdisplayed(element_obj.Preorder_Acknowledgement))
 		{
@@ -826,23 +826,27 @@ public class Shippingpage {
 				util.WaitAndClick(element_obj.userAddress);
 			}
 		}	
+		
+		Thread.sleep(2000);
 			
-		func.smoke_payment("Visa");
+		func.smoke_payment("Amex");
+		
+		Thread.sleep(2000);
 		
 		util.WaitAndClick(element_obj.continuePlaceorder);
 		
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='place-order-header']"))))
 		{
 			System.out.println("\t\t\t"+"Use Shipping addres as Billing address validation Successful");	
-			func.write_Regressiontest(true, 38);
+			func.write_Regressiontest(true, 35);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Use Shipping addres as Billing address validation Unsuccessful");
-			func.write_Regressiontest(false, 38);
+			func.write_Regressiontest(false, 35);
 		}
 		
-		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])[2]")));
+		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])")));
 		
 		for(int c = 1; c <= data_regression.itemlist.length; c++)
 		{
@@ -862,7 +866,7 @@ public class Shippingpage {
 		
 		Preorder_Acknowledge();		
 		
-		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])[2]")));
+		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])")));
 		
 		for(int c = 0; c < data_regression.itemlist.length; c++)
 		{
@@ -876,17 +880,17 @@ public class Shippingpage {
 	{
 		System.out.println("\tSmoke Testing: Ship Later section in Shipping Table");
 		
-		System.out.println("\t\tTestcase - 39");
+		System.out.println("\t\tTestcase - 36");
 		
 		if(util.Isdisplayed(element_obj.shiplater_title))
 		{
 			System.out.println("\t\t\t"+"Ship Later section displayed in Shipping method table Successfully");	
-			func.write_Regressiontest(true, 39);
+			func.write_Regressiontest(true, 36);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Ship Later section NOT displayed in Shipping method table - Unsuccessful");
-			func.write_Regressiontest(false, 39);
+			func.write_Regressiontest(false, 36);
 		}
 		
 	}
@@ -895,34 +899,34 @@ public class Shippingpage {
 	{
 		System.out.println("\tSmoke Testing: Pre-Order Acknowledgement checkbox");
 		
-		System.out.println("\t\tTestcase - 40");
+		System.out.println("\t\tTestcase - 37");
 		
 		if(util.Isdisplayed(element_obj.Preorder_Acknowledgement))
 		{
 			System.out.println("\t\t\t"+"Pre-Order Acknowledgement checkbox displayed in Shipping page Successfully");	
-			func.write_Regressiontest(true, 40);
+			func.write_Regressiontest(true, 37);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Pre-Order Acknowledgement checkbox not displayed in Shipping page - Unsuccessful");
-			func.write_Regressiontest(false, 40);
+			func.write_Regressiontest(false, 37);
 		}
 		
 		System.out.println("\tSmoke Testing: Validate Pre-Order Acknowledgement");
 		
-		System.out.println("\t\tTestcase - 41");
+		System.out.println("\t\tTestcase - 38");
 		
 		util.Click(element_obj.continuebill);
 		
 		if(util.Isdisplayed(element_obj.Preorder_Acknowledgement_Error))
 		{
 			System.out.println("\t\t\t"+"Pre-Order Acknowledgement checkbox validation Successful");	
-			func.write_Regressiontest(true, 41);
+			func.write_Regressiontest(true, 38);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Pre-Order Acknowledgement checkbox validation Unsuccessful");
-			func.write_Regressiontest(false, 41);
+			func.write_Regressiontest(false, 38);
 		}
 	}
 	
@@ -930,7 +934,7 @@ public class Shippingpage {
 	{
 		System.out.println("\tSmoke Testing: Validate Vinyl Club Ship Bucket");
 		
-		System.out.println("\t\tTestcase - 42");
+		System.out.println("\t\tTestcase - 39");
 		
 		func.Add_product(data_regression.vinylA);
 		
@@ -939,15 +943,15 @@ public class Shippingpage {
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='shipping-method-header vinylclub-shipment-header']"))))
 		{
 			System.out.println("\t\t\t"+"Vinyl club Ship bucket validation Successful");	
-			func.write_Regressiontest(true, 42);
+			func.write_Regressiontest(true, 39);
 		}
 		else
 		{
 			System.out.println("\t\t\t"+"Vinyl club Ship bucket validation Successful");
-			func.write_Regressiontest(false, 42);
+			func.write_Regressiontest(false, 39);
 		}
 		
-		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])[2]")));
+		util.Click(element_obj.driver.findElement(By.xpath("(//span[text()='Back to Cart'])")));
 		
 		util.WaitAndClick(element_obj.remove);
 	}

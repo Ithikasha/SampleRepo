@@ -28,7 +28,7 @@ public class MyAccount_page {
 		
 		System.out.println("\tRegression Testing: Personal Information Link");
 		
-		System.out.println("\t\tTestcase - 15");
+		System.out.println("\t\tTestcase - 13");
 
 		int fail = 0;
 		
@@ -36,13 +36,13 @@ public class MyAccount_page {
 		
 		util.Click(element_obj.MyAccount_PersonalInfo); // Personal Info
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//h1[@class='edit-account-header'])"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h2[@class='edit-account-header form-heading']"))))
 		{
 			System.out.println("\t\t\t"+"Personal Information link verification Successful");
 			
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 15);
+			func.write_Regressiontest(data_regression.result, 13);
 		}
 		else
 		{
@@ -50,12 +50,12 @@ public class MyAccount_page {
 			
 			data_regression.result = false;
 			
-			func.write_Regressiontest(data_regression.result, 15);
+			func.write_Regressiontest(data_regression.result, 13);
 		}
 		
 		System.out.println("\tRegression Testing: Address Link");
 		
-		System.out.println("\t\tTestcase - 16");
+		System.out.println("\t\tTestcase - 14");
 		
 		util.Click(element_obj.MyAccount_Address); // Address
 		
@@ -65,7 +65,7 @@ public class MyAccount_page {
 			
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 16);
+			func.write_Regressiontest(data_regression.result, 14);
 		}
 		else
 		{
@@ -73,12 +73,12 @@ public class MyAccount_page {
 			
 			data_regression.result = false;
 			
-			func.write_Regressiontest(data_regression.result, 16);
+			func.write_Regressiontest(data_regression.result, 14);
 		}
 		
 		System.out.println("\tRegression Testing: Payment Link");
 		
-		System.out.println("\t\tTestcase - 17");
+		System.out.println("\t\tTestcase - 15");
 		
 		util.Click(element_obj.MyAccount_Payment); // Payment
 		
@@ -88,7 +88,7 @@ public class MyAccount_page {
 			
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 17);
+			func.write_Regressiontest(data_regression.result, 15);
 		}
 		else
 		{
@@ -96,12 +96,12 @@ public class MyAccount_page {
 			
 			data_regression.result = false;
 			
-			func.write_Regressiontest(data_regression.result, 17);
+			func.write_Regressiontest(data_regression.result, 15);
 		}
 		
 		System.out.println("\tRegression Testing: Presale Link");
 
-		System.out.println("\t\tTestcase - 18");
+		System.out.println("\t\tTestcase - 16");
 		
 		util.Click(element_obj.MyAccount_Presale); // Presale
 		
@@ -111,7 +111,7 @@ public class MyAccount_page {
 		
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 18);
+			func.write_Regressiontest(data_regression.result, 16);
 		}
 		else
 		{
@@ -119,12 +119,12 @@ public class MyAccount_page {
 			
 			data_regression.result = false;
 			
-			func.write_Regressiontest(data_regression.result, 18);
+			func.write_Regressiontest(data_regression.result, 16);
 		}
 		
 		System.out.println("\tRegression Testing: Free Download Link");
 		
-		System.out.println("\t\tTestcase - 19");
+		System.out.println("\t\tTestcase - 17");
 		
 		util.Click(element_obj.MyAccount_Freedownload); // Free Download
 		
@@ -134,7 +134,7 @@ public class MyAccount_page {
 		
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 19);
+			func.write_Regressiontest(data_regression.result, 17);
 		}
 		else
 		{
@@ -142,12 +142,12 @@ public class MyAccount_page {
 			
 			data_regression.result = false;
 			
-			func.write_Regressiontest(data_regression.result, 19);
+			func.write_Regressiontest(data_regression.result, 17);
 		}
 		
 		System.out.println("\tRegression Testing: Contest Link");
 		
-		System.out.println("\t\tTestcase - 20");
+		System.out.println("\t\tTestcase - 18");
 		
 		util.Click(element_obj.MyAccount_Contest); // Contest
 		
@@ -157,7 +157,7 @@ public class MyAccount_page {
 		
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 20);
+			func.write_Regressiontest(data_regression.result, 18);
 		}
 		else
 		{
@@ -165,22 +165,22 @@ public class MyAccount_page {
 			
 			data_regression.result = false;
 			
-			func.write_Regressiontest(data_regression.result, 20);
+			func.write_Regressiontest(data_regression.result, 18);
 		}
 		
 		System.out.println("\tRegression Testing: Vinyl Club Link");
 		
-		System.out.println("\t\tTestcase - 21");
+		System.out.println("\t\tTestcase - 19");
 		
 		util.Click(element_obj.MyAccount_Vinylclub); // Vinyl Club
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//h1[@class='subscriptionHeader'])"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[contains(text(),'Read more')]"))))
 		{
 			System.out.println("\t\t\t"+"Vinyl Club link verification Successful");
 			
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 21);
+			func.write_Regressiontest(data_regression.result, 19);
 		}
 		else
 		{
@@ -188,22 +188,22 @@ public class MyAccount_page {
 			
 			data_regression.result = false;
 			
-			func.write_Regressiontest(data_regression.result, 21);
+			func.write_Regressiontest(data_regression.result, 19);
 		}
 		
 		System.out.println("\tRegression Testing: Order History Link");
 		
-		System.out.println("\t\tTestcase - 22");
+		System.out.println("\t\tTestcase - 20");
 		
 		util.Click(element_obj.MyAccount_Order); // Order History
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//h1[@class='order-history-h1'])"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//h1[@class='order-history-h1 account-primary-heading'])"))))
 		{
 			System.out.println("\t\t\t"+"Order History link verification Successful");
 			
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 22);
+			func.write_Regressiontest(data_regression.result, 20);
 		}
 		else
 		{
@@ -211,12 +211,12 @@ public class MyAccount_page {
 			
 			data_regression.result = true;
 			
-			func.write_Regressiontest(data_regression.result, 22);
+			func.write_Regressiontest(data_regression.result, 20);
 		}
 		
-		util.WaitAndClick(element_obj.MyAccount);
+		util.Click(element_obj.srch);
 		
-		util.WaitAndClick(element_obj.Logout);
+		util.Click(element_obj.Logout);
 	}
 
 }
