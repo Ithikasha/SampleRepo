@@ -214,7 +214,7 @@ public class Placeorder_page {
 		
 		int fail = 0;
 		
-		util.Click(element_obj.driver.findElement(By.xpath("//a[@class='section-header-note gtm-edit-cart-link']")));// Edit cart link
+		util.Click(element_obj.SP_BackToCart);// Edit cart link
 		
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='col col--xs-12 cart__header__content']//h2"))))
 		{

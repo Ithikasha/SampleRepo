@@ -291,7 +291,7 @@ public class SiteMonitoring {
 		{
 			System.out.println("True");
 						
-			util.WaitAndClick(elements.EditCart);
+			util.WaitAndClick(elements.SP_BackToCart);
 			
 			System.out.println("\t\t\t"+"Avalara_TaxableDomestic validation successful");
 			
@@ -303,7 +303,7 @@ public class SiteMonitoring {
 		{
 			System.out.println("False");
 			
-			util.WaitAndClick(elements.EditCart);
+			util.WaitAndClick(elements.SP_BackToCart);
 			
 			System.out.println("\t\t\t"+"Avalara_TaxableDomestic validation unsuccessful");
 			
@@ -358,7 +358,7 @@ public class SiteMonitoring {
 		{
 			System.out.println("True");
 						
-			util.WaitAndClick(elements.EditCart);
+			util.WaitAndClick(elements.SP_BackToCart);
 			
 			System.out.println("\t\t\t"+"Avalara_NonTaxableDomestic validation successful");
 			
@@ -371,7 +371,7 @@ public class SiteMonitoring {
 		{
 			System.out.println("False");
 			
-			util.WaitAndClick(elements.EditCart);
+			util.WaitAndClick(elements.SP_BackToCart);
 			
 			System.out.println("\t\t\t"+"Avalara_NonTaxableDomestic validation unsuccessful");
 			
@@ -419,7 +419,7 @@ public class SiteMonitoring {
 		{
 			System.out.println("True");
 						
-			util.WaitAndClick(elements.EditCart);
+			util.WaitAndClick(elements.SP_BackToCart);
 			
 			System.out.println("\t\t\t"+"Avalara_TaxableInternational validation successful");
 			
@@ -432,7 +432,7 @@ public class SiteMonitoring {
 		{
 			System.out.println("False");
 			
-			util.WaitAndClick(elements.EditCart);
+			util.WaitAndClick(elements.SP_BackToCart);
 			
 			System.out.println("\t\t\t"+"Avalara_TaxableInternational validation unsuccessful");
 			
@@ -485,7 +485,7 @@ public class SiteMonitoring {
 		{
 			System.out.println("True");
 						
-			util.WaitAndClick(elements.EditCart);
+			util.WaitAndClick(elements.SP_BackToCart);
 			
 			System.out.println("\t\t\t"+"Avalara_NonTaxableInternational validation successful");
 			
@@ -498,7 +498,7 @@ public class SiteMonitoring {
 		{
 			System.out.println("False");
 			
-			util.WaitAndClick(elements.EditCart);
+			util.WaitAndClick(elements.SP_BackToCart);
 			
 			System.out.println("\t\t\t"+"Avalara_NonTaxableInternational validation unsuccessful");
 			
@@ -547,7 +547,7 @@ public class SiteMonitoring {
 		{
 			util.WaitAndClick(elements.userAddress);
 			
-			util.WaitAndClick(elements.EditCart);
+			util.WaitAndClick(elements.SP_BackToCart);
 			
 		   // System.out.println("True");
 			
@@ -602,7 +602,7 @@ public class SiteMonitoring {
 		{
 			util.WaitAndClick(elements.userAddress);
 		
-			util.WaitAndClick(elements.EditCart);
+			util.WaitAndClick(elements.SP_BackToCart);
 		
 //			data.driver.close();
 		
