@@ -29,5 +29,5 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.REPO_B_TOKEN }}" \
             -H "Content-Type: application/json" \
-            https://api.github.com/repos/Ithikash/MetallicaTest/dispatches \
+            https://api.github.com/repos/Ithikasha/MetallicaTest/dispatches \
             -d '{"event_type":"trigger-build"}'
