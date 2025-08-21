@@ -57,7 +57,7 @@ public class SiteMonitoring {
 //		
 //		System.out.println(Email);
 	
-		data.driver.get(data.DEV_url);
+		data.driver.get(data.STG_URL);
 		
 		util.Click(elements.no);
 		
@@ -449,7 +449,7 @@ public class SiteMonitoring {
 		
 		util.Clear(elements.address1);
 		
-		util.Sendkeys(elements.address1,"1200 Av De Germain-Des-Prés");
+		util.Sendkeys(elements.address1,"1200 Av De Germain-Des-PrÃ©s");
 
 		util.Clear(elements.city);
 		
