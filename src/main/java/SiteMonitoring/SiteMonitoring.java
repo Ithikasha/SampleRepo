@@ -57,7 +57,7 @@ public class SiteMonitoring {
 //		
 //		System.out.println(Email);
 	
-		data.driver.get(data.STG_URL);
+		data.driver.get(data.Prod_url);
 		
 		util.Click(elements.no);
 		
