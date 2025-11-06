@@ -15,7 +15,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import Data_Functions.*;
-import Email.SendingEmail;
+//import Email.SendingEmail;
 import Regression.ContactUsForm;
 import Regression.Homepage;
 import Smoke_test.Data_smoke;
@@ -27,7 +27,7 @@ public class SiteMonitoring {
 	
 	public static SiteMonitoringConstantData SiteData = new SiteMonitoringConstantData();
 	
-	public static SendingEmail email = new SendingEmail();
+//	public static SendingEmail email = new SendingEmail();
     
     public static Data_smoke data_smoke = new Data_smoke();
     
