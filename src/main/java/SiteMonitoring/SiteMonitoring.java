@@ -114,7 +114,7 @@ public class SiteMonitoring {
 	
 	{
 			
-		functions.Add_product("BUFFALO 2022 TOUR T-SHIRT - MEDIUM");
+		functions.Add_product("BUFFALOs 2022 TOUR T-SHIRT - MEDIUM");
 		
 		util.Click(elements.checkout);
 		
