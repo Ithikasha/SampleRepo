@@ -1,1 +1,20 @@
+name: Trigger MetallicaTest Maven Build
+
+on:
+  push:
+    branches:
+      - main   # or any branch you want to watch
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Repo B (MetallicaTest) Maven workflow
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+            https://api.github.com/repos/Ithikasha/MetallicaTest/dispatches \
+            -d '{"event_type": "trigger-build"}'
 
