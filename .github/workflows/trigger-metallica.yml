@@ -1,4 +1,4 @@
-name: Trigger MetallicaTest Maven Build
+name: Trigger MetallicaTest Maven Build 
 
 on:
   push:
