@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.Select;
 
 
 import Data_Functions.*;
-import Email.SendingEmail;
+// import Email.SendingEmail;
 import SiteMonitoring.SiteMonitoringConstantData;
 import Smoke_test.Data_smoke;
 
@@ -19,7 +19,7 @@ public class ContactUsForm {
 	
 	public static SiteMonitoringConstantData SiteData = new SiteMonitoringConstantData();
 	
-	public static SendingEmail email = new SendingEmail();
+//	public static SendingEmail email = new SendingEmail();
     
     public static Data_smoke data_smoke = new Data_smoke();
     
