@@ -23,9 +23,9 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.mail.DefaultAuthenticator;
-import org.apache.commons.mail.Email;
+// import org.apache.commons.io.FileUtils;
+// import org.apache.commons.mail.DefaultAuthenticator;
+// import org.apache.commons.mail.Email;
 // import org.apache.commons.mail.EmailAttachment;
 // import org.apache.commons.mail.EmailException;
 // import org.apache.commons.mail.MultiPartEmail;
@@ -310,46 +310,46 @@ public class driverUtil {
 	// 	FileUtils.copyFile(source, dest);
 	// }
 	
-	public void SendStatusByGmail(String Message, boolean result ) throws EmailException
-	{
-		// Attachment
+	// public void SendStatusByGmail(String Message, boolean result ) throws EmailException
+	// {
+	// 	// Attachment
 		
-		System.out.println("Started");
+	// 	System.out.println("Started");
 		
-		EmailAttachment attachment = new EmailAttachment();
+	// 	EmailAttachment attachment = new EmailAttachment();
 		
-		attachment.setPath("Excelsheets");
+	// 	attachment.setPath("Excelsheets");
 		
-		attachment.setDisposition(EmailAttachment.ATTACHMENT);
+	// 	attachment.setDisposition(EmailAttachment.ATTACHMENT);
 		
-		attachment.setDescription("SiteMonitoring Results");
+	// 	attachment.setDescription("SiteMonitoring Results");
 		
-		attachment.setName("SiteMonitoring.xls");
+	// 	attachment.setName("SiteMonitoring.xls");
 		
 		
-		//Email message
-		  MultiPartEmail email = new MultiPartEmail();
+	// 	//Email message
+	// 	  MultiPartEmail email = new MultiPartEmail();
 		  
-		  email.setHostName("smtp.gmail.com");
+	// 	  email.setHostName("smtp.gmail.com");
 		  
-		  email.addTo("ublisjacobn@unitedtechno.com","Jacbeu@2024");
+	// 	  email.addTo("ublisjacobn@unitedtechno.com","Jacbeu@2024");
 		  
-		  email.setFrom("ublisjacobn@unitdtechno.com");
+	// 	  email.setFrom("ublisjacobn@unitdtechno.com");
 		  
-		  email.setSubject("SiteMonitoring Results");
+	// 	  email.setSubject("SiteMonitoring Results");
 		  
-		  email.setMsg("");
+	// 	  email.setMsg("");
 
-		  // add the attachment
-		  email.attach(attachment);
+	// 	  // add the attachment
+	// 	  email.attach(attachment);
 
-		  // send the email
-		  email.send();
+	// 	  // send the email
+	// 	  email.send();
 		  
 		  
 		
 		
-	}
+	// }
 	
 	
 	public void sendPDFReportByGMail(String from, String pass, String to, String subject, String body) {
