@@ -673,7 +673,7 @@ public class pageElements {
 	
 	// Cloudinary
 	
-	@FindBy(xpath="//title[text()='2022-05may29_Boston-Massachusetts_Jeff-Yeager_001.jpg (742×482)']")
+	@FindBy(xpath="//title[text()='2022-05may29_Boston-Massachusetts_Jeff-Yeager_001.jpg (742x482)']")
 	public WebElement CloudinaryImg;
 	
 	//DigitalOcean
