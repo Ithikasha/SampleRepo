@@ -1,6 +1,6 @@
 package StepDefinition;
 
-import com.itextpdf.text.log.SysoLogger;
+// import com.itextpdf.text.log.SysoLogger;
 
 import Data_Functions.Functions;
 import Data_Functions.constantData;
@@ -27,7 +27,6 @@ public class Login1 {
 	
     public static Functions functions;
 	
-    
 	@Given("I am on homepage")
 	
 	public void i_am_on_homepage() throws InterruptedException {
