@@ -299,16 +299,16 @@ public class driverUtil {
 	}
 	
 
-	public void snapShots(WebDriver driver, String filePath) throws IOException
-	{
-		TakesScreenshot scrsht = (TakesScreenshot) driver ;
+	// public void snapShots(WebDriver driver, String filePath) throws IOException
+	// {
+	// 	TakesScreenshot scrsht = (TakesScreenshot) driver ;
 		
-		File source = scrsht.getScreenshotAs(OutputType.FILE);
+	// 	File source = scrsht.getScreenshotAs(OutputType.FILE);
 		
-		File dest = new File(filePath);
+	// 	File dest = new File(filePath);
 		
-		FileUtils.copyFile(source, dest);
-	}
+	// 	FileUtils.copyFile(source, dest);
+	// }
 	
 	public void SendStatusByGmail(String Message, boolean result ) throws EmailException
 	{
