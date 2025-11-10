@@ -102,7 +102,7 @@ public class SiteMonitoring {
 		
 //		System.out.println("\tShipperHQ_Pre-Order Testing");
 		
-//		ShipperHQ_Preorder();
+		ShipperHQ_Preorder();
 		
 //		System.out.println("\tShipperHQ_VinylclubSubscription Testing");
 		
