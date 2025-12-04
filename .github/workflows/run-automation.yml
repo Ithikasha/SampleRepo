@@ -29,7 +29,10 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: extent-report
-          path: reports/extent-report.html
+          path: reports/target/
+
+      - name: Stop & Remove Container
+        run: docker rm automation-container --force
 
       - name: Send Slack Notification
         uses: slackapi/slack-github-action@v1.23.0
