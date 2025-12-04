@@ -1,0 +1,42 @@
+name: Run Automation in Docker
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Build Docker Image
+        run: docker build -t automation-tests .
+
+      - name: Run Tests in Docker
+        run: docker run --name automation-container automation-tests
+
+      - name: Copy Reports from Docker container
+        run: |
+          docker cp automation-container:/app/target ./reports
+
+      - name: Upload Extent Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: extent-report
+          path: reports/extent-report.html
+
+      - name: Send Slack Notification
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          payload: |
+            {
+              "text": "Automation Execution Completed. Please check the report."
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
